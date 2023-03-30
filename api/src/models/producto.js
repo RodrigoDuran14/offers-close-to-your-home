@@ -46,5 +46,9 @@ module.exports = (sequelize) => {
       allowNull: false,
       defaultValue: true,
     },
+    imagen: {
+      type: DataTypes.STRING,
+      allowNull:false
+    }
   });
 };
