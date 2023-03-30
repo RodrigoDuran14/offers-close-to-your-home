@@ -22,5 +22,9 @@ sequelize.define('Venta', {
       key: "id_usuario"
     }
   }
-  });
+  },
+  {
+    tableName: 'Venta',
+    timestamps: false 
+});
 }

@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
 sequelize.define('Usuario', {
     id_tipo_usuario: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: 'Tipo_usuario',
@@ -32,7 +32,7 @@ sequelize.define('Usuario', {
       type: DataTypes.INTEGER,
       allowNull: false,
       references:{
-        model: "ciudad",
+        model: "Ciudad",
         key: "id_ciudad"
       }
     },
@@ -52,6 +52,7 @@ sequelize.define('Usuario', {
       allowNull:false
     }
   }, {
-    timestamps: false,
-  });
+    tableName: 'Usuario',
+    timestamps: false 
+});
 }
