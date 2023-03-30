@@ -7,6 +7,7 @@ module.exports = (sequelize) => {
     id_detalle_venta: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      autoIncrement: true,
       primaryKey: true,
     },
     cantidad: {
@@ -17,19 +18,6 @@ module.exports = (sequelize) => {
       type: DataTypes.FLOAT,
       allowNull: false,
     },
-    id_producto: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "producto",
-        key: "id_producto",
-      },
-    },
-    id_venta: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "venta",
-        key: "id_venta",
-      },
-    },
+    
   });
 };

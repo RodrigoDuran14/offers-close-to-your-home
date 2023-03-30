@@ -6,6 +6,7 @@ module.exports = (sequelize) => {
   sequelize.define("motivo_calificacion", {
     id_motivo_calificacion: {
       type: DataTypes.INTEGER,
+      autoIncrement: true,
       allowNull: false,
       primaryKey: true,
     },
