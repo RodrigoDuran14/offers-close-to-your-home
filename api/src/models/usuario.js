@@ -1,12 +1,12 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-sequelize.define('usuario', {
+sequelize.define('Usuario', {
     id_tipo_usuario: {
       type: DataTypes.STRING,
       allowNull: false,
       references: {
-        model: 'tipo_usuario',
+        model: 'Tipo_usuario',
         key: 'id_tipo_usuario',
       },
     },
@@ -17,8 +17,8 @@ sequelize.define('usuario', {
       primaryKey: true,
     },
     nombre_usuario:{
-     type: DataTypes.STRING(50),
-     allowNull: false,
+      type: DataTypes.STRING(50),
+      allowNull: false,
     },
     direccion:{
       type: DataTypes.STRING,
@@ -41,11 +41,15 @@ sequelize.define('usuario', {
     },
     email:{
       type: DataTypes.STRING,
-     allowNull: false,
+      allowNull: false,
     },
     contraseña:{
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    imagen: {
+      type: DataTypes.STRING,
+      allowNull:false
     }
   }, {
     timestamps: false,
