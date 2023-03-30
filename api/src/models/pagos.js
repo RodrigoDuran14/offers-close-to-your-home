@@ -7,6 +7,7 @@ module.exports = (sequelize) => {
     id_pago: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      autoIncrement: true,
       primaryKey: true,
     },
     fecha: {
