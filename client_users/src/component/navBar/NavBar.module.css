@@ -1,0 +1,42 @@
+.container{
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+
+}
+
+.box1{
+    display: flex;
+    /* border: solid 1px red; */
+    align-items: center;
+    margin-left: 75px;
+}
+
+.box2{
+    display: flex;
+    /* border: solid 1px red; */
+    align-items: center;
+    margin-right: 75px;
+}
+
+.button{
+    border-radius: 100px;
+    padding: 8px;
+    margin-right: 20px;
+    border: none; 
+    background-color: black;
+    color: aliceblue;  
+    font-size: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.button:hover{ 
+    outline: solid 1px rgb(52, 51, 51);
+}
