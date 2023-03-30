@@ -25,5 +25,9 @@ module.exports = (sequelize) => {
         key: "id_producto",
       },
     },
-  });
+  },
+  {
+    tableName: 'Motivo_calificacion',
+    timestamps: false 
+});
 };

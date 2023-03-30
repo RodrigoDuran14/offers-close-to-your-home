@@ -34,5 +34,9 @@ module.exports = (sequelize) => {
         key: "id_detalle_venta",
       },
     },
-  });
+  },
+  {
+    tableName: 'Pagos',
+    timestamps: false 
+});
 };
