@@ -1,12 +1,12 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-sequelize.define('usuario', {
+sequelize.define('Usuario', {
     id_tipo_usuario: {
       type: DataTypes.STRING,
       allowNull: false,
       references: {
-        model: 'tipo_usuario',
+        model: 'Tipo_usuario',
         key: 'id_tipo_usuario',
       },
     },

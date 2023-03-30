@@ -3,7 +3,7 @@ const { DataTypes, DATE } = require("sequelize");
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define("producto", {
+  sequelize.define("Producto", {
     id_producto: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
     id_comercio: {
       type: DataTypes.INTEGER,
       references: {
-        model: "comercio",
+        model: "Comercio",
         key: "id_comercio",
       },
     },

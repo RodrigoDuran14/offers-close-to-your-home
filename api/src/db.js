@@ -38,29 +38,30 @@ sequelize.models = Object.fromEntries(capsEntries);
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
 const {
-  tipo_usuario,
-  venta,
-  usuario,
-  detalle_venta,
-  producto,
-  motivo_calificacion,
-  ciudad,
-  comercio,
-  categoria_comercio,
-  pagos,
+  Tipo_usuario,
+  Venta,
+  Usuario,
+  Detalle_venta,
+  Producto,
+  Motivo_calificacion,
+  Ciudad,
+  Comercio,
+  Categoria_comercio,
+  Pagos,
 } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
-tipo_usuario.hasMany(usuario, { foreignKey: "id_tipo_usuario" });
-producto.hasMany(motivo_calificacion, { foreignKey: "id_producto" });
-ciudad.hasMany(usuario, { foreignKey: "id_ciudad" });
-ciudad.hasMany(comercio, { foreignKey: "id_ciudad" });
-usuario.hasMany(venta, { foreignKey: "id_usuario" });
-categoria_comercio.hasMany(comercio, { foreignKey: "id_categoria_comercio" });
-producto.belongsToMany(venta, { through: detalle_venta });
-venta.belongsToMany(producto, { through: detalle_venta });
+Tipo_usuario.hasMany(Usuario);
+
+Producto.hasMany(Motivo_calificacion);
+Ciudad.hasMany(Usuario);
+Ciudad.hasMany(Comercio);
+Usuario.hasMany(Venta);
+Categoria_comercio.hasMany(Comercio);
+Producto.belongsToMany(Venta, { through: Detalle_venta });
+Venta.belongsToMany(Producto, { through: Detalle_venta });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
