@@ -18,7 +18,7 @@ sequelize.define('Venta', {
     type: DataTypes.INTEGER,
     allowNull:false,
     references:{
-      model: "usuario",
+      model: "Usuario",
       key: "id_usuario"
     }
   }
