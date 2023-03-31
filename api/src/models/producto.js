@@ -18,7 +18,7 @@ module.exports = (sequelize) => {
       },
     },
     nombre:{
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(50),
       allowNull: false,
     },
     fecha_inicial: {
