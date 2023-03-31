@@ -15,3 +15,4 @@ const postProductHandler = async (req, res) => {
 module.exports = {
   postProductHandler
 }
+
