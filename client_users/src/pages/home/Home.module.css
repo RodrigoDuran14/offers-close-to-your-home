@@ -1,0 +1,19 @@
+.container{
+    /* background-color: brown; */
+    height: 800vh;
+}
+
+.paginadoArr{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 90px;
+    margin-bottom: -50px;
+}
+
+.paginadoAbj{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+}
