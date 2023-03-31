@@ -17,12 +17,16 @@ module.exports = (sequelize) => {
         key: "id_comercio",
       },
     },
+    nombre:{
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     fecha_inicial: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: false,
     },
     fecha_final: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: false,
     },
     descripcion_producto: {
