@@ -14,5 +14,9 @@ module.exports = (sequelize) => {
       allowNull: false,
       unique: true,
     },
-  });
+  },
+  {
+    tableName: 'Ciudad',
+    timestamps: false 
+});
 };

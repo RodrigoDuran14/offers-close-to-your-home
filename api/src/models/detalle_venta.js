@@ -19,5 +19,9 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     
-  });
+  },
+  {
+    tableName: 'Detalle_venta',
+    timestamps: false 
+});
 };

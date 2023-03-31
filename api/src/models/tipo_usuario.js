@@ -15,6 +15,10 @@ module.exports = (sequelize) => {
       allowNull: false,
       unique: true,
     },
-  });
+  },
+  {
+    tableName: 'Tipo_usuario',
+    timestamps: false 
+});
 };
 
