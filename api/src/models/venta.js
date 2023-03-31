@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
-sequelize.define('venta', {
+sequelize.define('Venta', {
     id_venta: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -14,14 +14,17 @@ sequelize.define('venta', {
     type: DataTypes.FLOAT, 
         allowNull: false,
   },
-   id_usuario:{
+  id_usuario:{
     type: DataTypes.INTEGER,
     allowNull:false,
     references:{
-      model: "usuario",
+      model: "Usuario",
       key: "id_usuario"
     }
-    
-   }
-  });
+  }
+  },
+  {
+    tableName: 'Venta',
+    timestamps: false 
+});
 }
