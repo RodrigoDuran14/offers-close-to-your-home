@@ -1,0 +1,31 @@
+.container{
+    display: flex;
+    margin: 100px;
+    border: solid 1px rgb(186, 178, 178);
+    border-radius: 20px;
+}
+
+.box1{
+    width: 50%;
+    height: 50%;
+    border-right: solid 1px rgb(186, 178, 178);
+}
+
+.box1 img{
+    width: 60%;
+    height: 60%;
+}
+
+.box2{
+    width: 50%;
+}
+
+.button{
+    margin: 20px;
+    padding: 10px;
+    border-radius: 0,99rem;
+    background-color: black;
+    font-size: 20px;
+    color: white;
+
+}

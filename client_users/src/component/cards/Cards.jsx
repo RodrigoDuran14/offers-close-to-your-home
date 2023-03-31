@@ -1,19 +1,21 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import Card from '../card/Card'
 import styles from './Cards.module.css'
 
 const Cards = ({products}) => {
+  // const { products } = useSelector(state => state)
+  // console.log(products);
   return (
     <div className={styles.container}>
-      {products?.map(product => {
+      {products?.map((product, index) => {
         return(
         <Card
-        id={product.id}
-        title={product.title}
-        price={product.price}
-        description={product.description}
-        category={product.category}
-        image={product.image}/>)
+        key={index}
+        id={product.id_producto}
+        title={product.nombre}
+        price={product.valor}
+        image={product.imagen}/>)
       })}
     </div>
   )
