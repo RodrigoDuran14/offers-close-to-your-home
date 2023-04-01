@@ -1,5 +1,2 @@
-const CREATE_PRODUCT = 'CREATE_PRODUCT'
-
-module.exports = {
-    CREATE_PRODUCT
-}
+export const GET_PRODUCTS = "GET_PRODUCTS"
+export const GET_DETAIL = "GET_DETAIL"
