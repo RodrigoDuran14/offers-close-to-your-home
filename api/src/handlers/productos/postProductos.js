@@ -17,15 +17,11 @@ const postProductHandler = async (req, res) => {
     valor_con_descuento,
     condicion,
     imagen,
+    id_categoria_producto
   } = req.body;
+  
   try {
     validacionPostProducto(req.body);
-
-
-const postProductHandler = async (req, res) => {
-  const { nombre, fecha_inicial, fecha_final, descripcion_producto, cantidad, existencia, valor, imagen, id_categoria_producto } = req.body;
-  try {
-    const newProduct = await createProduct(nombre, fecha_inicial, fecha_final, descripcion_producto, cantidad, existencia, valor, imagen, id_categoria_producto);
 
     const newProduct = await createProduct(
       nombre,
@@ -37,7 +33,8 @@ const postProductHandler = async (req, res) => {
       valor_normal,
       valor_con_descuento,
       condicion,
-      imagen
+      imagen,
+      id_categoria_producto
     );
 
     res.status(200).json(newProduct);
@@ -47,8 +44,3 @@ const postProductHandler = async (req, res) => {
 
 
 module.exports = { postProductHandler };
-
-module.exports = {
-  postProductHandler,
-};
-
