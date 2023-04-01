@@ -41,9 +41,12 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    valor: {
+    valor_normal: {
       type: DataTypes.FLOAT,
       allowNull: false,
+    },
+    valor_con_descuento: {
+      type: DataTypes.FLOAT,
     },
     estado: {
       type: DataTypes.BOOLEAN,
@@ -53,7 +56,11 @@ module.exports = (sequelize) => {
     imagen: {
       type: DataTypes.STRING,
       allowNull:false
-    }
+    },
+    condicion: {
+        type: DataTypes.ENUM("Nuevo", "Usado", "Reacondicionado"),
+        allowNull: false
+    },
   },
   {
     tableName: 'Producto',

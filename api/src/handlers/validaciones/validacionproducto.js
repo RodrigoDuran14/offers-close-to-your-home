@@ -1,7 +1,7 @@
 const validacionPostProducto = (data) =>{
-  const {nombre, fecha_inicial, fecha_final, descripcion_producto, cantidad,existencia, valor, imagen} = data
+  const {nombre, fecha_inicial, fecha_final, descripcion_producto, cantidad,existencia, valor_normal, valor_con_descuento, condicion, imagen} = data
 
-  if(!nombre || !fecha_inicial || !fecha_final || !descripcion_producto || !cantidad || !existencia || !valor || !imagen){
+  if(!nombre || !fecha_inicial || !fecha_final || !descripcion_producto || !cantidad || !existencia || !valor_normal || !valor_con_descuento || !condicion || !imagen){
     throw new Error("Todos los campos son obligatorios");
   }
 
@@ -65,15 +65,45 @@ if(!/^[0-9]+$/i.test(existencia)){
   throw new Error("Existencia debe ser un numero")
 } 
 
-//-------------------valor------------
+//-------------------valor_normal------------
 
-if(typeof valor !== "number"){
+if(typeof valor_normal !== "number"){
   throw new Error("Valor debe ser un numero")
 }
 
-if(!/^[0-9.]+$/i.test(valor)){
+if(!/^[0-9.]+$/i.test(valor_normal)){
   throw new Error("Valor debe ser un numero")
 } 
+
+//-------------------valor_con_descuento------------
+
+if(typeof valor_con_descuento !== "number"){
+  throw new Error("Valor con descuento debe ser un numero")
+}
+
+if(!/^[0-9.]+$/i.test(valor_con_descuento)){
+  throw new Error("Valor con descuento debe ser un numero")
+}
+
+//---------------------condicion-----------------
+
+if(typeof condicion !== "string"){
+  throw new Error("Condicion debe ser un string")
+}
+
+if(condicion !== "Nuevo"){
+  if(condicion !== "Usado"){
+    if(condicion !== "Reacondicionado"){
+      throw new Error("Condicion debe ser 'Nuevo', 'Usado' o 'Reacondicionado'")
+    }
+  }
+}
+
+//-----------------imagen------------
+
+if(typeof imagen !== "string"){
+  throw new Error("Imagen debe ser un string")
+}
 
 }
 
