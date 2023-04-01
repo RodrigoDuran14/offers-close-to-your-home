@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import Cards from '../../component/cards/Cards'
-import Filter from '../../component/filter/Filter'
+import Cards from '../../components/cards/Cards'
+import Filter from '../../components/filter/Filter'
 import styles from './Home.module.css'
 
 

@@ -1,61 +1,54 @@
-<<<<<<< HEAD
 import React,  { useState }  from "react";
 import {Link} from "react-router-dom"
 import styles from './Login.module.css'
-import validate from "./validate"
+// import validate from "./validate"
+import { Formik, Form, Field, ErrorMessage } from 'formik'
+import FormLogin from '../../components/formLogin/FormLogin'
 
 
 const Login = (props) => {
-  // const [userData, setUserData] = useState({
-  //   username: '',
-  //   password: '',
-  // })
-  // const [error, setError] = useState({
-  //   username:'',
-  //   password: '',
-  // })
+  /* const [userData, setUserData] = useState({
+     username: '',
+     password: '',
+   })
+   const [error, setError] = useState({
+     username:'',
+     password: '',
+   })
+ function handleChange(e){
+   setUserData({
+     ...userData,
+       [e.target.name]: e.target.value,
+     })
+     setError(
+       validate({
+         ...userData,
+         [e.target.name]: e.target.value,
+       })
+     )
+     console.log(error)
+   }
 
-  // function handleChange(e){
-  //   setUserData({
-  //     ...userData,
-  //     [e.target.name]: e.target.value,
-  //   })
-  //   setError(
-  //     validate({
-  //       ...userData,
-  //       [e.target.name]: e.target.value,
-  //     })
-  //   )
-  //   console.log(error)
-  // }
+   function validateData(){
+     if (error.hasOwnProperty('username') ||
+         error.hasOwnProperty('password') ||
+         error.username === '' || 
+         error.password === ''){
+       return false
+     } else {
+       return true
+     }
 
-  // function validateData(){
-  //   if (error.hasOwnProperty('username') ||
-  //       error.hasOwnProperty('password') ||
-  //       error.username === '' || 
-  //       error.password === ''){
-  //     return false
-  //   } else {
-  //     return true
-  //   }
-
-  // }
+   }
 
 
-  // function handleSubmit(e){
-  //   e.preventDefault();
-  //   if (validateData()){
-  //     props.Log_In(userData)
-  //   }
-  // }
-=======
-import React from 'react'
-import { Formik, Form, Field, ErrorMessage } from 'formik'
-import FormLogin from '../../components/formLogin/FormLogin'
->>>>>>> 728a5d3db9d34238035764436106d9e70004cba7
-
+   function handleSubmit(e){
+     e.preventDefault();
+     if (validateData()){
+       props.Log_In(userData)
+     }
+   }
   return (
-<<<<<<< HEAD
     <div className={styles.contenedor}>
       {/* <form>
         <div>
@@ -88,13 +81,12 @@ import FormLogin from '../../components/formLogin/FormLogin'
             <button className="btnLogIn">LogIn</button>
           </Link>
         </div>
-      </form> */}
-      Login
-=======
+      </form> */
+  return (
     <div>
+      Login
       <h1>JustOffers</h1>
       <FormLogin />
->>>>>>> 728a5d3db9d34238035764436106d9e70004cba7
     </div>
   );
 };
