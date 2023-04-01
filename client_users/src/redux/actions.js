@@ -1,11 +1,14 @@
 import axios from "axios";
 
+
 import * as action from './actions-type' // para no escribir todos los action types los obtuve todos con el uso del * y lo renombre como action...para usar colocar la palabra action.[nombre del action-type]
+
 
 const URL = 'http://localhost:3001'
 
 // ========================* PRODUCTS *========================
 export function createProduct(product) {
+
     return async (dispatch) => {
         try {
             const response = await axios.post(`${URL}/products`, product);
@@ -132,3 +135,31 @@ export const filterByUsedProducts = () => {
 export const filterByRefurbishedProducts = () => {
     return { type: action.FILTER_BY_REFURBISHED_PRODUCTS };//productos reacondicionados
 };
+
+// CODIGO REALIZADO POR FRANCO
+export function getProducts() {
+    return (dispatch) => {
+        axios.get(`${URL}/products`)
+            .then(response => dispatch(
+                {
+                    type: action.GET_PRODUCTS,
+                    payload: response.data
+                }
+            ))
+            .catch(err => console.log(err))
+    }
+}
+
+export function getDetail(id) {
+    return (dispatch) => {
+        axios.get(`${URL}/products/${id}`)
+            .then(response => dispatch(
+                {
+                    type: action.GET_DETAIL,
+                    payload: response.data
+                }
+            ))
+            .catch(err => console.log(err))
+    }
+}
+

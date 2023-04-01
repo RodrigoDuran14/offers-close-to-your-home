@@ -17,7 +17,9 @@ const postProductHandler = async (req, res) => {
     valor_con_descuento,
     condicion,
     imagen,
+    id_categoria_producto
   } = req.body;
+  
   try {
     validacionPostProducto(req.body);
 
@@ -31,13 +33,14 @@ const postProductHandler = async (req, res) => {
       valor_normal,
       valor_con_descuento,
       condicion,
-      imagen
+      imagen,
+      id_categoria_producto
     );
+
     res.status(200).json(newProduct);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
-};
-module.exports = {
-  postProductHandler,
-};
+
+
+module.exports = { postProductHandler };
