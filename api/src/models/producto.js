@@ -23,7 +23,7 @@ module.exports = (sequelize) => {
       },
     },
     nombre:{
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(50),
       allowNull: false,
     },
     fecha_inicial: {
@@ -46,9 +46,12 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    valor: {
+    valor_normal: {
       type: DataTypes.FLOAT,
       allowNull: false,
+    },
+    valor_con_descuento: {
+      type: DataTypes.FLOAT,
     },
     estado: {
       type: DataTypes.BOOLEAN,
@@ -58,8 +61,16 @@ module.exports = (sequelize) => {
     imagen: {
       type: DataTypes.STRING,
       allowNull:false
+
     }
   }, {
+    },
+    condicion: {
+        type: DataTypes.ENUM("Nuevo", "Usado", "Reacondicionado"),
+        allowNull: false
+    },
+  },
+  {
     tableName: 'Producto',
     timestamps: false 
   });
