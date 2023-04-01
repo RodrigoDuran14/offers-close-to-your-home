@@ -1,22 +1,24 @@
-const {Producto, Comercio} = require("../../db")
+const {Producto, Comercio, Categoria_producto} = require("../../db")
 const axios = require("axios")
 const { Op } = require("sequelize");
 
 
 const getAllProducts = async () => { 
-    // buscar en la bbd
-    const databaseProducts = await Producto.findAll({
-      attributes: ["id_producto","fecha_inicial","fecha_final","descripcion_producto","cantidad","existencia","valor","estado","imagen","nombre"],
-    
-    });
-  
-    // buscar en la api
-    const apiProductsRaw = (await axios.get("https://fakestoreapi.com/products", {
-    })).data;
-    const apiP = cleanArray(apiProductsRaw)
-    const results = [...databaseProducts, ...apiP];
-    return results;
-  }
+  const databaseProducts = await Producto.findAll({
+    attributes: ["id_producto", "fecha_inicial", "fecha_final", "descripcion_producto", "cantidad", "existencia", "valor", "estado", "imagen", "nombre"],
+    include: {
+      model: Categoria_producto,
+      attributes: ["nombre_categoria_producto"],
+      required: true
+    }
+  });
+
+  const apiProductsRaw = (await axios.get("https://fakestoreapi.com/products", {})).data;
+  const apiP = cleanArray(apiProductsRaw);
+  const results = [...databaseProducts, ...apiP];
+  return results;
+}
+
 
   const searchProductByName = async (nombre) => {
     const [databaseProducts, apiProductsRaw] = await Promise.all([
@@ -67,6 +69,22 @@ const getAllProducts = async () => {
    
     return ProductInfo;
   };
+
+  const getAllCategorias = async () => {
+    let categorias = ["indumentaria", "electrodomesticos", "informatica", "supermercado"];
+    let categoriasGuardadas = [];
   
+    for (let i = 0; i < categorias.length; i++) {
+      const categoria = { nombre_categoria_producto: categorias[i] };
+      const categoriaGuardada = await Categoria_producto.create(categoria);
+      categoriasGuardadas.push(categoriaGuardada);
+    }
   
-  module.exports = { getAllProducts,searchProductByName, getProductById };
+    return categoriasGuardadas;
+  };
+  
+ 
+  
+
+  
+  module.exports = { getAllProducts,searchProductByName, getProductById,getAllCategorias};

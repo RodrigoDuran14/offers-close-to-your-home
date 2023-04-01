@@ -1,8 +1,6 @@
-const { DataTypes, DATE } = require("sequelize");
-// Exportamos una funcion que define el modelo
-// Luego le injectamos la conexion a sequelize.
+const { DataTypes } = require("sequelize");
+
 module.exports = (sequelize) => {
-  // defino el modelo
   sequelize.define("Producto", {
     id_producto: {
       type: DataTypes.INTEGER,
@@ -15,6 +13,13 @@ module.exports = (sequelize) => {
       references: {
         model: "Comercio",
         key: "id_comercio",
+      },
+    },
+    id_categoria_producto: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "Categoria_producto",
+        key: "id_categoria_producto",
       },
     },
     nombre:{
@@ -54,9 +59,8 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull:false
     }
-  },
-  {
+  }, {
     tableName: 'Producto',
     timestamps: false 
-});
+  });
 };
