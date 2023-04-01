@@ -1,10 +1,6 @@
 
 const {Producto, Comercio, Categoria_producto} = require("../../db")
 const axios = require("axios")
-
-const { Producto, Comercio } = require("../../db");
-const axios = require("axios");
-
 const { Op } = require("sequelize");
 
 const getAllProducts = async () => {
@@ -24,11 +20,6 @@ const getAllProducts = async () => {
       "imagen",
       "nombre",
     ],
-  });
-
-const getAllProducts = async () => { 
-  const databaseProducts = await Producto.findAll({
-    attributes: ["id_producto", "fecha_inicial", "fecha_final", "descripcion_producto", "cantidad", "existencia", "valor", "estado", "imagen", "nombre"],
     include: {
       model: Categoria_producto,
       attributes: ["nombre_categoria_producto"],
@@ -36,7 +27,7 @@ const getAllProducts = async () => {
     }
   });
 
-  const apiProductsRaw = (await axios.get("https://fakestoreapi.com/products", {})).data;
+  const apiProductsRaw = (await axios.get("https://fakestoreapi.com/products")).data;
   const apiP = cleanArray(apiProductsRaw);
   const results = [...databaseProducts, ...apiP];
   return results;
@@ -45,8 +36,7 @@ const getAllProducts = async () => {
 
   // buscar en la api
   const apiProductsRaw = (
-    await axios.get("https://fakestoreapi.com/products", {})
-  ).data;
+    await axios.get("https://fakestoreapi.com/products")).data;
   const apiP = cleanArray(apiProductsRaw);
   const results = [...databaseProducts, ...apiP];
   return results;
@@ -62,7 +52,7 @@ const searchProductByName = async (nombre) => {
         },
       },
     }),
-    axios.get("https://fakestoreapi.com/products", {}),
+    axios.get("https://fakestoreapi.com/products"),
   ]);
   const apiP = cleanArray(apiProductsRaw.data);
   const filterApi = apiP.filter((Producto) =>
@@ -90,9 +80,7 @@ const getProductById = async (idProduct) => {
   let Productdb = [];
 
   const apiData = await axios.get(
-    `https://fakestoreapi.com/products/${idProduct}`,
-    {}
-  );
+    `https://fakestoreapi.com/products/${idProduct}`);
   ProductInfo = {
     id_producto: apiData.data.id,
     nombre: apiData.data.title,
@@ -119,25 +107,9 @@ const getProductById = async (idProduct) => {
     imagen: dbdata.imagen,
     condicion: dbdata.condicion,
     estado: dbdata.estado,
-  }
-
-
-  const getProductById = async (idProduct) => {
-    let ProductInfo = {};
-     
-      const apiData = await axios.get(`https://fakestoreapi.com/products/${idProduct}`, {
-      });
-     ProductInfo = {
-        id_producto: apiData.data.id,
-        nombre: apiData.data.title,
-        descripcion_producto: apiData.data.description,
-        valor: apiData.data.price,
-        estado: apiData.data.true,
-        imagen: apiData.data.image,
-     }
-            
+  }           
    
-    return ProductInfo;
+    return [Productdb, ProductInfo];
   };
 
   const getAllCategorias = async () => {
@@ -153,14 +125,4 @@ const getProductById = async (idProduct) => {
     return categoriasGuardadas;
   };
   
- 
-  
-
-  
   module.exports = { getAllProducts,searchProductByName, getProductById,getAllCategorias};
-
-  return [Productdb, ProductInfo];
-};
-
-module.exports = { getAllProducts, searchProductByName, getProductById };
-
