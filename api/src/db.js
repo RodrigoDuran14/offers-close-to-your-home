@@ -47,7 +47,9 @@ const {
   Ciudad,
   Comercio,
   Categoria_comercio,
+  Categoria_producto,
   Pagos,
+  
 } = sequelize.models;
 
 // Aca vendrian las relaciones
@@ -62,7 +64,11 @@ Usuario.hasMany(Venta);
 Categoria_comercio.hasMany(Comercio);
 Producto.belongsToMany(Venta, { through: Detalle_venta });
 Venta.belongsToMany(Producto, { through: Detalle_venta });
+Comercio.hasMany(Producto)
+Categoria_producto.belongsTo(Producto, { foreignKey: 'id_categoria_producto' });
+Producto.belongsTo(Categoria_producto, { foreignKey: 'id_categoria_producto' })
 
+  
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize, // para importart la conexión { conn } = require('./db.js');

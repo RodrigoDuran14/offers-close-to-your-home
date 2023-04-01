@@ -1,9 +1,14 @@
-const {Router} = require("express");
+const { Router } = require("express");
+const {
+  getAllProductsHandler,
+  getProductByIdhandler,
+} = require("../handlers/productos/getProductos");
+const { postProductHandler } = require("../handlers/productos/postProductos");
 
 const router = Router();
 
-router.get("/", (req, res) =>{
-  res.send("get productos")
-})
+router.get("/", getAllProductsHandler);
+router.get("/:idProduct", getProductByIdhandler);
+router.post("/", postProductHandler);
 
 module.exports = router;

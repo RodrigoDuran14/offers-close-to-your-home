@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React,  { useState }  from "react";
 import {Link} from "react-router-dom"
 import styles from './Login.module.css'
@@ -47,8 +48,14 @@ const Login = (props) => {
   //     props.Log_In(userData)
   //   }
   // }
+=======
+import React from 'react'
+import { Formik, Form, Field, ErrorMessage } from 'formik'
+import FormLogin from '../../components/formLogin/FormLogin'
+>>>>>>> 728a5d3db9d34238035764436106d9e70004cba7
 
   return (
+<<<<<<< HEAD
     <div className={styles.contenedor}>
       {/* <form>
         <div>
@@ -83,6 +90,11 @@ const Login = (props) => {
         </div>
       </form> */}
       Login
+=======
+    <div>
+      <h1>JustOffers</h1>
+      <FormLogin />
+>>>>>>> 728a5d3db9d34238035764436106d9e70004cba7
     </div>
   );
 };
