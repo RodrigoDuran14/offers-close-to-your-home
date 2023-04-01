@@ -1,5 +1,5 @@
 import React from 'react'
-import Cards from '../../component/cards/Cards'
+import Cards from '../../components/cards/Cards'
 
 const products = [
   {
