@@ -61,9 +61,6 @@ module.exports = (sequelize) => {
     imagen: {
       type: DataTypes.STRING,
       allowNull:false
-
-    }
-  }, {
     },
     condicion: {
         type: DataTypes.ENUM("Nuevo", "Usado", "Reacondicionado"),
