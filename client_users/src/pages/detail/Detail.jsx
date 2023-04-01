@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
-import { getProduct } from '../../redux/actions'
+import { getDetail } from '../../redux/actions'
 import styles from './Detail.module.css'
 
 const Detail = () => {
@@ -10,7 +10,7 @@ const Detail = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getProduct(id))
+    dispatch(getDetail(id))
   }, [dispatch])
 
   const { product } = useSelector(state => state)
