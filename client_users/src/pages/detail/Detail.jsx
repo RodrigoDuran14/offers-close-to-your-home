@@ -17,6 +17,11 @@ const Detail = () => {
   console.log(product);
 
   return (
+
+    <section>
+    <div>
+      Detail
+
     <div className={styles.container}>
 
       <div className={styles.box1}>
@@ -42,7 +47,9 @@ const Detail = () => {
           <botton>Comprar ahora</botton>
         </div>
       </div>
+
     </div>
+    </section>
   )
 }
 
