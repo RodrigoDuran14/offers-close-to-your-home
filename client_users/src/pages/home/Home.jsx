@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import Cards from '../../component/cards/Cards'
+import Filter from '../../component/filter/Filter'
 import styles from './Home.module.css'
 
 
-const products = [
+export const products = [
   {
     id: 1,
     title: 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
@@ -11,7 +12,8 @@ const products = [
     description: 'Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday',
     category: "men's clothing",
     image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
-    rating: { rate: 3.9, count: 120 }
+    rating: { rate: 3.9, count: 120 },
+    condition: "Usado"
   },
   {
     id: 2,
@@ -208,6 +210,9 @@ console.log(aux);
 
   return (
     <div className= {styles.container}>
+      <div className={styles.filtros}>
+        <Filter/>
+      </div>
       <div className={styles.cards}>
       <Cards products={aux}/>
       </div>
