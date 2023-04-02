@@ -1,6 +1,7 @@
+
 import {
     CREATE_PRODUCT,
-    GET_ALL_PRODUCTS,
+    GET_ALL_PRODUCTS, 
     GET_PRODUCT_BY_ID,
     GET_PRODUCT_BY_NAME,
     ORDERED_BY_NAME_ASC,
@@ -10,7 +11,8 @@ import {
     ORDERED_BY_HIGHEST_PRICE,
     FILTER_BY_NEW_PRODUCTS,
     FILTER_BY_USED_PRODUCTS,
-    FILTER_BY_REFURBISHED_PRODUCTS
+    FILTER_BY_REFURBISHED_PRODUCTS,
+   
 } from "./actions-type.js"
 
 const initialState = {
@@ -19,17 +21,20 @@ const initialState = {
     comercios: [],
     ventas: [],
     pagos: [],
-
+    detail: {},
 }
 
-export default function rootReducer(state = initialState, action) {
-    switch (action.type) {
+
+
+ function rootReducer(state = initialState, action) {
+    switch(action.type) {
+
         case CREATE_PRODUCT:
-            return { ...state, products: [...state.products, action.payload] }
+            return { ...state, products: [...state.products, action.payload] };
         case GET_ALL_PRODUCTS:
-            return { ...state, products: action.payload };
+            return { ...state, products: action.payload }
         case GET_PRODUCT_BY_ID:
-            return { ...state, productID: action.payload};
+            return { ...state, productID: action.payload };
         case GET_PRODUCT_BY_NAME:
             return { ...state, products: action.payload};
         case ORDERED_BY_NAME_ASC:
@@ -65,6 +70,9 @@ export default function rootReducer(state = initialState, action) {
                 ...state, products: [...state.products].filter((item) => item.condicion === "Reacondicionado")
             };
         default:
-            return state;
+            return state
+
     }
 }
+
+export default rootReducer

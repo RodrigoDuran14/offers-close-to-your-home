@@ -10,7 +10,8 @@ const createProduct = async (
   valor_normal,
   valor_con_descuento,
   condicion,
-  imagen
+  imagen,
+  id_categoria_producto
 ) => {
   const newProduct = await Producto.create({
     nombre,
@@ -23,8 +24,10 @@ const createProduct = async (
     valor_con_descuento,
     condicion,
     imagen,
+    id_categoria_producto
   });
 
   return newProduct;
 };
+
 module.exports = { createProduct };

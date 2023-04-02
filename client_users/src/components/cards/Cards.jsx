@@ -19,7 +19,7 @@ const Cards = () => {
       {products?.map((product,index) => {
         return (
           <Card
-          key={`Nro`+{index}}
+          key={index}
             producto={product}
           />
         )
