@@ -1,8 +1,6 @@
-const { DataTypes, DATE } = require("sequelize");
-// Exportamos una funcion que define el modelo
-// Luego le injectamos la conexion a sequelize.
+const { DataTypes } = require("sequelize");
+
 module.exports = (sequelize) => {
-  // defino el modelo
   sequelize.define("Producto", {
     id_producto: {
       type: DataTypes.INTEGER,
@@ -17,8 +15,15 @@ module.exports = (sequelize) => {
         key: "id_comercio",
       },
     },
+    id_categoria_producto: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "Categoria_producto",
+        key: "id_categoria_producto",
+      },
+    },
     nombre:{
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(50),
       allowNull: false,
     },
     fecha_inicial: {
@@ -41,9 +46,12 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    valor: {
+    valor_normal: {
       type: DataTypes.FLOAT,
       allowNull: false,
+    },
+    valor_con_descuento: {
+      type: DataTypes.FLOAT,
     },
     estado: {
       type: DataTypes.BOOLEAN,
@@ -53,10 +61,14 @@ module.exports = (sequelize) => {
     imagen: {
       type: DataTypes.STRING,
       allowNull:false
-    }
+    },
+    condicion: {
+        type: DataTypes.ENUM("Nuevo", "Usado", "Reacondicionado"),
+        allowNull: false
+    },
   },
   {
     tableName: 'Producto',
     timestamps: false 
-});
+  });
 };

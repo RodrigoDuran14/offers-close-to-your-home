@@ -6,7 +6,7 @@ import Login from './pages/login/Login';
 import Account from './pages/account/Account';
 import ForgotPassword from './pages/forgotPassword/ForgotPassword';
 import About from './pages/about/About';
-import NavBar from './component/navBar/NavBar';
+import NavBar from './components/navBar/NavBar';
 
 
 function App() {
