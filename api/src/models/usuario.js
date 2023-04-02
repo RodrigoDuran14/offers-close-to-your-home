@@ -1,12 +1,12 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-sequelize.define('usuario', {
+sequelize.define('Usuario', {
     id_tipo_usuario: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'tipo_usuario',
+        model: 'Tipo_usuario',
         key: 'id_tipo_usuario',
       },
     },
@@ -16,9 +16,21 @@ sequelize.define('usuario', {
       autoIncrement: true,
       primaryKey: true,
     },
-    nombre_usuario:{
-     type: DataTypes.STRING(50),
-     allowNull: false,
+    primer_nombre:{
+      type: DataTypes.STRING(50),
+      allowNull: false,
+    },
+    segundo_nombre:{
+      type: DataTypes.STRING(50),
+      allowNull: false,
+    },
+    primer_apellido:{
+      type: DataTypes.STRING(50),
+      allowNull: false,
+    },
+    segundo_apellido:{
+      type: DataTypes.STRING(50),
+      allowNull: false,
     },
     direccion:{
       type: DataTypes.STRING,
@@ -32,7 +44,7 @@ sequelize.define('usuario', {
       type: DataTypes.INTEGER,
       allowNull: false,
       references:{
-        model: "ciudad",
+        model: "Ciudad",
         key: "id_ciudad"
       }
     },
@@ -41,13 +53,18 @@ sequelize.define('usuario', {
     },
     email:{
       type: DataTypes.STRING,
-     allowNull: false,
+      allowNull: false,
     },
     contraseña:{
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    imagen: {
+      type: DataTypes.STRING,
+      allowNull:false
     }
   }, {
-    timestamps: false,
-  });
+    tableName: 'Usuario',
+    timestamps: false 
+});
 }
