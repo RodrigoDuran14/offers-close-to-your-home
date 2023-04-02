@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from 'react'
 import Cards from '../../components/cards/Cards'
 import Filter from '../../components/filter/Filter'
@@ -187,6 +188,12 @@ export const products = [
     rating: { rate: 3.6, count: 145 }
   }
 ]
+=======
+import React from 'react'
+import Cards from '../../components/cards/Cards'
+
+
+>>>>>>> 043f331cafcd0650e6d11c914d79e7f3ff9b8b01
 
 function Home () {
 
@@ -209,6 +216,7 @@ function Home () {
 console.log(aux);
 
   return (
+<<<<<<< HEAD
     <div className= {styles.container}>
       <div className={styles.filtros}>
         <Filter/>
@@ -248,6 +256,11 @@ console.log(aux);
         </div>
       </div>
     </div>
+=======
+    <section>
+      <Cards/>
+    </section>
+>>>>>>> 043f331cafcd0650e6d11c914d79e7f3ff9b8b01
   )
 }
 

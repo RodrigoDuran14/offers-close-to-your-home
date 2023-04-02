@@ -9,7 +9,7 @@ import axios from 'axios'
 
 export default function FormCreateProduct() {
     const [image, setImage] = useState('')
-    
+
     const history = useHistory()
     const navigateTo = (url) => {
         history.push(url)
@@ -30,7 +30,7 @@ export default function FormCreateProduct() {
         console.log(formData)
         dispatch(createProduct(formData))
         swal({
-            title:'Oferta subida correctamente!',
+            title: 'Oferta subida correctamente!',
             text: 'Podrás encontrar tu oferta entre las demás en el inicio de nuestra página',
             icon: 'success',
             button: 'Ir al inicio'
