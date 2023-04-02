@@ -4,7 +4,6 @@ import Cards from '../../components/cards/Cards'
 import Filter from '../../components/filter/Filter'
 import styles from './Home.module.css'
 
-
 function Home () {
 
 //   const [numeroPagina, setNumeroPagina] = useState(1);
@@ -65,7 +64,6 @@ function Home () {
         </div>
       </div> */}
     </div>
-
   )
 }
 
