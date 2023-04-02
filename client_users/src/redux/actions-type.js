@@ -2,10 +2,8 @@
 
 //* ACTION TYPES RELACIONADOS CON LOS PRODUCTOS
 const CREATE_PRODUCT = 'CREATE_PRODUCT';
-const GET_PRODUCTS = "GET_PRODUCTS";
-const GET_DETAIL = "GET_DETAIL";
-//const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS'; // esta las hice yo(jesus) y franco ya las habia hecho
-//const GET_PRODUCT_BY_ID = 'GET_PRODUCT_BY_ID';// esta las hice yo(jesus) y franco ya las habia hecho
+const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS'; 
+const GET_PRODUCT_BY_ID = 'GET_PRODUCT_BY_ID';
 const GET_PRODUCT_BY_NAME = 'GET_PRODUCT_BY_NAME';
 const GET_PRODUCT_BY_CATEGORY = 'GET_PRODUCT_BY_CATEGORY';
 const ORDERED_BY_NAME_ASC = 'ORDERED_BY_NAME';
@@ -44,10 +42,8 @@ const USER_DETAILS = 'USER_DETAILS';
 
 module.exports = {
     CREATE_PRODUCT,
-    GET_PRODUCTS,
-    GET_DETAIL,
-    //GET_ALL_PRODUCTS,  // esta las hice yo(jesus) y franco ya las habia hecho
-    //GET_PRODUCT_BY_ID,// esta las hice yo(jesus) y franco ya las habia hecho
+    GET_ALL_PRODUCTS, 
+    GET_PRODUCT_BY_ID,
     GET_PRODUCT_BY_NAME,
     ORDERED_BY_NAME_ASC,
     ORDERED_BY_NAME_DESC,

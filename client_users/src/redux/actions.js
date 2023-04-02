@@ -13,7 +13,7 @@ export function createProduct(product) {
         try {
             const response = await axios.post(`${URL}/products`, product);
             console.log(response.data)
-            dispatch({ type: action.CREATE_PRODUCT, payload: response.data });
+            dispatch({ type: action.CREATE_PRODUCT, payload: [response.data] });
         } catch (error) {
             console.log(error);
             dispatch({ type: action.CREATE_PRODUCT, payload: error });
@@ -61,19 +61,19 @@ export const getProductById = (id) => async dispatch => {
 
 export const getProductByName = (name) => async (dispatch) => {
     try {
-        const res = await axios.get(`${URL}/products}`)
-        const result = res.data.filter(product => product.nombre === name)
-
+        const res = await axios.get(`${URL}/products?name=${name}`);
+        const result = res.data;
+        console.log(result)
         dispatch({
             type: action.GET_PRODUCT_BY_NAME,
             payload: result
         })
     } catch (error) {
         console.log(error);
-        dispatch({
-            type: action.GET_PRODUCT_BY_NAME,
-            payload: error
-        })
+        // dispatch({
+        //     type: action.GET_PRODUCT_BY_NAME,
+        //     payload: error
+        // })
     };
 
 }

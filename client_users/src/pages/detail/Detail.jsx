@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
-import { getDetail } from '../../redux/actions'
+import { getProductById } from '../../redux/actions'
 import styles from './Detail.module.css'
 
 const Detail = () => {
@@ -10,8 +10,8 @@ const Detail = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getDetail(id))
-  }, [dispatch])
+    dispatch(getProductById(id))
+  }, [dispatch,id])
 
   const { product } = useSelector(state => state)
   console.log(product);
@@ -19,8 +19,7 @@ const Detail = () => {
   return (
 
     <section>
-    <div>
-      Detail
+   
 
     <div className={styles.container}>
 

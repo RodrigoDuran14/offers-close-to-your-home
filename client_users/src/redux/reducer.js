@@ -1,8 +1,8 @@
-s
+
 import {
     CREATE_PRODUCT,
-   // GET_ALL_PRODUCTS, 
-   // GET_PRODUCT_BY_ID,
+    GET_ALL_PRODUCTS, 
+    GET_PRODUCT_BY_ID,
     GET_PRODUCT_BY_NAME,
     ORDERED_BY_NAME_ASC,
     ORDERED_BY_NAME_DESC,
@@ -12,33 +12,31 @@ import {
     FILTER_BY_NEW_PRODUCTS,
     FILTER_BY_USED_PRODUCTS,
     FILTER_BY_REFURBISHED_PRODUCTS,
-    GET_PRODUCTS, // franco
-    GET_DETAIL    // franco
+   
 } from "./actions-type.js"
 
 const initialState = {
     products: [],
     productID: [],
-    productName: [],
     comercios: [],
     ventas: [],
     pagos: [],
     detail: {},
+}
 
 
 
-
-export default function rootReducer(state = initialState, action) {
-    switch (action.type) {
+ function rootReducer(state = initialState, action) {
+    switch(action.type) {
 
         case CREATE_PRODUCT:
-            return { ...state, products: [...state.products, action.payload] }
-     /* case GET_ALL_PRODUCTS:
-            return { ...state, products: action.payload };
+            return { ...state, products: [...state.products, action.payload] };
+        case GET_ALL_PRODUCTS:
+            return { ...state, products: action.payload }
         case GET_PRODUCT_BY_ID:
-            return { ...state, productID: action.payload };*/
+            return { ...state, productID: action.payload };
         case GET_PRODUCT_BY_NAME:
-            return { ...state, productName: action.payload };
+            return { ...state, products: action.payload};
         case ORDERED_BY_NAME_ASC:
             return {
                 ...state, products: [...state.products].sort((a, b) => a.nombre.localeCompare(b.nombre))
@@ -71,19 +69,10 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state, products: [...state.products].filter((item) => item.condicion === "Reacondicionado")
             };
-
-        case GET_PRODUCTS:
-            return {
-                ...state,
-                products: action.payload
-            }
-        case GET_DETAIL:
-            return {
-                ...state,
-                detail: action.payload
-            }
         default:
             return state
 
     }
 }
+
+export default rootReducer
