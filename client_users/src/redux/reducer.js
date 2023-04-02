@@ -16,7 +16,6 @@ import {
 const initialState = {
     products: [],
     productID: [],
-    productName: [],
     comercios: [],
     ventas: [],
     pagos: [],
@@ -30,9 +29,9 @@ export default function rootReducer(state = initialState, action) {
         case GET_ALL_PRODUCTS:
             return { ...state, products: action.payload };
         case GET_PRODUCT_BY_ID:
-            return { ...state, productID: action.payload };
+            return { ...state, productID: action.payload};
         case GET_PRODUCT_BY_NAME:
-            return { ...state, productName: action.payload };
+            return { ...state, products: action.payload};
         case ORDERED_BY_NAME_ASC:
             return {
                 ...state, products: [...state.products].sort((a, b) => a.nombre.localeCompare(b.nombre))

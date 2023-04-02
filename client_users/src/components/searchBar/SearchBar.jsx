@@ -4,31 +4,33 @@ import styles from "./SearchBar.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
-import { getProductByName } from "../../redux/actions";
+import { getProductByName, getAllProducts } from "../../redux/actions";
 
 const SearchBar = () => {
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleChange = (e) => {
+    setInput(e);
+    if (input === "") {
+      dispatch(getAllProducts());
+    }
     dispatch(getProductByName(input));
   };
+
   return (
     <div className={styles.container}>
-      <form onSubmit={handleSubmit}>
-        <input
-          className={styles.input}
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          type="text"
-          required=""
-          placeholder="Buscar Ofertas..."
-        />
-        <button type="submit" className={styles.button}>
-          <FontAwesomeIcon icon={faSearch} />
-        </button>
-      </form>
+      <input
+        className={styles.input}
+        value={input}
+        onChange={(e) => handleChange(e.target.value)}
+        type="text"
+        required=""
+        placeholder="Buscar Ofertas..."
+      />
+      <button type="submit" className={styles.button}>
+        <FontAwesomeIcon icon={faSearch} />
+      </button>
     </div>
   );
 };

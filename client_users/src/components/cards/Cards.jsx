@@ -16,12 +16,13 @@ const Cards = () => {
 
   return (
     <div className={styles.container}>
-      {products?.map((product) => {
+      {products?.map((product,index) => {
         return (
           <Card
-          producto = {product}
+          key={`Nro`+{index}}
+            producto={product}
           />
-        );
+        )
       })}
     </div>
   );
