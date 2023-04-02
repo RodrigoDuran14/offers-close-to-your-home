@@ -14,9 +14,9 @@ function App() {
   return (
     <div className="App">
       {/* <HashRouter> */}
-      {location?.pathname == "/login" ? null : <NavBar />}
+      {/* {location?.pathname == "/login" ? null : <NavBar />} */}
       {/* <Switch> */}
-      {/* <NavBar /> */}
+      <NavBar />
       <Route exact path="/" component={Home} />
       <Route exact path="/detail/:id" component={Detail} />
       <Route exact path="/login" component={Login} />
