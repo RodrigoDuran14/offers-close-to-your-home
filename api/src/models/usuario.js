@@ -16,7 +16,19 @@ sequelize.define('Usuario', {
       autoIncrement: true,
       primaryKey: true,
     },
-    nombre_usuario:{
+    primer_nombre:{
+      type: DataTypes.STRING(50),
+      allowNull: false,
+    },
+    segundo_nombre:{
+      type: DataTypes.STRING(50),
+      allowNull: false,
+    },
+    primer_apellido:{
+      type: DataTypes.STRING(50),
+      allowNull: false,
+    },
+    segundo_apellido:{
       type: DataTypes.STRING(50),
       allowNull: false,
     },

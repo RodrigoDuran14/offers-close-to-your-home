@@ -1,22 +1,31 @@
-import React from 'react'
-import Card from '../card/Card'
-import styles from './Cards.module.css'
+import React, {useEffect} from "react";
+import Card from "../card/Card";
+import styles from "./Cards.module.css";
+import { useSelector, useDispatch } from "react-redux";
+import {getAllProducts} from '../../redux/actions'
 
-const Cards = ({products}) => {
+
+const Cards = () => {
+  const products = useSelector((state) => state.products);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllProducts());
+    
+  }, [dispatch]);
+
   return (
     <div className={styles.container}>
-      {products?.map(product => {
-        return(
-        <Card
-        id={product.id}
-        title={product.title}
-        price={product.price}
-        description={product.description}
-        category={product.category}
-        image={product.image}/>)
+      {products?.map((product,index) => {
+        return (
+          <Card
+          key={index}
+            producto={product}
+          />
+        )
       })}
     </div>
-  )
-}
+  );
+};
 
-export default Cards
+export default Cards;
