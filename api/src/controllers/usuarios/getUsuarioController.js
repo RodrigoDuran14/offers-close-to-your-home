@@ -2,6 +2,7 @@ const { Usuario } = require("../../db");
 const { op } = require("sequelize");
 
 const getAllUsers = async () => {
+  try {
   const dataUser = await Usuario.finAll({
     attributes: [
       "id_tipo_usuario",
@@ -21,6 +22,9 @@ const getAllUsers = async () => {
   });
   const results = [...dataUser];
   return results;
+} catch (error) {
+  console.error(error);
+}
 };
 
 const getUserById = async idUser => {

@@ -27,14 +27,14 @@ const getAllProducts = async () => {
     }
   });
 
+
+
+  // buscar en la api
   const apiProductsRaw = (await axios.get("https://fakestoreapi.com/products")).data;
   const apiP = cleanArray(apiProductsRaw);
   const results = [...databaseProducts, ...apiP];
   return results;
-}
-
-
-
+};
 
 
 const searchProductByName = async (nombre) => {
@@ -71,7 +71,7 @@ const cleanArray = (arr) => {
 
 const getProductById = async (idProduct) => {
   let ProductInfo = [];
-  let Productdb = [];
+  
 
   const apiData = await axios.get(
     `https://fakestoreapi.com/products/${idProduct}`);
@@ -86,24 +86,27 @@ const getProductById = async (idProduct) => {
   };
 
   //buscar por id de la db
-  const dbdata = await Producto.findByPk(idProduct)
+  const dbdata = await Producto.findByPk(idProduct, {
 
-    Productdb = {
-    id_producto: dbdata.id_producto,
-    nombre: dbdata.nombre,
-    fecha_inicial: dbdata.fecha_inicial,
-    fecha_final: dbdata.fecha_final,
-    descripcion_producto: dbdata.descripcion_producto,
-    cantidad: dbdata.cantidad,
-    existencia: dbdata.existencia,
-    valor_normal: dbdata.valor_normal,
-    valor_con_descuento: dbdata.valor_con_descuento,
-    imagen: dbdata.imagen,
-    condicion: dbdata.condicion,
-    estado: dbdata.estado,
-  }           
-   
-    return [Productdb, ProductInfo];
+    attributes: [
+    "id_producto",
+    "nombre",
+    "fecha_inicial",
+    "fecha_final",
+    "descripcion_producto",
+    "cantidad",
+    "existencia",
+    "valor_normal",
+    "valor_con_descuento",
+    "imagen",
+    "condicion",
+    "estado",
+    ],
+  });          
+  if  (!dbdata)   return ProductInfo
+  return [dbdata, ProductInfo] 
+    
+    
   };
 
   const getAllCategorias = async () => {

@@ -3,6 +3,7 @@ const { Router } = require("express");
 // Ejemplo: const authRouter = require('./auth.js');
 
 const productos = require("./producto");
+
 const usuarios = require("./usuario");
 
 const categorias = require("./categorias");
