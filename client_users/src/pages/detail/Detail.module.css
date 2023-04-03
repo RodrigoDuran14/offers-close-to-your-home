@@ -1,8 +1,9 @@
 .container {
-    display: flex;
+    display: inline-flex;
     margin: 100px;
     border: solid 1px rgb(186, 178, 178);
     border-radius: 20px;
+    background-color: white;
 }
 
 .box1 {
@@ -20,11 +21,16 @@
     width: 50%;
 }
 
-.button {
-    margin: 20px;
-    padding: 10px;
-    border-radius: 0, 99rem;
+
+
+.btn button {
     background-color: black;
+    width: 90%;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 100px;
     font-size: 20px;
     color: white;
 }
