@@ -5,16 +5,20 @@ const URL = "http://localhost:3001";
 
 // ========================* PRODUCTS *========================
 export function createProduct(product) {
-  return async (dispatch) => {
-    try {
-      const response = await axios.post(`${URL}/products`, product);
-      console.log(response.data);
-      dispatch({ type: action.CREATE_PRODUCT, payload: [response.data] });
-    } catch (error) {
-      console.log(error);
-      dispatch({ type: action.CREATE_PRODUCT, payload: error });
-    }
-  };
+
+
+    return async (dispatch) => {
+        try {
+            const response = await axios.post(`${URL}/products`, product);
+            console.log(response.data)
+            dispatch({ type: action.CREATE_PRODUCT, payload: response.data });
+        } catch (error) {
+            console.log(error);
+            dispatch({ type: action.CREATE_PRODUCT, payload: error });
+
+        }
+    };
+
 }
 
 // * 2. action-creator para obtener todos los productos del back-end
@@ -34,6 +38,7 @@ export const getAllProducts = () => {
 
 // * 3.action-creator para obtener producto por ID
 
+
 export const getProductById = (id) => async (dispatch) => {
   try {
     const res = await axios.get(`${URL}/products/${id}`);
@@ -49,6 +54,7 @@ export const getProductById = (id) => async (dispatch) => {
       payload: error,
     });
   }
+
 };
 
 // * 4.action-creator para obtener producto por nombre
@@ -128,6 +134,7 @@ export const filterByRefurbishedProducts = () => {
   return { type: action.FILTER_BY_REFURBISHED_PRODUCTS }; //productos reacondicionados
 };
 
+
 // CODIGO REALIZADO POR FRANCO
 export function getProducts() {
   return (dispatch) => {
@@ -156,3 +163,4 @@ export function getDetail(id) {
       .catch((err) => console.log(err));
   };
 }
+

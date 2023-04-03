@@ -14,13 +14,15 @@ import {
 } from "./actions-type.js";
 
 const initialState = {
+   
   products: [],
   productID: [],
   comercios: [],
   ventas: [],
   pagos: [],
-  detail: {},
+  product: {},
 };
+
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {

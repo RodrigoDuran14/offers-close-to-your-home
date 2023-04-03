@@ -5,6 +5,8 @@ import { getProductById } from '../../redux/actions'
 import styles from './Detail.module.css'
 
 const Detail = () => {
+  const { product } = useSelector(state => state)
+  console.log(product);
 
   const { id } = useParams()
   const dispatch = useDispatch();
@@ -13,8 +15,7 @@ const Detail = () => {
     dispatch(getProductById(id))
   }, [dispatch,id])
 
-  const { product } = useSelector(state => state)
-  console.log(product);
+  
 
   return (
 
@@ -31,7 +32,7 @@ const Detail = () => {
         <div style={{ marginTop: "50px" }}>
           <h2>{product.nombre}</h2>
         </div>
-        <h1>${product.valor}</h1>
+        <h1>${product.valor_normal}</h1>
         <div style={{ marginTop: "20px" }}>
           <h2>Descripción</h2>
         </div>
