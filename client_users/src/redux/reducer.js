@@ -14,15 +14,14 @@ import {
 } from "./actions-type.js";
 
 const initialState = {
-   
   products: [],
   productID: [],
   comercios: [],
   ventas: [],
   pagos: [],
+  categorias: [],
   product: {},
 };
-
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
@@ -44,9 +43,11 @@ function rootReducer(state = initialState, action) {
     case ORDERED_BY_NAME_DESC:
       return {
         ...state,
-        products: [...state.products].sort((a, b) =>
-          b.nombre.localCompare(a.nombre)
-        ),
+        products: [...state.products].sort((a, b) => {
+          if (a.nombre > b.nombre) return -1;
+          if (a.name < b.nombre) return 1;
+          return 0;
+        }),
       };
     case GET_PRODUCT_BY_CATEGORY:
       return {
