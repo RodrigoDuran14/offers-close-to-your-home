@@ -41,7 +41,7 @@ console.log(aux);
         return (
           <Card
           key={index}
-            producto={product}
+          producto={product}
           />
         )
       })}

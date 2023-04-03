@@ -31,7 +31,7 @@ function rootReducer(state = initialState, action) {
     case GET_ALL_PRODUCTS:
       return { ...state, products: action.payload };
     case GET_PRODUCT_BY_ID:
-      return { ...state, productID: action.payload };
+      return { ...state, product: action.payload };
     case GET_PRODUCT_BY_NAME:
       return { ...state, products: action.payload };
     case ORDERED_BY_NAME_ASC:

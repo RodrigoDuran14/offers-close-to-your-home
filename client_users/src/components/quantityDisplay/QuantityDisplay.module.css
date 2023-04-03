@@ -1,0 +1,19 @@
+.container {
+    border: solid 1px rgb(186, 178, 178);
+    border-radius: 8px;
+    display: inline-block;
+    padding: 8px;
+}
+
+.container button{
+    background-color: #fff;
+    border-radius: 50%;
+    border: solid 1px rgb(186, 178, 178);
+    cursor: pointer;
+    font-size: 20px;
+    margin: 2px;
+}
+
+.container span{
+    margin: 5px;
+}

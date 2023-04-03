@@ -4,6 +4,7 @@
     justify-content: space-evenly;
     flex-direction: row;
     flex-wrap: wrap;
+    margin-top: 50px;
 }
 
 .card{
