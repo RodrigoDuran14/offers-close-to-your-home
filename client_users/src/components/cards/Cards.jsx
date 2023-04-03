@@ -8,7 +8,7 @@ import {getAllProducts} from '../../redux/actions'
 const Cards = () => {
   const products = useSelector((state) => state.products);
   const dispatch = useDispatch();
-
+ 
   useEffect(() => {
     dispatch(getAllProducts());
     
