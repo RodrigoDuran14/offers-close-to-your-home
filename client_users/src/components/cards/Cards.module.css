@@ -5,3 +5,26 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+.card{
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.paginadoArr{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 90px;
+    margin-bottom: -50px;
+}
+
+.paginadoAbj{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+}
