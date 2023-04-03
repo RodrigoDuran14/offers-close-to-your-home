@@ -13,7 +13,7 @@ export function createProduct(product) {
         try {
             const response = await axios.post(`${URL}/products`, product);
             console.log(response.data)
-            dispatch({ type: action.CREATE_PRODUCT, payload: [response.data] });
+            dispatch({ type: action.CREATE_PRODUCT, payload: response.data });
         } catch (error) {
             console.log(error);
             dispatch({ type: action.CREATE_PRODUCT, payload: error });
@@ -43,7 +43,7 @@ export const getAllProducts = () => {
 export const getProductById = (id) => async dispatch => {
     try {
         const res = await axios.get(`${URL}/products/${id}`)
-
+        console.log(res.data);
         dispatch({
             type: action.GET_PRODUCT_BY_ID,
             payload: res.data
@@ -136,30 +136,30 @@ export const filterByRefurbishedProducts = () => {
     return { type: action.FILTER_BY_REFURBISHED_PRODUCTS };//productos reacondicionados
 };
 
-// CODIGO REALIZADO POR FRANCO
-export function getProducts() {
-    return (dispatch) => {
-        axios.get(`${URL}/products`)
-            .then(response => dispatch(
-                {
-                    type: action.GET_PRODUCTS,
-                    payload: response.data
-                }
-            ))
-            .catch(err => console.log(err))
-    }
-}
+// // CODIGO REALIZADO POR FRANCO
+// export function getProducts() {
+//     return (dispatch) => {
+//         axios.get(`${URL}/products`)
+//             .then(response => dispatch(
+//                 {
+//                     type: action.GET_PRODUCTS,
+//                     payload: response.data
+//                 }
+//             ))
+//             .catch(err => console.log(err))
+//     }
+// }
 
-export function getDetail(id) {
-    return (dispatch) => {
-        axios.get(`${URL}/products/${id}`)
-            .then(response => dispatch(
-                {
-                    type: action.GET_DETAIL,
-                    payload: response.data
-                }
-            ))
-            .catch(err => console.log(err))
-    }
-}
+// export function getDetail(id) {
+//     return (dispatch) => {
+//         axios.get(`${URL}/products/${id}`)
+//             .then(response => dispatch(
+//                 {
+//                     type: action.GET_DETAIL,
+//                     payload: response.data
+//                 }
+//             ))
+//             .catch(err => console.log(err))
+//     }
+// }
 
