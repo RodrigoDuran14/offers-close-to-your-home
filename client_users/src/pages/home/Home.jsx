@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 
 function Home () {
 
-  const productos = useSelector((state) => state.products)
+  // const productos = useSelector((state) => state.products)
   return (
     <div className= {styles.container}>
       <div className={styles.filtros}>

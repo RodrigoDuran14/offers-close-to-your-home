@@ -34,7 +34,7 @@ const getAllProducts = async () => {
   return results;
 };
 
-const searchProductByName = async nombre => {
+const searchProductByName = async (nombre) => {
   const [databaseProducts, apiProductsRaw] = await Promise.all([
     Producto.findAll({
       where: {
@@ -46,16 +46,16 @@ const searchProductByName = async nombre => {
     axios.get("https://fakestoreapi.com/products"),
   ]);
   const apiP = cleanArray(apiProductsRaw.data);
-  const filterApi = apiP.filter(Producto =>
+  const filterApi = apiP.filter((Producto) =>
     Producto.nombre.toLowerCase().includes(nombre.toLowerCase())
   );
 
   return [...filterApi, ...databaseProducts];
 };
 
-const cleanArray = arr => {
+const cleanArray = (arr) => {
   const condicionArray = ["Nuevo", "Usado", "Reacondicionado"];
-  return arr.map(elem => {
+  return arr.map((elem) => {
     const indiceAleatorio = Math.floor(Math.random() * condicionArray.length);
     return {
       id_producto: elem.id,
@@ -70,7 +70,7 @@ const cleanArray = arr => {
   });
 };
 
-const getProductById = async idProduct => {
+const getProductById = async (idProduct) => {
   let ProductInfo = [];
 
   const apiData = await axios.get(

@@ -19,6 +19,7 @@ const initialState = {
   comercios: [],
   ventas: [],
   pagos: [],
+  categorias: [],
   product: {},
 };
 
@@ -29,7 +30,7 @@ function rootReducer(state = initialState, action) {
     case GET_ALL_PRODUCTS:
       return { ...state, products: action.payload };
     case GET_PRODUCT_BY_ID:
-      return { ...state, productID: action.payload };
+      return { ...state, product: action.payload };
     case GET_PRODUCT_BY_NAME:
       return { ...state, products: action.payload };
     case ORDERED_BY_NAME_ASC:
@@ -42,11 +43,12 @@ function rootReducer(state = initialState, action) {
     case ORDERED_BY_NAME_DESC:
       return {
         ...state,
-        products: [...state.products].sort((a, b) =>
-          b.nombre.localeCompare(a.nombre)
-        ),
+        products: [...state.products].sort((a, b) => {
+          if (a.nombre > b.nombre) return -1;
+          if (a.name < b.nombre) return 1;
+          return 0;
+        }),
       };
-
     case GET_PRODUCT_BY_CATEGORY:
       return {
         ...state,

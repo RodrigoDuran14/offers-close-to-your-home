@@ -15,15 +15,14 @@ import { getAllProducts,
 
 function Filter(props) {
 
-
   /* FILTRO POR NOMBRE */
   function handleOrderAlf(e){
     if (e.target.value === "Ordenar alfabeticamente"){
       props.getAllProducts();
     } else if (e.target.value === "A-Z"){
-      props.orderedByNameDESC()
-    } else {
       props.orderedByNameASC()
+    } else {
+      props.orderedByNameDESC()
     }
   }
 
@@ -59,50 +58,39 @@ function Filter(props) {
 
   /* FILTRO POR CATEGORIA */
 
-  function handleSelectCategory(e) {
-    if (e.target.value === "Filtro por categoria") {
-      props.getAllProducts()
-    } else {
-      props.filterByCategory(e.target.value)
-      console.log(props.filterByCategory(e.target.value))
-    }
-    /*// } else if (e.target.value === "Cosmetica") {
-    //   console.log("Filtra por Cosmetica");
-    // } else if (e.target.value === "Electronica") {
-    //   console.log("Filtra por Electronica");
-    // } else if (e.target.value === "Indumentaria") {
-    //   console.log("Filtra por Indumentaria");
-    // } else if (e.target.value === "Alimentos") {
-    //   console.log("Filtra por Alimentos");
-    // } else if (e.target.value === "Accesorios") {
-    //   console.log("Filtra por Accesorios");
-    // } else if (e.target.value === "Muebles") {
-    //   console.log("Filtra por Muebles");
-    // } else if (e.target.value === "Jardineria") {
-    //   console.log("Filtra por Jardineria");
-    // } else if (e.target.value === "Deportes") {
-    //   console.log("Filtra por Deportes");
-    // } else if (e.target.value === "Joyeria") {
-    //   console.log("Filtra por Joyeria");
-    // } else if (e.target.value === "Herramientas") {
-    //   console.log("Filtra por Herramientas");
-    // }*/
-  }
+  // function handleSelectCategory(e) {
+  //   if (e.target.value === "Filtro por categoria") {
+  //     props.getAllProducts()
+  //   } else {
+  //     props.filterByCategory(e.target.value)
+  //     console.log(props.filterByCategory(e.target.value))
+  //   }
+  //   /*// } else if (e.target.value === "Cosmetica") {
+  //   //   console.log("Filtra por Cosmetica");
+  //   // } else if (e.target.value === "Electronica") {
+  //   //   console.log("Filtra por Electronica");
+  //   // } else if (e.target.value === "Indumentaria") {
+  //   //   console.log("Filtra por Indumentaria");
+  //   // } else if (e.target.value === "Alimentos") {
+  //   //   console.log("Filtra por Alimentos");
+  //   // } else if (e.target.value === "Accesorios") {
+  //   //   console.log("Filtra por Accesorios");
+  //   // } else if (e.target.value === "Muebles") {
+  //   //   console.log("Filtra por Muebles");
+  //   // } else if (e.target.value === "Jardineria") {
+  //   //   console.log("Filtra por Jardineria");
+  //   // } else if (e.target.value === "Deportes") {
+  //   //   console.log("Filtra por Deportes");
+  //   // } else if (e.target.value === "Joyeria") {
+  //   //   console.log("Filtra por Joyeria");
+  //   // } else if (e.target.value === "Herramientas") {
+  //   //   console.log("Filtra por Herramientas");
+  //   // }*/
+  // }
 
   return (
     <div className={styles.contenedor}>
-            {/* --------------------ORDENAR ALFABETICAMENTE--------------------*/}
-            <div>
-        <select
-          className={styles.filtro}
-          name="Alfabeticamente"
-          onChange={(e) => handleOrderAlf(e)}
-        >
-          <option value="Ordenar alfabeticamente">Ordenar alfabeticamente</option>
-          <option value="A-Z">A-Z</option>
-          <option value="Z-A">Z-A</option>
-        </select>
-      </div>
+
             {/* --------------------ORDENAR POR PRECIO--------------------*/}
       <div>
         <select
@@ -128,40 +116,46 @@ function Filter(props) {
           <option value="Reacondicionado">Reacondicionado</option>
         </select>
       </div>
-            {/* --------------------ORDENAR POR CATEGIRIA--------------------*/}
-      <div>
+        {/* --------------------ORDENAR ALFABETICAMENTE--------------------*/}
+                  <div>
         <select
           className={styles.filtro}
-          name="Condition"
-          onChange={(e) => handleSelectCategory(e)}
+          name="Alfabeticamente"
+          onChange={(e) => handleOrderAlf(e)}
         >
-          <option value="Filtro por categoria">Selecciona una categoria</option>
-          {props.categorias && props.categorias.map((c) => <option value={c.nombre_categoria_producto}> {c.nombre_categoria_producto}</option>)}
-          {/* <option value="Filtro por categoria">Selecciona una categoria</option>
-          <option value="Cosmetica">Cosmética</option>
-          <option value="Electronica">Electrónica</option>
-          <option value="Indumentaria">Indumentaria</option>
-          <option value="Alimentos">Alimentos</option>
-          <option value="Accesorios">Accesorios</option>
-          <option value="Muebles">Muebles</option>
-          <option value="Jardineria">Jardinería</option>
-          <option value="Deportes">Deportes</option>
-          <option value="Joyeria">Joyería</option>
-          <option value="Herramientas">Herramientas</option> */}
+          <option value="Ordenar alfabeticamente">Ordenar alfabeticamente</option>
+          <option value="A-Z">A-Z</option>
+          <option value="Z-A">Z-A</option>
         </select>
       </div>
+            {/* --------------------ORDENAR POR CATEGIRIA--------------------*/}
+      {/* <div>
+      <select
+  className={styles.filtro}
+  name="Condition"
+  onChange={(e) => handleSelectCategory(e)}
+>
+  <option value="">Selecciona una categoría</option>
+  {categorias && categorias.map((c) => {
+    console.log(c.nombre_categoria_producto);
+    return <option value={c.nombre_categoria_producto}>{c.nombre_categoria_producto}</option>;
+  })}
+</select>
+      </div> */}
     </div>
   );
 }
 function mapStateToprops(state) {
   return {
     products: state.products,
+    categorias: state.categorias,
     filtered: false,
   };
 }
 
 export default connect(mapStateToprops,
      {getAllProducts,
+      getProductByCategory,
       filterByNewProducts,
       filterByRefurbishedProducts,
       filterByUsedProducts,
