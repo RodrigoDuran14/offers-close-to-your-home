@@ -14,7 +14,6 @@ import {
 } from "./actions-type.js";
 
 const initialState = {
-   
   products: [],
   productID: [],
   comercios: [],
@@ -22,7 +21,6 @@ const initialState = {
   pagos: [],
   product: {},
 };
-
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
@@ -45,9 +43,10 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         products: [...state.products].sort((a, b) =>
-          b.nombre.localCompare(a.nombre)
+          b.nombre.localeCompare(a.nombre)
         ),
       };
+
     case GET_PRODUCT_BY_CATEGORY:
       return {
         ...state,

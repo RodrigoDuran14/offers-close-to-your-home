@@ -2,30 +2,43 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import styles from "./Filter.module.css";
 import { getAllProducts,
+         getProductByCategory,
          filterByNewProducts, 
          filterByRefurbishedProducts, 
-         filterByUsedProducts, 
+         filterByUsedProducts,
+         filterByCategory,
+         orderedByNameASC,
          orderedByNameDESC,
          orderedByLowestPrice,
          orderedByHighestPrice
         } from "../../redux/actions";
 
-function Filter(item) {
+function Filter(props) {
+
+
+  /* FILTRO POR NOMBRE */
+  function handleOrderAlf(e){
+    if (e.target.value === "Ordenar alfabeticamente"){
+      props.getAllProducts();
+    } else if (e.target.value === "A-Z"){
+      props.orderedByNameDESC()
+    } else {
+      props.orderedByNameASC()
+    }
+  }
+
 
   /* FILTRO POR CONDICION */
 
   function handleFilterCondition(e) {
     if (e.target.value === "Filtro por condicion") {
-        item.getAllProducts()
-        console.log(item);
+      props.getAllProducts();
     } else if (e.target.value === "Usado") {
-        item.filterByUsedProducts(e.target.value, item.products)
-    } else if (e.target.value === "Nuevo") {
-        item.filterByNewProducts(e.target.value, item.products)
-      console.log("Filtro por nuevos");
-    } else {
-        item.filterByRefurbishedProducts(e.target.value, item.products)
-      console.log(e.target.value);
+      props.filterByUsedProducts();
+    } else if (e.target.value === "Nuevo") {;
+      props.filterByNewProducts();
+    } else if (e.target.value === "Reacondicionado") {
+      props.filterByRefurbishedProducts();
     }
   }
 
@@ -33,13 +46,13 @@ function Filter(item) {
 
   function handleFilterPrice(e) {
     if (e.target.value === "Filtro por precio") {
-        item.getAllProducts()
+        props.getAllProducts()
       console.log("Trae todos los productos");
     } else if (e.target.value === "Asc") {
-        item.orderedByLowestPrice()
+        props.orderedByLowestPrice()
       console.log("Filtro por precio ascendente");
     } else {
-        item.orderedByHighestPrice()
+        props.orderedByHighestPrice()
       console.log("Filtro por precio descendente");
     }
   }
@@ -48,32 +61,49 @@ function Filter(item) {
 
   function handleSelectCategory(e) {
     if (e.target.value === "Filtro por categoria") {
-      console.log("Trae todos los productos");
-    } else if (e.target.value === "Cosmetica") {
-      console.log("Filtra por Cosmetica");
-    } else if (e.target.value === "Electronica") {
-      console.log("Filtra por Electronica");
-    } else if (e.target.value === "Indumentaria") {
-      console.log("Filtra por Indumentaria");
-    } else if (e.target.value === "Alimentos") {
-      console.log("Filtra por Alimentos");
-    } else if (e.target.value === "Accesorios") {
-      console.log("Filtra por Accesorios");
-    } else if (e.target.value === "Muebles") {
-      console.log("Filtra por Muebles");
-    } else if (e.target.value === "Jardineria") {
-      console.log("Filtra por Jardineria");
-    } else if (e.target.value === "Deportes") {
-      console.log("Filtra por Deportes");
-    } else if (e.target.value === "Joyeria") {
-      console.log("Filtra por Joyeria");
-    } else if (e.target.value === "Herramientas") {
-      console.log("Filtra por Herramientas");
+      props.getAllProducts()
+    } else {
+      props.filterByCategory(e.target.value)
+      console.log(props.filterByCategory(e.target.value))
     }
+    /*// } else if (e.target.value === "Cosmetica") {
+    //   console.log("Filtra por Cosmetica");
+    // } else if (e.target.value === "Electronica") {
+    //   console.log("Filtra por Electronica");
+    // } else if (e.target.value === "Indumentaria") {
+    //   console.log("Filtra por Indumentaria");
+    // } else if (e.target.value === "Alimentos") {
+    //   console.log("Filtra por Alimentos");
+    // } else if (e.target.value === "Accesorios") {
+    //   console.log("Filtra por Accesorios");
+    // } else if (e.target.value === "Muebles") {
+    //   console.log("Filtra por Muebles");
+    // } else if (e.target.value === "Jardineria") {
+    //   console.log("Filtra por Jardineria");
+    // } else if (e.target.value === "Deportes") {
+    //   console.log("Filtra por Deportes");
+    // } else if (e.target.value === "Joyeria") {
+    //   console.log("Filtra por Joyeria");
+    // } else if (e.target.value === "Herramientas") {
+    //   console.log("Filtra por Herramientas");
+    // }*/
   }
 
   return (
     <div className={styles.contenedor}>
+            {/* --------------------ORDENAR ALFABETICAMENTE--------------------*/}
+            <div>
+        <select
+          className={styles.filtro}
+          name="Alfabeticamente"
+          onChange={(e) => handleOrderAlf(e)}
+        >
+          <option value="Ordenar alfabeticamente">Ordenar alfabeticamente</option>
+          <option value="A-Z">A-Z</option>
+          <option value="Z-A">Z-A</option>
+        </select>
+      </div>
+            {/* --------------------ORDENAR POR PRECIO--------------------*/}
       <div>
         <select
           className={styles.filtro}
@@ -85,6 +115,7 @@ function Filter(item) {
           <option value="Des">Descendente</option>
         </select>
       </div>
+            {/* --------------------ORDENAR POR CONDICION--------------------*/}
       <div>
         <select
           className={styles.filtro}
@@ -97,6 +128,7 @@ function Filter(item) {
           <option value="Reacondicionado">Reacondicionado</option>
         </select>
       </div>
+            {/* --------------------ORDENAR POR CATEGIRIA--------------------*/}
       <div>
         <select
           className={styles.filtro}
@@ -104,6 +136,8 @@ function Filter(item) {
           onChange={(e) => handleSelectCategory(e)}
         >
           <option value="Filtro por categoria">Selecciona una categoria</option>
+          {props.categorias && props.categorias.map((c) => <option value={c.nombre_categoria_producto}> {c.nombre_categoria_producto}</option>)}
+          {/* <option value="Filtro por categoria">Selecciona una categoria</option>
           <option value="Cosmetica">Cosmética</option>
           <option value="Electronica">Electrónica</option>
           <option value="Indumentaria">Indumentaria</option>
@@ -113,24 +147,26 @@ function Filter(item) {
           <option value="Jardineria">Jardinería</option>
           <option value="Deportes">Deportes</option>
           <option value="Joyeria">Joyería</option>
-          <option value="Herramientas">Herramientas</option>
+          <option value="Herramientas">Herramientas</option> */}
         </select>
       </div>
     </div>
   );
 }
-function mapStateToitem(state) {
+function mapStateToprops(state) {
   return {
     products: state.products,
     filtered: false,
   };
 }
 
-export default connect(mapStateToitem,
+export default connect(mapStateToprops,
      {getAllProducts,
       filterByNewProducts,
       filterByRefurbishedProducts,
       filterByUsedProducts,
+      filterByCategory,
+      orderedByNameASC,
       orderedByNameDESC,
       orderedByLowestPrice,
       orderedByHighestPrice})(
