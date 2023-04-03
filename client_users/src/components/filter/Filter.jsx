@@ -7,11 +7,12 @@ import { getAllProducts,
          filterByUsedProducts, 
          orderedByNameDESC,
          orderedByLowestPrice,
-         orderedByHighestPrice } from "../../redux/actions";
+         orderedByHighestPrice
+        } from "../../redux/actions";
 
 function Filter(item) {
 
-  /*FILTRO POR CONDICION */
+  /* FILTRO POR CONDICION */
 
   function handleFilterCondition(e) {
     if (e.target.value === "Filtro por condicion") {
