@@ -23,7 +23,7 @@ export const getAllProducts = () => {
   return async (dispatch) => {
     try {
       const response = await axios.get(`${URL}/products`);
-      console.log(response.data);
+      // console.log(response.data);
       dispatch({ type: action.GET_ALL_PRODUCTS, payload: response.data });
     } catch (error) {
       console.log(error);
