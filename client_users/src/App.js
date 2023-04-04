@@ -13,18 +13,13 @@ function App() {
 
   return (
     <div className="App">
-      {/* <HashRouter> */}
-      {location?.pathname == "/login" ? null : <NavBar />}
-      {/* <Switch> */}
-      {/* <NavBar /> */}
+      {location?.pathname === "/login" ? null : <NavBar />}
       <Route exact path="/" component={Home} />
       <Route exact path="/detail/:id" component={Detail} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/account" component={Account} />
       <Route exact path="/forgot-password" component={ForgotPassword} />
       <Route exact path="/about" component={About} />
-      {/* </Switch> */}
-      {/* </HashRouter>  */}
     </div>
   );
 }
