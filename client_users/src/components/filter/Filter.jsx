@@ -1,25 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import styles from "./Filter.module.css";
-import { getAllProducts,
-         getProductByCategory,
-         filterByNewProducts, 
-         filterByRefurbishedProducts, 
-         filterByUsedProducts,
-         filterByCategory,
-         orderedByNameASC,
-         orderedByNameDESC,
-         orderedByLowestPrice,
-         orderedByHighestPrice
-        } from "../../redux/actions";
+import {
+  getAllProducts,
+  getProductByCategory,
+  filterByNewProducts,
+  filterByRefurbishedProducts,
+  filterByUsedProducts,
+  filterByCategory,
+  orderedByNameASC,
+  orderedByNameDESC,
+  orderedByLowestPrice,
+  orderedByHighestPrice
+} from "../../redux/actions";
 
 function Filter(props) {
 
   /* FILTRO POR NOMBRE */
-  function handleOrderAlf(e){
-    if (e.target.value === "Ordenar alfabeticamente"){
+  function handleOrderAlf(e) {
+    if (e.target.value === "Ordenar alfabeticamente") {
       props.getAllProducts();
-    } else if (e.target.value === "A-Z"){
+    } else if (e.target.value === "A-Z") {
       props.orderedByNameASC()
     } else {
       props.orderedByNameDESC()
@@ -34,7 +35,8 @@ function Filter(props) {
       props.getAllProducts();
     } else if (e.target.value === "Usado") {
       props.filterByUsedProducts();
-    } else if (e.target.value === "Nuevo") {;
+    } else if (e.target.value === "Nuevo") {
+      ;
       props.filterByNewProducts();
     } else if (e.target.value === "Reacondicionado") {
       props.filterByRefurbishedProducts();
@@ -45,13 +47,13 @@ function Filter(props) {
 
   function handleFilterPrice(e) {
     if (e.target.value === "Filtro por precio") {
-        props.getAllProducts()
+      props.getAllProducts()
       console.log("Trae todos los productos");
     } else if (e.target.value === "Asc") {
-        props.orderedByLowestPrice()
+      props.orderedByLowestPrice()
       console.log("Filtro por precio ascendente");
     } else {
-        props.orderedByHighestPrice()
+      props.orderedByHighestPrice()
       console.log("Filtro por precio descendente");
     }
   }
@@ -91,7 +93,7 @@ function Filter(props) {
   return (
     <div className={styles.contenedor}>
 
-            {/* --------------------ORDENAR POR PRECIO--------------------*/}
+      {/* --------------------ORDENAR POR PRECIO--------------------*/}
       <div>
         <select
           className={styles.filtro}
@@ -103,7 +105,7 @@ function Filter(props) {
           <option value="Des">Descendente</option>
         </select>
       </div>
-            {/* --------------------ORDENAR POR CONDICION--------------------*/}
+      {/* --------------------ORDENAR POR CONDICION--------------------*/}
       <div>
         <select
           className={styles.filtro}
@@ -116,8 +118,8 @@ function Filter(props) {
           <option value="Reacondicionado">Reacondicionado</option>
         </select>
       </div>
-        {/* --------------------ORDENAR ALFABETICAMENTE--------------------*/}
-                  <div>
+      {/* --------------------ORDENAR ALFABETICAMENTE--------------------*/}
+      <div>
         <select
           className={styles.filtro}
           name="Alfabeticamente"
@@ -128,7 +130,7 @@ function Filter(props) {
           <option value="Z-A">Z-A</option>
         </select>
       </div>
-            {/* --------------------ORDENAR POR CATEGIRIA--------------------*/}
+      {/* --------------------ORDENAR POR CATEGIRIA--------------------*/}
       {/* <div>
       <select
   className={styles.filtro}
@@ -154,15 +156,17 @@ function mapStateToprops(state) {
 }
 
 export default connect(mapStateToprops,
-     {getAllProducts,
-      getProductByCategory,
-      filterByNewProducts,
-      filterByRefurbishedProducts,
-      filterByUsedProducts,
-      filterByCategory,
-      orderedByNameASC,
-      orderedByNameDESC,
-      orderedByLowestPrice,
-      orderedByHighestPrice})(
-  Filter
-);
+  {
+    getAllProducts,
+    getProductByCategory,
+    filterByNewProducts,
+    filterByRefurbishedProducts,
+    filterByUsedProducts,
+    filterByCategory,
+    orderedByNameASC,
+    orderedByNameDESC,
+    orderedByLowestPrice,
+    orderedByHighestPrice
+  })(
+    Filter
+  );
