@@ -2,8 +2,10 @@ import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { useState } from "react"
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import { registerUser } from '../../redux/actions'
 import axios from 'axios'
 import swal from 'sweetalert';
+import validations from './validations'
 
 export default function FormRegister() {
     const dispatch = useDispatch()
@@ -26,7 +28,7 @@ export default function FormRegister() {
     const handleSubmit = (values) => {
         let formData = { ...values, imagen: image }
         console.log(formData)
-        dispatch(createProduct(formData))
+        dispatch(registerUser(formData))
         swal({
             title: 'Usuario registrado',
             text: 'Inicia sesión con tu nuevo usuario',
@@ -46,30 +48,31 @@ export default function FormRegister() {
                     email: '',
                     contraseña: '',
                 }}
+                validate={validations}
                 onSubmit={handleSubmit}
             >
-                <Form>
-                    <Field name='nombre_usuario' type='text' placeholder='Nombre' />
+                <Form className='form-container'>
+                    <Field name='nombre_usuario' type='text' placeholder='Nombre' className='form-input' />
                     <ErrorMessage name="nombre_usuario" />
 
-                    <Field name='direccion' as='textarea' placeholder='Dirección' />
+                    <Field name='direccion' placeholder='Dirección' className='form-input' />
                     <ErrorMessage name="direccion" />
 
-                    <Field name='telefono' type='text' placeholder='Teléfono' />
+                    <Field name='telefono' type='text' placeholder='Teléfono' className='form-input' />
                     <ErrorMessage name="telefono" />
 
-                    <Field name='email' type='text' placeholder='Email' />
+                    <Field name='email' type='text' placeholder='Email' className='form-input' />
                     <ErrorMessage name="email" />
 
                     <div>
-                        <div style={{ backgroundImage: `url(${imagen})` }}>picture</div>
+                        <div style={{ backgroundImage: `url(${image})` }} className='register-profile-picture'></div>
                         <Field name='image' type='file' onChange={handleImage} />
                     </div>
 
-                    <Field name='contraseña' type='password' placeholder='Contraseña' />
+                    <Field name='contraseña' type='password' placeholder='Contraseña' className='form-input' />
                     <ErrorMessage name="contraseña" />
 
-                    <Field name='repetir_contraseña' type='password' placeholder='Repite la contraseña' />
+                    <Field name='repetir_contraseña' type='password' placeholder='Repite la contraseña' className='form-input' />
                     <ErrorMessage name="repetir_contraseña" />
 
                     <button type='submit'>Registrarse</button>
