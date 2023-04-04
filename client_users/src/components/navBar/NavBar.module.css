@@ -45,3 +45,16 @@
         display: none;
     }
 }
+
+
+.texto{
+    height: 20px;
+    margin-top: 22px;
+}
+
+.icono{
+    height: 40px;
+    margin-top: 10px;
+    margin-left: 4px;
+    margin-right: 14px;
+}
