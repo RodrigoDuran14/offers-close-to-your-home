@@ -4,7 +4,6 @@ module.exports = (sequelize) => {
 sequelize.define('Usuario', {
     id_tipo_usuario: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       references: {
         model: 'Tipo_usuario',
         key: 'id_tipo_usuario',
@@ -22,7 +21,6 @@ sequelize.define('Usuario', {
     },
     segundo_nombre:{
       type: DataTypes.STRING(50),
-      allowNull: false,
     },
     primer_apellido:{
       type: DataTypes.STRING(50),
@@ -30,19 +28,17 @@ sequelize.define('Usuario', {
     },
     segundo_apellido:{
       type: DataTypes.STRING(50),
-      allowNull: false,
     },
     direccion:{
       type: DataTypes.STRING,
       allowNull: false
     },
     telefono:{
-      type: DataTypes.INTEGER,
+      type: DataTypes.BIGINT,
       allowNull: false,
     },
     id_ciudad:{
       type: DataTypes.INTEGER,
-      allowNull: false,
       references:{
         model: "Ciudad",
         key: "id_ciudad"
