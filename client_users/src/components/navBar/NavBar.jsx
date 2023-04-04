@@ -5,15 +5,24 @@ import DrawerMenu from '../drawerMenu/DrawerMenu'
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import s from './NavBar.module.css'
 
+// imagenes
+import Logo from "../../assets/images/SoloTextoBlanco.png";
+import Icono from "../../assets/images/SoloIconoNormal.png";
+
 const NavBar = () => {
+
+    const logoTexto = Logo;
+    const logoIcono = Icono;
+    
     return (
         <div className={s.container}>
 
             <div className={s.menu}>
                 <DrawerMenu />
             </div>
-
             <div className={s.options}>
+            <img className={s.texto} src= {logoTexto} />
+            <img className={s.icono} src= {logoIcono} />
                 <Link to="/" className='link-no-decoration' style={{ margin: '0px 10px' }}>
                     <h4>Inicio</h4>
                 </Link>
