@@ -3,7 +3,17 @@ import * as action from "./actions-type"; // para no escribir todos los action t
 
 const URL = "http://localhost:3001";
 
-// ========================* PRODUCTS *========================
+// ========================* USUARIOS *========================
+export function registerUser() {
+  return () => {
+    axios.post(`${URL}/usuario`)
+      .then(response => console.log(response))
+      .catch(err => console.log(err))
+  }
+}
+
+
+// ========================* PRODUCTOS *========================
 export function createProduct(product) {
   return async (dispatch) => {
     try {
