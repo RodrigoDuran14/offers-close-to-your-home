@@ -1,14 +1,12 @@
-import React,  { useState }  from "react";
-import {Link} from "react-router-dom"
-import styles from './Login.module.css'
+import React, { useState } from "react";
 import FormLogin from '../../components/formLogin/FormLogin'
+import s from './Login.module.css'
 
 
-const Login = (props) => {
+const Login = () => {
   return (
-    <div>
-      Login
-      <h1>JustOffers</h1>
+    <div className={s.container}>
+      <h1>JustOffers</h1>      
       <FormLogin />
     </div>
   );
