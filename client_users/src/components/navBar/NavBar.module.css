@@ -2,7 +2,7 @@
     background-color: black;
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    /* align-items: center; */
     height: 60px;
     position: fixed;
     top: 0;
@@ -23,7 +23,6 @@
 .button{
     border-radius: 100px;
     padding: 8px;
-    margin-right: 20px;
     border: none; 
     background-color: black;
     color: aliceblue;  
@@ -58,4 +57,11 @@
     margin-top: 10px;
     margin-left: 4px;
     margin-right: 14px;
+}
+
+.link{
+    text-decoration: none;
+    color: white;
+    margin-left: 10px;
+    margin-right: 10px;
 }
