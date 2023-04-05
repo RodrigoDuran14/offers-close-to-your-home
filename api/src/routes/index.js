@@ -12,6 +12,8 @@ const comercio = require("./comercio")
 
 const categoriaComercio = require("./categoriaComercio")
 
+const ciudades = require("./ciudad");
+
 const router = Router();
 
 // Configurar los routers
@@ -25,6 +27,8 @@ router.use("/categorias", categorias);
 router.use("/commerce", comercio)
 
 router.use("/categoriaComercio", categoriaComercio)
+
+router.use("/ciudad", ciudades);
 
 
 module.exports = router;
