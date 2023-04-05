@@ -14,6 +14,7 @@ function App() {
 
   return (
     <div className="App">
+
       <NavBar />
       {/* {location?.pathname == "/log-in" ? null : <NavBar />} */}
 

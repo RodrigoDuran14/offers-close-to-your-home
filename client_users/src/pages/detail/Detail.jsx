@@ -34,6 +34,7 @@ const Detail = () => {
 
     <section>
     <div className={styles.container}>
+
     {product.hasOwnProperty("nombre") ? (
     <>
     <div className={styles.box1}>
@@ -41,12 +42,25 @@ const Detail = () => {
       </div>
       <div className={styles.box2}>
         <div style={{ marginTop: "0px" }}>
+
+      <div className={styles.box1}>
+        <div style={{margin: "10px"}}>
+          <span>{product.condicion}</span>
+        </div>
+        <div style={{width: "100%",marginBottom: "10px"}}>
+          <img src={product.imagen} alt={product.nombre} />
+        </div>
+      </div>
+
+      <div className={styles.box2} >
+        <div>
+
           <h2>{product.nombre}</h2>
         </div>
         <div>
           <h1>${product.valor_normal}</h1>
         </div>
-        <div style={{ marginTop: "0px" }}>
+        <div>
           <h2>Descripción</h2>
         </div>
         <div style={{ marginLeft: "20px", marginRight: "20px" }}>

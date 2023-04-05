@@ -55,6 +55,11 @@ if(!/^[0-9]+$/i.test(cantidad)){
   throw new Error("Cantidad debe ser un numero")
 }
 
+if(cantidad > existencia){
+  throw new Error("Cantidad no puede ser mayor a existencia")
+
+}
+
 //---------------------existencia-------------
 
 if(typeof existencia !== "number"){
@@ -63,7 +68,7 @@ if(typeof existencia !== "number"){
 
 if(!/^[0-9]+$/i.test(existencia)){
   throw new Error("Existencia debe ser un numero")
-} 
+}  
 
 //-------------------valor_normal------------
 
