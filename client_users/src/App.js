@@ -15,8 +15,10 @@ function App() {
   return (
     <div className="App">
 
-      <NavBar />
-      {/* {location?.pathname == "/log-in" ? null : <NavBar />} */}
+      
+
+      {location?.pathname == "/login" ? null : <NavBar />}
+
 
       <Route exact path="/" component={Home} />
       <Route exact path="/detail/:id" component={Detail} />
