@@ -8,20 +8,7 @@ module.exports = (sequelize) => {
       autoIncrement: true,
       primaryKey: true,
     },
-    id_comercio: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "Comercio",
-        key: "id_comercio",
-      },
-    },
-    id_categoria_producto: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "Categoria_producto",
-        key: "id_categoria_producto",
-      },
-    },
+  
     nombre:{
       type: DataTypes.STRING(50),
       allowNull: false,

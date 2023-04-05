@@ -1,49 +1,47 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import SearchBar from '../searchBar/SearchBar'
-import styles from './NavBar.module.css'
+import DrawerMenu from '../drawerMenu/DrawerMenu'
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import s from './NavBar.module.css'
 
 const NavBar = () => {
-  return (
-    <div className={styles.container}>
-            
-            <div className={styles.box2}>
-                <div>
-                    <Link to="/">            
-                        <button className={styles.button}>Home</button>
-                    </Link>
-                </div>
+    return (
+        <div className={s.container}>
 
-                <div>
-                    <Link to="/account">            
-                        <button className={styles.button}>Cuenta</button>
-                    </Link>
-                </div>
-
-                <div>
-                    <Link to="/about">
-                        <button className={styles.button}>Acerca de</button>
-                    </Link>
-                </div>
-                
-                <div className={styles.box1}>
-                    <div>
-                      <SearchBar />
-                    </div>
-                </div>
-
-                <div>
-                    <Link to="/login">            
-                        <button className={styles.button}>Iniciar sesión</button>
-                    </Link>
-                </div>
-                
-                <div>
-                    <button className={styles.button}>Cerrar sesión</button>
-                </div>
+            <div className={s.menu}>
+                <DrawerMenu />
             </div>
+
+            <div className={s.options}>
+                <Link to="/" className='link-no-decoration' style={{ margin: '0px 10px' }}>
+                    <h4>Inicio</h4>
+                </Link>
+
+                <Link to="/account" className='link-no-decoration' style={{ margin: '0px 10px' }}>
+                    <h4>Quiero vender</h4>
+                </Link>
+
+                <Link to="/about" className='link-no-decoration' style={{ margin: '0px 10px' }}>
+                    <h4>¿Quienes somos?</h4>
+                </Link>
+            </div>
+
+            <div className={s.box1}>
+                <SearchBar />
+            </div>
+
+            <div className={s.options}>
+                <Link to="/login" className='link-no-decoration'>
+                    <h4>Iniciar sesión</h4>
+                </Link>
+
+
+                <button className={s.button}> <AiOutlineShoppingCart size={35} /> </button>
+            </div>
+
         </div>
-  )
+    )
 }
 
 export default NavBar

@@ -1,6 +1,5 @@
-
-const {Producto, Comercio, Categoria_producto} = require("../../db")
-const axios = require("axios")
+const { Producto, Comercio, Categoria_producto } = require("../../db");
+const axios = require("axios");
 const { Op } = require("sequelize");
 
 const getAllProducts = async () => {
@@ -23,19 +22,17 @@ const getAllProducts = async () => {
     include: {
       model: Categoria_producto,
       attributes: ["nombre_categoria_producto"],
-      required: true
-    }
+      required: true,
+    },
   });
 
-
   // buscar en la api
-  const apiProductsRaw = (
-    await axios.get("https://fakestoreapi.com/products")).data;
+  const apiProductsRaw = (await axios.get("https://fakestoreapi.com/products"))
+    .data;
   const apiP = cleanArray(apiProductsRaw);
   const results = [...databaseProducts, ...apiP];
   return results;
 };
-
 
 const searchProductByName = async (nombre) => {
   const [databaseProducts, apiProductsRaw] = await Promise.all([
@@ -57,13 +54,17 @@ const searchProductByName = async (nombre) => {
 };
 
 const cleanArray = (arr) => {
+  const condicionArray = ["Nuevo", "Usado", "Reacondicionado"];
   return arr.map((elem) => {
+    const indiceAleatorio = Math.floor(Math.random() * condicionArray.length);
     return {
       id_producto: elem.id,
       nombre: elem.title,
       valor_normal: elem.price,
       valor_con_descuento: elem.price,
       estado: elem.true,
+      condicion: condicionArray[indiceAleatorio],
+      categoria: elem.category,
       imagen: elem.image,
     };
   });
@@ -71,10 +72,13 @@ const cleanArray = (arr) => {
 
 const getProductById = async (idProduct) => {
   let ProductInfo = [];
-  let Productdb = [];
 
   const apiData = await axios.get(
-    `https://fakestoreapi.com/products/${idProduct}`);
+    `https://fakestoreapi.com/products/${idProduct}`
+  );
+  const condicionArray = ["Nuevo", "Usado", "Reacondicionado"];
+  const indiceAleatorio = Math.floor(Math.random() * 3);
+
   ProductInfo = {
     id_producto: apiData.data.id,
     nombre: apiData.data.title,
@@ -82,41 +86,61 @@ const getProductById = async (idProduct) => {
     valor_normal: apiData.data.price,
     valor_con_descuento: apiData.data.price,
     estado: apiData.data.true,
+    condicion: condicionArray[indiceAleatorio],
+    categoria: apiData.data.category,
     imagen: apiData.data.image,
   };
-
   //buscar por id de la db
-  const dbdata = await Producto.findByPk(idProduct)
+  const dbdata = await Producto.findByPk(idProduct, {
+    attributes: [
+      "id_producto",
+      "nombre",
+      "fecha_inicial",
+      "fecha_final",
+      "descripcion_producto",
+      "cantidad",
+      "existencia",
+      "valor_normal",
+      "valor_con_descuento",
+      "imagen",
+      "condicion",
+      "estado",
+      "id_categoria_producto",
+    ],
+  });
+  if (!dbdata) return ProductInfo;
+  return [dbdata, ProductInfo];
+};
 
-    Productdb = {
-    id_producto: dbdata.id_producto,
-    nombre: dbdata.nombre,
-    fecha_inicial: dbdata.fecha_inicial,
-    fecha_final: dbdata.fecha_final,
-    descripcion_producto: dbdata.descripcion_producto,
-    cantidad: dbdata.cantidad,
-    existencia: dbdata.existencia,
-    valor_normal: dbdata.valor_normal,
-    valor_con_descuento: dbdata.valor_con_descuento,
-    imagen: dbdata.imagen,
-    condicion: dbdata.condicion,
-    estado: dbdata.estado,
-  }           
-   
-    return [Productdb, ProductInfo];
-  };
+const getAllCategorias = async () => {
+  let categorias = [
+    "Indumentaria",
+    "Electrodomesticos",
+    "Informatica",
+    "Cosmética",
+    "Electrónica",
+    "Alimentos",
+    "Accesorios",
+    "Muebles",
+    "Jardinería",
+    "Deportes",
+    "Joyería",
+    "Herramientas",
+  ];
+  let categoriasGuardadas = [];
 
-  const getAllCategorias = async () => {
-    let categorias = ["indumentaria", "electrodomesticos", "informatica", "supermercado"];
-    let categoriasGuardadas = [];
-  
-    for (let i = 0; i < categorias.length; i++) {
-      const categoria = { nombre_categoria_producto: categorias[i] };
-      const categoriaGuardada = await Categoria_producto.create(categoria);
-      categoriasGuardadas.push(categoriaGuardada);
-    }
-  
-    return categoriasGuardadas;
-  };
-  
-  module.exports = { getAllProducts,searchProductByName, getProductById,getAllCategorias};
+  for (let i = 0; i < categorias.length; i++) {
+    const categoria = { nombre_categoria_producto: categorias[i] };
+    const categoriaGuardada = await Categoria_producto.create(categoria);
+    categoriasGuardadas.push(categoriaGuardada);
+  }
+
+  return categoriasGuardadas;
+};
+
+module.exports = {
+  getAllProducts,
+  searchProductByName,
+  getProductById,
+  getAllCategorias,
+};

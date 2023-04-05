@@ -1,8 +1,11 @@
 .container{
-    margin-top: 100px;
+    margin-top: 50px;
     width: 400px;
     height: 400px;
-    border: solid 1px red;
+    border: solid 1px rgb(186, 178, 178);
+    border-radius: 20px;
+    background-color: white;
+    color: black;
 }
 
 .container img{
