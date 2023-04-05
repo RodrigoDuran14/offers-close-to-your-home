@@ -3,12 +3,13 @@ import Card from "../card/Card";
 import styles from "./Cards.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import {getAllProducts} from '../../redux/actions'
+import Loader from "../loader/loader";
 
 
 const Cards = () => {
   const products = useSelector((state) => state.products);
   const dispatch = useDispatch();
-
+ 
   useEffect(() => {
     dispatch(getAllProducts());
     
@@ -37,11 +38,12 @@ console.log(aux);
   return (
     <div className={styles.container}>
       <div className={styles.card}>
-      {aux?.map((product,index) => {
+      {aux.length <= 0 ? <Loader /> : 
+      aux?.map((product,index) => {
         return (
           <Card
           key={index}
-            producto={product}
+          producto={product}
           />
         )
       })}

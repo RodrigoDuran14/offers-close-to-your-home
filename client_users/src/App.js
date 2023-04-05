@@ -6,6 +6,7 @@ import Login from "./pages/login/Login";
 import Account from "./pages/account/Account";
 import ForgotPassword from "./pages/forgotPassword/ForgotPassword";
 import About from "./pages/about/About";
+import Register from "./pages/register/Register";
 import NavBar from "./components/navBar/NavBar";
 
 function App() {
@@ -13,18 +14,19 @@ function App() {
 
   return (
     <div className="App">
-      {/* <HashRouter> */}
-      {/* {location?.pathname == "/login" ? null : <NavBar />} */}
-      {/* <Switch> */}
-      <NavBar />
+
+      
+
+      {location?.pathname == "/login" ? null : <NavBar />}
+
+
       <Route exact path="/" component={Home} />
       <Route exact path="/detail/:id" component={Detail} />
-      <Route exact path="/login" component={Login} />
+      <Route exact path="/log-in" component={Login} />
+      <Route exact path="/registrar-usuario" component={Register} />
       <Route exact path="/account" component={Account} />
       <Route exact path="/forgot-password" component={ForgotPassword} />
       <Route exact path="/about" component={About} />
-      {/* </Switch> */}
-      {/* </HashRouter>  */}
     </div>
   );
 }

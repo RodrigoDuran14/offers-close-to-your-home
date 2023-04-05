@@ -2,8 +2,10 @@
     position: relative;
     display: flex;
     justify-content: space-evenly;
-    flex-direction: row;
+    /* flex-direction: row; */
     flex-wrap: wrap;
+    margin-top: 50px;
+    flex-direction: column;
 }
 
 .card{

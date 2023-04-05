@@ -1,10 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import styles from "./SearchBar.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
 import { getProductByName, getAllProducts } from "../../redux/actions";
+import styles from "./SearchBar.module.css";
 
 const SearchBar = () => {
   const [input, setInput] = useState("");

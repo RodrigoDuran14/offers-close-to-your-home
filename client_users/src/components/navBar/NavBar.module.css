@@ -1,34 +1,28 @@
 .container{
     background-color: black;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    /* align-items: center; */
     height: 60px;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 999;
+}
 
+.options {
+    display: none;
 }
 
 .box1{
     display: flex;
-    /* border: solid 1px red; */
     align-items: center;
-    margin-left: 75px;
-}
-
-.box2{
-    display: flex;
-    /* border: solid 1px red; */
-    align-items: center;
-    margin-right: 75px;
 }
 
 .button{
     border-radius: 100px;
     padding: 8px;
-    margin-right: 20px;
     border: none; 
     background-color: black;
     color: aliceblue;  
@@ -39,4 +33,35 @@
 
 .button:hover{ 
     outline: solid 1px rgb(52, 51, 51);
+}
+
+@media (min-width: 820px) {
+    .options {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .menu {
+        display: none;
+    }
+}
+
+
+.texto{
+    height: 20px;
+    margin-top: 22px;
+}
+
+.icono{
+    height: 40px;
+    margin-top: 10px;
+    margin-left: 4px;
+    margin-right: 14px;
+}
+
+.link{
+    text-decoration: none;
+    color: white;
+    margin-left: 10px;
+    margin-right: 10px;
 }
