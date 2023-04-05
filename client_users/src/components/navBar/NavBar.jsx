@@ -23,15 +23,21 @@ const NavBar = () => {
             <div className={s.options}>
             <img className={s.texto} src= {logoTexto} />
             <img className={s.icono} src= {logoIcono} />
-                <Link to="/" className='link-no-decoration' style={{ margin: '0px 10px' }}>
+                <Link to="/" className={s.link}
+                //  style={{ margin: '0px 10px' }}
+                 >
                     <h4>Inicio</h4>
                 </Link>
 
-                <Link to="/account" className='link-no-decoration' style={{ margin: '0px 10px' }}>
+                <Link to="/account" className={s.link}
+                // style={{ margin: '0px 10px' }}
+                >
                     <h4>Quiero vender</h4>
                 </Link>
 
-                <Link to="/about" className='link-no-decoration' style={{ margin: '0px 10px' }}>
+                <Link to="/about" className={s.link}
+                // style={{ margin: '0px 10px' }}
+                >
                     <h4>¿Quienes somos?</h4>
                 </Link>
             </div>
@@ -41,12 +47,12 @@ const NavBar = () => {
             </div>
 
             <div className={s.options}>
-                <Link to="/login" className='link-no-decoration'>
+                <Link to="/login" className={s.link}>
                     <h4>Iniciar sesión</h4>
                 </Link>
 
 
-                <button className={s.button}> <AiOutlineShoppingCart size={35} /> </button>
+                <button className={s.button}> <AiOutlineShoppingCart size={25} /> </button>
             </div>
 
         </div>

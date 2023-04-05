@@ -4,10 +4,10 @@ import { useParams } from 'react-router'
 import QuantityDisplay from '../../components/quantityDisplay/QuantityDisplay'
 import { getProductById } from '../../redux/actions'
 import styles from './Detail.module.css'
+import Loader from '../../components/loader/loader'
 
 const Detail = () => {
   const { product } = useSelector(state => state)
-  console.log(product);
 
   const { id } = useParams()
   const dispatch = useDispatch();
@@ -34,11 +34,11 @@ const Detail = () => {
 
     <section>
     <div className={styles.container}>
-
-      <div className={styles.box1}>
+    {product.hasOwnProperty("nombre") ? (
+    <>
+    <div className={styles.box1}>
         <img src={product.imagen} alt={product.nombre} />
       </div>
-
       <div className={styles.box2}>
         <div style={{ marginTop: "0px" }}>
           <h2>{product.nombre}</h2>
@@ -60,16 +60,15 @@ const Detail = () => {
               onIncrease={handleIncrease}
             />
         </div>
-        
         <div className={styles.btn}>
           <button onClick={handlerCarrito} >Añadir al carrito</button>
         </div>
-
         <div className={styles.btn}>
           <button>Comprar ahora</button>
         </div>
       </div>
-
+      </>
+      ) : <Loader />}
     </div>
     </section>
   )
