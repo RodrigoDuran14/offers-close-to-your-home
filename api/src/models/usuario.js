@@ -9,6 +9,13 @@ sequelize.define('Usuario', {
         key: 'id_tipo_usuario',
       },
     },
+    id_ciudad:{
+      type: DataTypes.INTEGER,
+      references:{
+        model: "Ciudad",
+        key: "id_ciudad"
+      }
+    },
     id_usuario: {
       type: DataTypes.INTEGER,
       allowNull: false, 
@@ -36,13 +43,6 @@ sequelize.define('Usuario', {
     telefono:{
       type: DataTypes.BIGINT,
       allowNull: false,
-    },
-    id_ciudad:{
-      type: DataTypes.INTEGER,
-      references:{
-        model: "Ciudad",
-        key: "id_ciudad"
-      }
     },
     estado:{
       type: DataTypes.BOOLEAN

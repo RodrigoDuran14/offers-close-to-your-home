@@ -9,7 +9,6 @@ const createCommerce = async (id_categoria_comercio, id_ciudad, nombre_comercio,
     password = hashedPassword
   }
 
-
   const newCommerce = await Comercio.create({
 
     id_categoria_comercio,

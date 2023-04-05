@@ -10,6 +10,7 @@ module.exports = (sequelize) => {
     },
     id_comercio: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: "Comercio",
         key: "id_comercio",
@@ -17,6 +18,7 @@ module.exports = (sequelize) => {
     },
     id_categoria_producto: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: "Categoria_producto",
         key: "id_categoria_producto",
@@ -69,6 +71,5 @@ module.exports = (sequelize) => {
   },
   {
     tableName: 'Producto',
-    timestamps: false 
   });
 };

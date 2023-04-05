@@ -14,6 +14,10 @@ module.exports = (sequelize) => {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
+        id_ciudad: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
         nombre_comercio: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -22,36 +26,27 @@ module.exports = (sequelize) => {
         direccion: {
             type: DataTypes.STRING,
             allowNull: false,
-
         },
         telefono: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-
-        },
-        id_ciudad: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.BIGINT,
             allowNull: false,
         },
         estado: {
             type: DataTypes.BOOLEAN,
+            defaultValue: true,
             allowNull: false,
-
         },
         nombre_contacto: {
             type: DataTypes.STRING(50),
             allowNull: false,
-
         },
         cargo: {
             type: DataTypes.STRING(30),
             allowNull: false,
-
         },
         password: {
             type: DataTypes.STRING,
             allowNull: false,
-
         },
         email: {
             type: DataTypes.STRING,
