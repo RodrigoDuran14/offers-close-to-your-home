@@ -2,10 +2,10 @@ const { createCommerce } = require("../../controllers/comercios/postComercioCont
 const { searchNameCommerce, searchEmailCommerce } = require("../../controllers/comercios/getComercioController")
 
 const postCommerceHandler = async (req, res) => {
-    const { id_categoria_comercio, id_ciudad, nombre_comercio, direccion, telefono, estado, nombre_contacto, cargo, password, email, imagen } = req.body
+    const {id_ciudad, id_categoria_comercio, nombre_comercio, direccion, telefono, estado, nombre_contacto, cargo, password, email, imagen } = req.body
 
     try {
-        if (id_categoria_comercio, id_ciudad, nombre_comercio, direccion, telefono, estado, nombre_contacto, cargo, password, email, imagen) {
+        if ( nombre_comercio, direccion, telefono, estado, nombre_contacto, cargo, password, email, imagen) {
 
             const [resultSearchName, resultSearchEmail] = await Promise.all([
                 searchNameCommerce(nombre_comercio),
@@ -13,7 +13,7 @@ const postCommerceHandler = async (req, res) => {
             ])
             if (resultSearchEmail === null && resultSearchName === null) {
 
-                const newCommerce = await createCommerce(id_categoria_comercio, id_ciudad, nombre_comercio, direccion, telefono, estado, nombre_contacto, cargo, password, email, imagen)
+                const newCommerce = await createCommerce(id_ciudad, id_categoria_comercio, nombre_comercio, direccion, telefono, estado, nombre_contacto, cargo, password, email, imagen)
                 res.status(200).json(newCommerce)
             }
             else if (resultSearchEmail !== null) {

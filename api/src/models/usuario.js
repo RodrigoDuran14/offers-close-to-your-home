@@ -15,7 +15,6 @@ sequelize.define('Usuario', {
     },
     segundo_nombre:{
       type: DataTypes.STRING(50),
-      allowNull: false,
     },
     primer_apellido:{
       type: DataTypes.STRING(50),
@@ -23,17 +22,15 @@ sequelize.define('Usuario', {
     },
     segundo_apellido:{
       type: DataTypes.STRING(50),
-      allowNull: false,
     },
     direccion:{
       type: DataTypes.STRING,
       allowNull: false
     },
     telefono:{
-      type: DataTypes.INTEGER,
+      type: DataTypes.BIGINT,
       allowNull: false,
     },
-   
     estado:{
       type: DataTypes.BOOLEAN
     },

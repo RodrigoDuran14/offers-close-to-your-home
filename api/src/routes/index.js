@@ -15,6 +15,8 @@ const comercio = require("./comercio")
 
 const categoriaComercio = require("./categoriaComercio")
 
+const ciudades = require("./ciudad");
+
 const router = Router();
 
 // Configurar los routers
@@ -35,6 +37,10 @@ router.get("/productos", function(req, res, next){
     // para buscar el producto en la base de datos
     paymentInstance.getPymentLink(req, res, productId);
   });
+
+router.use("/ciudad", ciudades);
+
+
 module.exports = router;
 
 /*e l enlace que devuelve tu API al cliente es el enlace de pago de Mercado Pago generado para la transacción.

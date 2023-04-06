@@ -1,30 +1,30 @@
 const { Usuario } = require("../../db");
-const { op } = require("sequelize");
+const {Op, Sequelize } = require("sequelize");
 
 const getAllUsers = async () => {
   try {
-  const dataUser = await Usuario.finAll({
-    attributes: [
-      "id_tipo_usuario",
-      "id_usuario",
-      "primer_nombre",
-      "segundo_nombre",
-      "primer_apellido",
-      "segundo_apellido",
-      "direccion",
-      "telefono",
-      "id_ciudad",
-      "estado",
-      "email",
-      "contraseña",
-      "imagen",
-    ],
-  });
-  const results = [...dataUser];
-  return results;
-} catch (error) {
-  console.error(error);
-}
+    const dataUser = await Usuario.findAll({
+      attributes: [
+        "id_tipo_usuario",
+        "id_usuario",
+        "primer_nombre",
+        "segundo_nombre",
+        "primer_apellido",
+        "segundo_apellido",
+        "direccion",
+        "telefono",
+        "id_ciudad",
+        "estado",
+        "email",
+        "contraseña",
+        "imagen",
+      ],
+    });
+    const results = [...dataUser];
+    return results;
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 const getUserById = async idUser => {
@@ -70,17 +70,33 @@ const getUserByName = async name => {
         "contraseña",
         "imagen",
       ],
-      where: { [op.or]: [
-        { primer_nombre: name },
-        { segundo_nombre: name },
-        { primer_apellido: name },
-        { segundo_apellido: name }
-      ] },
+      where: {
+        [Op.or]: [
+          { primer_nombre: name },
+          { segundo_nombre: name },
+          { primer_apellido: name },
+          { segundo_apellido: name },
+        ],
+      },      
     });
+  //   where: {
+  //     [Op.or]: [
+  //       Sequelize.literal(
+  //         `primer_nombre = '${name}' OR segundo_nombre = '${name}' OR primer_apellido = '${name}' OR segundo_apellido = '${name}'`
+  //       ),
+  //     ],
+  //   },
+  // });
     return users;
   } catch (error) {
     console.error(error);
   }
 };
+
+
+
+
+
+
 
 module.exports = { getAllUsers, getUserById, getUserByName };

@@ -17,6 +17,14 @@ module.exports = (sequelize) => {
       type: DataTypes.DATEONLY,
       allowNull: false,
     },
+    id_comercio: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'Comercio',
+        key: 'id_comercio'
+      }
+    },
     fecha_final: {
       type: DataTypes.DATEONLY,
       allowNull: false,
