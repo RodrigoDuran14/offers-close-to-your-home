@@ -53,9 +53,10 @@ const {
 } = sequelize.models;
 
 // Aca vendrian las relaciones
-// Product.hasMany(Reviews);
 
-Tipo_usuario.hasMany(Usuario);
+Tipo_usuario.hasMany(Usuario, {foreignKey: 'id_tipo_usuario'});
+Usuario.belongsTo(Tipo_usuario, {foreignKey: 'id_tipo_usuario',});
+
 
 Producto.hasMany(Motivo_calificacion, {foreignKey:"id_producto"});
 Motivo_calificacion.belongsTo(Producto /*{foreignKey:"id_producto"}*/);
@@ -71,6 +72,7 @@ Venta.belongsTo(Usuario , {foreignKey:"id_usuario"})
 
 Categoria_comercio.hasMany(Comercio, {foreignKey:"id_categoria_comercio"});
 Comercio.belongsTo(Categoria_comercio, {foreignKey:"id_categoria_comercio"})
+
 
 Producto.belongsToMany(Venta, { through: Detalle_venta });
 Venta.belongsToMany(Producto, { through: Detalle_venta });
