@@ -2,6 +2,7 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
 sequelize.define('Usuario', {
+
     id_usuario: {
       type: DataTypes.INTEGER,
       allowNull: false, 
@@ -30,6 +31,7 @@ sequelize.define('Usuario', {
       type: DataTypes.BIGINT,
       allowNull: false,
     },
+
     estado:{
       type: DataTypes.BOOLEAN
     },
