@@ -18,13 +18,7 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    id_producto: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "Producto",
-        key: "id_producto",
-      },
-    },
+    
   },
   {
     tableName: 'Motivo_calificacion',

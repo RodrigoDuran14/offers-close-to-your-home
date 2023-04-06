@@ -19,11 +19,13 @@ const getAllProducts = async () => {
       "imagen",
       "nombre",
     ],
-    include: {
+    include: [{
       model: Categoria_producto,
       attributes: ["nombre_categoria_producto"],
       required: true,
-    },
+    }
+  ],
+    
   });
 
   // buscar en la api
