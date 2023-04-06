@@ -64,7 +64,7 @@ Ciudad.hasMany(Usuario,{foreignKey:"id_ciudad"});
 Usuario.belongsTo(Ciudad,{foreignKey:"id_ciudad"});
 
 Ciudad.hasMany(Comercio, {foreignKey: "id_ciudad"});
-Comercio.belongsTo(Ciudad);
+Comercio.belongsTo(Ciudad)
 
 Usuario.hasMany(Venta, {foreignKey:"id_usuario"});
 Venta.belongsTo(Usuario , {foreignKey:"id_usuario"})
