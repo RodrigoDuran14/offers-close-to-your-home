@@ -2,13 +2,6 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
 sequelize.define('Usuario', {
-    id_tipo_usuario: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'Tipo_usuario',
-        key: 'id_tipo_usuario',
-      },
-    },
     id_usuario: {
       type: DataTypes.INTEGER,
       allowNull: false, 
@@ -36,13 +29,6 @@ sequelize.define('Usuario', {
     telefono:{
       type: DataTypes.BIGINT,
       allowNull: false,
-    },
-    id_ciudad:{
-      type: DataTypes.INTEGER,
-      references:{
-        model: "Ciudad",
-        key: "id_ciudad"
-      }
     },
     estado:{
       type: DataTypes.BOOLEAN
