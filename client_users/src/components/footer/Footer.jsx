@@ -7,7 +7,7 @@ const logo = Logo
 const henry = Henry
     return(
         <div className={styles.container}>
-            <div >
+            <div>
                 <img className={styles.logo} src={logo} />
             </div>
             <div className={styles.nombres}>

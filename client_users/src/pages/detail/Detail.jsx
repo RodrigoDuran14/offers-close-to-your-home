@@ -45,9 +45,9 @@ const Detail = () => {
                   <div style={{ margin: "10px" }}>
                     <span>{product.condicion}</span>
                   </div>
-                  <div style={{ width: "100%", marginBottom: "10px" }}>
+                  {/* <div style={{ width: "100%", marginBottom: "10px" }}>
                     <img src={product.imagen} alt={product.nombre} />
-                  </div>
+                  </div> */}
                 </div>
   
                 <div className={styles.box2}>

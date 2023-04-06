@@ -21,13 +21,13 @@
     flex-wrap: wrap;
     align-content: center;
     justify-content: center;
-    width: 800px;
+    width: 545px;
 }
 
 .links{
     text-decoration: none;
     color: white;
-    font-size: 20px;
+    font-size: 15px;
     margin: 10px;
 }
 .henry{
