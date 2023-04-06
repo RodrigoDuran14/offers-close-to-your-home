@@ -1,6 +1,5 @@
-
-const {Producto, Comercio, Categoria_producto} = require("../../db")
-const axios = require("axios")
+const { Producto, Comercio, Categoria_producto } = require("../../db");
+const axios = require("axios");
 const { Op } = require("sequelize");
 
 const getAllProducts = async () => {
@@ -20,22 +19,22 @@ const getAllProducts = async () => {
       "imagen",
       "nombre",
     ],
-    include: {
+    include: [{
       model: Categoria_producto,
       attributes: ["nombre_categoria_producto"],
-      required: true
+      required: true,
     }
+  ],
+    
   });
 
-
   // buscar en la api
-  const apiProductsRaw = (
-    await axios.get("https://fakestoreapi.com/products")).data;
+  const apiProductsRaw = (await axios.get("https://fakestoreapi.com/products"))
+    .data;
   const apiP = cleanArray(apiProductsRaw);
   const results = [...databaseProducts, ...apiP];
   return results;
 };
-
 
 const searchProductByName = async (nombre) => {
   const [databaseProducts, apiProductsRaw] = await Promise.all([
@@ -57,13 +56,17 @@ const searchProductByName = async (nombre) => {
 };
 
 const cleanArray = (arr) => {
+  const condicionArray = ["Nuevo", "Usado", "Reacondicionado"];
   return arr.map((elem) => {
+    const indiceAleatorio = Math.floor(Math.random() * condicionArray.length);
     return {
       id_producto: elem.id,
       nombre: elem.title,
       valor_normal: elem.price,
       valor_con_descuento: elem.price,
       estado: elem.true,
+      condicion: condicionArray[indiceAleatorio],
+      categoria: elem.category,
       imagen: elem.image,
     };
   });
@@ -71,10 +74,13 @@ const cleanArray = (arr) => {
 
 const getProductById = async (idProduct) => {
   let ProductInfo = [];
-  let Productdb = [];
 
   const apiData = await axios.get(
-    `https://fakestoreapi.com/products/${idProduct}`);
+    `https://fakestoreapi.com/products/${idProduct}`
+  );
+  const condicionArray = ["Nuevo", "Usado", "Reacondicionado"];
+  const indiceAleatorio = Math.floor(Math.random() * 3);
+
   ProductInfo = {
     id_producto: apiData.data.id,
     nombre: apiData.data.title,
@@ -82,41 +88,67 @@ const getProductById = async (idProduct) => {
     valor_normal: apiData.data.price,
     valor_con_descuento: apiData.data.price,
     estado: apiData.data.true,
+    condicion: condicionArray[indiceAleatorio],
+    categoria: apiData.data.category,
     imagen: apiData.data.image,
   };
-
   //buscar por id de la db
-  const dbdata = await Producto.findByPk(idProduct)
+  const dbdata = await Producto.findByPk(idProduct, {
+    attributes: [
+      "id_producto",
+      "nombre",
+      "fecha_inicial",
+      "fecha_final",
+      "descripcion_producto",
+      "cantidad",
+      "existencia",
+      "valor_normal",
+      "valor_con_descuento",
+      "imagen",
+      "condicion",
+      "estado",
+      "id_categoria_producto",
+    ],
+  });
+  if (!dbdata) return ProductInfo;
+  return [dbdata, ProductInfo];
+};
 
-    Productdb = {
-    id_producto: dbdata.id_producto,
-    nombre: dbdata.nombre,
-    fecha_inicial: dbdata.fecha_inicial,
-    fecha_final: dbdata.fecha_final,
-    descripcion_producto: dbdata.descripcion_producto,
-    cantidad: dbdata.cantidad,
-    existencia: dbdata.existencia,
-    valor_normal: dbdata.valor_normal,
-    valor_con_descuento: dbdata.valor_con_descuento,
-    imagen: dbdata.imagen,
-    condicion: dbdata.condicion,
-    estado: dbdata.estado,
-  }           
-   
-    return [Productdb, ProductInfo];
-  };
-
-  const getAllCategorias = async () => {
-    let categorias = ["indumentaria", "electrodomesticos", "informatica", "supermercado"];
-    let categoriasGuardadas = [];
+const getAllCategorias = async () => {
+  let categorias = [
+    {nombre_categoria_producto: "Indumentaria", imagen_categoria_producto: "https://media.ambito.com/p/6f5d891ba726a94d0a32b461085e5a84/adjuntos/239/imagenes/038/124/0038124118/1200x675/smart/ropa-indumentariajpg.jpg"},
+    {nombre_categoria_producto: "Electrodomesticos", imagen_categoria_producto: "https://www.semana.com/resizer/OS-i-9QcsuU_4bwAj2J23Le98sg=/1280x720/smart/filters:format(jpg):quality(80)/cloudfront-us-east-1.images.arcpublishing.com/semana/TGVVZATTDJGO7D3AW2P3RQDY5E.jpg"},
+    {nombre_categoria_producto: "Informatica", imagen_categoria_producto: "https://concepto.de/wp-content/uploads/2014/10/hardware-e1551046878558.jpg"},
+    {nombre_categoria_producto: "Cosmética", imagen_categoria_producto: "https://www.aquateknica.com/wp-content/uploads/2020/02/calidad-cosmeticos-aq-instruments-1024x718.jpg"},
+    {nombre_categoria_producto: "Alimentos", imagen_categoria_producto: "https://gastronomicainternacional.com/wp-content/uploads/2020/06/que-son-alimentos-no-perecederos-1-min.jpg"},
+    {nombre_categoria_producto: "Juguetes", imagen_categoria_producto: "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/71saY5E2z5L._AC_SX679_.jpg"},
+    {nombre_categoria_producto: "Muebles", imagen_categoria_producto: "https://www.distribucionactualidad.com/wp-content/uploads/2018/01/MUEBLES.jpg"},
+    {nombre_categoria_producto: "Jardinería", imagen_categoria_producto: "https://thumbs.dreamstime.com/b/herramientas-de-jardiner%C3%ADa-sobre-un-fondo-plano-madera-plana-vista-la-parte-superior-165590766.jpg"},
+    {nombre_categoria_producto: "Deportes", imagen_categoria_producto: "https://proyectocoqui.org/wp-content/uploads/2022/10/En-que-hay-que-fijarse-al-comprar-ropa-de-deporte.jpg"},
+    {nombre_categoria_producto: "Joyería", imagen_categoria_producto: "https://images7.alphacoders.com/421/421542.jpg"},
+    {nombre_categoria_producto: "Herramientas", imagen_categoria_producto: "https://png.pngtree.com/thumb_back/fh260/background/20210910/pngtree-toolbox-labor-wrench-screwdriver-manual-photography-map-with-map-image_839810.jpg"},
+  ];
+  let categoriasGuardadas = [];
+  const todasLasCategorias = await Categoria_producto.findAll({raw: true})
   
+  if (todasLasCategorias.length) {
+    console.log("todasLasCategorias", todasLasCategorias);
+    return todasLasCategorias
+  } else{
     for (let i = 0; i < categorias.length; i++) {
-      const categoria = { nombre_categoria_producto: categorias[i] };
-      const categoriaGuardada = await Categoria_producto.create(categoria);
+      const categoriaGuardada = await Categoria_producto.create(categorias[i]);
       categoriasGuardadas.push(categoriaGuardada);
     }
-  
+    console.log("categoriasGuardadas", categoriasGuardadas);
     return categoriasGuardadas;
-  };
-  
-  module.exports = { getAllProducts,searchProductByName, getProductById,getAllCategorias};
+
+  }
+
+};
+
+module.exports = {
+  getAllProducts,
+  searchProductByName,
+  getProductById,
+  getAllCategorias,
+};

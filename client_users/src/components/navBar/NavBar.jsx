@@ -1,49 +1,62 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import SearchBar from '../searchBar/SearchBar'
-import styles from './NavBar.module.css'
+import DrawerMenu from '../drawerMenu/DrawerMenu'
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import s from './NavBar.module.css'
+
+// imagenes
+import Logo from "../../assets/images/SoloTextoBlanco.png";
+import Icono from "../../assets/images/SoloIconoNormal.png";
 
 const NavBar = () => {
-  return (
-    <div className={styles.container}>
-            
-            <div className={styles.box2}>
-                <div>
-                    <Link to="/">            
-                        <button className={styles.button}>Home</button>
-                    </Link>
-                </div>
 
-                <div>
-                    <Link to="/account">            
-                        <button className={styles.button}>Cuenta</button>
-                    </Link>
-                </div>
+    const logoTexto = Logo;
+    const logoIcono = Icono;
+    
+    return (
+        <div className={s.container}>
 
-                <div>
-                    <Link to="/about">
-                        <button className={styles.button}>Acerca de</button>
-                    </Link>
-                </div>
-                
-                <div className={styles.box1}>
-                    <div>
-                      <SearchBar />
-                    </div>
-                </div>
-
-                <div>
-                    <Link to="/login">            
-                        <button className={styles.button}>Iniciar sesión</button>
-                    </Link>
-                </div>
-                
-                <div>
-                    <button className={styles.button}>Cerrar sesión</button>
-                </div>
+            <div className={s.menu}>
+                <DrawerMenu />
             </div>
+            <div className={s.options}>
+            <img className={s.texto} src= {logoTexto} />
+            <img className={s.icono} src= {logoIcono} />
+                <Link to="/" className={s.link}
+                //  style={{ margin: '0px 10px' }}
+                 >
+                    <h4>Inicio</h4>
+                </Link>
+
+                <Link to="/account" className={s.link}
+                // style={{ margin: '0px 10px' }}
+                >
+                    <h4>Quiero vender</h4>
+                </Link>
+
+                <Link to="/about" className={s.link}
+                // style={{ margin: '0px 10px' }}
+                >
+                    <h4>¿Quienes somos?</h4>
+                </Link>
+            </div>
+
+            <div className={s.box1}>
+                <SearchBar />
+            </div>
+
+            <div className={s.options}>
+                <Link to="/login" className={s.link}>
+                    <h4>Iniciar sesión</h4>
+                </Link>
+
+
+                <button className={s.button}> <AiOutlineShoppingCart size={25} /> </button>
+            </div>
+
         </div>
-  )
+    )
 }
 
 export default NavBar

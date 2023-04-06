@@ -17,7 +17,8 @@ const postProductHandler = async (req, res) => {
     valor_con_descuento,
     condicion,
     imagen,
-    id_categoria_producto
+    id_categoria_producto,
+    id_comercio
   } = req.body;
   
   try {
@@ -34,7 +35,8 @@ const postProductHandler = async (req, res) => {
       valor_con_descuento,
       condicion,
       imagen,
-      id_categoria_producto
+      id_categoria_producto,
+      id_comercio
     );
 
     res.status(200).json(newProduct);
@@ -42,5 +44,8 @@ const postProductHandler = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 
+};
 
-module.exports = { postProductHandler };
+
+
+module.exports = { postProductHandler }

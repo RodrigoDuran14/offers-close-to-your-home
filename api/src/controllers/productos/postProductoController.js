@@ -11,7 +11,8 @@ const createProduct = async (
   valor_con_descuento,
   condicion,
   imagen,
-  id_categoria_producto
+  id_categoria_producto,
+  id_comercio
 ) => {
   const newProduct = await Producto.create({
     nombre,
@@ -24,7 +25,8 @@ const createProduct = async (
     valor_con_descuento,
     condicion,
     imagen,
-    id_categoria_producto
+    id_categoria_producto,
+    id_comercio
   });
 
   return newProduct;

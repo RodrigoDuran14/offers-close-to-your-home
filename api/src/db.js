@@ -57,16 +57,29 @@ const {
 
 Tipo_usuario.hasMany(Usuario);
 
-Producto.hasMany(Motivo_calificacion);
-Ciudad.hasMany(Usuario);
-Ciudad.hasMany(Comercio);
-Usuario.hasMany(Venta);
-Categoria_comercio.hasMany(Comercio);
+Producto.hasMany(Motivo_calificacion, {foreignKey:"id_producto"});
+Motivo_calificacion.belongsTo(Producto /*{foreignKey:"id_producto"}*/);
+
+Ciudad.hasMany(Usuario,{foreignKey:"id_ciudad"});
+Usuario.belongsTo(Ciudad,{foreignKey:"id_ciudad"});
+
+Ciudad.hasMany(Comercio, {foreignKey: "id_ciudad"});
+Comercio.belongsTo(Ciudad)
+
+Usuario.hasMany(Venta, {foreignKey:"id_usuario"});
+Venta.belongsTo(Usuario , {foreignKey:"id_usuario"})
+
+Categoria_comercio.hasMany(Comercio, {foreignKey:"id_categoria_comercio"});
+Comercio.belongsTo(Categoria_comercio, {foreignKey:"id_categoria_comercio"})
+
 Producto.belongsToMany(Venta, { through: Detalle_venta });
 Venta.belongsToMany(Producto, { through: Detalle_venta });
-Comercio.hasMany(Producto)
-Categoria_producto.belongsTo(Producto, { foreignKey: 'id_categoria_producto' });
-Producto.belongsTo(Categoria_producto, { foreignKey: 'id_categoria_producto' })
+
+Comercio.hasMany(Producto, {foreignKey:"id_comercio"})
+Producto.belongsTo(Comercio, {foreignKey:"id_comercio"})
+
+Categoria_producto.hasMany(Producto, { foreignKey: 'id_categoria_producto' });
+Producto.belongsTo(Categoria_producto, {foreignKey:'id_categoria_producto'})
 
   
 module.exports = {
