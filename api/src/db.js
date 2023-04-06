@@ -55,10 +55,31 @@ const {
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
-Tipo_usuario.hasMany(Usuario);
+// Tipo_usuario.hasMany(Usuario);
+
+Tipo_usuario.hasMany(Usuario, {
+  foreignKey: 'id_tipo_usuario',
+  onDelete: 'CASCADE',
+});
+
+Usuario.belongsTo(Tipo_usuario, {
+  foreignKey: 'id_tipo_usuario',
+});
 
 Producto.hasMany(Motivo_calificacion);
-Ciudad.hasMany(Usuario);
+// Ciudad.hasMany(Usuario);
+
+Ciudad.hasMany(Usuario, {
+  foreignKey: 'id_ciudad',
+  onDelete: 'CASCADE',
+});
+
+Usuario.belongsTo(Ciudad, {
+  foreignKey: 'id_ciudad',
+});
+
+
+
 Ciudad.hasMany(Comercio);
 Usuario.hasMany(Venta);
 Categoria_comercio.hasMany(Comercio);

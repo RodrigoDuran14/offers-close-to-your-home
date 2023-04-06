@@ -10,7 +10,6 @@ const loadCities = async () => {
     const ciudades = JSON.parse(ciudadesJSON);
     let mapCiudades = ciudades.map((prop) => ({ id_ciudad: prop.id,
         nombre_ciudad: prop.nombre }));
-    console.log(mapCiudades);
     
     await Ciudad.bulkCreate(mapCiudades, { validate: true });
     
