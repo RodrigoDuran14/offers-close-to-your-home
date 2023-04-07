@@ -24,6 +24,8 @@ function App() {
       <Route exact path="/account" component={Account} />
       <Route exact path="/forgot-password" component={ForgotPassword} />
       <Route exact path="/about" component={About} />
+      <Route exact path="/shopping-cart" component={About} />
+
     </div>
   );
 }
