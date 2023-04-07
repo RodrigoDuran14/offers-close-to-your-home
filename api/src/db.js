@@ -59,13 +59,13 @@ Usuario.belongsTo(Tipo_usuario, {foreignKey: 'id_tipo_usuario',});
 
 
 Producto.hasMany(Motivo_calificacion, {foreignKey:"id_producto"});
-Motivo_calificacion.belongsTo(Producto /*{foreignKey:"id_producto"}*/);
+Motivo_calificacion.belongsTo(Producto, {foreignKey:"id_producto"});
 
 Ciudad.hasMany(Usuario,{foreignKey:"id_ciudad"});
 Usuario.belongsTo(Ciudad,{foreignKey:"id_ciudad"});
 
 Ciudad.hasMany(Comercio, {foreignKey: "id_ciudad"});
-Comercio.belongsTo(Ciudad)
+Comercio.belongsTo(Ciudad, {foreignKey: "id_ciudad"})
 
 Usuario.hasMany(Venta, {foreignKey:"id_usuario"});
 Venta.belongsTo(Usuario , {foreignKey:"id_usuario"})
