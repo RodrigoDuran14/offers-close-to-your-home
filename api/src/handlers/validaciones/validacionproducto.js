@@ -24,9 +24,7 @@ const validacionPostProducto = (data) => {
     !valor_normal ||
     !valor_con_descuento ||
     !condicion ||
-    !imagen ||
-    !id_categoria_producto ||
-    !id_comercio
+    !imagen 
   ) {
     throw new Error("Todos los campos son obligatorios");
   }

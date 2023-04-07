@@ -10,14 +10,7 @@ module.exports = (sequelize) => {
             autoIncrement: true,
             primaryKey: true,
         },
-        id_categoria_comercio: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-        id_ciudad: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
+     
         nombre_comercio: {
             type: DataTypes.STRING,
             allowNull: false,

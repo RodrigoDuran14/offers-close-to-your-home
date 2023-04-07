@@ -1,0 +1,37 @@
+.container{
+    background-color: black;
+    color: aliceblue;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+    z-index: 998;
+    position: relative;
+    bottom: -20px;
+}
+
+.logo{
+    width: 200px;
+}
+
+.nombres{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    width: 545px;
+}
+
+.links{
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+    margin: 10px;
+}
+.henry{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
