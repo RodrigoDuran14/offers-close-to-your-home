@@ -2,7 +2,7 @@ import axios from "axios";
 import * as action from "./actions-type"; // para no escribir todos los action types los obtuve todos con el uso del * y lo renombre como action...para usar colocar la palabra action.[nombre del action-type]
 
 //const URL = "http://localhost:3001"
-const URL = "https://justoffers.up.railway.app/";
+const URL = "https://justoffers-back.up.railway.app/";
 
 // ========================* USUARIOS *========================
 export function registerUser() {
