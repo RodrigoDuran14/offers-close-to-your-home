@@ -22,8 +22,13 @@ const createCommerce = async (id_ciudad, id_categoria_comercio,nombre_comercio, 
     imagen,
     id_ciudad,
     id_categoria_comercio
-
   });
+
+  //const adCiudad = await Ciudad.findAll({where: {id_ciudad}});
+  //const addCategoriaComercio = await Categoria_comercio.findAll({where: {id_categoria_comercio}});
+//
+  //await newCommerce.addCiudad(adCiudad);
+  //await newCommerce.addCategoria_comercio(addCategoriaComercio)
 
   return newCommerce;
 };

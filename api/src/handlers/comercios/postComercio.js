@@ -24,9 +24,9 @@ const postCommerceHandler = async (req, res) => {
     imagen,
   } = req.body;
 
-    try {
-      //validacionPostComercio(req.body);
-
+  try {
+      
+      validacionPostComercio(req.body)
       const [resultSearchName, resultSearchEmail] = await Promise.all([
         searchNameCommerce(nombre_comercio),
         searchEmailCommerce(email),
