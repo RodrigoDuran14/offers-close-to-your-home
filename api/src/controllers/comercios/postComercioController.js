@@ -28,5 +28,3 @@ const createCommerce = async (id_ciudad, id_categoria_comercio,nombre_comercio, 
   return newCommerce;
 };
 module.exports = { createCommerce };
-
-

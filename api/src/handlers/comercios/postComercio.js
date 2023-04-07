@@ -1,5 +1,6 @@
-const { createCommerce } = require("../../controllers/comercios/postComercioController")
-const { searchNameCommerce, searchEmailCommerce } = require("../../controllers/comercios/getComercioController")
+const { createCommerce } = require("../../controllers/comercios/postComercioController");
+const { searchNameCommerce, searchEmailCommerce } = require("../../controllers/comercios/getComercioController");
+const { validacionPostComercio } = require("../validaciones/validacionComercio");
 
 const postCommerceHandler = async (req, res) => {
     const {id_ciudad, id_categoria_comercio, nombre_comercio, direccion, telefono, estado, nombre_contacto, cargo, password, email, imagen } = req.body
@@ -29,8 +30,8 @@ const postCommerceHandler = async (req, res) => {
     } catch (error) {
         res.status(400).json({ error: error.message })
     }
-
-}
+ 
+};
 module.exports = {
-    postCommerceHandler
-}
+  postCommerceHandler,
+};

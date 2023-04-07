@@ -8,17 +8,15 @@ import ForgotPassword from "./pages/forgotPassword/ForgotPassword";
 import About from "./pages/about/About";
 import Register from "./pages/register/Register";
 import NavBar from "./components/navBar/NavBar";
+// import Footer from "./components/footer/Footer";
 
 function App() {
   const location = useLocation();
 
   return (
     <div className="App">
-
-      
-
       {location?.pathname == "/login" ? null : <NavBar />}
-
+      {/* {location?.pathname == "/login" ? null : <Footer />} */}
 
       <Route exact path="/" component={Home} />
       <Route exact path="/detail/:id" component={Detail} />
