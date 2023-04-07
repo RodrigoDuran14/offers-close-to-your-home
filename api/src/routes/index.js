@@ -7,6 +7,8 @@ const paymentInstance = new paymentController(new paymentService())
 
 const productos = require("./producto");
 
+const allproducts = require("./allProducts");
+
 const usuarios = require("./usuario");
 
 const categorias = require("./categorias");
@@ -22,6 +24,8 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 router.use("/products", productos);
+
+router.use("/allProducts", allproducts);
 
 router.use("/usuario", usuarios);
 
