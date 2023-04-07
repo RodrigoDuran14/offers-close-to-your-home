@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const { Comercio } = require("../../db")
 
-const createCommerce = async (id_categoria_comercio, id_ciudad, nombre_comercio, direccion, telefono, estado, nombre_contacto, cargo, password, email, imagen) => {
+const createCommerce = async (id_ciudad, id_categoria_comercio,nombre_comercio, direccion, telefono, estado, nombre_contacto, cargo, password, email, imagen) => {
 
   if (password) {
     const salt = await bcrypt.genSalt(10);
@@ -11,9 +11,6 @@ const createCommerce = async (id_categoria_comercio, id_ciudad, nombre_comercio,
 
 
   const newCommerce = await Comercio.create({
-
-    id_categoria_comercio,
-    id_ciudad,
     nombre_comercio,
     direccion,
     telefono,
@@ -22,11 +19,12 @@ const createCommerce = async (id_categoria_comercio, id_ciudad, nombre_comercio,
     cargo,
     password,
     email,
-    imagen
+    imagen,
+    id_ciudad,
+    id_categoria_comercio
+
   });
 
   return newCommerce;
 };
 module.exports = { createCommerce };
-
-

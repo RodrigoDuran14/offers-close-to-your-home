@@ -12,6 +12,12 @@ module.exports = (sequelize) => {
       allowNull: false,
       unique: true,
     },
+    imagen_categoria_producto: {
+      type: DataTypes.STRING(),
+      allowNull: false,
+      unique: true,
+    },
+    
   }, {
     tableName: 'Categoria_producto',
     timestamps: false,

@@ -139,11 +139,12 @@ export const filterByRefurbishedProducts = () => {
 };
 
 // * 11. action-creator para filtrar productos por categoria
-export function filterByCategory() {
+export function getCategorys() {
   return async function (dispatch) {
     const resp = await axios.get(`${URL}/categorias`);
+    console.log(resp.data);
     dispatch({
-      type: action.GET_ALL_PRODUCTS,
+      type: action.GET_CATEGORY,
       payload: resp.data,
     });
   };

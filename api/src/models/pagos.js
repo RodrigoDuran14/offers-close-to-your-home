@@ -27,13 +27,7 @@ module.exports = (sequelize) => {
       allowNull: false,
       defaultValue: false,
     },
-    id_detalle_venta: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "Detalle_venta",
-        key: "id_detalle_venta",
-      },
-    },
+   
   },
   {
     tableName: 'Pagos',

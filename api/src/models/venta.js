@@ -14,14 +14,7 @@ sequelize.define('Venta', {
     type: DataTypes.FLOAT, 
         allowNull: false,
   },
-  id_usuario:{
-    type: DataTypes.INTEGER,
-    allowNull:false,
-    references:{
-      model: "Usuario",
-      key: "id_usuario"
-    }
-  }
+ 
   },
   {
     tableName: 'Venta',
