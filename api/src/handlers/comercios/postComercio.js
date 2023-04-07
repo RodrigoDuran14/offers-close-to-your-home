@@ -25,17 +25,8 @@ const postCommerceHandler = async (req, res) => {
   } = req.body;
 
   try {
-    if (
-      (nombre_comercio,
-      direccion,
-      telefono,
-      estado,
-      nombre_contacto,
-      cargo,
-      password,
-      email,
-      imagen)
-    ) {
+      
+      validacionPostComercio(req.body)
       const [resultSearchName, resultSearchEmail] = await Promise.all([
         searchNameCommerce(nombre_comercio),
         searchEmailCommerce(email),
@@ -60,9 +51,7 @@ const postCommerceHandler = async (req, res) => {
       } else {
         res.status(300).send({ data: "ya existe un camercio con ese nambre" });
       }
-    } else {
-      res.status(300).send({ data: "faltan llenar campos" });
-    }
+
   } catch (error) {
     res.status(400).json({ error: error.message });
 

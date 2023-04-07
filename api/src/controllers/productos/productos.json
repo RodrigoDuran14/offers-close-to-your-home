@@ -2,7 +2,7 @@
 
     {
         "nombre": "Camiseta",
-          "fecha_inicial" :"2022/02/20",
+          "fecha_inicial" :"2022-02-20",
           "fecha_final" :"2023-02-20",
           "descripcion_producto": "camiseta Fnatic 2023",
           "cantidad": 121,
@@ -16,7 +16,7 @@
       },
       {
         "nombre": "Pantalon Rip Stop Negro - Hombre y Mujer",
-        "fecha_inicial" :"2022/02/20",
+        "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "6 bolsillos: 2 a la altura de la cintura, 2 en la parte trasera y 2 bolsillos fuelle en los costados (tipo cargo), Entrepiernas y rodillas reforzadas ",
         "cantidad": 121,
@@ -30,7 +30,7 @@
       },
       {
         "nombre": "microondas",
-        "fecha_inicial" :"2022/02/20",
+        "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "Horno microondas",
         "cantidad": 121,
@@ -46,7 +46,7 @@
       },
       {
         "nombre": "Heladera",
-        "fecha_inicial" :"2022/02/20",
+        "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "No Frost Electrolux DFN3000P Plata 265lts",
         "cantidad": 121,
@@ -60,7 +60,7 @@
       },
       {
         "nombre": "mouse Fnatic",
-        "fecha_inicial" :"2022/02/20",
+        "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "Fnatic Gear Bolt Wireless Gaming Mouse",
         "cantidad": 121,
@@ -74,7 +74,7 @@
       },
       {
         "nombre": "Teclado Fnatic",
-        "fecha_inicial" :"2022/02/20",
+        "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "Ministreak Speed | Negro Led",
         "cantidad": 121,
@@ -87,7 +87,7 @@
         "id_comercio": 1
       }, {
         "nombre": "rubor en crema",
-        "fecha_inicial" :"2022/02/20",
+        "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "Rare Beauty By Selena Gomez Soft Pinch Liquid Blush- Love",
         "cantidad": 121,
@@ -101,7 +101,7 @@
       },
       {
         "nombre": "MAC SATIN LIPSTICK",
-        "fecha_inicial" :"2022/02/20",
+        "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "MAC Lipstick el producto icónico que hizo famoso a MAC. Esta fórmulacremosa ofrece una sensación suave y acolchonada, cobertura construiblede media a completa y un acabado satinado.",
         "cantidad": 121,
@@ -115,7 +115,7 @@
       },
       {
         "nombre": "Pan Integral",
-        "fecha_inicial" :"2022/02/20",
+        "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "Pan Integral Bimbo 400 Gr.",
         "cantidad": 121,
@@ -130,7 +130,7 @@
       },
       {
         "nombre": "Galletitas Pitusas",
-        "fecha_inicial" :"2022/02/20",
+        "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "Chocolate Mini Galletas Dulces Rellenas.",
         "cantidad": 121,
@@ -144,7 +144,7 @@
       },
       {
         "nombre": "2 Dinosaurios Juguetes ",
-        "fecha_inicial" :"2022/02/20",
+        "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "Con Detalles Muy Reales.",
         "cantidad": 121,
@@ -159,7 +159,7 @@
     },
     {
         "nombre": "pokebolas de juguete",
-        "fecha_inicial" :"2022/02/20",
+        "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "Con pokemon dentro.",
         "cantidad": 121,
@@ -174,7 +174,7 @@
     },
     {
         "nombre": "Aparador Mueble ",
-        "fecha_inicial" :"2022/02/20",
+        "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "Vajillero de 180cm Con Cajon",
         "cantidad": 121,
@@ -189,7 +189,7 @@
     },
     {
         "nombre": "Sillón Sofá ",
-        "fecha_inicial" :"2022/02/20",
+        "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "3 Cuerpos Nápoles Premium",
         "cantidad": 121,
@@ -203,7 +203,7 @@
     },
     {
         "nombre": "Pala Corazón",
-        "fecha_inicial" :"2022/02/20",
+        "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "68cm Cabo Madera Mango Plástico Camping Jardín",
         "cantidad": 121,
@@ -217,7 +217,7 @@
     },
     {
         "nombre": "Motosierra ligera",
-        "fecha_inicial" :"2022/02/20",
+        "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "MS 180 C-BE",
         "cantidad": 121,
@@ -231,7 +231,7 @@
     },
     {
         "nombre": "Pelota De Voley Mikasa",
-        "fecha_inicial" :"2022/02/20",
+        "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "Modelo Mva390 Rota Deportes",
         "cantidad": 121,
@@ -245,7 +245,7 @@
     },
     {
         "nombre": "Pelota adidas Argentina ",
-        "fecha_inicial" :"2022/02/20",
+        "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "Al Rihla Club N°5",
         "cantidad": 121,
@@ -259,7 +259,7 @@
     },
     {
         "nombre": "Aros Argolla",
-        "fecha_inicial" :"2022/02/20",
+        "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "Oro 18 Kt",
         "cantidad": 121,
@@ -273,7 +273,7 @@
     },
     {
         "nombre": "Collar de cadena",
-        "fecha_inicial" :"2022/02/20",
+        "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "Oro 14K de ancla clásico",
         "cantidad": 121,
@@ -287,7 +287,7 @@
     },
     {
         "nombre": "MARTILLO GALPONERO",
-        "fecha_inicial" :"2022/02/20",
+        "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "568 GRS CABO MADERA STANLEY",
         "cantidad": 121,
@@ -301,7 +301,7 @@
     },
     {
         "nombre": "Tornillos",
-        "fecha_inicial" :"2022/02/20",
+        "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "T2 Punta Aguja Para Durlock ",
         "cantidad": 121,
