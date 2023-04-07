@@ -18,22 +18,18 @@ const getAllProducts = async () => {
       "estado",
       "imagen",
       "nombre",
+      
     ],
     include: [{
       model: Categoria_producto,
       attributes: ["nombre_categoria_producto"],
       required: true,
-    }
+   }
   ],
     
   });
+return databaseProducts
 
-  // buscar en la api
-  const apiProductsRaw = (await axios.get("https://fakestoreapi.com/products"))
-    .data;
-  const apiP = cleanArray(apiProductsRaw);
-  const results = [...databaseProducts, ...apiP];
-  return results;
 };
 
 const searchProductByName = async (nombre) => {
