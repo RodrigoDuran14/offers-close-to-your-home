@@ -59,7 +59,7 @@ Usuario.belongsTo(Tipo_usuario, {foreignKey: 'id_tipo_usuario',});
 
 
 Producto.hasMany(Motivo_calificacion, {foreignKey:"id_producto"});
-Motivo_calificacion.belongsTo(Producto /*{foreignKey:"id_producto"}*/);
+Motivo_calificacion.belongsTo(Producto ,{foreignKey:"id_producto"});
 
 Ciudad.hasMany(Usuario,{foreignKey:"id_ciudad"});
 Usuario.belongsTo(Ciudad,{foreignKey:"id_ciudad"});
