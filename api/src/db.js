@@ -53,22 +53,38 @@ const {
 } = sequelize.models;
 
 // Aca vendrian las relaciones
-// Product.hasMany(Reviews);
 
-Tipo_usuario.hasMany(Usuario);
+Tipo_usuario.hasMany(Usuario, {foreignKey: 'id_tipo_usuario'});
+Usuario.belongsTo(Tipo_usuario, {foreignKey: 'id_tipo_usuario',});
 
-Producto.hasMany(Motivo_calificacion);
-Ciudad.hasMany(Usuario);
-Ciudad.hasMany(Comercio);
-Usuario.hasMany(Venta);
-Categoria_comercio.hasMany(Comercio);
-Producto.belongsToMany(Venta, { through: Detalle_venta });
-Venta.belongsToMany(Producto, { through: Detalle_venta });
-Comercio.hasMany(Producto)
-Categoria_producto.belongsTo(Producto, { foreignKey: 'id_categoria_producto' });
-Producto.belongsTo(Categoria_producto, { foreignKey: 'id_categoria_producto' })
 
-  
+Producto.hasMany(Motivo_calificacion, {foreignKey:"id_producto"});
+Motivo_calificacion.belongsTo(Producto ,{foreignKey:"id_producto"});
+
+Ciudad.hasMany(Usuario,{foreignKey:"id_ciudad"});
+Usuario.belongsTo(Ciudad,{foreignKey:"id_ciudad"});
+
+Ciudad.hasMany(Comercio, {foreignKey: "id_ciudad"});
+Comercio.belongsTo(Ciudad, {foreignKey: "id_ciudad"})
+
+Usuario.hasMany(Venta, {foreignKey:"id_usuario"});
+Venta.belongsTo(Usuario , {foreignKey:"id_usuario"})
+
+Categoria_comercio.hasMany(Comercio, {foreignKey:"id_categoria_comercio"});
+Comercio.belongsTo(Categoria_comercio, {foreignKey:"id_categoria_comercio"})
+
+
+Producto.belongsToMany(Venta, { through: Detalle_venta, foreignKey: "id_producto" });
+Venta.belongsToMany(Producto, { through: Detalle_venta, foreignKey: "id_venta" });
+
+Comercio.hasMany(Producto, {foreignKey:"id_comercio"})
+Producto.belongsTo(Comercio, {foreignKey:"id_comercio"})
+
+Categoria_producto.hasMany(Producto, { foreignKey: 'id_categoria_producto' });
+Producto.belongsTo(Categoria_producto, {foreignKey:'id_categoria_producto'})
+
+Detalle_venta.hasOne(Pagos, {foreignKey: "id_detalle_venta"});
+Pagos.belongsTo(Detalle_venta, {foreignKey: "id_detalle_venta"});
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize, // para importart la conexión { conn } = require('./db.js');
