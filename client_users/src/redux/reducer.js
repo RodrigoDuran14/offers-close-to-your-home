@@ -5,7 +5,7 @@ import {
   GET_PRODUCT_BY_NAME,
   ORDERED_BY_NAME_ASC,
   ORDERED_BY_NAME_DESC,
-  GET_PRODUCT_BY_CATEGORY,
+  GET_CATEGORY,
   ORDERED_BY_LOWEST_PRICE,
   ORDERED_BY_HIGHEST_PRICE,
   FILTER_BY_NEW_PRODUCTS,
@@ -19,7 +19,7 @@ const initialState = {
   comercios: [],
   ventas: [],
   pagos: [],
-  categorias: [],
+  categorys: [],
   product: {},
 };
 
@@ -49,10 +49,10 @@ function rootReducer(state = initialState, action) {
           return 0;
         }),
       };
-    case GET_PRODUCT_BY_CATEGORY:
+    case GET_CATEGORY:
       return {
         ...state,
-        products: action.payload,
+        categorys: action.payload,
       };
     case ORDERED_BY_LOWEST_PRICE:
       return {
