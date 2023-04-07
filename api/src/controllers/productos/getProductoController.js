@@ -28,15 +28,8 @@ const getAllProducts = async () => {
   ],
     
   });
+return databaseProducts
 
-  // buscar en la api
-  // const apiProductsRaw = (await axios.get("https://fakestoreapi.com/products"))
-  //   .data;
-  // const apiP = cleanArray(apiProductsRaw);
-  // const results = [...databaseProducts, ...apiP];
-  //const results = [...databaseProducts];
-  console.log(databaseProducts);
-  return databaseProducts;
 };
 
 const searchProductByName = async (nombre) => {
