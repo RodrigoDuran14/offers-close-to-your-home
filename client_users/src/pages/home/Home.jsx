@@ -1,8 +1,7 @@
 
 import React from 'react'
 import Cards from '../../components/cards/Cards'
-import Filter from '../../components/filter/Filter'
-
+// import Filter from '../../components/filter/Filter'
 import styles from './Home.module.css'
 import Footer from '../../components/footer/Footer'
 
@@ -15,7 +14,7 @@ function Home () {
 
     <div className= {styles.container}>
       <div className={styles.filtros}>
-         <Filter/>
+         {/* <Filter/> */}
       </div>
       <div>
         <Cards/>
