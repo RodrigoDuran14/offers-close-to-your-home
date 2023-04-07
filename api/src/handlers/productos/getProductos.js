@@ -26,7 +26,9 @@ const getAllProductsHandler = async (req, res, next)=>{
  const getCategoriasHandler = async (req, res) => {
   try {
     const categorias = await getAllCategorias();
-    res.status(200).json(categorias);
+
+    res.status(200).json( categorias );
+
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

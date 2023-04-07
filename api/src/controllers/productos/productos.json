@@ -1,0 +1,18 @@
+[
+  
+    {
+        "nombre": "pepito43",
+          "fecha_inicial" :"2022/02/20",
+          "fecha_final" :"2023-02-20",
+          "descripcion_producto": "fjdhfjdshvvvfvfvfvf",
+          "cantidad": 121,
+          "existencia": 121,
+          "valor_normal": 254.9,
+          "valor_con_descuento": 200,
+          "condicion": "Reacondicionado",
+          "imagen": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+          "id_categoria_producto": 2,
+          "id_comercio": 1
+      }
+      
+]
