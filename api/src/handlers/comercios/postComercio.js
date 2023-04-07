@@ -33,8 +33,8 @@ const postCommerceHandler = async (req, res) => {
       ]);
       if (resultSearchEmail === null && resultSearchName === null) {
         const newCommerce = await createCommerce(
-          id_ciudad,
           id_categoria_comercio,
+          id_ciudad,
           nombre_comercio,
           direccion,
           telefono,
@@ -51,12 +51,11 @@ const postCommerceHandler = async (req, res) => {
       } else {
         res.status(300).send({ data: "ya existe un camercio con ese nambre" });
       }
-
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-
-  }
-};
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  };
+  
 module.exports = {
   postCommerceHandler,
 };
