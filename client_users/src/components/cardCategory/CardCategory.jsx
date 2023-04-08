@@ -1,10 +1,13 @@
 import React from 'react'
 import styles from './CardCategory.module.css'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { getProductByCategory } from '../../redux/actions';
 
-function CardCategory({nombre_categoria_producto, imagen_categoria_producto}) {
+function CardCategory({nombre_categoria_producto, imagen_categoria_producto}) {//cosmetica
+    const dispatch = useDispatch();
   const handlerCategory = () => {
-    console.log("click");
+    dispatch(getProductByCategory(nombre_categoria_producto))
   }
 
   return (

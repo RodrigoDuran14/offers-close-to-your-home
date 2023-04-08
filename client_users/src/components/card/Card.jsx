@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom'
 
 
 const Card = ({producto}) => {
-  console.log(producto);
-const {nombre,valor_normal,imagen,id_producto}=producto;
+const {nombre, valor_normal, imagen, id_producto, Categoria_producto}=producto;
   return (
     <Link to={`/detail/${id_producto}`} style={{ textDecoration: 'none' }}>
     <div className={styles.container}>
@@ -14,7 +13,7 @@ const {nombre,valor_normal,imagen,id_producto}=producto;
       </div>
       <h2>${valor_normal}</h2>
       <h3>{nombre}</h3>
-      {/* <h3>{category.toUpperCase()}</h3> */}
+      <h3>{Categoria_producto.nombre_categoria_producto.toUpperCase()}</h3>
     </div>
     </Link> 
   )

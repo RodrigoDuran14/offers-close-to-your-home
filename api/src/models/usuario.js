@@ -1,4 +1,4 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
 sequelize.define('Usuario', {
@@ -46,8 +46,5 @@ sequelize.define('Usuario', {
     imagen: {
       type: DataTypes.STRING,
     }
-  }, {
-    tableName: 'Usuario',
-    timestamps: false 
-});
-}
+  );
+};
