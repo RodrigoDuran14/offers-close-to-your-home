@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { useDispatch } from 'react-redux'
-import { createProduct } from "../../redux/actions"
+import { createProduct } from "../../../../client_users/src/redux/actions"
 import { useHistory } from 'react-router-dom'
 import validation from './validation'
 import swal from 'sweetalert';
