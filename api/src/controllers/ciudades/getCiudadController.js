@@ -1,5 +1,7 @@
 const {loadCities} = require ("./postCitiesController");
 const {Ciudad} = require("../../db");
+
+
 const verifyDb = async () =>{
     const aux = await Ciudad.count();
     if(aux < 1) await loadCities() ;
@@ -8,7 +10,7 @@ const verifyDb = async () =>{
 const getAllCities = async () =>{
 try {
 
-    verifyDb();  
+   await verifyDb();  
 
    const dataCities = await Ciudad.findAll({
     attributes: [
@@ -16,7 +18,7 @@ try {
       "nombre_ciudad",
     ],
   });
-  const results = [...dataCities];
+  const results =  [...dataCities];
   return results;
 } catch (error) {
    console.error(error); 
