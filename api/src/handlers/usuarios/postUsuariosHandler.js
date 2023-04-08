@@ -1,5 +1,6 @@
 const { createUsuario } = require("../../controllers/usuarios/postUsuarioController")
 const { validacionPostUsuario } = require("../validaciones/validacionUsuario")
+const { bcrypt } = require('bcrypt')
 
 
 const postUserHandler = async (req, res) => {

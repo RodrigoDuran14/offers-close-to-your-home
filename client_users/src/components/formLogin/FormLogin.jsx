@@ -1,15 +1,60 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { useSelector } from 'react-redux'
 import { Link } from "react-router-dom"
+import { useHistory } from 'react-router-dom'
 import validation from './validation'
+import swal from 'sweetalert'
+import axios from 'axios'
 
 
 export default function FormLogin() {
-    const carrito = useSelector(state => state.carrito)
+    const BACK_HOST = 'http://localhost:3001'
+    const navigateTo = (url) => {
+        history.push(url)
+    }
 
-    const handleSubmit = (values) => {
-        console.log(values);
-        window.localStorage.setItem('carrito', JSON.stringify(carrito))
+    function login(user) {
+        console.log('SUBMIT LOGIN', user)
+
+        if (user) {
+            swal({
+                title: 'Bienvenido',
+                text: 'Ya puedes navegar con tu cuenta!',
+                icon: 'success',
+                timer: '2000'
+            })
+            navigateTo('/home')
+        } else {
+            swal({
+                text: 'Usuario o contraseña incorrectos',
+                icon: 'error',
+                timer: '2000',
+                button: 'Accept'
+            })
+        }
+    }
+
+    const handleLogin = (values) => {
+        try {
+            const user = await (axios.post(`${BACK_HOST}/login`, values)).data
+            const session = user.data.session
+
+            const token = user.data.token
+            console.log(token)
+
+            window.localStorage.setItem('user_token', JSON.stringify(token))
+            window.localStorage.setItem('user_session', JSON.stringify(session))
+            
+            login(session)
+
+        } catch (error) {
+            const err = error.response.data
+            swal({
+                text: err.msg,
+                icon: 'error',
+                timer: '2000'
+            })
+        }
     }
 
     return (
@@ -19,8 +64,8 @@ export default function FormLogin() {
                     email: '',
                     password: ''
                 }}
-                onSubmit={handleSubmit}
-                validate={validation}
+                onSubmit={handleLogin}
+                validate={validation}   
                 validateOnBlur={false}
                 validateOnChange={false}
             >
