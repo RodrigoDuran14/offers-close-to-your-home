@@ -12,6 +12,14 @@ module.exports = (sequelize) => {
         allowNull: false,
         autoIncrement: true,
       },
+      id_ciudad: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: "Ciudad",
+          key: "id_ciudad",
+        },
+      },
       nombre_comercio: {
         type: DataTypes.STRING,
         allowNull: false,
