@@ -45,7 +45,6 @@ sequelize.define('Usuario', {
     },
     imagen: {
       type: DataTypes.STRING,
-      allowNull:false
     }
   }, {
     tableName: 'Usuario',

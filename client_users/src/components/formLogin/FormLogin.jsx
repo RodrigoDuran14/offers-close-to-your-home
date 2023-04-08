@@ -1,11 +1,15 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik'
+import { useSelector } from 'react-redux'
 import { Link } from "react-router-dom"
 import validation from './validation'
 
 
 export default function FormLogin() {
+    const carrito = useSelector(state => state.carrito)
+
     const handleSubmit = (values) => {
-        console.log(values)
+        console.log(values);
+        window.localStorage.setItem('carrito', JSON.stringify(carrito))
     }
 
     return (

@@ -11,6 +11,7 @@ import {
   FILTER_BY_NEW_PRODUCTS,
   FILTER_BY_USED_PRODUCTS,
   FILTER_BY_REFURBISHED_PRODUCTS,
+  AGREGAR_AL_CARRITO
 } from "./actions-type.js";
 
 const initialState = {
@@ -21,6 +22,7 @@ const initialState = {
   pagos: [],
   categorys: [],
   product: {},
+  carrito: []
 };
 
 function rootReducer(state = initialState, action) {
@@ -89,6 +91,11 @@ function rootReducer(state = initialState, action) {
           (item) => item.condicion === "Reacondicionado"
         ),
       };
+    case AGREGAR_AL_CARRITO:
+      return {
+        ...state,
+        carrito: [...carrito, action.payload]
+      }
     default:
       return state;
   }
