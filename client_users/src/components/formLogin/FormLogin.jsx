@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom'
 import validation from './validation'
 import swal from 'sweetalert'
 import axios from 'axios'
+import styles from "../formLogin/FormLogin.module.css"
 
 
 export default function FormLogin() {
@@ -59,7 +60,9 @@ export default function FormLogin() {
     }
 
     return (
-        <div style={{ width: '100%', maxWidth: '820px' }}>
+        <div className={styles.container}
+        // style={{ width: '100%', maxWidth: '820px' }}
+        >
             <Formik
                 initialValues={{
                     email: '',
@@ -72,22 +75,23 @@ export default function FormLogin() {
             >
                 <Form className='form-container'>
 
-                    <Field name='email' type='email' placeholder='Email' className='form-input' />
+                    <Field name='email' type='email' placeholder='Email' className={styles.formInput} />
                     <ErrorMessage name='email' />
 
-                    <Field name='password' type='password' placeholder='Password' className='form-input' />
+                    <Field name='password' type='password' placeholder='Password' className={styles.formInput} />
                     <ErrorMessage name='contraseña' />
 
-                    <div style={{ marginTop: '40px' }}>
-
-                        <button type='submit'>Iniciar sesión</button>
+                    <div className={styles.botones}
+                    // style={{ marginTop: '20px' }}
+                    >
+                        <button  className={styles.boton} type='submit'>Iniciar sesión</button>
 
                         <div className='or'>
                             <div style={{ border: '1px solid grey', width: '90px' }}></div> <span style={{ margin: '0px 10px' }}>¿No tienes cuenta?</span> <div style={{ border: '1px solid grey', width: '90px' }}></div>
                         </div>
 
                         <Link to={'/registrar-usuario'}>
-                            <button>Registrarse</button>
+                            <button  className={styles.boton}>Registrarse</button>
                         </Link>
                     </div>
 
