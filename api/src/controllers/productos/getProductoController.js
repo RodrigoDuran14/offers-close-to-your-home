@@ -32,61 +32,42 @@ const getAllProducts = async () => {
 };
 
 const searchProductByName = async (nombre) => {
-  const [databaseProducts, apiProductsRaw] = await Promise.all([
+  const databaseProducts = await Promise.all([
     Producto.findAll({
       where: {
         nombre: {
-          [Op.iLike]: `%${nombre}%`,
-        },
-      },
-    }),
-    axios.get("https://fakestoreapi.com/products"),
-  ]);
-  const apiP = cleanArray(apiProductsRaw.data);
-  const filterApi = apiP.filter((Producto) =>
-    Producto.nombre.toLowerCase().includes(nombre.toLowerCase())
-  );
+          [Op.iLike]: `%${nombre}%`
+        }
+      }
+    })
+    ]);
+ 
 
-  return [...filterApi, ...databaseProducts];
+  return [...databaseProducts];
 };
 
-const cleanArray = (arr) => {
-  const condicionArray = ["Nuevo", "Usado", "Reacondicionado"];
-  return arr.map((elem) => {
-    const indiceAleatorio = Math.floor(Math.random() * condicionArray.length);
-    return {
-      id_producto: elem.id,
-      nombre: elem.title,
-      valor_normal: elem.price,
-      valor_con_descuento: elem.price,
-      estado: elem.true,
-      condicion: condicionArray[indiceAleatorio],
-      categoria: elem.category,
-      imagen: elem.image,
-    };
-  });
-};
+
 
 const getProductById = async (idProduct) => {
-  let ProductInfo = [];
+  // let ProductInfo = [];
 
-  const apiData = await axios.get(
-    `https://fakestoreapi.com/products/${idProduct}`
-  );
-  const condicionArray = ["Nuevo", "Usado", "Reacondicionado"];
-  const indiceAleatorio = Math.floor(Math.random() * 3);
+  // const apiData = await axios.get(
+  //   `https://fakestoreapi.com/products/${idProduct}`
+  // );
+  // const condicionArray = ["Nuevo", "Usado", "Reacondicionado"];
+  // const indiceAleatorio = Math.floor(Math.random() * 3);
 
-  ProductInfo = {
-    id_producto: apiData.data.id,
-    nombre: apiData.data.title,
-    descripcion_producto: apiData.data.description,
-    valor_normal: apiData.data.price,
-    valor_con_descuento: apiData.data.price,
-    estado: apiData.data.true,
-    condicion: condicionArray[indiceAleatorio],
-    categoria: apiData.data.category,
-    imagen: apiData.data.image,
-  };
+  // ProductInfo = {
+  //   id_producto: apiData.data.id,
+  //   nombre: apiData.data.title,
+  //   descripcion_producto: apiData.data.description,
+  //   valor_normal: apiData.data.price,
+  //   valor_con_descuento: apiData.data.price,
+  //   estado: apiData.data.true,
+  //   condicion: condicionArray[indiceAleatorio],
+  //   categoria: apiData.data.category,
+  //   imagen: apiData.data.image,
+  // };
   //buscar por id de la db
   const dbdata = await Producto.findByPk(idProduct, {
     attributes: [
@@ -105,8 +86,8 @@ const getProductById = async (idProduct) => {
       "id_categoria_producto",
     ],
   });
-  if (!dbdata) return ProductInfo;
-  return [dbdata, ProductInfo];
+  
+  return dbdata;
 };
 
 const getAllCategorias = async () => {
