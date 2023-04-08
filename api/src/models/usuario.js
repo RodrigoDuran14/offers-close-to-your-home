@@ -1,8 +1,7 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  sequelize.define(
-    "Usuario",
+  sequelize.define('Usuario',
     {
       id_usuario: {
         type: DataTypes.INTEGER,
@@ -26,16 +25,15 @@ module.exports = (sequelize) => {
       },
       direccion: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: false
       },
       telefono: {
         type: DataTypes.BIGINT,
         allowNull: false,
       },
+
       estado: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-        defaultValue: true,
+        type: DataTypes.BOOLEAN
       },
       email: {
         type: DataTypes.STRING,
@@ -47,12 +45,7 @@ module.exports = (sequelize) => {
       },
       imagen: {
         type: DataTypes.STRING,
-        allowNull: false,
-      },
-    },
-    {
-      tableName: "Usuario",
-      timestamps: false,
+      }
     }
   );
 };
