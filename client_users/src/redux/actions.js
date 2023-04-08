@@ -47,7 +47,7 @@ export const getAllProducts = () => {
 export const getProductById = (id) => async (dispatch) => {
   try {
     const res = await axios.get(`${URL}/products/${id}`);
-
+    console.log(res.data);
     dispatch({
       type: action.GET_PRODUCT_BY_ID,
       payload: res.data,
@@ -83,22 +83,9 @@ export const getProductByName = (name) => async (dispatch) => {
 
 // * 5. action-creator para obtener producto por categoría
 
-export const getProductByCategory = (name) => async (dispatch) => {
-  try {
-    const res = await axios.get(`${URL}/products}`);
-    const result = res.data.filter((product) => product.nombre === name);
-
-    dispatch({
-      type: action.GET_PRODUCT_BY_CATEGORY,
-      payload: result,
-    });
-  } catch (error) {
-    console.log(error);
-    dispatch({
-      type: action.GET_PRODUCT_BY_CATEGORY,
-      payload: error,
-    });
-  }
+export const getProductByCategory = (category) => {
+  console.log(category);
+  return { type: action.GET_PRODUCT_BY_CATEGORY, payload: category };
 };
 
 // * 6. action-creator para ordenar productos por nombre ascendente

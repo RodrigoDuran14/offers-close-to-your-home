@@ -7,13 +7,12 @@ import Loader from "../loader/loader";
 
 
 const Cards = () => {
-  const products = useSelector((state) => state.products);
+  const { productsFitered } = useSelector((state) => state);
   const dispatch = useDispatch();
- 
-  useEffect(() => {
-    dispatch(getAllProducts());
-    
-  }, [dispatch]);
+ console.log(productsFitered);
+  // useEffect(() => {
+  //   dispatch(getAllProducts());  
+  // }, [dispatch]);
 
   // PAGINADO
 
@@ -23,17 +22,15 @@ const Cards = () => {
   const conteoFinal = numeroPagina * grupo;
   const conteoInicial = conteoFinal - grupo;
 
-  const aux = products && products.slice ? products.slice(conteoInicial, conteoFinal) : [];
+  const aux = productsFitered && productsFitered.slice ? productsFitered.slice(conteoInicial, conteoFinal) : [];
 
   const paginas = [];
 
-  const numPaginas = Math.ceil(products.length / grupo);
+  const numPaginas = Math.ceil(productsFitered.length / grupo);
 
   for (let i = 1; i <= numPaginas; i++) {
     paginas.push(i);
   }
-
-console.log(aux);
 
   return (
     <div className={styles.container}>
@@ -74,7 +71,7 @@ console.log(aux);
           <button
             className="btnPag"
             onClick={() => setNumeroPagina(numeroPagina + 1)}
-            disabled={numeroPagina === Math.ceil(products?.length / grupo)}
+            disabled={numeroPagina === Math.ceil(productsFitered?.length / grupo)}
           >
             ►
           </button>
