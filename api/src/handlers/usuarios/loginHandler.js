@@ -1,7 +1,7 @@
 const { loginUser } = require('../../controllers/usuarios/loginController')
 
 const loginHandler = async (req, res, next) => {
-    const { user } = req.body
+    const user = req.body
 
     try {
         const controller = await loginUser(user)

@@ -1,5 +1,5 @@
 const { Usuario } = require("../../db");
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
 const { generateToken } = require('./generateToken')
 
 const loginUser = async (user) => {
@@ -25,7 +25,7 @@ const loginUser = async (user) => {
                 throw new Error('Invalid email or password')
             }
         } else {
-            throw new Error('Invalid email or password')
+            throw new Error('User not found')
         }
     } catch (error) {
         console.log(error)

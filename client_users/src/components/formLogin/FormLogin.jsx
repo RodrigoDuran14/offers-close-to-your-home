@@ -9,6 +9,7 @@ import axios from 'axios'
 
 export default function FormLogin() {
     const BACK_HOST = 'http://localhost:3001'
+    const history = useHistory()
     const navigateTo = (url) => {
         history.push(url)
     }
@@ -36,7 +37,7 @@ export default function FormLogin() {
 
     const handleLogin = (values) => {
         try {
-            const user = await (axios.post(`${BACK_HOST}/login`, values)).data
+            const user = await (axios.post(`${BACK_HOST}/usuario/login`, values)).data
             const session = user.data.session
 
             const token = user.data.token
@@ -62,7 +63,7 @@ export default function FormLogin() {
             <Formik
                 initialValues={{
                     email: '',
-                    password: ''
+                    contraseña: ''
                 }}
                 onSubmit={handleLogin}
                 validate={validation}   
@@ -75,7 +76,7 @@ export default function FormLogin() {
                     <ErrorMessage name='email' />
 
                     <Field name='password' type='password' placeholder='Password' className='form-input' />
-                    <ErrorMessage name='password' />
+                    <ErrorMessage name='contraseña' />
 
                     <div style={{ marginTop: '40px' }}>
 
