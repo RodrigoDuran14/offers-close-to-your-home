@@ -19,9 +19,6 @@ function Home () {
       <div>
         <Cards/>
       </div>
-      <div>
-      <Footer/>
-      </div>
     </div>
     </section>
 
