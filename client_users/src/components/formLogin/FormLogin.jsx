@@ -1,11 +1,27 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik'
-import { useSelector } from 'react-redux'
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+
 import { Link } from "react-router-dom"
 import { useHistory } from 'react-router-dom'
 import validation from './validation'
 import swal from 'sweetalert'
 import axios from 'axios'
 import styles from "../formLogin/FormLogin.module.css"
+import { initializeApp } from "firebase/app";
+
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+const firebaseConfig = {
+    apiKey: "AIzaSyDIr4a7cej0mw217G8qMwAGMx8R9MEYj2g",
+    authDomain: "justoffers-85932.firebaseapp.com",
+    projectId: "justoffers-85932",
+    storageBucket: "justoffers-85932.appspot.com",
+    messagingSenderId: "310201543546",
+    appId: "1:310201543546:web:a6594aa4e7c9121351c4c3",
+    measurementId: "G-R85GKECQZY"
+  };
+  
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
 
 
 export default function FormLogin() {
@@ -59,6 +75,36 @@ export default function FormLogin() {
         }
     }
 
+    const handleGoogleLogin = async () => {
+        try {
+            const result = await signInWithPopup(auth, new GoogleAuthProvider());
+            const user = result.user;
+            if (user) {
+                swal({
+                    title: 'Bienvenido',
+                    text: 'Ya puedes navegar con tu cuenta!',
+                    icon: 'success',
+                    timer: '2000'
+                });
+                navigateTo('/'); // Redirigir a la ruta localhost:3000/home
+            } else {
+                swal({
+                    text: 'Usuario o contraseña incorrectos',
+                    icon: 'error',
+                    timer: '2000',
+                    button: 'Accept'
+                });
+            }
+        } catch (error) {
+            const err = error.response.data;
+            swal({
+                text: err.msg,
+                icon: 'error',
+                timer: '2000'
+            });
+        }
+    }
+
     return (
         <div className={styles.container}
         // style={{ width: '100%', maxWidth: '820px' }}
@@ -94,6 +140,10 @@ export default function FormLogin() {
                             <button  className={styles.boton}>Registrarse</button>
                         </Link>
                     </div>
+
+                    <div>
+                            <button className={styles.boton} onClick={handleGoogleLogin}>Iniciar sesión con Google</button>
+                     </div>
 
                 </Form>
             </Formik>
