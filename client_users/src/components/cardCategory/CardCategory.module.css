@@ -6,23 +6,37 @@
     background-color: white;
     color: black;
     display: flex;
+    /* flex-direction: column; */
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     position: relative;
 }
 
-.box{
+.box{    
     width: 85%;
     height: 75%;
-    border: solid 1px rgb(186, 178, 178);
+    /* width: 85%; */
+    /* height: 60%; */
+    /* border: solid 1px rgb(186, 178, 178); */
 }
 
 .box img{
     width: 100%;
     height: 100%;
+    margin-top: 30px;
     object-fit: cover;
+    display: flex;
 }
 
+.link{
+    text-decoration: none;
+}
+
+
 .box1{
+    background-color:#54b2169b;
+    width: 100%;
     position: absolute;
 }

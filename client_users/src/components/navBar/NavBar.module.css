@@ -2,12 +2,20 @@
     background-color: black;
     display: flex;
     justify-content: space-around;
+<<<<<<< HEAD
     align-items: center;
     text-align: center;
     height:60px;
     position: fixed;
     /* top: 0;
     left: 0; */
+=======
+    /* align-items: center; */
+    height: 60px;
+    /* position: fixed; */
+    top: 0;
+    left: 0;
+>>>>>>> be220d67735be95887180db1403c66de96bfa5b6
     width: 100%;
     /* z-index: 999; */
     /* margin-bottom: 0 */
