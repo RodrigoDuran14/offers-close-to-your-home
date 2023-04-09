@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 const Card = ({producto}) => {
 const {nombre, valor_normal,valor_con_descuento, imagen, id_producto, Categoria_producto}=producto;
   return (
-    <Link to={`/detail/${id_producto}`} style={{ textDecoration: 'none' }}>
+    <Link className={styles.link} to={`/detail/${id_producto}`}>
     <div className={styles.container}>
       <div style={{width: "100%", height:"55%"}}>
         <img src={imagen} alt={nombre} />

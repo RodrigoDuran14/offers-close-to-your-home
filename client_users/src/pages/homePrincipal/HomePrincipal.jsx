@@ -6,7 +6,10 @@ import Slider from '../../components/slider/Slider';
 function HomePrincipal() {
   return (
     <div>
-        <div style={{margin:"100px"}}><Slider/></div>
+        <div 
+        // style={{margin:"100px"}}
+        ><Slider/>
+        </div>
         <div><CardsCategory /></div>
     </div>
   )
