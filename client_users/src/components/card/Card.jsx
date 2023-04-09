@@ -8,7 +8,7 @@ const {nombre, valor_normal,valor_con_descuento, imagen, id_producto, Categoria_
   return (
     <Link className={styles.link} to={`/detail/${id_producto}`}>
     <div className={styles.container}>
-      <div style={{width: "100%", height:"55%"}}>
+      <div className={styles.img}>
         <img src={imagen} alt={nombre} />
       </div>
       <div className={styles.precios}>

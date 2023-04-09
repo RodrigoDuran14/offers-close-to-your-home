@@ -29,7 +29,7 @@
         "id_comercio": 1
       },
       {
-        "nombre": "microondas",
+        "nombre": "Microondas",
         "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "Horno microondas",
@@ -59,7 +59,7 @@
         "id_comercio": 1
       },
       {
-        "nombre": "mouse Fnatic",
+        "nombre": "Mouse Fnatic",
         "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "Fnatic Gear Bolt Wireless Gaming Mouse",
@@ -86,7 +86,7 @@
         "id_categoria_producto": 3,
         "id_comercio": 1
       }, {
-        "nombre": "rubor en crema",
+        "nombre": "Rubor en crema",
         "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "Rare Beauty By Selena Gomez Soft Pinch Liquid Blush- Love",
@@ -100,7 +100,7 @@
         "id_comercio": 1
       },
       {
-        "nombre": "MAC SATIN LIPSTICK",
+        "nombre": "Mac Satin Lipstick",
         "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "MAC Lipstick el producto icónico que hizo famoso a MAC. Esta fórmulacremosa ofrece una sensación suave y acolchonada, cobertura construiblede media a completa y un acabado satinado.",
@@ -158,7 +158,7 @@
 
     },
     {
-        "nombre": "pokebolas de juguete",
+        "nombre": "Pokebolas de juguete",
         "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "Con pokemon dentro.",
@@ -216,7 +216,7 @@
         "id_comercio": 1
     },
     {
-        "nombre": "Motosierra ligera",
+        "nombre": "Motosierra Ligera",
         "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "MS 180 C-BE",
@@ -244,7 +244,7 @@
         "id_comercio": 1
     },
     {
-        "nombre": "Pelota adidas Argentina ",
+        "nombre": "Pelota Argentina - Adidas",
         "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "Al Rihla Club N°5",
@@ -286,7 +286,7 @@
         "id_comercio": 1
     },
     {
-        "nombre": "MARTILLO GALPONERO",
+        "nombre": "Martillo Galponero",
         "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "568 GRS CABO MADERA STANLEY",

@@ -1,7 +1,16 @@
-.container{
-    position: relative;
+.container {
     display: flex;
-    justify-content: space-evenly;
     flex-direction: row;
-    flex-wrap: wrap;
-}
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .currentCard {
+    opacity: 1;
+  }
+  
+  .inactiveCard {
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+  }
