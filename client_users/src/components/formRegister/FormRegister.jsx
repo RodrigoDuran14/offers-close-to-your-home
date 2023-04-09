@@ -75,12 +75,6 @@ export default function FormRegister() {
 
                     <Field name='email' type='text' placeholder='Email' className='form-input' />
                     <ErrorMessage name="email" />
-
-                    <div>
-                        <div style={{ backgroundImage: `url(${image})` }} className='register-profile-picture'></div>
-                        <Field name='image' type='file' onChange={handleImage} />
-                    </div>
-
                     <Field name='contraseña' type='password' placeholder='Contraseña' className='form-input' />
                     <ErrorMessage name="contraseña" />
 
@@ -88,6 +82,14 @@ export default function FormRegister() {
                     <ErrorMessage name="repetir_contraseña" /> */}
 
                     <button type='submit'>Registrarse</button>
+
+                    <div>
+                        <div style={{ backgroundImage: `url(${image})` }} className='register-profile-picture'></div>
+                        <Field name='image' type='file' onChange={handleImage} />
+                  
+                    </div>
+
+                 
                 </Form>
             </Formik>
         </div>
