@@ -18,6 +18,22 @@ module.exports = (sequelize) => {
       type: DataTypes.FLOAT,
       allowNull: false,
     },
+    id_venta: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "Venta",
+        key: "id_venta",
+      },
+    },
+    id_producto: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "Producto",
+        key: "id_producto",
+      },
+    },
     
   },
   {
