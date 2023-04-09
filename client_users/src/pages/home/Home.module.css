@@ -1,4 +1,22 @@
-.container{
-    /* background-color: brown; */
-    margin-bottom: 20px;
+
+
+.section {
+    display: flex;
+    justify-content:center;
+    grid-template-columns: repeat(4, 1fr) 1fr;
+    grid-rows:auto;
+    height:100vh;
+    position:fixed;
+    gap:3rem
+}
+.sidebar{
+ display:flex;
+ felx-direction:column;
+}
+.cards{
+display:flex;
+justify-content:center;
+align-items:center;
+flex-wrap:wrap;
+
 }

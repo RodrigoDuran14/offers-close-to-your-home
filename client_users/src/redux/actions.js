@@ -3,15 +3,6 @@ import * as action from "./actions-type"; // para no escribir todos los action t
 
 const URL = "http://localhost:3001";
 
-// ========================* CARRITO *========================
-export function agregarAlCarrito(product) {
-  return {
-    type: action.AGREGAR_AL_CARRITO,
-    payload: product
-  }
-}
-
-
 // ========================* USUARIOS *========================
 export function registerUser() {
   return () => {
