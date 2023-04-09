@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getCategorys } from '../../redux/actions';
+import { getAllProducts, getCategorys } from '../../redux/actions';
 import CardCategory from '../cardCategory/CardCategory';
 import styles from "./CardsCategory.module.css"
 
@@ -10,7 +10,8 @@ function CardsCategory() {
     
     useEffect(() => {
         dispatch(getCategorys())
-    }, [dispatch])
+        dispatch(getAllProducts());  
+      }, [dispatch])
 
     console.log(categorys);
   return (

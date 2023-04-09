@@ -9,6 +9,8 @@ import About from "./pages/about/About";
 import Register from "./pages/register/Register";
 import NavBar from "./components/navBar/NavBar";
 import HomePrincipal from "./pages/homePrincipal/HomePrincipal";
+import Footer from "./components/footer/Footer";
+import ShoppingCart from "./pages/shopping/ShoppingCart";
 // import Footer from "./components/footer/Footer";
 
 function App() {
@@ -16,7 +18,7 @@ function App() {
 
   return (
     <div className="App">
-      {location?.pathname == "/login" ? null : <NavBar />}
+      {location?.pathname == "/log-in" ? null : <NavBar />}
       {/* {location?.pathname == "/login" ? null : <Footer />} */}
       <Route exact path="/" component={HomePrincipal} />
       <Route exact path="/home" component={Home} />
@@ -26,6 +28,8 @@ function App() {
       <Route exact path="/account" component={Account} />
       <Route exact path="/forgot-password" component={ForgotPassword} />
       <Route exact path="/about" component={About} />
+      <Route exact path="/shopping-cart" component={ShoppingCart} />
+      <Footer />
     </div>
   );
 }

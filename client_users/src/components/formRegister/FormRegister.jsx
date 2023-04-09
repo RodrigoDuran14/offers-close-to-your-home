@@ -42,7 +42,10 @@ export default function FormRegister() {
         <div>
             <Formik
                 initialValues={{
-                    nombre_usuario: '',
+                    primer_nombre: '',
+                    segundo_nombre: '',
+                    primer_apellido: '',
+                    segundo_apellido: '',
                     direccion: '',
                     telefono: '',
                     email: '',
@@ -52,30 +55,41 @@ export default function FormRegister() {
                 onSubmit={handleSubmit}
             >
                 <Form className='form-container'>
-                    <Field name='nombre_usuario' type='text' placeholder='Nombre' className='form-input' />
-                    <ErrorMessage name="nombre_usuario" />
+                    <Field name='primer_nombre' type='text' placeholder='Primer nombre *' className='form-input' />
+                    <ErrorMessage name="primer_nombre" />
 
-                    <Field name='direccion' placeholder='Dirección' className='form-input' />
+                    <Field name='segundo_nombre' type='text' placeholder='Segundo nombre' className='form-input' />
+                    <ErrorMessage name="segundo_nombre" />
+
+                    <Field name='primer_apellido' type='text' placeholder='Primer apellido *' className='form-input' />
+                    <ErrorMessage name="primer_apellido" />
+
+                    <Field name='segundo_apellido' type='text' placeholder='Segundo apellido' className='form-input' />
+                    <ErrorMessage name="segundo_apellido" />
+
+                    <Field name='direccion' placeholder='Dirección *' className='form-input' />
                     <ErrorMessage name="direccion" />
 
-                    <Field name='telefono' type='text' placeholder='Teléfono' className='form-input' />
+                    <Field name='telefono' type='text' placeholder='Número de teléfono *' className='form-input' />
                     <ErrorMessage name="telefono" />
 
                     <Field name='email' type='text' placeholder='Email' className='form-input' />
                     <ErrorMessage name="email" />
+                    <Field name='contraseña' type='password' placeholder='Contraseña' className='form-input' />
+                    <ErrorMessage name="contraseña" />
+
+                    {/* <Field name='repetir_contraseña' type='password' placeholder='Repite la contraseña' className='form-input' />
+                    <ErrorMessage name="repetir_contraseña" /> */}
+
+                    <button type='submit'>Registrarse</button>
 
                     <div>
                         <div style={{ backgroundImage: `url(${image})` }} className='register-profile-picture'></div>
                         <Field name='image' type='file' onChange={handleImage} />
+                  
                     </div>
 
-                    <Field name='contraseña' type='password' placeholder='Contraseña' className='form-input' />
-                    <ErrorMessage name="contraseña" />
-
-                    <Field name='repetir_contraseña' type='password' placeholder='Repite la contraseña' className='form-input' />
-                    <ErrorMessage name="repetir_contraseña" />
-
-                    <button type='submit'>Registrarse</button>
+                 
                 </Form>
             </Formik>
         </div>

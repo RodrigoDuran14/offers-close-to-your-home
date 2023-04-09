@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import QuantityDisplay from '../../components/quantityDisplay/QuantityDisplay'
-import { getProductById } from '../../redux/actions'
+import { agregarAlCarrito, getProductById } from '../../redux/actions'
 import styles from './Detail.module.css'
 import Loader from '../../components/loader/loader'
 import Footer from '../../components/footer/Footer'
@@ -18,7 +18,8 @@ const Detail = () => {
   }, [dispatch,id])
 
   const handlerCarrito = () => {
-    console.log("click");
+    console.log("añadido");
+    dispatch(agregarAlCarrito(product))
   }  
   // Cantidad de articulos
   const [quantity, setQuantity] = useState(1);

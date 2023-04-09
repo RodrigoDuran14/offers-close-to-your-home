@@ -1,26 +1,26 @@
 const bcrypt = require("bcrypt");
 const { Usuario, Tipo_usuario } = require("../../db");
 
-const guardarTipoUsuario = async () =>{
+const guardarTipoUsuario = async () => {
   try {
     let tipoUsuario = [
-      {nombre_tipo_usuario: "Cliente"},
-      {nombre_tipo_usuario: "Administrador"}
+      { nombre_tipo_usuario: "Cliente" },
+      { nombre_tipo_usuario: "Administrador" }
     ]
-    let mapTipoUsuario = tipoUsuario.map((prop) => ({nombre_tipo_usuario: prop.nombre_tipo_usuario}));
+    let mapTipoUsuario = tipoUsuario.map((prop) => ({ nombre_tipo_usuario: prop.nombre_tipo_usuario }));
     await Tipo_usuario.bulkCreate(mapTipoUsuario);
-    console.log('se guardaron los tipos de usuarios correctamente');
-    
+    console.log('Se guardaron los tipos de usuarios correctamente');
+
   } catch (error) {
-    
-      console.error('Error al cargar los tipos de Usuarios', error);
+
+    console.error('Error al cargar los tipos de Usuarios', error);
   }
 
 }
 
-const verifyDb = async () =>{
+const verifyDb = async () => {
   const aux = await Tipo_usuario.count();
-  if(aux < 1) await guardarTipoUsuario() ;
+  if (aux < 1) await guardarTipoUsuario();
 }
 
 

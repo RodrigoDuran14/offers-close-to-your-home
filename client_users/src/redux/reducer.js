@@ -3,7 +3,7 @@ import {
   GET_ALL_PRODUCTS,
   GET_PRODUCT_BY_ID,
   GET_PRODUCT_BY_NAME,
-  ORDERED_BY_NAME_ASC,
+  GET_PRODUCT_BY_CATEGORY,
   ORDERED_BY_NAME_DESC,
   GET_CATEGORY,
   ORDERED_BY_LOWEST_PRICE,
@@ -11,16 +11,20 @@ import {
   FILTER_BY_NEW_PRODUCTS,
   FILTER_BY_USED_PRODUCTS,
   FILTER_BY_REFURBISHED_PRODUCTS,
+  AGREGAR_AL_CARRITO,
 } from "./actions-type.js";
 
 const initialState = {
-  products: [],
+  products: [], //22
+  productsFitered: [], //22
   productID: [],
   comercios: [],
   ventas: [],
   pagos: [],
   categorys: [],
   product: {},
+  filter: [],
+  carrito: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -28,17 +32,24 @@ function rootReducer(state = initialState, action) {
     case CREATE_PRODUCT:
       return { ...state, products: [...state.products, action.payload] };
     case GET_ALL_PRODUCTS:
-      return { ...state, products: action.payload };
+      return {
+        ...state,
+        products: action.payload,
+        productsFitered: action.payload,
+      };
     case GET_PRODUCT_BY_ID:
       return { ...state, product: action.payload };
     case GET_PRODUCT_BY_NAME:
       return { ...state, products: action.payload };
-    case ORDERED_BY_NAME_ASC:
+    case GET_PRODUCT_BY_CATEGORY:
       return {
         ...state,
-        products: [...state.products].sort((a, b) =>
-          a.nombre.localeCompare(b.nombre)
-        ),
+        productsFitered: [...state.productsFitered].filter((product) => {
+          return (
+            product.Categoria_producto.nombre_categoria_producto ===
+            action.payload
+          );
+        }),
       };
     case ORDERED_BY_NAME_DESC:
       return {
@@ -88,6 +99,11 @@ function rootReducer(state = initialState, action) {
         products: [...state.products].filter(
           (item) => item.condicion === "Reacondicionado"
         ),
+      };
+    case AGREGAR_AL_CARRITO:
+      return {
+        ...state,
+        carrito: [...state.carrito, action.payload],
       };
     default:
       return state;
