@@ -4,6 +4,7 @@ import Cards from '../../components/cards/Cards'
 // import Filter from '../../components/filter/Filter'
 import styles from './Home.module.css'
 import Footer from '../../components/footer/Footer'
+import Slider from '../../components/slider/Slider'
 
 function Home () {
 
@@ -14,7 +15,7 @@ function Home () {
 
     <div className= {styles.container}>
       <div className={styles.filtros}>
-         {/* <Filter/> */}
+        <Slider />
       </div>
       <div>
         <Cards/>
