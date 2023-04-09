@@ -134,21 +134,21 @@ const validacionPostUsuario = (data) => {
 
   //-------------------telefono------------------
 
-  if (typeof telefono !== "number") {
-    throw new Error("Telefono debe ser un numero");
-  }
+  // if (typeof telefono !== "number") {
+  //   throw new Error("Telefono debe ser un numero");
+  // }
 
-  if (telefono.toString().length < 10) {
-    throw new Error("Telefono debe contener al menos 10 caracteres");
-  }
+  // if (telefono.toString().length < 10) {
+  //   throw new Error("Telefono debe contener al menos 10 caracteres");
+  // }
 
-  if (telefono.toString().length > 25) {
-    throw new Error("Telefono no puede ser mayor a 25 caracteres");
-  }
+  // if (telefono.toString().length > 25) {
+  //   throw new Error("Telefono no puede ser mayor a 25 caracteres");
+  // }
 
-  if (!/^[0-9]+$/i.test(telefono)) {
-    throw new Error("Telefono debe ser un numero");
-  }
+  // if (!/^[0-9]+$/i.test(telefono)) {
+  //   throw new Error("Telefono debe ser un numero");
+  // }
 
   //-------------------email------------------
 
