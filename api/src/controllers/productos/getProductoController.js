@@ -36,17 +36,14 @@ const searchProductByName = async (nombre) => {
     Producto.findAll({
       where: {
         nombre: {
-          [Op.iLike]: `%${nombre}%`
-        }
-      }
-    })
-    ]);
- 
+          [Op.iLike]: `%${nombre}%`,
+        },
+      },
+    }),
+  ]);
 
   return [...databaseProducts];
 };
-
-
 
 const getProductById = async (idProduct) => {
   // let ProductInfo = [];
@@ -86,7 +83,7 @@ const getProductById = async (idProduct) => {
       "id_categoria_producto",
     ],
   });
-  
+
   return dbdata;
 };
 
@@ -159,7 +156,7 @@ const getAllCategorias = async () => {
       const categoriaGuardada = await Categoria_producto.create(categorias[i]);
       categoriasGuardadas.push(categoriaGuardada);
     }
-    console.log("categoriasGuardadas", categoriasGuardadas);
+    // console.log("categoriasGuardadas", categoriasGuardadas);-
     return categoriasGuardadas;
   }
 };
