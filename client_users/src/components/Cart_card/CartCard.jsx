@@ -1,16 +1,19 @@
 import { IoTrashBinOutline } from "react-icons/io5";
+import { useSelector } from 'react-redux'
+
 import s from './cartcard.module.css'
 
-export default function CartCard(product) {
-    const imagen = 'https://cdn.shopify.com/s/files/1/0522/3858/1922/products/pulsera-ajustable-de-piedras-naturales-y-chakra-gold-shield-1.jpg?v=1655949144'
+export default function CartCard() {
+
+    const { product } = useSelector(state => state?.carrito)
 
 
     return (
         <div className={s.container}>
-            <div className={s.image}></div>
-            <div className={s.text}><h3 className={s.name}>Título del producto que seguro es largo</h3></div>
-            <div className={s.cantidad}>cantidad</div>
-            <div className={s.precio}>precio</div>
+            <div className={s.image}>{product?.imagen}</div>
+            <div className={s.text}><h3 className={s.name}>Nombre: {product?.nombre}</h3></div>
+            <div className={s.cantidad}>Cantidad:{product?.cantidad}</div>
+            <div className={s.precio}>$ {product?.valor_con_descuento}</div>
             <div className={s.eliminar}><IoTrashBinOutline size={20}/></div>
         </div>
     )

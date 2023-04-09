@@ -7,6 +7,7 @@ import swal from 'sweetalert'
 import axios from 'axios'
 import styles from "../formLogin/FormLogin.module.css"
 import { initializeApp } from "firebase/app";
+import Google from "../../assets/images/IconGoogle.png"
 
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 const firebaseConfig = {
@@ -25,6 +26,9 @@ const firebaseConfig = {
 
 
 export default function FormLogin() {
+
+    const iconGoogle = Google;
+
     const BACK_HOST = 'http://localhost:3001'
     const history = useHistory()
     const navigateTo = (url) => {
@@ -142,7 +146,7 @@ export default function FormLogin() {
                     </div>
 
                     <div>
-                            <button className={styles.boton} onClick={handleGoogleLogin}>Iniciar sesión con Google</button>
+                            <button className={styles.botonRedes} onClick={handleGoogleLogin}><img className={styles.btnRedes} src={iconGoogle} /></button>
                      </div>
 
                 </Form>

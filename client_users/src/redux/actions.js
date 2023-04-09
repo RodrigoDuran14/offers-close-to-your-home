@@ -7,20 +7,19 @@ const URL = "http://localhost:3001";
 export function agregarAlCarrito(product) {
   return {
     type: action.AGREGAR_AL_CARRITO,
-    payload: product
-  }
+    payload: product,
+  };
 }
-
 
 // ========================* USUARIOS *========================
 export function registerUser() {
   return () => {
-    axios.post(`${URL}/usuario`)
-      .then(response => console.log(response))
-      .catch(err => console.log(err))
-  }
+    axios
+      .post(`${URL}/usuario`)
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
+  };
 }
-
 
 // ========================* PRODUCTOS *========================
 export function createProduct(product) {
