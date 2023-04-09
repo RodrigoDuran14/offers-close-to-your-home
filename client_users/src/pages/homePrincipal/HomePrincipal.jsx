@@ -1,11 +1,16 @@
 import React from 'react'
 import CardsCategory from '../../components/cardsCategory/CardsCategory';
+import Slider from '../../components/slider/Slider';
 
 
 function HomePrincipal() {
   return (
-    <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
-        <CardsCategory />
+    <div>
+        <div 
+        // style={{margin:"100px"}}
+        ><Slider/>
+        </div>
+        <div><CardsCategory /></div>
     </div>
   )
 };

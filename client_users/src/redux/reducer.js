@@ -101,10 +101,26 @@ function rootReducer(state = initialState, action) {
         ),
       };
     case AGREGAR_AL_CARRITO:
-      return {
-        ...state,
-        carrito: [...state.carrito, action.payload],
-      };
+      const itemExistente = state.carrito.find(
+        (item) => item.id === action.payload.id
+      );
+
+      if (itemExistente) {
+        return {
+          ...state,
+          carrito: state.carrito.map((item) =>
+            item.id === action.payload.id
+              ? { ...item, cantidad: item.cantidad + 1 }
+              : item
+          ),
+        };
+      } else {
+        return {
+          ...state,
+          carrito: [...state.carrito, { ...action.payload, cantidad: 1 }],
+        };
+      }
+
     default:
       return state;
   }
