@@ -46,6 +46,10 @@ module.exports = (sequelize) => {
       imagen: {
         type: DataTypes.STRING,
       }
-    }
-  );
+    },
+    {
+      tableName: 'Usuario',
+      timestamps: false 
+  });
+  
 };
