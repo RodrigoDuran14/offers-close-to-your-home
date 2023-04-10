@@ -2,10 +2,12 @@
     margin-top: 50px;
     width: 200px;
     height: 200px;
-    border: solid 1px rgb(186, 178, 178);
+    /* border: solid 1px rgb(186, 178, 178); */
     border-radius: 20px;
     background-color: white;
     color: black;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
+
 }
 
 .container img{

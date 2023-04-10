@@ -3,6 +3,7 @@ import * as action from "./actions-type"; // para no escribir todos los action t
 
 const URL = "http://localhost:3001";
 
+
 // ========================* CARRITO *========================
 export function agregarAlCarrito(id) {
   return {
@@ -17,6 +18,7 @@ export function eliminarDelCarrito(id) {
     payload: id,
   };
 }
+
 
 // ========================* USUARIOS *========================
 export function registerUser() {
@@ -126,7 +128,7 @@ export const orderedByHighestPrice = () => {
   return { type: action.ORDERED_BY_HIGHEST_PRICE };
 };
 
-// * 10. action-creator para filtrar productos por condicion (Nuevo,Usado,Reacondicionado)
+// * 10. action-creator para filtrar productos por condicion (Nuevo,Usado,Reacondicionado,Ofertas)
 
 export const filterByNewProducts = () => {
   return { type: action.FILTER_BY_NEW_PRODUCTS }; //productos nuevos
@@ -138,6 +140,9 @@ export const filterByUsedProducts = () => {
 
 export const filterByRefurbishedProducts = () => {
   return { type: action.FILTER_BY_REFURBISHED_PRODUCTS }; //productos reacondicionados
+};
+export const filterByOffers= () => {
+  return { type: action.OFERTAS }; //productos reacondicionados
 };
 
 // * 11. action-creator para filtrar productos por categoria
