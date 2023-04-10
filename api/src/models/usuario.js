@@ -28,7 +28,7 @@ module.exports = (sequelize) => {
         allowNull: false
       },
       telefono: {
-        type: DataTypes.BIGINT,
+        type: DataTypes.STRING,
         allowNull: false,
       },
 
@@ -46,6 +46,10 @@ module.exports = (sequelize) => {
       imagen: {
         type: DataTypes.STRING,
       }
-    }
-  );
+    },
+    {
+      tableName: 'Usuario',
+      timestamps: false 
+  });
+  
 };

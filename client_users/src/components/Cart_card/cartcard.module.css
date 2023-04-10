@@ -14,7 +14,7 @@
     border: 1px solid black;
     height: 86px;
     width: 20%;
-    background-image: url('../../assets/images/pulseras.jpg');
+    /* background-image: url('../../assets/images/pulseras.jpg'); */
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;

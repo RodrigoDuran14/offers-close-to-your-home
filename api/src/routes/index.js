@@ -19,6 +19,8 @@ const categoriaComercio = require("./categoriaComercio")
 
 const ciudades = require("./ciudad");
 
+const venta = require("./venta");
+
 const router = Router();
 
 // Configurar los routers

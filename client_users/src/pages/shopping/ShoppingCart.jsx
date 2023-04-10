@@ -17,10 +17,37 @@ export default function ShoppingCart() {
         
     }
 
+console.log(storage_cart);
+  return (
+    <div>
+      <h2>Carrito de compras</h2>
+      {storage_cart && storage_cart.length > 0 ? (
+        storage_cart.map(producto => (
+          <CartCard key={producto.id} 
+          imagen={producto.imagen} 
+          nombre={producto.nombre} 
+          valor_con_descuento={producto.valor_con_descuento}
+          cantidad={producto.cantidad}
+          />
+        ))
+      ) : (
+        <p>No hay productos en el carrito.</p>
+      )}
+      <button>Confirmar compra</button>
+    </div>
+  );
+}
+
+/*
+export default function ShoppingCart() {
+    const carrito = useSelector(state => state.carrito)
+    
+   
+
     return (
         <div className={s.container}>
             {
-                carrito.map(p => {
+               storage_cart && carrito?.map(p => {
                     return (
                         <CartCard imagen={p.imagen} nombre={p.nombre} precio={p.precio} />
                     )

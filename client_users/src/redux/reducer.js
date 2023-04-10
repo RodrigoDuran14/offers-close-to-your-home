@@ -11,12 +11,12 @@ import {
   FILTER_BY_NEW_PRODUCTS,
   FILTER_BY_USED_PRODUCTS,
   FILTER_BY_REFURBISHED_PRODUCTS,
-  AGREGAR_AL_CARRITO
+  AGREGAR_AL_CARRITO,
 } from "./actions-type.js";
 
 const initialState = {
-  products: [],//22
-  productsFitered: [],//22
+  products: [], //22
+  productsFitered: [], //22
   productID: [],
   comercios: [],
   ventas: [],
@@ -32,7 +32,11 @@ function rootReducer(state = initialState, action) {
     case CREATE_PRODUCT:
       return { ...state, products: [...state.products, action.payload] };
     case GET_ALL_PRODUCTS:
-      return { ...state, products: action.payload, productsFitered: action.payload };
+      return {
+        ...state,
+        products: action.payload,
+        productsFitered: action.payload,
+      };
     case GET_PRODUCT_BY_ID:
       return { ...state, product: action.payload };
     case GET_PRODUCT_BY_NAME:
@@ -40,9 +44,12 @@ function rootReducer(state = initialState, action) {
     case GET_PRODUCT_BY_CATEGORY:
       return {
         ...state,
-        productsFitered: [...state.productsFitered].filter(product => {
-          return product.Categoria_producto.nombre_categoria_producto === action.payload
-        })
+        productsFitered: [...state.productsFitered].filter((product) => {
+          return (
+            product.Categoria_producto.nombre_categoria_producto ===
+            action.payload
+          );
+        }),
       };
     case ORDERED_BY_NAME_DESC:
       return {
@@ -94,10 +101,26 @@ function rootReducer(state = initialState, action) {
         ),
       };
     case AGREGAR_AL_CARRITO:
-      return {
-        ...state,
-        carrito: [...state.carrito, action.payload]
+      const itemExistente = state.carrito.find(
+        (item) => item.id === action.payload.id
+      );
+
+      if (itemExistente) {
+        return {
+          ...state,
+          carrito: state.carrito.map((item) =>
+            item.id === action.payload.id
+              ? { ...item, cantidad: item.cantidad + 1 }
+              : item
+          ),
+        };
+      } else {
+        return {
+          ...state,
+          carrito: [...state.carrito, { ...action.payload, cantidad: 1 }],
+        };
       }
+
     default:
       return state;
   }

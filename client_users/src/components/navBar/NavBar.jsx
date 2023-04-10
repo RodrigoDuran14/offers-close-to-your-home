@@ -47,12 +47,12 @@ const NavBar = () => {
             </div>
 
             <div className={s.options}>
-                <Link to="/login" className={s.link}>
+                <Link to="/log-in" className={s.link}>
                     <h4>Iniciar sesión</h4>
                 </Link>
-
-
+                <Link to="/shopping-cart">
                 <button className={s.button}> <AiOutlineShoppingCart size={25} /> </button>
+                </Link>
             </div>
 
         </div>

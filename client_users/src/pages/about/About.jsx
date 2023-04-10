@@ -37,7 +37,6 @@ const About = () => {
       </div>
       {/* <img className={styles.img2} src={logo}/> */}
       <div className={styles.footer}>
-      <Footer/>
       </div>
     </div>
   )

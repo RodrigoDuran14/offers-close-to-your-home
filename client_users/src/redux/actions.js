@@ -4,23 +4,29 @@ import * as action from "./actions-type"; // para no escribir todos los action t
 const URL = "http://localhost:3001";
 
 // ========================* CARRITO *========================
-export function agregarAlCarrito(product) {
+export function agregarAlCarrito(id) {
   return {
     type: action.AGREGAR_AL_CARRITO,
-    payload: product
-  }
+    payload: id,
+  };
 }
 
+export function eliminarDelCarrito(id) {
+  return {
+    type: action.ELIMINAR_DEL_CARRITO,
+    payload: id,
+  };
+}
 
 // ========================* USUARIOS *========================
 export function registerUser() {
   return () => {
-    axios.post(`${URL}/usuario`)
-      .then(response => console.log(response))
-      .catch(err => console.log(err))
-  }
+    axios
+      .post(`${URL}/usuario`)
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
+  };
 }
-
 
 // ========================* PRODUCTOS *========================
 export function createProduct(product) {

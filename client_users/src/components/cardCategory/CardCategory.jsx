@@ -11,14 +11,17 @@ function CardCategory({nombre_categoria_producto, imagen_categoria_producto}) {/
   }
 
   return (
-    <Link to="/home" onClick={handlerCategory}>
+    <Link className={styles.link} to="/home" onClick={handlerCategory}>
       <div className={styles.container}>
         <div className={styles.box1}>
           <h1>{nombre_categoria_producto}</h1>
         </div>
         <div className={styles.box}>
           <img src={imagen_categoria_producto} alt={nombre_categoria_producto} />
+          <h3>ver mas...</h3>
         </div>
+        <div className={styles.box}>
+          </div>
       </div>
     </Link>
   )
