@@ -3,7 +3,9 @@ import Cards from "../../components/cards/Cards";
 // import Filter from '../../components/filter/Filter'
 import styles from "./Home.module.css";
 
+
 import Sidebar from "../../components/sideBar/Sidebar";
+
 
 import Slider from "../../components/slider/Slider";
 

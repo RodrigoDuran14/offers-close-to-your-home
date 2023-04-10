@@ -38,10 +38,12 @@ export default function FormRegister() {
        console.log(telefono);
        return (
         <>
+
             {shouldRedirect ? (
                 <Redirect to= "/home"/>
             ):
             (<div className={style.contenedor}>
+
                 <div className={style.contenedorForm}>  
                     <form onSubmit={handleSubmit}>
                         <div>
@@ -89,6 +91,7 @@ export default function FormRegister() {
                             <label for= "" className={style.label}>Ciudad</label>
                         </div>
 
+
                         <button type="submit" className={style.button}>Registrase</button>
                     </form>
                 </div>
@@ -96,3 +99,4 @@ export default function FormRegister() {
         </>
     );
 };
+
