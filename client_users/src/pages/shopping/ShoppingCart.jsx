@@ -56,4 +56,4 @@ export default function ShoppingCart() {
             <button onClick={buyHandler}>Confirmar compras</button>
         </div>
     )
-}
+}*/

@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
-import style from './formRegister.module.css'
+import s from './formRegister.module.css'
 
 export default function FormRegister() {
     const dispatch = useDispatch()
@@ -43,35 +43,35 @@ export default function FormRegister() {
        console.log(telefono);
        return (
         <div>
-            <form onSubmit={handleSubmit} className={style.container}>
-                <input type="text" name="primer_nombre" value={form.primer_nombre} onChange={handleInputChange} className={style.input}/>
-                <label for= "" className={style.label}>Nombre1</label>
+            <form onSubmit={handleSubmit} className={s.container}>
+                <label for= "" className={s.label}>Primer nombre</label>
+                <input type="text" name="primer_nombre" value={form.primer_nombre} onChange={handleInputChange} className='form-input'/>
 
-                <input type="text" name="segundo_nombre" value={form.segundo_nombre} onChange={handleInputChange} className={style.input}/>
-                <label for= "" className={style.label}>Nombre2</label>
+                <label for= "" className={s.label}>Segundo nombre</label>
+                <input type="text" name="segundo_nombre" value={form.segundo_nombre} onChange={handleInputChange} className='form-input'/>
 
-                <input type="text" name="primer_apellido" value={form.primer_apellido} onChange={handleInputChange} className={style.input}/>
-                <label for= "" className={style.label}>Apellido1</label>
+                <label for= "" className={s.label}>Primer apellido</label>
+                <input type="text" name="primer_apellido" value={form.primer_apellido} onChange={handleInputChange} className='form-input'/>
 
-                <input type="text" name="segundo_apellido" value={form.segundo_apellido} onChange={handleInputChange} className={style.input}/>
-                <label for= "" className={style.label}>Apellido2</label>
+                <label for= "" className={s.label}>Segundo apellido</label>
+                <input type="text" name="segundo_apellido" value={form.segundo_apellido} onChange={handleInputChange} className='form-input'/>
 
-                <input type="text" name="direccion" value={form.direccion} onChange={handleInputChange} className={style.input}/>
-                <label for= "" className={style.label}>Direccion</label>
+                <label for= "" className={s.label}>Dirección</label>
+                <input type="text" name="direccion" value={form.direccion} onChange={handleInputChange} className='form-input'/>
 
-                <input type="text" name="telefono" value={form.telefono} onChange={handleInputChange} className={style.input}/>
-                <label for= "" className={style.label}>Telefono</label>
+                <label for= "" className={s.label}>Telefono</label>
+                <input type="text" name="telefono" value={form.telefono} onChange={handleInputChange} className='form-input'/>
 
-                <input type="text" name="email" value={form.email} onChange={handleInputChange} className={style.input}/>
-                <label for= "" className={style.label}>Email</label>
+                <label for= "" className={s.label}>Email</label>
+                <input type="text" name="email" value={form.email} onChange={handleInputChange} className='form-input'/>
 
-                <input type="password" name="contraseña" value={form.contraseña} onChange={handleInputChange} className={style.input}/>
-                <label for= "" className={style.label}>Contraseña</label>
+                <label for= "" className={s.label}>Contraseña</label>
+                <input type="password" name="contraseña" value={form.contraseña} onChange={handleInputChange} className='form-input'/>
 
-                <input type="text" name="id_ciudad" value={form.id_ciudad} onChange={handleInputChange} className={style.input}/>
-                <label for= "" className={style.label}>Ciudad</label>
+                <label for= "" className={s.label}>Ciudad</label>
+                <input type="text" name="id_ciudad" value={form.id_ciudad} onChange={handleInputChange} className='form-input'/>
 
-                <button type="submit" className={style.button}>Registrase</button>
+                <button type="submit">Registrase</button>
             </form>
         </div>
     )
