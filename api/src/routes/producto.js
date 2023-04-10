@@ -13,3 +13,5 @@ router.get("/:idProduct", getProductByIdhandler);
 router.post("/", postProductHandler);
 router.post("/:idProduct/calificacion", crearCalificacion)
 module.exports = router;
+
+//aguante fnatic
