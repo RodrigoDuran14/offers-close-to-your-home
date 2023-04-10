@@ -5,7 +5,7 @@ function CardOfert({imagen, nombre}) {
   return (
     <div className={styles.container}>
       <img src={imagen} alt={nombre}/>
-      <h2>{nombre}</h2>
+      <span>{nombre}</span>
     </div>
   )
 }
