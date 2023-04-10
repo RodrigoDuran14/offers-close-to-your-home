@@ -35,7 +35,7 @@ router.use("/commerce", comercio)
 
 router.use("/categoriaComercio", categoriaComercio)
 
-router.get("/productos", function(req, res, next){
+router.get("/buy-product", function(req, res, next){
     const productId = req.query.producto_id;
     // Aquí deberías validar que el ID del producto sea válido antes de usarlo
     // para buscar el producto en la base de datos
@@ -47,7 +47,7 @@ router.use("/ciudad", ciudades);
 
 module.exports = router;
 
-/*e l enlace que devuelve tu API al cliente es el enlace de pago de Mercado Pago generado para la transacción.
+/*el enlace que devuelve tu API al cliente es el enlace de pago de Mercado Pago generado para la transacción.
  Para que el cliente pueda pagar, debe hacer clic en este enlace. Por lo tanto, lo más común es que se genere un botón
   en el frontend con una etiqueta de "Pagar" o algo similar y se vincule con este enlace de pago.
 

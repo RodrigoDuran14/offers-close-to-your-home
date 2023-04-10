@@ -1,26 +1,28 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
+import { useHistory } from "react-router-dom";
 import QuantityDisplay from '../../components/quantityDisplay/QuantityDisplay'
 import { agregarAlCarrito, getProductById } from '../../redux/actions'
 import styles from './Detail.module.css'
 import Loader from '../../components/loader/loader'
 import Footer from '../../components/footer/Footer'
+import swal from 'sweetalert'
 
 const Detail = () => {
-  const { product } = useSelector(state => state)
-
   const { id } = useParams()
+  const { product } = useSelector(state => state)
   const dispatch = useDispatch();
+  const history = useHistory();
+
+  function goBack() {
+    history.goBack();
+  }
 
   useEffect(() => {
     dispatch(getProductById(id))
-  }, [dispatch,id])
+  }, [dispatch, id])
 
-  const handlerCarrito = () => {
-    console.log("añadido");
-    dispatch(agregarAlCarrito(product))
-  }  
   // Cantidad de articulos
   const [quantity, setQuantity] = useState(1);
 
@@ -28,9 +30,17 @@ const Detail = () => {
     setQuantity(quantity - 1);
   }
 
-  const handleIncrease= () => {
+  const handleIncrease = () => {
     setQuantity(quantity + 1);
   }
+
+  const addToCart = () => {
+    console.log("añadido");
+    dispatch(agregarAlCarrito({ ...product, quantity: quantity }))
+    swal("Producto añadido a tu carrito!");
+    goBack()
+  }
+
 
   return (
     <section>
@@ -50,7 +60,7 @@ const Detail = () => {
                     <img src={product.imagen} alt={product.nombre} />
                   </div> */}
                 </div>
-  
+
                 <div className={styles.box2}>
                   <div>
                     <h2>{product.nombre}</h2>
@@ -73,7 +83,7 @@ const Detail = () => {
                     />
                   </div>
                   <div className={styles.btn}>
-                    <button onClick={handlerCarrito}>Añadir al carrito</button>
+                    <button onClick={addToCart}>Añadir al carrito</button>
                   </div>
                   <div className={styles.btn}>
                     <button>Comprar ahora</button>
@@ -88,7 +98,7 @@ const Detail = () => {
       </div>
     </section>
   );
-  
+
 }
 
 export default Detail

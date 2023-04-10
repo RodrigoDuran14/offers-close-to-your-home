@@ -23,7 +23,8 @@ const initialState = {
   pagos: [],
   categorys: [],
   product: {},
-  filter: []
+  filter: [],
+  carrito: []
 };
 
 function rootReducer(state = initialState, action) {
@@ -95,7 +96,7 @@ function rootReducer(state = initialState, action) {
     case AGREGAR_AL_CARRITO:
       return {
         ...state,
-        carrito: [...carrito, action.payload]
+        carrito: [...state.carrito, action.payload]
       }
     default:
       return state;

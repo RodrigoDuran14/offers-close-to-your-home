@@ -4,24 +4,29 @@ import CartCard from "../../components/Cart_card/CartCard"
 import s from './shopping.module.css'
 
 export default function ShoppingCart() {
-    const carrito = useSelector(state => state.carrito)
-    
+    const state_carrito = useSelector(state => state.carrito)
+    const storage_carrito = JSON.parse(window.localStorage.getItem("cart") || "[]");
+
+    const [carrito, setCarrito] = useState([...state_carrito, ...storage_carrito])
+
     useEffect(() => {
         window.localStorage.setItem('carrito', JSON.stringify(carrito))
     }, [carrito])
 
-    const storage_cart = JSON.parse(window.localStorage.getItem('carrito'))
+    const buyHandler = () => {
+        
+    }
 
     return (
         <div className={s.container}>
             {
-                storage_cart.map(p => {
+                carrito.map(p => {
                     return (
-                        <CartCard imagen={p.imagen} nombre={p.nombre} precio={p.precio}/>
+                        <CartCard imagen={p.imagen} nombre={p.nombre} precio={p.precio} />
                     )
                 })
             }
-            <button>Confirmar compras</button>
+            <button onClick={buyHandler}>Confirmar compras</button>
         </div>
     )
 }
