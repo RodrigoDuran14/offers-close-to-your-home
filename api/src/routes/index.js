@@ -7,6 +7,8 @@ const paymentInstance = new paymentController(new paymentService())
 
 const productos = require("./producto");
 
+const allproducts = require("./allProducts");
+
 const usuarios = require("./usuario");
 
 const categorias = require("./categorias");
@@ -17,11 +19,15 @@ const categoriaComercio = require("./categoriaComercio")
 
 const ciudades = require("./ciudad");
 
+const venta = require("./venta");
+
 const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 router.use("/products", productos);
+
+router.use("/allProducts", allproducts);
 
 router.use("/usuario", usuarios);
 
@@ -31,12 +37,14 @@ router.use("/commerce", comercio)
 
 router.use("/categoriaComercio", categoriaComercio)
 
-router.get("/productos", function(req, res, next){
-    const productId = req.query.producto_id;
-    // Aquí deberías validar que el ID del producto sea válido antes de usarlo
-    // para buscar el producto en la base de datos
-    paymentInstance.getPymentLink(req, res, productId);
-  });
+router.use("/venta", venta)
+
+router.get("/productos", function (req, res, next) {
+  const productId = req.query.producto_id;
+  // Aquí deberías validar que el ID del producto sea válido antes de usarlo
+  // para buscar el producto en la base de datos
+  paymentInstance.getPymentLink(req, res, productId);
+});
 
 router.use("/ciudad", ciudades);
 

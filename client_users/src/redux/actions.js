@@ -4,15 +4,32 @@ import * as action from "./actions-type"; // para no escribir todos los action t
 //const URL = "http://localhost:3001"
 const URL = "https://justoffers-back.up.railway.app";
 
+
+// ========================* CARRITO *========================
+export function agregarAlCarrito(id) {
+  return {
+    type: action.AGREGAR_AL_CARRITO,
+    payload: id,
+  };
+}
+
+export function eliminarDelCarrito(id) {
+  return {
+    type: action.ELIMINAR_DEL_CARRITO,
+    payload: id,
+  };
+}
+
+
 // ========================* USUARIOS *========================
 export function registerUser() {
   return () => {
-    axios.post(`${URL}/usuario`)
-      .then(response => console.log(response))
-      .catch(err => console.log(err))
-  }
+    axios
+      .post(`${URL}/usuario`)
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
+  };
 }
-
 
 // ========================* PRODUCTOS *========================
 export function createProduct(product) {
@@ -48,7 +65,7 @@ export const getAllProducts = () => {
 export const getProductById = (id) => async (dispatch) => {
   try {
     const res = await axios.get(`${URL}/products/${id}`);
-
+    console.log(res.data);
     dispatch({
       type: action.GET_PRODUCT_BY_ID,
       payload: res.data,
@@ -84,22 +101,9 @@ export const getProductByName = (name) => async (dispatch) => {
 
 // * 5. action-creator para obtener producto por categoría
 
-export const getProductByCategory = (name) => async (dispatch) => {
-  try {
-    const res = await axios.get(`${URL}/products}`);
-    const result = res.data.filter((product) => product.nombre === name);
-
-    dispatch({
-      type: action.GET_PRODUCT_BY_CATEGORY,
-      payload: result,
-    });
-  } catch (error) {
-    console.log(error);
-    dispatch({
-      type: action.GET_PRODUCT_BY_CATEGORY,
-      payload: error,
-    });
-  }
+export const getProductByCategory = (category) => {
+  console.log(category);
+  return { type: action.GET_PRODUCT_BY_CATEGORY, payload: category };
 };
 
 // * 6. action-creator para ordenar productos por nombre ascendente
@@ -125,7 +129,7 @@ export const orderedByHighestPrice = () => {
   return { type: action.ORDERED_BY_HIGHEST_PRICE };
 };
 
-// * 10. action-creator para filtrar productos por condicion (Nuevo,Usado,Reacondicionado)
+// * 10. action-creator para filtrar productos por condicion (Nuevo,Usado,Reacondicionado,Ofertas)
 
 export const filterByNewProducts = () => {
   return { type: action.FILTER_BY_NEW_PRODUCTS }; //productos nuevos
@@ -138,13 +142,17 @@ export const filterByUsedProducts = () => {
 export const filterByRefurbishedProducts = () => {
   return { type: action.FILTER_BY_REFURBISHED_PRODUCTS }; //productos reacondicionados
 };
+export const filterByOffers= () => {
+  return { type: action.OFERTAS }; //productos reacondicionados
+};
 
 // * 11. action-creator para filtrar productos por categoria
-export function filterByCategory() {
+export function getCategorys() {
   return async function (dispatch) {
     const resp = await axios.get(`${URL}/categorias`);
+    console.log(resp.data);
     dispatch({
-      type: action.GET_ALL_PRODUCTS,
+      type: action.GET_CATEGORY,
       payload: resp.data,
     });
   };

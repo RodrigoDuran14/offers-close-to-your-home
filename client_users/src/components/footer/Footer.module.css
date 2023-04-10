@@ -1,14 +1,18 @@
 .container{
     background-color: black;
+    margin: 0;
     color: aliceblue;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 100px;
+    height: 100%;
     width: 100%;
-    z-index: 998;
-    position: relative;
-    bottom: -20px;
+    margin-bottom: 0;
+    /* z-index: 998; */
+    /* position: fixed; */
+
+    /* z-index: 998; */
+    /* position: fixed; */   
 }
 
 .logo{

@@ -3,24 +3,30 @@ import {
   GET_ALL_PRODUCTS,
   GET_PRODUCT_BY_ID,
   GET_PRODUCT_BY_NAME,
-  ORDERED_BY_NAME_ASC,
-  ORDERED_BY_NAME_DESC,
   GET_PRODUCT_BY_CATEGORY,
+  ORDERED_BY_NAME_DESC,
+  GET_CATEGORY,
   ORDERED_BY_LOWEST_PRICE,
   ORDERED_BY_HIGHEST_PRICE,
   FILTER_BY_NEW_PRODUCTS,
   FILTER_BY_USED_PRODUCTS,
   FILTER_BY_REFURBISHED_PRODUCTS,
+  AGREGAR_AL_CARRITO,
+  OFERTAS,
+  ORDERED_BY_NAME_ASC 
 } from "./actions-type.js";
 
 const initialState = {
-  products: [],
+  products: [], //22
+  productsFitered: [], //22
   productID: [],
   comercios: [],
   ventas: [],
   pagos: [],
-  categorias: [],
+  categorys: [],
   product: {},
+  filter: [],
+  carrito: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -28,45 +34,50 @@ function rootReducer(state = initialState, action) {
     case CREATE_PRODUCT:
       return { ...state, products: [...state.products, action.payload] };
     case GET_ALL_PRODUCTS:
-      return { ...state, products: action.payload };
+      return {
+        ...state,
+        products: action.payload,
+        productsFitered: action.payload,
+      };
     case GET_PRODUCT_BY_ID:
       return { ...state, product: action.payload };
     case GET_PRODUCT_BY_NAME:
       return { ...state, products: action.payload };
-    case ORDERED_BY_NAME_ASC:
+    case GET_PRODUCT_BY_CATEGORY:
       return {
         ...state,
-        products: [...state.products].sort((a, b) =>
-          a.nombre.localeCompare(b.nombre)
-        ),
+        productsFitered: [...state.products].filter((product) => {
+          return (
+            product.Categoria_producto.nombre_categoria_producto ===
+            action.payload
+          );
+        }),
       };
     case ORDERED_BY_NAME_DESC:
       return {
         ...state,
-        products: [...state.products].sort((a, b) => {
-          if (a.nombre > b.nombre) return -1;
-          if (a.name < b.nombre) return 1;
-          return 0;
-        }),
+        products: [...state.products].sort((a, b) => b.nombre.localeCompare(a.nombre))
       };
-    case GET_PRODUCT_BY_CATEGORY:
+      case ORDERED_BY_NAME_ASC:
+        return {
+          ...state,
+          products: [...state.products].sort((a, b) => a.nombre.localeCompare(b.nombre))
+        };
+    case GET_CATEGORY:
       return {
         ...state,
-        products: action.payload,
+        categorys: action.payload,
       };
     case ORDERED_BY_LOWEST_PRICE:
       return {
         ...state,
-        products: [...state.products].sort(
-          (a, b) => a.valor_con_descuento - b.valor_con_descuento
-        ),
+        products: [...state.products].filter(product=>product.valor_con_descuento<100)
+        
       };
     case ORDERED_BY_HIGHEST_PRICE:
       return {
         ...state,
-        products: [...state.products].sort(
-          (a, b) => b.valor_con_descuento - a.valor_con_descuento
-        ),
+        products: [...state.products].filter(product=>product.valor_con_descuento>100)
       };
     case FILTER_BY_NEW_PRODUCTS:
       return {
@@ -89,6 +100,32 @@ function rootReducer(state = initialState, action) {
           (item) => item.condicion === "Reacondicionado"
         ),
       };
+      case OFERTAS:
+        return {
+          ...state,
+          products: [...state.products].filter(product=>product.valor_con_descuento>60)
+        };
+    case AGREGAR_AL_CARRITO:
+      const itemExistente = state.carrito.find(
+        (item) => item.id === action.payload.id
+      );
+
+      if (itemExistente) {
+        return {
+          ...state,
+          carrito: state.carrito.map((item) =>
+            item.id === action.payload.id
+              ? { ...item, cantidad: item.cantidad + 1 }
+              : item
+          ),
+        };
+      } else {
+        return {
+          ...state,
+          carrito: [...state.carrito, { ...action.payload, cantidad: 1 }],
+        };
+      }
+
     default:
       return state;
   }

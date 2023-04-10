@@ -8,7 +8,7 @@ class PaymentController{
             const payment = await this.subscriptionService.createPayment(productId);
             res.json(payment)
         } catch (error) {
-            console.log(error); // Agrega esto para mostrar el error real en la consola
+            console.log(error)
             return res.status(500).json({error:true, mesg:`failed to create payment: ${error.message}`})
         }
     }

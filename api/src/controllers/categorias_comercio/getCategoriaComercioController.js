@@ -72,7 +72,7 @@ const getCategoriaComecio = async () => {
         if (encontrado === null) {
             const crearCategoria = await Categoria_comercio.create({
                 nombre_categoria_comercio: categoria,
-                id_categoria_comercio: i
+                id_categoria_comercio: i+1
 
             })
         }

@@ -1,4 +1,4 @@
-const { Usuario } = require("../../db");
+const { Usuario, Tipo_usuario, Ciudad } = require("../../db");
 const {Op, Sequelize } = require("sequelize");
 
 const getAllUsers = async () => {
@@ -17,8 +17,13 @@ const getAllUsers = async () => {
         "estado",
         "email",
         "contraseña",
-        "imagen",
       ],
+      include: [
+        {model: Tipo_usuario,
+        attributes: ["nombre_tipo_usuario"]},
+        {model: Ciudad,
+          attributes: ["nombre_ciudad"]},
+      ]
     });
     const results = [...dataUser];
     return results;
@@ -43,7 +48,6 @@ const getUserById = async idUser => {
         "estado",
         "email",
         "contraseña",
-        "imagen",
       ],
     });
     return user;
@@ -68,7 +72,6 @@ const getUserByName = async name => {
         "estado",
         "email",
         "contraseña",
-        "imagen",
       ],
       where: {
         [Op.or]: [

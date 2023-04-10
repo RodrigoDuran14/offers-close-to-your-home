@@ -14,7 +14,7 @@ const loadCities = async () => {
     await Ciudad.bulkCreate(mapCiudades, { validate: true });
     
     console.log('Datos de las ciudades cargados exitosamente');
-    
+        
   } catch (error) {
     console.error('Error al cargar los datos de las ciudades', error);
   }
