@@ -1,29 +1,43 @@
-
-import React from 'react'
-import Cards from '../../components/cards/Cards'
+import React from "react";
+import Cards from "../../components/cards/Cards";
 // import Filter from '../../components/filter/Filter'
-import styles from './Home.module.css'
-import Footer from '../../components/footer/Footer'
-import Slider from '../../components/slider/Slider'
+import styles from "./Home.module.css";
 
-function Home () {
+import Sidebar from "../../components/sideBar/Sidebar";
 
+import Slider from "../../components/slider/Slider";
 
+function Home() {
   // const productos = useSelector((state) => state.products)
   return (
-    <section>
+    <>
+    <section className={styles.section}>
+      <div className={styles.content}>
 
-    <div className= {styles.container}>
-      <div className={styles.filtros}>
-        <Slider />
+      <div className={styles.sidebar}>
+        <Sidebar />
       </div>
-      <div>
-        <Cards/>
+      
+      <div className={styles.cards}>
+       
+       
+        <div className={styles.content_cards}>
+          <Cards />
+        </div>
+        
       </div>
-    </div>
+      </div>
+      
     </section>
+    <section className={styles.section2}>
+      <div className={styles.slider}>
 
-  )
+      <Slider/>
+      </div>
+    </section>
+    </>
+   
+  );
 }
 
-export default Home
+export default Home;

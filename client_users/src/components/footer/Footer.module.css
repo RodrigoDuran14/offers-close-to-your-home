@@ -5,11 +5,14 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 100px;
+    height: 100%;
     width: 100%;
-    z-index: 998;
-    position: fixed;
-    bottom: 0;
+    margin-bottom: 0;
+    /* z-index: 998; */
+    /* position: fixed; */
+
+    /* z-index: 998; */
+    /* position: fixed; */   
 }
 
 .logo{

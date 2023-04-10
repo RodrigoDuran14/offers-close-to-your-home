@@ -5,7 +5,7 @@ import QuantityDisplay from '../../components/quantityDisplay/QuantityDisplay'
 import { agregarAlCarrito, getProductById } from '../../redux/actions'
 import styles from './Detail.module.css'
 import Loader from '../../components/loader/loader'
-import Footer from '../../components/footer/Footer'
+// import Footer from '../../components/footer/Footer'
 
 const Detail = () => {
   const { product } = useSelector(state => state)

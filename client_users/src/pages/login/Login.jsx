@@ -13,13 +13,13 @@ const Login = () => {
   const logo = Logo
   return (
     <div className={s.container}>
-        <img className={s.logo} src={logo}/>
+        <img className={s.logo} src={logo} alt="texto del logo"/>
       <div className={s.formulario}>
       {/* <h1 >JustOffers</h1>       */}
       <FormLogin /> 
       </div>
-      <img className={s.fondo1} src={fondo1}/>
-      <img className={s.fondo2} src={fondo2}/>
+      <img className={s.fondo1} src={fondo1} alt = "fondo tipo wave"/>
+      <img className={s.fondo2} src={fondo2} alt = "fondo tipo wave"/>
     </div>
   );
 };

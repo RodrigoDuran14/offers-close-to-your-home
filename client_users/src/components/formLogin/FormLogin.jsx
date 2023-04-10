@@ -1,7 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 import { Link } from "react-router-dom"
-import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 import validation from './validation'
 import swal from 'sweetalert'
 import axios from 'axios'
@@ -24,7 +24,7 @@ const firebaseConfig = {
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
-
+//LAUTARO
 export default function FormLogin() {
 
     const iconGoogle = Google;
@@ -36,49 +36,50 @@ export default function FormLogin() {
     }
 
     function login(user) {
-        console.log('SUBMIT LOGIN', user)
-
         if (user) {
-            swal({
-                title: 'Bienvenido',
-                text: 'Ya puedes navegar con tu cuenta!',
-                icon: 'success',
-                timer: '2000'
-            })
-            navigateTo('/home')
+          swal({
+            title: 'Bienvenido',
+            text: 'Ya puedes navegar con tu cuenta!',
+            icon: 'success',
+            timer: '2000'
+          });
+          return Promise.resolve(true);
         } else {
-            swal({
-                text: 'Usuario o contraseña incorrectos',
-                icon: 'error',
-                timer: '2000',
-                button: 'Accept'
-            })
+          swal({
+            text: 'Usuario o contraseña incorrectos',
+            icon: 'error',
+            timer: '2000',
+            button: 'Accept'
+          });
+          return Promise.resolve(false);
         }
-    }
-
-    const handleLogin = async (values) => {
+      }
+      const handleLogin = async (values) => {
         try {
-            const user = await (axios.post(`${BACK_HOST}/usuario/login`, values)).data
-            const session = user.data.session
-
-            const token = user.data.token
-            console.log(token)
-
-            window.localStorage.setItem('user_token', JSON.stringify(token))
-            window.localStorage.setItem('user_session', JSON.stringify(session))
-            
-            login(session)
-
+          const user = await axios.post(`${BACK_HOST}/usuario/login`, values);
+          const session = user.data.session;
+          const token = user.data.token;
+          window.localStorage.setItem('user_token', JSON.stringify(token));
+          window.localStorage.setItem('user_session', JSON.stringify(session));
+          const isUserAuthenticated = await login(true);
+          if (isUserAuthenticated) {
+            navigateTo('/');
+          } else {
+            console.log('Login failed');
+          }
         } catch (error) {
-            const err = error.response.data
-            swal({
-                text: err.msg,
-                icon: 'error',
-                timer: '2000'
-            })
+          const err = error.response.data;
+          swal({
+            text: err.msg,
+            icon: 'error',
+            timer: '2000'
+          });
         }
-    }
-
+      };
+      
+      
+      
+// carolina
     const handleGoogleLogin = async () => {
         try {
             const result = await signInWithPopup(auth, new GoogleAuthProvider());
@@ -108,7 +109,7 @@ export default function FormLogin() {
             });
         }
     }
-
+//carolina final
     return (
         <div className={styles.container}
         // style={{ width: '100%', maxWidth: '820px' }}
@@ -128,13 +129,13 @@ export default function FormLogin() {
                     <Field name='email' type='email' placeholder='Email' className={styles.formInput} />
                     <ErrorMessage name='email' />
 
-                    <Field name='password' type='password' placeholder='Password' className={styles.formInput} />
+                    <Field name='contraseña' type='password' placeholder='Password' className={styles.formInput} />
                     <ErrorMessage name='contraseña' />
 
                     <div className={styles.botones}
                     // style={{ marginTop: '20px' }}
                     >
-                        <button  className={styles.boton} type='submit'>Iniciar sesión</button>
+                        <button  className={styles.boton} type='submit' >Iniciar sesión</button>
 
                         <div className='or'>
                             <div style={{ border: '1px solid grey', width: '90px' }}></div> <span style={{ margin: '0px 10px' }}>¿No tienes cuenta?</span> <div style={{ border: '1px solid grey', width: '90px' }}></div>

@@ -2,19 +2,19 @@ import React, {useEffect, useState}from "react";
 import Card from "../card/Card";
 import styles from "./Cards.module.css";
 import { useSelector, useDispatch } from "react-redux";
-import {getAllProducts} from '../../redux/actions'
+// import {getAllProducts} from '../../redux/actions'
 import Loader from "../loader/loader";
 
 
 const Cards = () => {
   const { productsFitered } = useSelector((state) => state);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
  console.log(productsFitered);
   // useEffect(() => {
   //   dispatch(getAllProducts());  
   // }, [dispatch]);
 
-  // PAGINADO
+ // PAGINADO
 
   const [numeroPagina, setNumeroPagina] = useState(1);
 
