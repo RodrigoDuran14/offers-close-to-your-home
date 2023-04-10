@@ -1,43 +1,43 @@
-
-import React from 'react'
-import Cards from '../../components/cards/Cards'
+import React from "react";
+import Cards from "../../components/cards/Cards";
 // import Filter from '../../components/filter/Filter'
-import styles from './Home.module.css'
-<<<<<<< HEAD
+import styles from "./Home.module.css";
 
-import Sidebar from "../../components/sideBar/Sidebar.jsx"
+import Sidebar from "../../components/SideBar/Sidebar.jsx";
 
-=======
-import Footer from '../../components/footer/Footer'
-import Slider from '../../components/slider/Slider'
->>>>>>> be220d67735be95887180db1403c66de96bfa5b6
+import Slider from "../../components/slider/Slider";
 
-function Home () {
-
-
+function Home() {
   // const productos = useSelector((state) => state.products)
   return (
-<<<<<<< HEAD
+    <>
     <section className={styles.section}>
+      <div className={styles.content}>
+
       <div className={styles.sidebar}>
-       <Sidebar/>
-=======
-    <section>
-
-    <div className= {styles.container}>
-      <div className={styles.filtros}>
-        <Slider />
->>>>>>> be220d67735be95887180db1403c66de96bfa5b6
+        <Sidebar />
       </div>
-    
-   
+      
       <div className={styles.cards}>
-        <Cards/>
+       
+       
+        <div className={styles.content_cards}>
+          <Cards />
+        </div>
+        
       </div>
-    
+      </div>
+      
     </section>
+    <section className={styles.section2}>
+      <div className={styles.slider}>
 
-  )
+      <Slider/>
+      </div>
+    </section>
+    </>
+   
+  );
 }
 
-export default Home
+export default Home;

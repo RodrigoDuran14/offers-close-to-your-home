@@ -1,11 +1,8 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { useState } from "react"
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { registerUser } from '../../redux/actions'
 import axios from 'axios'
-import swal from 'sweetalert';
-import validations from './validations'
+import style from './formRegister.module.css'
 
 export default function FormRegister() {
     const dispatch = useDispatch()
@@ -15,83 +12,67 @@ export default function FormRegister() {
         history.push(url)
     }
 
-    const [image, setImage] = useState('')
-    const handleImage = async (e) => {
-        const file = e.target.files[0]
-        const data = new FormData()
-        data.append('file', file)
-        data.append('upload_preset', 'just_offers')
-        await axios.post('link/image/upload', data)
-            .then(response => setImage(response.data.secure_url))
-    }
 
-    const handleSubmit = (values) => {
-        let formData = { ...values, imagen: image }
-        console.log(formData)
-        dispatch(registerUser(formData))
-        swal({
-            title: 'Usuario registrado',
-            text: 'Inicia sesión con tu nuevo usuario',
-            icon: 'success',
-            button: 'Ir a iniciar sesión'
-        })
-        navigateTo('/home')
-    }
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        await axios.post("http://localhost:3001/usuario",form)
+        .then(res=>alert(res.data))
+        .catch(err=> console.log(err.response.data))
+     }
 
-    return (
+    const handleInputChange = (event) => {
+        const property = event.target.name;
+        const value = event.target.value
+        setForm({...form, [property] : value})
+    }
+    const [form, setForm] = useState({
+        id_tipo_usuario: 1, 
+        primer_nombre: '',
+        segundo_nombre: '',
+        primer_apellido: '',
+        segundo_apellido: '',
+        direccion: '',
+        telefono: '',
+        email: '',
+        contraseña: '',
+        id_ciudad: 0,
+        estado: true,
+        imagen: "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg"
+       })
+       const telefono = typeof(form.telefono)
+       console.log(telefono);
+       return (
         <div>
-            <Formik
-                initialValues={{
-                    primer_nombre: '',
-                    segundo_nombre: '',
-                    primer_apellido: '',
-                    segundo_apellido: '',
-                    direccion: '',
-                    telefono: '',
-                    email: '',
-                    contraseña: '',
-                }}
-                validate={validations}
-                onSubmit={handleSubmit}
-            >
-                <Form className='form-container'>
-                    <Field name='primer_nombre' type='text' placeholder='Primer nombre *' className='form-input' />
-                    <ErrorMessage name="primer_nombre" />
+            <form onSubmit={handleSubmit} className={style.container}>
+                <input type="text" name="primer_nombre" value={form.primer_nombre} onChange={handleInputChange} className={style.input}/>
+                <label for= "" className={style.label}>Nombre1</label>
 
-                    <Field name='segundo_nombre' type='text' placeholder='Segundo nombre' className='form-input' />
-                    <ErrorMessage name="segundo_nombre" />
+                <input type="text" name="segundo_nombre" value={form.segundo_nombre} onChange={handleInputChange} className={style.input}/>
+                <label for= "" className={style.label}>Nombre2</label>
 
-                    <Field name='primer_apellido' type='text' placeholder='Primer apellido *' className='form-input' />
-                    <ErrorMessage name="primer_apellido" />
+                <input type="text" name="primer_apellido" value={form.primer_apellido} onChange={handleInputChange} className={style.input}/>
+                <label for= "" className={style.label}>Apellido1</label>
 
-                    <Field name='segundo_apellido' type='text' placeholder='Segundo apellido' className='form-input' />
-                    <ErrorMessage name="segundo_apellido" />
+                <input type="text" name="segundo_apellido" value={form.segundo_apellido} onChange={handleInputChange} className={style.input}/>
+                <label for= "" className={style.label}>Apellido2</label>
 
-                    <Field name='direccion' placeholder='Dirección *' className='form-input' />
-                    <ErrorMessage name="direccion" />
+                <input type="text" name="direccion" value={form.direccion} onChange={handleInputChange} className={style.input}/>
+                <label for= "" className={style.label}>Direccion</label>
 
-                    <Field name='telefono' type='text' placeholder='Número de teléfono *' className='form-input' />
-                    <ErrorMessage name="telefono" />
+                <input type="text" name="telefono" value={form.telefono} onChange={handleInputChange} className={style.input}/>
+                <label for= "" className={style.label}>Telefono</label>
 
-                    <Field name='email' type='text' placeholder='Email' className='form-input' />
-                    <ErrorMessage name="email" />
-                    <Field name='contraseña' type='password' placeholder='Contraseña' className='form-input' />
-                    <ErrorMessage name="contraseña" />
+                <input type="text" name="email" value={form.email} onChange={handleInputChange} className={style.input}/>
+                <label for= "" className={style.label}>Email</label>
 
-                    {/* <Field name='repetir_contraseña' type='password' placeholder='Repite la contraseña' className='form-input' />
-                    <ErrorMessage name="repetir_contraseña" /> */}
+                <input type="password" name="contraseña" value={form.contraseña} onChange={handleInputChange} className={style.input}/>
+                <label for= "" className={style.label}>Contraseña</label>
 
-                    <button type='submit'>Registrarse</button>
+                <input type="text" name="id_ciudad" value={form.id_ciudad} onChange={handleInputChange} className={style.input}/>
+                <label for= "" className={style.label}>Ciudad</label>
 
-                    <div>
-                        <div style={{ backgroundImage: `url(${image})` }} className='register-profile-picture'></div>
-                        <Field name='image' type='file' onChange={handleImage} />
-                  
-                    </div>
-
-                 
-                </Form>
-            </Formik>
+                <button type="submit" className={style.button}>Registrase</button>
+            </form>
         </div>
     )
 }

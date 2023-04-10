@@ -9,22 +9,53 @@ function Slider() {
   const quantity = products.length;
 
   useEffect(() => {
-    setTimeout(() => {
-      setCurrentProduct(currentProduct === quantity -1 ?
-      0: currentProduct + 1)
-    },3000)
-  },[currentProduct])
-  
+    const timer = setTimeout(() => {
+      setCurrentProduct(currentProduct === quantity - 1 ? 0 : currentProduct + 1);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [currentProduct, quantity]);
+
   const nextProduct = () => {
-    setCurrentProduct(currentProduct === quantity -1 ?
-        0: currentProduct + 1)
-  }
+    setCurrentProduct(currentProduct === quantity - 1 ? 0 : currentProduct + 1);
+  };
 
   const backProduct = () => {
-    setCurrentProduct(currentProduct === 0 ?
-        quantity -1 : currentProduct - 1)
-  }
+    setCurrentProduct(currentProduct === 0 ? quantity - 1 : currentProduct - 1);
+  };
+
   return (
+    <div className={styles.container}>
+      <button onClick={backProduct}>{"<"}</button>
+      {products.slice(currentProduct, currentProduct + 5).map((product, index) => (
+        <div key={index} className={currentProduct === index ? styles.currentCard : styles.inactiveCard}>
+          <CardOfert imagen={product.imagen} nombre={product.nombre} />
+        </div>
+      ))}
+      <button onClick={nextProduct}>{">"}</button>
+    </div>
+  );
+}
+
+  /*
+   useEffect(() => {
+     setTimeout(() => {
+       setCurrentProduct(currentProduct === quantity -1 ?
+       0: currentProduct + 1)
+     },3000)
+   },[currentProduct])
+  
+   const nextProduct = () => {
+     setCurrentProduct(currentProduct === quantity -1 ?
+         0: currentProduct + 1)
+   }
+
+   const backProduct = () => {
+     setCurrentProduct(currentProduct === 0 ?
+         quantity -1 : currentProduct - 1)
+  }
+*/
+  /*return (
     <div className={styles.container}>
         <button onClick={backProduct}>{"<"}</button>
         {products?.map((product,index) => {
@@ -43,6 +74,6 @@ function Slider() {
         <button onClick={nextProduct}>{">"}</button>
     </div>
   )
-}
+}*/
 
 export default Slider

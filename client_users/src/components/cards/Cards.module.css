@@ -5,19 +5,22 @@
     align-items:center;
     /* flex-direction: row; */
     flex-wrap: wrap;
-    margin-top: 50px;
+    margin-top: 2rem;
     /* flex-direction: column; */
-   
+    
     width:100%
 }
 
 .card{
     position: relative;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-items:center;
     flex-direction: row;
     flex-wrap: wrap;
-    gap:2.5rem;
+    gap:1rem;
+    width:100%;
+    
 }
 
 .paginadoArr{

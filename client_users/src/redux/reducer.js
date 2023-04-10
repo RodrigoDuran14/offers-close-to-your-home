@@ -12,6 +12,8 @@ import {
   FILTER_BY_USED_PRODUCTS,
   FILTER_BY_REFURBISHED_PRODUCTS,
   AGREGAR_AL_CARRITO,
+  OFERTAS,
+  ORDERED_BY_NAME_ASC 
 } from "./actions-type.js";
 
 const initialState = {
@@ -54,12 +56,13 @@ function rootReducer(state = initialState, action) {
     case ORDERED_BY_NAME_DESC:
       return {
         ...state,
-        products: [...state.products].sort((a, b) => {
-          if (a.nombre > b.nombre) return -1;
-          if (a.name < b.nombre) return 1;
-          return 0;
-        }),
+        products: [...state.products].sort((a, b) => b.nombre.localeCompare(a.nombre))
       };
+      case ORDERED_BY_NAME_ASC:
+        return {
+          ...state,
+          products: [...state.products].sort((a, b) => a.nombre.localeCompare(b.nombre))
+        };
     case GET_CATEGORY:
       return {
         ...state,
@@ -68,16 +71,13 @@ function rootReducer(state = initialState, action) {
     case ORDERED_BY_LOWEST_PRICE:
       return {
         ...state,
-        products: [...state.products].sort(
-          (a, b) => a.valor_con_descuento - b.valor_con_descuento
-        ),
+        products: [...state.products].filter(product=>product.valor_con_descuento<100)
+        
       };
     case ORDERED_BY_HIGHEST_PRICE:
       return {
         ...state,
-        products: [...state.products].sort(
-          (a, b) => b.valor_con_descuento - a.valor_con_descuento
-        ),
+        products: [...state.products].filter(product=>product.valor_con_descuento>100)
       };
     case FILTER_BY_NEW_PRODUCTS:
       return {
@@ -100,11 +100,32 @@ function rootReducer(state = initialState, action) {
           (item) => item.condicion === "Reacondicionado"
         ),
       };
+      case OFERTAS:
+        return {
+          ...state,
+          products: [...state.products].filter(product=>product.valor_con_descuento>60)
+        };
     case AGREGAR_AL_CARRITO:
-      return {
-        ...state,
-        carrito: [...state.carrito, action.payload],
-      };
+      const itemExistente = state.carrito.find(
+        (item) => item.id === action.payload.id
+      );
+
+      if (itemExistente) {
+        return {
+          ...state,
+          carrito: state.carrito.map((item) =>
+            item.id === action.payload.id
+              ? { ...item, cantidad: item.cantidad + 1 }
+              : item
+          ),
+        };
+      } else {
+        return {
+          ...state,
+          carrito: [...state.carrito, { ...action.payload, cantidad: 1 }],
+        };
+      }
+
     default:
       return state;
   }

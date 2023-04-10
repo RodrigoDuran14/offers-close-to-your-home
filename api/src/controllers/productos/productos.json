@@ -29,7 +29,7 @@
         "id_comercio": 1
       },
       {
-        "nombre": "microondas",
+        "nombre": "Microondas",
         "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "Horno microondas",
@@ -59,7 +59,7 @@
         "id_comercio": 1
       },
       {
-        "nombre": "mouse Fnatic",
+        "nombre": "Mouse Fnatic",
         "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "Fnatic Gear Bolt Wireless Gaming Mouse",
@@ -86,7 +86,7 @@
         "id_categoria_producto": 3,
         "id_comercio": 1
       }, {
-        "nombre": "rubor en crema",
+        "nombre": "Rubor en crema",
         "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "Rare Beauty By Selena Gomez Soft Pinch Liquid Blush- Love",
@@ -100,7 +100,7 @@
         "id_comercio": 1
       },
       {
-        "nombre": "MAC SATIN LIPSTICK",
+        "nombre": "Mac Satin Lipstick",
         "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "MAC Lipstick el producto icónico que hizo famoso a MAC. Esta fórmulacremosa ofrece una sensación suave y acolchonada, cobertura construiblede media a completa y un acabado satinado.",
@@ -120,8 +120,8 @@
         "descripcion_producto": "Pan Integral Bimbo 400 Gr.",
         "cantidad": 121,
         "existencia": 121,
-        "valor_normal": 254.9,
-        "valor_con_descuento": 200,
+        "valor_normal": 10,
+        "valor_con_descuento": 4,
         "condicion": "Nuevo",
         "imagen": "https://supercristian.com.ar/wp-content/uploads/2020/08/84194-1.jpg",
         "id_categoria_producto": 5,
@@ -158,7 +158,7 @@
 
     },
     {
-        "nombre": "pokebolas de juguete",
+        "nombre": "Pokebolas de juguete",
         "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "Con pokemon dentro.",
@@ -194,8 +194,8 @@
         "descripcion_producto": "3 Cuerpos Nápoles Premium",
         "cantidad": 121,
         "existencia": 121,
-        "valor_normal": 254.9,
-        "valor_con_descuento": 200,
+        "valor_normal": 150,
+        "valor_con_descuento": 95,
         "condicion": "Reacondicionado",
         "imagen": "https://cortineriaconfort.com/wp-content/uploads/2022/04/sillon-sofa-3-cuerpos-napoles-premium-83779.jpg",
         "id_categoria_producto": 7,
@@ -216,7 +216,7 @@
         "id_comercio": 1
     },
     {
-        "nombre": "Motosierra ligera",
+        "nombre": "Motosierra Ligera",
         "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "MS 180 C-BE",
@@ -244,14 +244,14 @@
         "id_comercio": 1
     },
     {
-        "nombre": "Pelota adidas Argentina ",
+        "nombre": "Pelota Argentina - Adidas",
         "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "Al Rihla Club N°5",
         "cantidad": 121,
         "existencia": 121,
-        "valor_normal": 254.9,
-        "valor_con_descuento": 200,
+        "valor_normal": 100,
+        "valor_con_descuento": 70,
         "condicion": "Reacondicionado",
         "imagen": "https://sporting.vtexassets.com/arquivos/ids/557628/6HM8141-000-1.jpg?v=637928169669670000",
         "id_categoria_producto": 9,
@@ -264,8 +264,8 @@
         "descripcion_producto": "Oro 18 Kt",
         "cantidad": 121,
         "existencia": 121,
-        "valor_normal": 254.9,
-        "valor_con_descuento": 200,
+        "valor_normal": 30,
+        "valor_con_descuento": 12,
         "condicion": "Nuevo",
         "imagen": "https://d2r9epyceweg5n.cloudfront.net/stores/001/986/989/products/13401-38561ab2eab643949116541096317760-1024-1024.jpg",
         "id_categoria_producto": 10,
@@ -278,22 +278,22 @@
         "descripcion_producto": "Oro 14K de ancla clásico",
         "cantidad": 121,
         "existencia": 121,
-        "valor_normal": 254.9,
-        "valor_con_descuento": 200,
+        "valor_normal": 45,
+        "valor_con_descuento": 25,
         "condicion": "Reacondicionado",
         "imagen": "https://pandoraar.vtexassets.com/arquivos/ids/255774-800-auto?v=637649481052100000&width=800&height=auto&aspect=true",
         "id_categoria_producto": 10,
         "id_comercio": 1
     },
     {
-        "nombre": "MARTILLO GALPONERO",
+        "nombre": "Martillo Galponero",
         "fecha_inicial" :"2022-02-20",
         "fecha_final" :"2023-02-20",
         "descripcion_producto": "568 GRS CABO MADERA STANLEY",
         "cantidad": 121,
         "existencia": 121,
-        "valor_normal": 254.9,
-        "valor_con_descuento": 200,
+        "valor_normal": 25,
+        "valor_con_descuento": 12,
         "condicion": "Reacondicionado",
         "imagen": "https://indufer.com.ar/wp-content/uploads/2018/07/martillo-carpintero-stanley-51271-D_NQ_NP_607618-MLV26988783339_032018-F-1.jpg",
         "id_categoria_producto": 11,
@@ -306,8 +306,8 @@
         "descripcion_producto": "T2 Punta Aguja Para Durlock ",
         "cantidad": 121,
         "existencia": 121,
-        "valor_normal": 254.9,
-        "valor_con_descuento": 200,
+        "valor_normal": 15,
+        "valor_con_descuento": 8,
         "condicion": "Nuevo",
         "imagen": "https://bercovichsa.vteximg.com.br/arquivos/ids/162388-1000-1000/tornillos-t2-punta-aguja-durlock-100-unidades-principal.jpg?v=637994476694200000",
         "id_categoria_producto": 11,

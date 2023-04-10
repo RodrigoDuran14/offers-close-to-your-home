@@ -5,10 +5,11 @@ import * as action from "../../redux/actions";
 
 function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
-//   const allProducts = useSelector((state) => state.products);
-//   const ByCategory = useSelector((state) => state.productsFitered);
+    // const allProducts = useSelector((state) => state.products);
+  //   const ByCategory = useSelector((state) => state.productsFitered);
   const dispatch = useDispatch();
 
+ 
   function handleButtonClick(event) {
     let listElements = document.querySelectorAll(".list_button--click");
     listElements.forEach((listElement) => {
@@ -29,6 +30,9 @@ function Sidebar() {
       case "Ver Todo":
         dispatch(action.getAllProducts());
         break;
+        case "Ofertas":
+            dispatch(action.getAllProducts());
+            break;
       case "Indumentaria":
         dispatch(action.getProductByCategory(event.currentTarget.textContent));
         break;
@@ -64,22 +68,25 @@ function Sidebar() {
         dispatch(action.getProductByCategory(event.currentTarget.textContent));
         break;
       case "Por nombre a-z":
-        dispatch(action.getProductByCategory(event.currentTarget.textContent));
+        dispatch(action.orderedByNameASC() );
         break;
       case "Por nombre z-a":
-        dispatch(action.getProductByCategory(event.currentTarget.textContent));
+        dispatch(action.orderedByNameDESC());
         break;
       case "Mayor precio":
-        dispatch(action.getProductByCategory(event.currentTarget.textContent));
+        dispatch(action.orderedByHighestPrice());
         break;
       case "Menor precio":
-        dispatch(action.getProductByCategory(event.currentTarget.textContent));
+        dispatch(action.orderedByLowestPrice());
         break;
       case "Nuevos":
-        dispatch(action.getAllProducts);
+        dispatch(action.filterByNewProducts());
         break;
       case "Usados":
-        dispatch(action.getAllProducts);
+        dispatch(action.filterByUsedProducts());
+        break; 
+        case "Reacondicionado":
+        dispatch(action.filterByRefurbishedProducts());
         break;
       case "Recientes":
         dispatch(action.getAllProducts);
@@ -91,7 +98,6 @@ function Sidebar() {
         dispatch(action.getAllProducts());
 
         break;
-       
     }
   };
 
@@ -107,6 +113,17 @@ function Sidebar() {
               />
               <span className={"nav_link"} onClick={handlerActions}>
                 Ver Todo
+              </span>
+            </div>
+          </li>
+          <li className={styles.list_item}>
+            <div className={styles.list_button}>
+              <img
+                className={styles.list_img}
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARtJREFUSEvVlNsNQiEQROd2opWonWglaiVqJWol2onmJEvCxYUlGj4k4YswZ2dfkwafabC+egELSSdJa0lPu0dJtyjAHsDWxEstQBdJhxYkAhDx1QSIGDHcAN2bk13LSQQgLYgl8TzY5Iw0bWouIsDDIl5atLkOTngnVby75xcAgi9TrepEAPJPHbwUUQ/qcJZEHb5ykKchdUxeZETJf7VdIwcIpEi9CIkcB9XTA+Dz0EGLhrX5HjkgPSsrtDfJtOi9Nc01AJ3DkJGangPInWgPkK+H6keDEwCtyh+3ozxAmt5mf2e2yt00m+oS0LVfnJzlXTYbyhKQllvY3w4kpXa2/EpAa7lFxXaXXwkIl1dA+fgfzUEUdfj+/4A3ooFEGV62zuoAAAAASUVORK5CYII="
+              />
+              <span className={"nav_link"} onClick={handlerActions}>
+                Ofertas
               </span>
             </div>
           </li>
@@ -188,6 +205,9 @@ function Sidebar() {
               </li>
               <li className={styles.list_17} onClick={handlerActions}>
                 Usados
+              </li>
+              <li className={styles.list_17} onClick={handlerActions}>
+                Reacondicionado
               </li>
               <li className={styles.list_18} onClick={handlerActions}>
                 Recientes
