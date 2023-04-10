@@ -3,12 +3,12 @@ const { validacionPostUsuario } = require("../validaciones/validacionUsuario")
 
 
 const postUserHandler = async (req, res) => {
-  const { id_tipo_usuario, id_usuario, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, direccion, telefono, id_ciudad, estado, email, contraseña, imagen } = req.body
+  const { id_tipo_usuario, id_usuario, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, direccion, telefono, id_ciudad, estado, email, contraseña } = req.body
   try {
 
     validacionPostUsuario(req.body)
 
-    const newUser = await createUsuario(id_tipo_usuario, id_usuario, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, direccion, telefono, id_ciudad, estado, email, contraseña, imagen)
+    const newUser = await createUsuario(id_tipo_usuario, id_usuario, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, direccion, telefono, id_ciudad, estado, email, contraseña)
     res.status(200).json(newUser)
 
   } catch (error) {
