@@ -1,16 +1,10 @@
 import { useState } from "react"
-import { useDispatch } from 'react-redux'
-import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import style from './formRegister.module.css'
+import { Redirect } from "react-router-dom"
 
 export default function FormRegister() {
-    const dispatch = useDispatch()
 
-    const history = useHistory()
-    const navigateTo = (url) => {
-        history.push(url)
-    }
 
 
     const handleSubmit = async (event) => {
@@ -18,11 +12,12 @@ export default function FormRegister() {
         await axios.post("http://localhost:3001/usuario",form)
         .then(res=>alert(res.data))
         .catch(err=> console.log(err.response.data))
+        setShouldRedirect(true);
      }
-
+     const [shouldRedirect, setShouldRedirect] = useState(false)
     const handleInputChange = (event) => {
         const property = event.target.name;
-        const value = event.target.value
+        const value = event.target.value       
         setForm({...form, [property] : value})
     }
     const [form, setForm] = useState({
@@ -43,7 +38,12 @@ export default function FormRegister() {
        console.log(telefono);
        return (
         <>
-            <div className={style.contenedor}>
+
+            {shouldRedirect ? (
+                <Redirect to= "/home"/>
+            ):
+            (<div className={style.contenedor}>
+
                 <div className={style.contenedorForm}>  
                     <form onSubmit={handleSubmit}>
                         <div>
@@ -91,12 +91,12 @@ export default function FormRegister() {
                             <label for= "" className={style.label}>Ciudad</label>
                         </div>
 
+
                         <button type="submit" className={style.button}>Registrase</button>
                     </form>
                 </div>
-            </div>
-
+            </div>)}
         </>
+    );
+};
 
-    )
-}
