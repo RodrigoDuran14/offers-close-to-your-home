@@ -22,10 +22,6 @@ export default function FormRegister() {
 
     const handleInputChange = (event) => {
         const property = event.target.name;
-        const value = event.target.value        
-        setForm({...form, [property] : value})
-    const handleInputChange = (event) => {
-        const property = event.target.name;
         const value = event.target.value
         setForm({...form, [property] : value})
     }
