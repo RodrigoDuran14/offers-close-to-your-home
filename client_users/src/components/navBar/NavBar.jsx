@@ -18,15 +18,19 @@ const NavBar = () => {
       <div className={s.menu}>
         <DrawerMenu />
       </div>
+
       <div className={s.options}>
-        <img className={s.texto} src={logoTexto} />
-        <img className={s.icono} src={logoIcono} />
+        <Link to={'/'}>
+          <img className={s.texto} src={logoTexto} />
+          <img className={s.icono} src={logoIcono} />
+        </Link>
       </div>
+
       <div className={s.nav_text}>
         <Link
           to="/"
           className={s.link}
-          //  style={{ margin: '0px 10px' }}
+        //  style={{ margin: '0px 10px' }}
         >
           <h4>Inicio</h4>
         </Link>
@@ -34,7 +38,7 @@ const NavBar = () => {
         <Link
           to="/account"
           className={s.link}
-          // style={{ margin: '0px 10px' }}
+        // style={{ margin: '0px 10px' }}
         >
           <h4>Quiero vender</h4>
         </Link>
@@ -42,7 +46,7 @@ const NavBar = () => {
         <Link
           to="/about"
           className={s.link}
-          // style={{ margin: '0px 10px' }}
+        // style={{ margin: '0px 10px' }}
         >
           <h4>¿Quienes somos?</h4>
         </Link>
@@ -56,13 +60,15 @@ const NavBar = () => {
         <Link to="/log-in" className={s.link}>
           <h4>Iniciar sesión</h4>
         </Link>
+
+        <div>
+          <button className={s.button}>
+            {" "}
+            <AiOutlineShoppingCart size={25} />{" "}
+          </button>
+        </div>
       </div>
-      <div>
-        <button className={s.button}>
-          {" "}
-          <AiOutlineShoppingCart size={25} />{" "}
-        </button>
-      </div>
+
     </div>
   );
 };

@@ -26,7 +26,7 @@ const initialState = {
   categorys: [],
   product: {},
   filter: [],
-  carrito: [],
+  carrito: []
 };
 
 function rootReducer(state = initialState, action) {
