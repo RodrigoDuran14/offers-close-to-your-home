@@ -43,6 +43,9 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      imagen: {
+        type: DataTypes.STRING,
+      }
     },
     {
       tableName: 'Usuario',
