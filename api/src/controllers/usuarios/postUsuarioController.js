@@ -49,6 +49,7 @@ const createUsuario = async (
   estado,
   email,
   contraseña,
+  imagen
 ) => {
   verifyDb();
 
@@ -72,6 +73,7 @@ const createUsuario = async (
     estado,
     email,
     contraseña: hashedPassword, // guardar la contraseña encriptada
+
   });
 
   
@@ -90,6 +92,7 @@ const createUsuario = async (
     } else {
       console.log("Correo electrónico enviado correctamente:", info.response);
     }
+
   });
 
   return newUser;

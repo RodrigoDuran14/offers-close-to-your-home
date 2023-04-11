@@ -1,19 +1,25 @@
 .container {
     border: solid 1px rgb(186, 178, 178);
     border-radius: 8px;
-    display: inline-block;
+    display: flex;
     padding: 8px;
+    align-items: center;
+    justify-content: center;
 }
 
-.container button{
+.container button {
     background-color: #fff;
-    border-radius: 50%;
+    color: var(--green-color);
     border: solid 1px rgb(186, 178, 178);
     cursor: pointer;
-    font-size: 20px;
-    margin: 2px;
+    font-size: 15px;
+    margin: 1px 16px;
+}
+.container button:hover {    
+    color: var(--green-strong-color);
+    transform: scale(1.06);
 }
 
-.container span{
+.container span {
     margin: 5px;
 }

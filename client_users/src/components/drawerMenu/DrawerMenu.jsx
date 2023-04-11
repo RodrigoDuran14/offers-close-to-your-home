@@ -35,7 +35,7 @@ export default function DrawerMenu() {
                         </Link>
                         <div style={{display: 'flex', alignItems: 'center'}}>
                             <AiOutlineShoppingCart size={35} />
-                            <Link to="/user-cart" className='link-no-decoration'>
+                            <Link to="/shopping-cart" className='link-no-decoration'>
                                 <h4 style={{ color: 'black' }}>Mi carrito</h4>
                             </Link>
                         </div>
