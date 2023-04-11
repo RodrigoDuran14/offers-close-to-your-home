@@ -3,92 +3,139 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import QuantityDisplay from '../../components/quantityDisplay/QuantityDisplay'
 import { agregarAlCarrito, getProductById } from '../../redux/actions'
-import styles from './Detail.module.css'
 import Loader from '../../components/loader/loader'
+import s from './Detail.module.css'
+import swal from 'sweetalert'
 // import Footer from '../../components/footer/Footer'
 
 const Detail = () => {
   const { product } = useSelector(state => state)
-
   const { id } = useParams()
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getProductById(id))
-  }, [dispatch,id])
+  }, [dispatch, id])
 
   const handlerCarrito = () => {
     console.log("añadido");
     dispatch(agregarAlCarrito(product))
-  }  
+  }
   // Cantidad de articulos
   const [quantity, setQuantity] = useState(1);
-
   const handleDecrease = () => {
-    setQuantity(quantity - 1);
+    if (quantity !== 1) {
+      setQuantity(quantity - 1);
+    }
   }
-
-  const handleIncrease= () => {
-    setQuantity(quantity + 1);
+  const handleIncrease = () => {
+    if (quantity !== 10) {
+      setQuantity(quantity + 1);
+    } else {
+      swal({
+        title: 'Número máximo de unidades disponibles',
+        icon: 'info'
+      })
+    }
   }
 
   return (
-    <section>
-      <div className={styles.container}>
-        {product.hasOwnProperty("nombre") ? (
-          <>
-            <div className={styles.box1}>
-              <img src={product.imagen} alt={product.nombre} />
+    <>
+      {product.hasOwnProperty('nombre') ? (
+        <div className={s.container}>
+
+          <div style={{ backgroundImage: `url(${product.imagen})` }} className={s.image}></div>
+          <div className={s.condicion}>{product.condicion}</div>
+
+          <hr />
+
+          <div>
+            <h1>{product.nombre}</h1>
+
+            <h4 className={s.descripcion_producto}>{product.descripcion_producto}</h4>
+
+            <div className={s.precios}>
+              <h2 className={s.valor_normal}>${product.valor_normal}</h2>
+              <h1 className={s.valor_con_descuento}>${product.valor_con_descuento}</h1>
             </div>
-            <div className={styles.box2}>
-              <div style={{ marginTop: "0px" }}>
-                <div className={styles.box1}>
-                  <div style={{ margin: "10px" }}>
-                    <span>{product.condicion}</span>
-                  </div>
-                  {/* <div style={{ width: "100%", marginBottom: "10px" }}>
-                    <img src={product.imagen} alt={product.nombre} />
-                  </div> */}
-                </div>
-  
-                <div className={styles.box2}>
-                  <div>
-                    <h2>{product.nombre}</h2>
-                  </div>
-                  <div>
-                    <h1>${product.valor_normal}</h1>
-                  </div>
-                  <div>
-                    <h2>Descripción</h2>
-                  </div>
-                  <div style={{ marginLeft: "20px", marginRight: "20px" }}>
-                    <p>{product.descripcion_producto}</p>
-                  </div>
-                  <div style={{ display: "flex", justifyContent: "center" }}>
-                    <h4 style={{ margin: "10px" }}>Cantidad</h4>
-                    <QuantityDisplay
-                      quantity={quantity}
-                      onDecrease={handleDecrease}
-                      onIncrease={handleIncrease}
-                    />
-                  </div>
-                  <div className={styles.btn}>
-                    <button onClick={handlerCarrito}>Añadir al carrito</button>
-                  </div>
-                  <div className={styles.btn}>
-                    <button>Comprar ahora</button>
-                  </div>
-                </div>
-              </div>
+
+            <div>
+              <h4>Selecciona la cantidad</h4>
+              <QuantityDisplay
+                quantity={quantity}
+                onDecrease={handleDecrease}
+                onIncrease={handleIncrease}
+              />
             </div>
-          </>
-        ) : (
-          <Loader />
-        )}
-      </div>
-    </section>
-  );
-  
+
+            <div className={s.buttons}>
+              <button style={{ width: '240px' }}>Comprar ahora</button>
+              <button style={{ width: '240px' }}>Agregar al carrito</button>
+            </div>
+
+          </div>
+        </div>
+      ) : <Loader />}
+    </>
+  )
+
 }
 
 export default Detail
+
+// <section>
+//   <div className={styles.container}>
+//     {product.hasOwnProperty("nombre") ? (
+//       <>
+//         <div className={styles.box1}>
+//           <img src={product.imagen} alt={product.nombre} />
+//         </div>
+
+//         <div className={styles.box2}>
+
+//           <div style={{ marginTop: "0px" }}>
+
+//             <div className={styles.box1}>
+
+//               <div style={{ margin: "10px" }}>
+//                 <span>{product.condicion}</span>
+//               </div>//
+//
+//             </div>
+
+//             <div className={styles.box2}>
+//               <div>
+//                 <h2>{product.nombre}</h2>
+//               </div>
+//               <div>
+//                 <h1>${product.valor_normal}</h1>
+//               </div>
+//               <div>
+//                 <h2>Descripción</h2>
+//               </div>
+//               <div style={{ marginLeft: "20px", marginRight: "20px" }}>
+//                 <p>{product.descripcion_producto}</p>
+//               </div>
+//               <div style={{ display: "flex", justifyContent: "center" }}>
+//                 <h4 style={{ margin: "10px" }}>Cantidad</h4>
+//                 <QuantityDisplay
+//                   quantity={quantity}
+//                   onDecrease={handleDecrease}
+//                   onIncrease={handleIncrease}
+//                 />
+//               </div>
+//               <div className={styles.btn}>
+//                 <button onClick={handlerCarrito}>Añadir al carrito</button>
+//               </div>
+//               <div className={styles.btn}>
+//                 <button>Comprar ahora</button>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </>
+//     ) : (
+//       <Loader />
+//     )}
+//   </div>
+// </section>

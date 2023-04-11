@@ -3,7 +3,7 @@ import styles from "../../components/loader/Loader.module.css"
 const Loader = () => {
 
     window.addEventListener("load", function(){
-        document.getElementById("loader").classList.toggle("loader2")
+        document.getElementById("loader")?.classList.toggle("loader2")
     })
 
   return (
