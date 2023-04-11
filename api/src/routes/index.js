@@ -32,14 +32,12 @@ router.use("/ciudad", ciudades);
 const venta = require("./venta");
 router.use("/venta", venta)
 
-
-router.get("/productos", function (req, res, next) {
+router.get("/buy-product", function(req, res, next){
   const productId = req.query.producto_id;
   // Aquí deberías validar que el ID del producto sea válido antes de usarlo
   // para buscar el producto en la base de datos
   paymentInstance.getPymentLink(req, res, productId);
 });
-
 
 module.exports = router;
 
