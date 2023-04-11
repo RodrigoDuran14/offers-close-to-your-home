@@ -165,6 +165,21 @@ export function getCategorys() {
   };
 }
 
+//*12. action-cargar ciudades para los formularios de registro comercio y cliente
+
+export function getAllCities() {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`${URL}/ciudad`);
+      // console.log(response.data);
+      dispatch({ type: action.GET_ALL_CITIES, payload: response.data });
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: action.GET_ALL_CITIES, payload: error });
+    }
+  }
+};
+
 // CODIGO REALIZADO POR FRANCO
 export function getProducts() {
   return (dispatch) => {

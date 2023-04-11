@@ -14,6 +14,7 @@ import {
   AGREGAR_AL_CARRITO,
   OFERTAS,
   ORDERED_BY_NAME_ASC,
+  GET_ALL_CITIES,
   CLEAN_PRODUCT,
   ACTUALIZAR_CARRITO,
 } from "./actions-type.js";
