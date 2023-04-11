@@ -18,7 +18,6 @@ const Detail = () => {
   }, [dispatch,id])
 
   const handlerCarrito = () => {
-    console.log("añadido");
     dispatch(agregarAlCarrito(product))
   }  
   // Cantidad de articulos

@@ -106,20 +106,19 @@ function rootReducer(state = initialState, action) {
           products: [...state.products].filter(product=>product.valor_con_descuento>60)
         };
     case AGREGAR_AL_CARRITO:
-      const itemExistente = state.carrito.find(
-        (item) => item.id === action.payload.id
-      );
-
-      if (itemExistente) {
+      const itemExistente = state.carrito.findIndex( item => item.id_producto === action.payload.id_producto);
+      console.log(itemExistente);
+        //action.payload es el producto en cuention
+      if (itemExistente !== -1) {//Está en el carrito
         return {
           ...state,
           carrito: state.carrito.map((item) =>
-            item.id === action.payload.id
+            item.id_producto === action.payload.id_producto
               ? { ...item, cantidad: item.cantidad + 1 }
               : item
           ),
         };
-      } else {
+      } else {//No esta en el carrito
         return {
           ...state,
           carrito: [...state.carrito, { ...action.payload, cantidad: 1 }],
