@@ -1,51 +1,43 @@
 const { Router } = require("express");
-// Importar todos los routers;
-// Ejemplo: const authRouter = require('./auth.js');
 const paymentService = require("../service/paymentService")
 const paymentController = require("../controllers/paymentController/paymentController")
 const paymentInstance = new paymentController(new paymentService())
 
-const productos = require("./producto");
-
-const allproducts = require("./allProducts");
-
-const usuarios = require("./usuario");
-
-const categorias = require("./categorias");
-
-const comercio = require("./comercio")
-
-const categoriaComercio = require("./categoriaComercio")
-
-const ciudades = require("./ciudad");
-
-const venta = require("./venta");
-
 const router = Router();
 
-// Configurar los routers
-// Ejemplo: router.use('/auth', authRouter);
+// Importar todos los routers, Ejemplo: const authRouter = require('./auth.js');
+// Configurar los routers, Ejemplo: router.use('/auth', authRouter);
+
+const productos = require("./producto");
 router.use("/products", productos);
 
+const allproducts = require("./allProducts");
 router.use("/allProducts", allproducts);
 
+const usuarios = require("./usuario");
 router.use("/usuario", usuarios);
 
+const categorias = require("./categorias");
 router.use("/categorias", categorias);
 
+const comercio = require("./comercio")
 router.use("/commerce", comercio)
 
+const categoriaComercio = require("./categoriaComercio")
 router.use("/categoriaComercio", categoriaComercio)
 
-router.get("/buy-product", function(req, res, next){
-    const productId = req.query.producto_id;
-    // Aquí deberías validar que el ID del producto sea válido antes de usarlo
-    // para buscar el producto en la base de datos
-    paymentInstance.getPymentLink(req, res, productId);
-  });
-
+const ciudades = require("./ciudad");
 router.use("/ciudad", ciudades);
 
+const venta = require("./venta");
+router.use("/venta", venta)
+
+router.get("/buy-product", function(req, res, next){
+  const productId = req.query.producto_id;
+  // Aquí deberías validar que el ID del producto sea válido antes de usarlo
+  // para buscar el producto en la base de datos
+  paymentInstance.getPymentLink(req, res, productId);
+});
 
 module.exports = router;
 
