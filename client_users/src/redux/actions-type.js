@@ -40,6 +40,7 @@ const USER_LOGIN = "USER_LOGIN"; // para cuando el usuario intente ingresar a la
 const FORGOT_PASSWORD = "FORGOT_PASSWORD"; //para cuando olvide contraseña
 const REGISTER_USER = "REGISTER_USER"; // para el registro de usuario por 1ra vez
 const USER_DETAILS = "USER_DETAILS";
+const GET_ALL_CITIES = "GET_ALL_CITIES"; // para el registro de usurio por 1ra vez
 
 module.exports = {
   CREATE_PRODUCT,
@@ -71,4 +72,5 @@ module.exports = {
   GET_STORE_BY_CATEGORY,
   AGREGAR_AL_CARRITO,
   BORRAR_DEL_CARRITO,
+  GET_ALL_CITIES,
 };
