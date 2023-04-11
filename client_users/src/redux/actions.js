@@ -15,16 +15,22 @@ export function agregarAlCarrito(id, quantity) {
 
 export function eliminarDelCarrito(id) {
   return {
-    type: action.ELIMINAR_DEL_CARRITO,
+    type: action.BORRAR_DEL_CARRITO,
     payload: id,
   };
 }
 
-
-export function actualizarCarrito(id, cantidad){
+export function restarCantidad(id){
   return{
-    type: action.ACTUALIZAR_CARRITO,
-    payload: {id, cantidad}
+    type: action.RESTAR_CANTIDAD_CARRITO,
+    payload: id
+  }
+}
+
+export function sumarCantidad(id){
+  return{
+    type: action.SUMAR_CANTIDAD_CARRITO,
+    payload: id
   }
 }
 

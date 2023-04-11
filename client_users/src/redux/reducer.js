@@ -15,7 +15,9 @@ import {
   OFERTAS,
   ORDERED_BY_NAME_ASC,
   CLEAN_PRODUCT,
-  ACTUALIZAR_CARRITO,
+  BORRAR_DEL_CARRITO,
+  SUMAR_CANTIDAD_CARRITO,
+  RESTAR_CANTIDAD_CARRITO,
 } from "./actions-type.js";
 
 const initialState = {
@@ -29,7 +31,6 @@ const initialState = {
   product: {},
   filter: [],
   carrito: JSON.parse(window.localStorage.getItem("carrito")) || [],
-
 };
 
 function rootReducer(state = initialState, action) {
@@ -142,7 +143,7 @@ function rootReducer(state = initialState, action) {
         };
       }
 
-    case ACTUALIZAR_CARRITO:
+    case SUMAR_CANTIDAD_CARRITO:
       return {
         ...state,
         carrito: state.carrito.map((product) =>
@@ -151,6 +152,26 @@ function rootReducer(state = initialState, action) {
             : product
         ),
       };
+
+    case RESTAR_CANTIDAD_CARRITO:
+      return {
+        ...state,
+        carrito: state.carrito.map((product) =>
+          product.id === action.payload.id
+            ? { ...product, cantidad: product.cantidad - 1 }
+            : product
+        ),
+      };
+
+    case BORRAR_DEL_CARRITO: 
+      const filter = state.carrito.filter(p => p.id_producto !== action.payload.id_producto)
+      console.log("filter   ", filter)
+
+      return{
+        ...state,
+        carrito: filter
+
+      }
 
     case CLEAN_PRODUCT:
       return {
