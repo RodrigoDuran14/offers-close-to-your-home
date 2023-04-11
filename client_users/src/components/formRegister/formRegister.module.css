@@ -93,3 +93,12 @@
 
 }
 
+.imageFile {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 180px;
+    height: 130px;
+    width: 130px;
+    margin-top: 10px;
+}
+

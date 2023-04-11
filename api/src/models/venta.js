@@ -6,6 +6,10 @@ module.exports = (sequelize) => {
       autoIncrement: true,
       primaryKey: true
     },
+    id_usuario: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     fecha: {
       type: DataTypes.DATE,
       allowNull: false,
@@ -13,14 +17,6 @@ module.exports = (sequelize) => {
     valor_total_venta: {
       type: DataTypes.FLOAT,
       allowNull: false,
-    },
-    id_usuario: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: "Usuario",
-        key: "id_usuario",
-      },
     },
   },
     {

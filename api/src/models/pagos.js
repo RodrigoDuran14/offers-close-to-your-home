@@ -10,6 +10,10 @@ module.exports = (sequelize) => {
       autoIncrement: true,
       primaryKey: true,
     },
+    id_comercio: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     fecha: {
       type: DataTypes.DATE,
       allowNull: false,
@@ -27,10 +31,10 @@ module.exports = (sequelize) => {
       allowNull: false,
       defaultValue: false,
     },
-   
+
   },
-  {
-    tableName: 'Pagos',
-    timestamps: false 
-});
+    {
+      tableName: 'Pagos',
+      timestamps: false
+    });
 };

@@ -5,10 +5,11 @@ const URL = "http://localhost:3001";
 
 
 // ========================* CARRITO *========================
-export function agregarAlCarrito(id) {
+export function agregarAlCarrito(id, quantity) {
+  console.log(id);
   return {
     type: action.AGREGAR_AL_CARRITO,
-    payload: id,
+    payload: {id,quantity}
   };
 }
 
@@ -19,6 +20,13 @@ export function eliminarDelCarrito(id) {
   };
 }
 
+
+export function actualizarCarrito(id, cantidad){
+  return{
+    type: action.ACTUALIZAR_CARRITO,
+    payload: {id, cantidad}
+  }
+}
 
 // ========================* USUARIOS *========================
 export function registerUser() {
@@ -154,6 +162,21 @@ export function getCategorys() {
   };
 }
 
+//*12. action-cargar ciudades para los formularios de registro comercio y cliente
+
+export function getAllCities() {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`${URL}/ciudad`);
+      // console.log(response.data);
+      dispatch({ type: action.GET_ALL_CITIES, payload: response.data });
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: action.GET_ALL_CITIES, payload: error });
+    }
+  }
+};
+
 // CODIGO REALIZADO POR FRANCO
 export function getProducts() {
   return (dispatch) => {
@@ -181,4 +204,10 @@ export function getDetail(id) {
       )
       .catch((err) => console.log(err));
   };
+}
+
+export function cleanProduct(){
+  return {
+    type: action.CLEAN_PRODUCT
+  }
 }
