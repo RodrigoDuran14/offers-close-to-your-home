@@ -13,7 +13,8 @@ import {
   FILTER_BY_REFURBISHED_PRODUCTS,
   AGREGAR_AL_CARRITO,
   OFERTAS,
-  ORDERED_BY_NAME_ASC 
+  ORDERED_BY_NAME_ASC,
+  GET_ALL_CITIES
 } from "./actions-type.js";
 
 const initialState = {
