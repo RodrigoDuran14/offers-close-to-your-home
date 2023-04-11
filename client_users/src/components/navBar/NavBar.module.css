@@ -18,7 +18,7 @@ h4 {
 }
 
 .options {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     position:relative;
@@ -29,10 +29,8 @@ h4 {
     top:0;
 }
 
-
-
 .nav_text {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
@@ -68,6 +66,10 @@ h4 {
 
     .menu {
         display: none;
+    }
+
+    .nav_text {
+        display: flex;
     }
 }
 

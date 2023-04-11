@@ -29,6 +29,7 @@ const initialState = {
   product: {},
   filter: [],
   carrito: JSON.parse(window.localStorage.getItem("carrito")) || [],
+
 };
 
 function rootReducer(state = initialState, action) {

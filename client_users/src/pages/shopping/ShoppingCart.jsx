@@ -33,24 +33,5 @@ console.log(storage_cart);
       <button>Confirmar compra</button>
     </div>
   );
+
 }
-
-/*
-export default function ShoppingCart() {
-    const carrito = useSelector(state => state.carrito)
-    
-   
-
-    return (
-        <div className={s.container}>
-            {
-               storage_cart && storage_cart?.map(p => {
-                    return (
-                        <CartCard imagen={p.imagen} nombre={p.nombre} precio={p.precio}/>
-                    )
-                })
-            }
-            <button>Confirmar compras</button>
-        </div>
-    )
-}*/

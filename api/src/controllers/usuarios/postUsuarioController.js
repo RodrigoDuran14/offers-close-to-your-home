@@ -37,6 +37,7 @@ const createUsuario = async (
   estado,
   email,
   contraseña,
+  imagen
 ) => {
 
   verifyDb();
@@ -60,7 +61,7 @@ const createUsuario = async (
     estado,
     email,
     contraseña: hashedPassword, // guardar la contraseña encriptada
-
+    imagen,
   });
 
   return newUser;
