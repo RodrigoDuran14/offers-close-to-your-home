@@ -68,6 +68,14 @@ const NavBar = () => {
           </button>
         </div>
       </div>
+      <div>
+        <Link to="/shopping-cart" >
+        <button className={s.button}>
+          {" "}
+          <AiOutlineShoppingCart size={25} />{" "}
+        </button>
+        </Link>
+      </div>
 
     </div>
   );

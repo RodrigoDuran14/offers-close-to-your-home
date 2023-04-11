@@ -2,32 +2,41 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import QuantityDisplay from '../../components/quantityDisplay/QuantityDisplay'
-import { agregarAlCarrito, getProductById } from '../../redux/actions'
+import { agregarAlCarrito, actualizarCarrito, getProductById, cleanProduct } from '../../redux/actions'
 import Loader from '../../components/loader/loader'
 import s from './Detail.module.css'
 import swal from 'sweetalert'
 // import Footer from '../../components/footer/Footer'
 
 const Detail = () => {
-  const { product } = useSelector(state => state)
+
+  const { product, carrito } = useSelector(state => state)
+
   const { id } = useParams()
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getProductById(id))
-  }, [dispatch, id])
+    return (()=>{
+      dispatch(cleanProduct())
+    })
+  }, [dispatch,id])
 
   const handlerCarrito = () => {
     console.log("añadido");
-    dispatch(agregarAlCarrito(product))
-  }
+      dispatch(agregarAlCarrito(product, quantity))
+    
+  }  
+
   // Cantidad de articulos
   const [quantity, setQuantity] = useState(1);
+  
   const handleDecrease = () => {
     if (quantity !== 1) {
       setQuantity(quantity - 1);
     }
   }
+
   const handleIncrease = () => {
     if (quantity !== 10) {
       setQuantity(quantity + 1);
