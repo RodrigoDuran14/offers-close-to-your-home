@@ -24,10 +24,11 @@ export default function FormRegister() {
     event.preventDefault();
   
     // Obtiene los valores del formulario
-    const { primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, direccion, telefono, email, contraseña, id_ciudad } = form;
+    const { primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, direccion, telefono, email, password } = form;
   
     // Realiza las validaciones
-    const errors = validations({ primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, direccion, telefono, email, contraseña, id_ciudad });
+    const errors = validations({ primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, direccion, telefono, email, password });
+
   
     // Si hay errores, los muestra y no continúa con la solicitud
     if (Object.keys(errors).length > 0) {
@@ -36,8 +37,8 @@ export default function FormRegister() {
       // Si no hay errores, continúa con el proceso de envío del formulario
       try {
         const salt = bcrypt.genSaltSync(10);
-        const hashedPassword = bcrypt.hashSync(form.contraseña, salt);
-        setForm({ ...form, contraseña: hashedPassword });
+        const hashedPassword = bcrypt.hashSync(form.password, salt);
+        setForm({ ...form, password: hashedPassword });
   
         await axios
           .post("http://localhost:3001/usuario", form)
@@ -46,7 +47,7 @@ export default function FormRegister() {
   
         setShouldRedirect(true);
       } catch (error) {
-        console.error("Error al encriptar la contraseña:", error);
+        console.error("Error al encriptar la password:", error);
       }
     }
   };
@@ -119,7 +120,7 @@ export default function FormRegister() {
     direccion: "",
     telefono: "",
     email: "",
-    contraseña: "",
+    password: "",
     id_ciudad: null,
     estado: true,
     imagen: "",
@@ -260,7 +261,7 @@ export default function FormRegister() {
                   onChange={handleInputChange}
                   className={style.input}
                 />
-                 {errors.contraseña && (
+                 {errors.password && (
                 <div className={style.errors}>{errors.email}</div>
                 )}
               </div>
@@ -268,17 +269,17 @@ export default function FormRegister() {
         {/* ----------------------- CONTRASEÑA -----------------------*/}
               <div className={style.contenedorDiv}>
               <label for="" className={style.label}>
-                  Contraseña
+              Contraseña
                 </label>
                 <input
                   type="password"
-                  name="contraseña"
-                  value={form.contraseña}
+                  name="password"
+                  value={form.password}
                   onChange={handleInputChange}
                   className={style.input}
                 />
-                {errors.contraseña && (
-                <div className={style.errors}>{errors.contraseña}</div>
+                {errors.password && (
+                <div className={style.errors}>{errors.password}</div>
                 )}
               </div>
 
