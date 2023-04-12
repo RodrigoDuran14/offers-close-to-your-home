@@ -1,5 +1,5 @@
 const nodemailer = require("nodemailer");
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 const { Usuario, Tipo_usuario } = require('../../db');
 
 const transporter = nodemailer.createTransport({
@@ -73,9 +73,9 @@ const createUsuario = async (
     estado,
     email,
     contraseña: hashedPassword, // guardar la contraseña encriptada
-
+    imagen
   });
-
+//asd
   
   const mailOptions = {
     from: "justoffers12@gmail.com",
@@ -92,10 +92,9 @@ const createUsuario = async (
     } else {
       console.log("Correo electrónico enviado correctamente:", info.response);
     }
-
   });
 
   return newUser;
 };
 
-module.exports = { createUsuario };
+module.exports = { createUsuario }; 

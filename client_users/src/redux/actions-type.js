@@ -50,6 +50,9 @@ const GET_ALL_CITIES = "GET_ALL_CITIES"; // para el registro de usurio por 1ra v
 const LOADING = "LOADING";
 const READY = "READY";
 
+// ACTIONS TYPES RELACIONADO CON MERCADO PAGO
+
+const MERCADO_PAGO = "MERCADO_PAGO";
 
 module.exports = {
   CREATE_PRODUCT,
@@ -86,5 +89,6 @@ module.exports = {
   SUMAR_CANTIDAD_CARRITO,
   RESTAR_CANTIDAD_CARRITO,
   LOADING,
-  READY
+  READY,
+  MERCADO_PAGO
 };

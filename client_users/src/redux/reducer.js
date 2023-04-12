@@ -20,7 +20,8 @@ import {
   SUMAR_CANTIDAD_CARRITO,
   RESTAR_CANTIDAD_CARRITO,
   LOADING,
-  READY
+  READY,
+  MERCADO_PAGO
 } from "./actions-type.js";
 
 const initialState = {
@@ -36,6 +37,7 @@ const initialState = {
   carrito: JSON.parse(window.localStorage.getItem("carrito")) || [],
   ciudades: [],
   display: false,
+  linkMercadoPago:""
 };
 
 function rootReducer(state = initialState, action) {
@@ -200,6 +202,11 @@ function rootReducer(state = initialState, action) {
         ...state,
         display: false
       }
+      case MERCADO_PAGO:
+        return{
+          ...state,
+          linkMercadoPago:action.payload
+        }
 
     default:
       return state;
