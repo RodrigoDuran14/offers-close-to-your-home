@@ -53,7 +53,9 @@ const Detail = () => {
       {display ? <Loader /> : (
         <div className={s.container}>
 
-          <div style={{ backgroundImage: `url(${product.imagen})` }} className={s.image}></div>
+          <div
+          //  style={{ backgroundImage: `url(${product.imagen})` }} 
+           ><img className={s.image} src={product.imagen}/></div>
           <div className={s.condicion}>{product.condicion}</div>
 
           <hr />
