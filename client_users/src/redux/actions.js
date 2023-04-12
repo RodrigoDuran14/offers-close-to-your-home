@@ -242,3 +242,12 @@ export function ready(){
     type: action.READY
   }
 }
+
+// MERCADO PAGO
+export function mercadoPago(link) {
+  console.log(link);
+  return {
+    type: action.MERCADO_PAGO,
+    payload: link
+  };
+}
