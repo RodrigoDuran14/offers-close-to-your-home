@@ -136,7 +136,7 @@ function rootReducer(state = initialState, action) {
               : item
           ),
         };
-      } else {
+      } else {//No esta en el carrito
         return {
           ...state,
           carrito: [

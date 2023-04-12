@@ -78,7 +78,6 @@ export const getAllProducts = () => {
 export const getProductById = (id) => async (dispatch) => {
   try {
     const res = await axios.get(`${URL}/products/${id}`);
-    console.log(res.data);
     dispatch({
       type: action.GET_PRODUCT_BY_ID,
       payload: res.data,
@@ -115,7 +114,6 @@ export const getProductByName = (name) => async (dispatch) => {
 // * 5. action-creator para obtener producto por categoría
 
 export const getProductByCategory = (category) => {
-  console.log(category);
   return { type: action.GET_PRODUCT_BY_CATEGORY, payload: category };
 };
 
@@ -163,7 +161,6 @@ export const filterByOffers= () => {
 export function getCategorys() {
   return async function (dispatch) {
     const resp = await axios.get(`${URL}/categorias`);
-    console.log(resp.data);
     dispatch({
       type: action.GET_CATEGORY,
       payload: resp.data,
