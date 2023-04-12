@@ -60,14 +60,8 @@ const NavBar = () => {
         <Link to="/log-in" className={s.link}>
           <h4>Iniciar sesión</h4>
         </Link>
-
-        <div>
-          <button className={s.button}>
-            {" "}
-            <AiOutlineShoppingCart size={25} />{" "}
-          </button>
-        </div>
       </div>
+
       <div>
         <Link to="/shopping-cart" >
         <button className={s.button}>

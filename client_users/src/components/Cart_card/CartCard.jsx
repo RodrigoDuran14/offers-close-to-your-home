@@ -1,25 +1,27 @@
 import { IoTrashBinOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-
+import { eliminarDelCarrito, restarCantidad, sumarCantidad } from "../../redux/actions"
 import s from "./cartcard.module.css";
 import QuantityDisplay from "../quantityDisplay/QuantityDisplay";
 
 export default function CartCard(product) {
   const dispatch = useDispatch();
-  function eliminarProducto() {
-    dispatch(eliminarProducto(product.id));
+
+  function handleEliminarProducto() {
+    dispatch(eliminarDelCarrito(product));
   }
 
   const [quantity, setQuantity] = useState(1);
 
   const handleDecrease = () => {
     setQuantity(quantity - 1);
+    dispatch(restarCantidad(product))
   };
 
   const handleIncrease = () => {
     setQuantity(quantity + 1);
-    //dispatch(actualizarCarrito(product, quantity))
+    dispatch(sumarCantidad(product))
   };
 
   return (
@@ -34,12 +36,12 @@ export default function CartCard(product) {
       <div className={s.precio}>$ {product.valor_con_descuento}</div>
       <div className={s.quantity}>
       <QuantityDisplay
-        quantity={quantity}
+        quantity={product.cantidad}
         onDecrease={handleDecrease}
         onIncrease={handleIncrease}
       />
       </div>
-      <div className={s.eliminar} onClick={eliminarProducto}>
+      <div className={s.eliminar} onClick={handleEliminarProducto}>
         <IoTrashBinOutline size={20} />
       </div>
     </div>
