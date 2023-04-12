@@ -95,6 +95,9 @@ Detalle_venta.belongsTo(Comercio, { foreignKey: "id_comercio" })
 Pagos.hasMany(Detalle_venta, { foreignKey: "id_pago" });
 Detalle_venta.belongsTo(Pagos, { foreignKey: "id_pago" })
 
+Comercio.hasMany(Pagos, { foreignKey: "id_comercio" });
+Pagos.belongsTo(Comercio, { foreignKey: "id_comercio" });
+
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize, // para importart la conexión { conn } = require('./db.js');

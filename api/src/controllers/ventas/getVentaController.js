@@ -24,6 +24,24 @@ const getDetalle_Venta = async (id_venta) => {
   return Oneventa
 }
 
+const getVentasUsuario = async (id_usuario) => {
+
+  const ventas = await Venta.findAll({
+    where: {
+      id_usuario
+    },
+    include: [
+      {
+        model: Detalle_venta,
+        include: [{ model: Producto }]
+      }
+    ]
+
+  })
+
+  return ventas
+}
+
 module.exports = {
-  getVenta, getDetalle_Venta
+  getVenta, getDetalle_Venta, getVentasUsuario
 };
