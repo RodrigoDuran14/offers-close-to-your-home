@@ -8,7 +8,6 @@ import Loader from "../loader/loader";
 const Cards = () => {
   const { productsFitered, display } = useSelector((state) => state);
   // const dispatch = useDispatch();
-  console.log(productsFitered);
   // useEffect(() => {
   //   dispatch(getAllProducts());
   // }, [dispatch]);

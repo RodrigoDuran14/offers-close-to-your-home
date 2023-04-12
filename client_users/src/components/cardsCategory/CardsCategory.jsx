@@ -12,8 +12,6 @@ function CardsCategory() {
         dispatch(getCategorys())
         dispatch(getAllProducts());  
       }, [dispatch])
-
-    console.log(categorys);
   return (
     <div className={styles.container}>
         {categorys?.map((category, index) => {
