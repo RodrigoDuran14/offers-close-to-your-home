@@ -1,27 +1,16 @@
 import React from "react";
 import CardsCategory from "../../components/cardsCategory/CardsCategory";
-import Slider from "../../components/slider/Slider";
+import Carousel from "../../components/carousel/Carusel";
 import Loader from "../../components/loader/loader";
-import { useSelector } from "react-redux";
 
 function HomePrincipal() {
-  const display = useSelector((state) => state.display);
 
-  return (
-    
-       
-        <div>
-          <div
-          // style={{margin:"100px"}}
-          >
-            <Slider />
-          </div>
-          <div>
-            <CardsCategory />
-          </div>
+  return (  
+        <div>          
+            <Carousel numSlides={5} speed={2000}/>
+          
+            <CardsCategory />          
         </div>
-    
-    
   );
 }
 
