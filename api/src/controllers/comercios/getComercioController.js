@@ -20,8 +20,10 @@ const getCommerce = async () => {
       model: Ciudad,
       attributes: ["nombre_ciudad"]
     },
-    {model: Categoria_comercio,
-    attributes: ["nombre_categoria_comercio"]}]
+    {
+      model: Categoria_comercio,
+      attributes: ["nombre_categoria_comercio"]
+    }]
   });
 
   return databaseCommerce;
@@ -50,6 +52,12 @@ const getCommerceId = async (id_comercio) => {
     where: {
       id_comercio,
     },
+    include: [{
+      model: Ciudad,
+    },
+    {
+      model: Categoria_comercio,
+    }]
   });
 
   const results = databaseCommerce;
@@ -61,6 +69,12 @@ const searchEmailCommerce = async (email) => {
     where: {
       email,
     },
+    include: [{
+      model: Ciudad,
+    },
+    {
+      model: Categoria_comercio,
+    }]
   });
   return oneMail;
 };
@@ -70,8 +84,65 @@ const searchNameCommerce = async (nombre_comercio) => {
     where: {
       nombre_comercio,
     },
+    include: [{
+      model: Ciudad,
+    },
+    {
+      model: Categoria_comercio,
+    }]
   });
   return oneName;
+};
+
+
+const getAndCreateCommerce = async () => {
+
+  var arrayComercio = [
+    {
+      "id_categoria_comercio": 1,
+      "id_ciudad": 3996,
+      "nombre_comercio": "comercio1",
+      "direccion": "Argenta5",
+      "telefono": 26154783774,
+      "estado": true,
+      "nombre_contacto": "Ramon Ortega",
+      "cargo": "Encargado",
+      "password": "contraseña",
+      "email": "comercio1@gmail.com",
+      "imagen": ""
+    }
+    , {
+      "id_categoria_comercio": 2,
+      "id_ciudad": 3996,
+      "nombre_comercio": "comercio2",
+      "direccion": "Colombia1",
+      "telefono": 26154783774,
+      "estado": true,
+      "nombre_contacto": "Ramon Ortega",
+      "cargo": "Encargado",
+      "password": "contraseña",
+      "email": "comercio2@gmail.com",
+      "imagen": ""
+    }
+  ]
+
+  arrayComercio.forEach(async (comercio, i) => {
+    console.log(comercio)
+
+    // const encontrado = await Comercio.findOne({ where: { email: comercio.email } });
+
+    // if (encontrado === null) {
+    //   const crearCategoria = await Comercio.create({
+    //     email: comercio,
+
+    //   })
+    // }
+
+
+  })
+
+  return
+
 };
 
 module.exports = {
@@ -80,4 +151,5 @@ module.exports = {
   getCommerceId,
   searchNameCommerce,
   searchEmailCommerce,
+  getAndCreateCommerce
 };
