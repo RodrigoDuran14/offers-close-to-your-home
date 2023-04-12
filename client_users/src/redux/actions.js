@@ -63,12 +63,15 @@ export function createProduct(product) {
 export const getAllProducts = () => {
   return async (dispatch) => {
     try {
+      dispatch(loading())
       const response = await axios.get(`${URL}/products`);
       // console.log(response.data);
       dispatch({ type: action.GET_ALL_PRODUCTS, payload: response.data });
+      dispatch(ready())
     } catch (error) {
       console.log(error);
       dispatch({ type: action.GET_ALL_PRODUCTS, payload: error });
+      dispatch(ready())
     }
   };
 };
@@ -77,17 +80,20 @@ export const getAllProducts = () => {
 
 export const getProductById = (id) => async (dispatch) => {
   try {
+    dispatch(loading())
     const res = await axios.get(`${URL}/products/${id}`);
     dispatch({
       type: action.GET_PRODUCT_BY_ID,
       payload: res.data,
     });
+    dispatch(ready())
   } catch (error) {
     console.log(error);
     dispatch({
       type: action.GET_PRODUCT_BY_ID,
       payload: error,
     });
+    dispatch(ready())
   }
 };
 
@@ -95,6 +101,7 @@ export const getProductById = (id) => async (dispatch) => {
 
 export const getProductByName = (name) => async (dispatch) => {
   try {
+    dispatch(loading())
     const res = await axios.get(`${URL}/products?name=${name}`);
     const result = res.data;
     console.log(result);
@@ -102,6 +109,7 @@ export const getProductByName = (name) => async (dispatch) => {
       type: action.GET_PRODUCT_BY_NAME,
       payload: result,
     });
+    dispatch(ready())
   } catch (error) {
     console.log(error);
     // dispatch({
@@ -164,8 +172,7 @@ export function getCategorys() {
     dispatch({
       type: action.GET_CATEGORY,
       payload: resp.data,
-    });
-  };
+    });  };
 }
 
 //*12. action-cargar ciudades para los formularios de registro comercio y cliente
@@ -186,34 +193,52 @@ export function getAllCities() {
 // CODIGO REALIZADO POR FRANCO
 export function getProducts() {
   return (dispatch) => {
+    dispatch(loading())
     axios
       .get(`${URL}/products`)
       .then((response) =>
         dispatch({
           type: action.GET_PRODUCTS,
           payload: response.data,
-        })
+        }),
+        dispatch(ready())
       )
       .catch((err) => console.log(err));
+      dispatch(ready())
   };
 }
 
 export function getDetail(id) {
   return (dispatch) => {
+    dispatch(loading())
     axios
       .get(`${URL}/products/${id}`)
       .then((response) =>
         dispatch({
           type: action.GET_DETAIL,
           payload: response.data,
-        })
+        }),
+        dispatch(ready())
       )
       .catch((err) => console.log(err));
+      dispatch(ready())
   };
 }
 
 export function cleanProduct(){
   return {
     type: action.CLEAN_PRODUCT
+  }
+}
+
+export function loading(){
+  return{
+    type: action.LOADING
+  }
+}
+
+export function ready(){
+  return{
+    type: action.READY
   }
 }

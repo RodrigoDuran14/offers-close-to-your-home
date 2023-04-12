@@ -19,6 +19,8 @@ import {
   BORRAR_DEL_CARRITO,
   SUMAR_CANTIDAD_CARRITO,
   RESTAR_CANTIDAD_CARRITO,
+  LOADING,
+  READY
 } from "./actions-type.js";
 
 const initialState = {
@@ -33,7 +35,7 @@ const initialState = {
   filter: [],
   carrito: JSON.parse(window.localStorage.getItem("carrito")) || [],
   ciudades: [],
-
+  display: false,
 };
 
 function rootReducer(state = initialState, action) {
@@ -150,7 +152,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         carrito: state.carrito.map((product) =>
-          product.id === action.payload.id
+          product.id_producto === action.payload.id_producto
             ? { ...product, cantidad: product.cantidad + 1 }
             : product
         ),
@@ -160,7 +162,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         carrito: state.carrito.map((product) =>
-          product.id === action.payload.id
+          product.id_producto === action.payload.id_producto
             ? { ...product, cantidad: product.cantidad - 1 }
             : product
         ),
@@ -173,7 +175,6 @@ function rootReducer(state = initialState, action) {
       return{
         ...state,
         carrito: filter
-
       }
 
     case CLEAN_PRODUCT:
@@ -181,11 +182,24 @@ function rootReducer(state = initialState, action) {
         ...state,
         product: [],
       };
-      case GET_ALL_CITIES:
-        return {
-          ...state,
-          ciudades:action.payload,
-        }
+
+    case GET_ALL_CITIES:
+      return {
+        ...state,
+        ciudades:action.payload,
+      }
+
+    case LOADING: 
+      return {
+        ...state,
+        display: true,
+      }
+
+    case READY:
+      return {
+        ...state,
+        display: false
+      }
 
     default:
       return state;

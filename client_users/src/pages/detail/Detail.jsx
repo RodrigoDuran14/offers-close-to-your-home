@@ -10,7 +10,7 @@ import swal from 'sweetalert'
 
 const Detail = () => {
 
-  const { product, carrito } = useSelector(state => state)
+  const { product, carrito, display } = useSelector(state => state)
 
   const { id } = useParams()
   const dispatch = useDispatch();
@@ -50,7 +50,7 @@ const Detail = () => {
 
   return (
     <>
-      {product.hasOwnProperty('nombre') ? (
+      {display ? <Loader /> : (
         <div className={s.container}>
 
           <div style={{ backgroundImage: `url(${product.imagen})` }} className={s.image}></div>
@@ -84,7 +84,7 @@ const Detail = () => {
 
           </div>
         </div>
-      ) : <Loader />}
+      )}
     </>
   )
 
