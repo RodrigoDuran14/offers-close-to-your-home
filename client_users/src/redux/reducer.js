@@ -19,6 +19,10 @@ import {
   BORRAR_DEL_CARRITO,
   SUMAR_CANTIDAD_CARRITO,
   RESTAR_CANTIDAD_CARRITO,
+  LOADING,
+  READY,
+  USER_LOGIN,
+  MERCADO_PAGO
 } from "./actions-type.js";
 
 const initialState = {
@@ -33,7 +37,9 @@ const initialState = {
   filter: [],
   carrito: JSON.parse(window.localStorage.getItem("carrito")) || [],
   ciudades: [],
-
+  display: false,
+  logIn: false,
+  linkMercadoPago:""
 };
 
 function rootReducer(state = initialState, action) {
@@ -136,7 +142,8 @@ function rootReducer(state = initialState, action) {
               : item
           ),
         };
-      } else {//No esta en el carrito
+      } else {
+        //No esta en el carrito
         return {
           ...state,
           carrito: [
@@ -150,7 +157,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         carrito: state.carrito.map((product) =>
-          product.id === action.payload.id
+          product.id_producto === action.payload.id_producto
             ? { ...product, cantidad: product.cantidad + 1 }
             : product
         ),
@@ -160,33 +167,58 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         carrito: state.carrito.map((product) =>
-          product.id === action.payload.id
+          product.id_producto === action.payload.id_producto
             ? { ...product, cantidad: product.cantidad - 1 }
             : product
         ),
       };
 
-    case BORRAR_DEL_CARRITO: 
-      const filter = state.carrito.filter(p => p.id_producto !== action.payload.id_producto)
-      console.log("filter   ", filter)
+    case BORRAR_DEL_CARRITO:
+      const filter = state.carrito.filter(
+        (p) => p.id_producto !== action.payload.id_producto
+      );
+      console.log("filter   ", filter);
 
-      return{
+      return {
         ...state,
-        carrito: filter
-
-      }
+        carrito: filter,
+      };
 
     case CLEAN_PRODUCT:
       return {
         ...state,
         product: [],
       };
-      case GET_ALL_CITIES:
-        return {
-          ...state,
-          ciudades:action.payload,
-        }
 
+    case GET_ALL_CITIES:
+      return {
+        ...state,
+        ciudades: action.payload,
+      };
+
+    case LOADING:
+      return {
+        ...state,
+        display: true,
+      };
+
+    case READY:
+      return {
+        ...state,
+        display: false,
+      };
+    case USER_LOGIN:
+      return {
+        ...state,
+        logIn: action.payload,
+      };
+        display: false
+      }
+      case MERCADO_PAGO:
+        return{
+          ...state,
+          linkMercadoPago:action.payload
+        }
     default:
       return state;
   }

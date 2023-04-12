@@ -3,13 +3,12 @@ import * as action from "./actions-type"; // para no escribir todos los action t
 
 const URL = "http://localhost:3001";
 
-
 // ========================* CARRITO *========================
 export function agregarAlCarrito(id, quantity) {
   console.log(id);
   return {
     type: action.AGREGAR_AL_CARRITO,
-    payload: {id,quantity}
+    payload: { id, quantity },
   };
 }
 
@@ -20,18 +19,18 @@ export function eliminarDelCarrito(id) {
   };
 }
 
-export function restarCantidad(id){
-  return{
+export function restarCantidad(id) {
+  return {
     type: action.RESTAR_CANTIDAD_CARRITO,
-    payload: id
-  }
+    payload: id,
+  };
 }
 
-export function sumarCantidad(id){
-  return{
+export function sumarCantidad(id) {
+  return {
     type: action.SUMAR_CANTIDAD_CARRITO,
-    payload: id
-  }
+    payload: id,
+  };
 }
 
 // ========================* USUARIOS *========================
@@ -41,6 +40,13 @@ export function registerUser() {
       .post(`${URL}/usuario`)
       .then((response) => console.log(response))
       .catch((err) => console.log(err));
+  };
+}
+
+export function userLoggedIn(estado) {
+  return {
+    type: action.USER_LOGIN,
+    payload: estado,
   };
 }
 
@@ -63,12 +69,15 @@ export function createProduct(product) {
 export const getAllProducts = () => {
   return async (dispatch) => {
     try {
+      dispatch(loading());
       const response = await axios.get(`${URL}/products`);
       // console.log(response.data);
       dispatch({ type: action.GET_ALL_PRODUCTS, payload: response.data });
+      dispatch(ready());
     } catch (error) {
       console.log(error);
       dispatch({ type: action.GET_ALL_PRODUCTS, payload: error });
+      dispatch(ready());
     }
   };
 };
@@ -77,17 +86,20 @@ export const getAllProducts = () => {
 
 export const getProductById = (id) => async (dispatch) => {
   try {
+    dispatch(loading());
     const res = await axios.get(`${URL}/products/${id}`);
     dispatch({
       type: action.GET_PRODUCT_BY_ID,
       payload: res.data,
     });
+    dispatch(ready());
   } catch (error) {
     console.log(error);
     dispatch({
       type: action.GET_PRODUCT_BY_ID,
       payload: error,
     });
+    dispatch(ready());
   }
 };
 
@@ -95,6 +107,7 @@ export const getProductById = (id) => async (dispatch) => {
 
 export const getProductByName = (name) => async (dispatch) => {
   try {
+    dispatch(loading());
     const res = await axios.get(`${URL}/products?name=${name}`);
     const result = res.data;
     console.log(result);
@@ -102,6 +115,7 @@ export const getProductByName = (name) => async (dispatch) => {
       type: action.GET_PRODUCT_BY_NAME,
       payload: result,
     });
+    dispatch(ready());
   } catch (error) {
     console.log(error);
     // dispatch({
@@ -153,7 +167,7 @@ export const filterByUsedProducts = () => {
 export const filterByRefurbishedProducts = () => {
   return { type: action.FILTER_BY_REFURBISHED_PRODUCTS }; //productos reacondicionados
 };
-export const filterByOffers= () => {
+export const filterByOffers = () => {
   return { type: action.OFERTAS }; //productos reacondicionados
 };
 
@@ -180,40 +194,76 @@ export function getAllCities() {
       console.log(error);
       dispatch({ type: action.GET_ALL_CITIES, payload: error });
     }
-  }
-};
+  };
+}
 
 // CODIGO REALIZADO POR FRANCO
 export function getProducts() {
   return (dispatch) => {
+    dispatch(loading());
     axios
       .get(`${URL}/products`)
-      .then((response) =>
-        dispatch({
-          type: action.GET_PRODUCTS,
-          payload: response.data,
-        })
+      .then(
+        (response) =>
+          dispatch({
+            type: action.GET_PRODUCTS,
+            payload: response.data,
+          }),
+        dispatch(ready())
       )
       .catch((err) => console.log(err));
+    dispatch(ready());
   };
 }
 
 export function getDetail(id) {
   return (dispatch) => {
+    dispatch(loading());
     axios
       .get(`${URL}/products/${id}`)
-      .then((response) =>
-        dispatch({
-          type: action.GET_DETAIL,
-          payload: response.data,
-        })
+      .then(
+        (response) =>
+          dispatch({
+            type: action.GET_DETAIL,
+            payload: response.data,
+          }),
+        dispatch(ready())
       )
       .catch((err) => console.log(err));
+    dispatch(ready());
   };
 }
 
-export function cleanProduct(){
+export function cleanProduct() {
   return {
-    type: action.CLEAN_PRODUCT
+    type: action.CLEAN_PRODUCT,
+  };
+}
+
+export function loading() {
+  return {
+    type: action.LOADING,
+  };
+}
+
+
+export function ready() {
+  return {
+    type: action.READY,
+  };
+}
+
+export function ready(){
+  return{
+    type: action.READY
   }
+}
+
+// MERCADO PAGO
+export function mercadoPago(link) {
+  console.log(link);
+  return {
+    type: action.MERCADO_PAGO,
+    payload: link
+  };
 }
