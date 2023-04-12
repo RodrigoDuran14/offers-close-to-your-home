@@ -302,14 +302,13 @@ export default function FormRegister() {
                    <option>Selecciona una ciudad</option>
                     {ciudades &&
                       ciudades.map(c => (
-                        <option key = {c.id_ciudad}value={c.id_ciudad} primary={c.nombre_ciudad}>
-                    <option  value={c.id_ciudad} primary={c.nombre_ciudad}>
-
+                        <option key = {c.id_ciudad} value={c.id_ciudad} primary={c.nombre_ciudad}>
                           {c.nombre_ciudad}
                         </option>
                       ))}
                   </select>
                 </div>
+              </div>
               </div>
 
         {/* ----------------------- IMAGEN -----------------------*/}
