@@ -83,74 +83,93 @@ export default function FormRegister() {
       {shouldRedirect ? (
         <Redirect to="/log-in" />
       ) : (
+
+        /* ----------------------- CONTENEDOR GENERAL -----------------------*/
         <div className={style.contenedor}>
+        {/* ----------------------- CONTENEDOR FORMULARIO -----------------------*/}
           <div className={style.contenedorForm}>
             <form onSubmit={handleSubmit}>
-              <div>
+        {/* ----------------------- PRIMER NOMBRE -----------------------*/}
+              <div className={style.nombres}>
+              <div className={style.contenedorDiv}>
+              <label for="" className={style.label2}>
+                  Nombre
+                </label>
                 <input
                   type="text"
                   name="primer_nombre"
                   value={form.primer_nombre}
                   onChange={handleInputChange}
-                  className={style.input}
+                  className={style.input2}
                 />
+                
                 {errors.primer_nombre && (
                 <div className={style.errors}>{errors.primer_nombre}</div>
                 )}
-                <label for="" className={style.label}>
-                  Primer nombre
-                </label>
               </div>
 
-              <div>
+        {/* ----------------------- SEGUNDO NOMBRE -----------------------*/}
+              <div className={style.contenedorDiv}>
+              <label for="" className={style.label2}>
+                  Segundo nombre
+                </label>
                 <input
                   type="text"
                   name="segundo_nombre"
                   value={form.segundo_nombre}
                   onChange={handleInputChange}
-                  className={style.input}
+                  className={style.input2}
                 />
                  {errors.segundo_nombre && (
                 <div className={style.errors}>{errors.segundo_nombre}</div>
                 )}
-                <label for="" className={style.label}>
-                  Segundo nombre
-                </label>
-              </div>
+               
+                 </div>
+                 </div>
 
-              <div>
+        {/* ----------------------- PRIMER APELLIDO -----------------------*/}
+        <div className={style.apellidos}>
+             <div className={style.contenedorDiv}>
+                
+              <label for="" className={style.label2}>
+                  Apellido
+                </label>
                 <input
                   type="text"
                   name="primer_apellido"
                   value={form.primer_apellido}
                   onChange={handleInputChange}
-                  className={style.input}
+                  className={style.input2}
                 />
                  {errors.primer_apellido && (
                 <div className={style.errors}>{errors.primer_apellido}</div>
                 )}
-                <label for="" className={style.label}>
-                  Primer apellido
-                </label>
               </div>
 
-              <div>
+        {/* ----------------------- SEGUNDO APELLIDO -----------------------*/}
+              <div className={style.contenedorDiv}>
+              <label for="" className={style.label2}>
+                  Segundo apellido
+                </label>
                 <input
                   type="text"
                   name="segundo_apellido"
                   value={form.segundo_apellido}
                   onChange={handleInputChange}
-                  className={style.input}
+                  className={style.input2}
                 />
                  {errors.segundo_apellido && (
                 <div className={style.errors}>{errors.segundo_apellido}</div>
-                )}
-                <label for="" className={style.label}>
-                  Segundo apellido
-                </label>
+                )}               
+              </div>
               </div>
 
-              <div>
+
+        {/* ----------------------- DIRECCION -----------------------*/}
+              <div className={style.contenedorDiv}>
+              <label for="" className={style.label}>
+                  Dirección
+                </label>
                 <input
                   type="text"
                   name="direccion"
@@ -161,12 +180,13 @@ export default function FormRegister() {
                  {errors.direccion && (
                 <div className={style.errors}>{errors.direccion}</div>
                 )}
-                <label for="" className={style.label}>
-                  Dirección
-                </label>
               </div>
 
-              <div>
+        {/* ----------------------- TELEFONO -----------------------*/}
+              <div className={style.contenedorDiv}>
+              <label for="" className={style.label}>
+                  Teléfono
+                </label>
                 <input
                   type="text"
                   name="telefono"
@@ -177,12 +197,13 @@ export default function FormRegister() {
                  {errors.telefono && (
                 <div className={style.errors}>{errors.telefono}</div>
                 )}
-                <label for="" className={style.label}>
-                  Teléfono
-                </label>
               </div>
 
-              <div>
+        {/* ----------------------- EMAIL -----------------------*/}
+              <div className={style.contenedorDiv}>
+              <label for="" className={style.label}>
+                  Email
+                </label>
                 <input
                   type="text"
                   name="email"
@@ -193,12 +214,13 @@ export default function FormRegister() {
                  {errors.contraseña && (
                 <div className={style.errors}>{errors.email}</div>
                 )}
-                <label for="" className={style.label}>
-                  Email
-                </label>
               </div>
 
-              <div>
+        {/* ----------------------- CONTRASEÑA -----------------------*/}
+              <div className={style.contenedorDiv}>
+              <label for="" className={style.label}>
+                  Contraseña
+                </label>
                 <input
                   type="password"
                   name="contraseña"
@@ -209,26 +231,24 @@ export default function FormRegister() {
                 {errors.contraseña && (
                 <div className={style.errors}>{errors.contraseña}</div>
                 )}
-                <label for="" className={style.label}>
-                  Contraseña
-                </label>
               </div>
 
-              <div>
+        {/* ----------------------- CIUDAD -----------------------*/}
+              <div className={style.contenedorDiv}>
                 <label for="" className={style.label}>
                   Ciudad
                 </label>
 
-                <div>
+                <div className={style.contenedorDiv}>
                   <select
                     name="id_ciudad"
                     onChange={e => handleInputChange(e)}
-                    className={style.input}
+                    className={style.select}
                   >
                     <option>Selecciona una ciudad</option>
                     {ciudades &&
                       ciudades.map(c => (
-                        <option value={c.id_ciudad} primary={c.nombre_ciudad}>
+                    <option  value={c.id_ciudad} primary={c.nombre_ciudad}>
                           {c.nombre_ciudad}
                         </option>
                       ))}
@@ -236,7 +256,11 @@ export default function FormRegister() {
                 </div>
               </div>
 
-              <div>
+        {/* ----------------------- IMAGEN -----------------------*/}
+              <div className={style.contenedorDiv}>
+              <label htmlFor="" className={style.label}>
+                  Imagen
+                </label>
                 <input
                   type="file"
                   id="imagen"
@@ -244,10 +268,8 @@ export default function FormRegister() {
                   onChange={handleInputChange}
                   className={style.input}
                 />
-                <label htmlFor="" className={style.label}>
-                  Imagen
-                </label>
-                {/* Mostrar la vista previa de la imagen seleccionada */}
+
+        {/* ----------------------- VISTA PREVIA IMAGEN -----------------------*/}
                 {form.imagen && (
                   <img
                     className={style.imageFile}
