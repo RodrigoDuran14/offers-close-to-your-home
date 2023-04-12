@@ -102,3 +102,9 @@
     margin-top: 10px;
 }
 
+.errors {
+    font-family: sans-serif;    
+    color: #c5ce49;
+    font-size: 14px;
+}
+
