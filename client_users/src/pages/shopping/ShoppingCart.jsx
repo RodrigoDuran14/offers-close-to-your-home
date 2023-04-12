@@ -1,19 +1,20 @@
+
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import CartCard from "../../components/Cart_card/CartCard"
 import styles from './shopping.module.css'
 
 export default function ShoppingCart() {
-  const carrito = useSelector(state => state.carrito);
-console.log(carrito)
+  const carrito = useSelector((state) => state.carrito);
+  const display = useSelector((state) => state.display);
+  console.log(carrito);
   useEffect(() => {
-    window.localStorage.setItem('carrito', JSON.stringify(carrito))
-    window.localStorage.getItem('carrito')
-  }, [carrito])
+    window.localStorage.setItem("carrito", JSON.stringify(carrito));
+    window.localStorage.getItem("carrito");
+  }, [carrito]);
+
+  const storage_cart = JSON.parse(window.localStorage.getItem("carrito"));
   
-  const storage_cart = JSON.parse(window.localStorage.getItem('carrito'))
-
-
 console.log(storage_cart);
   let total = 0
   carrito.forEach(producto => {
@@ -34,9 +35,9 @@ console.log(storage_cart);
           total={total}
           />
         ))
-      ) : (
-        <p>No hay productos en el carrito.</p>
-      )}
+          ) : (
+            <p>No hay productos en el carrito.</p>
+          )}
       <div className={styles.containerTotal}>
         <div className={styles.total}>
           <div style={{fontSize: "30px", marginLeft: "15px"}}>
@@ -49,6 +50,6 @@ console.log(storage_cart);
       </div>
       <button>Confirmar compra</button>
     </div>
-  );
 
+  );
 }
