@@ -1,11 +1,24 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import axios from 'axios'
 import style from './formRegister.module.css'
 import { Redirect } from "react-router-dom"
 import validations from "./validations" 
 import bcrypt from 'bcryptjs';
+import {getAllCities} from "../../redux/actions";
+import {useSelector, useDispatch} from "react-redux";
 export default function FormRegister() {
-        
+      
+
+
+      const { ciudades } = useSelector(state => state);
+      const dispatch = useDispatch();
+      
+      useEffect(() => {
+          dispatch(getAllCities())
+         
+        }, [dispatch])
+      
+      console.log(typeof(ciudades.id_ciudad));
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -28,7 +41,7 @@ export default function FormRegister() {
     const handleInputChange = (event) => {
         const property = event.target.name;
         const value = event.target.value       
-          // Verificar si el input es de tipo file
+        //   Verificar si el input es de tipo file
           if (event.target.type === "file") {
             const file = event.target.files[0]; // Obtener el archivo seleccionado
             setForm({ ...form, [property]: file }); // Actualizar el estado con el archivo seleccionado
@@ -48,10 +61,9 @@ export default function FormRegister() {
         contraseña: '',
         id_ciudad: 0,
         estado: true,
-        imagen: null
+        imagen: ""
        })
-const imagen = typeof(form.imagen)
-console.log(imagen);
+
 
    
 
@@ -59,7 +71,7 @@ console.log(imagen);
         <>
 
             {shouldRedirect ? (
-                <Redirect to= "/"/>
+                <Redirect to= "/log-in"/>
             ):
             (<div className={style.contenedor}>
 
@@ -145,16 +157,29 @@ console.log(imagen);
                             />
                             <label for= "" className={style.label}>Contraseña</label>
                         </div>
+                        
+                        <div>
+                        <label for= "" className={style.label}>Ciudad</label> 
 
                         <div>
-                            <input 
-                            type="text" 
-                            name="id_ciudad" 
-                            value={form.id_ciudad} 
-                            onChange={handleInputChange} 
-                            className={style.input}
-                            />
-                            <label for= "" className={style.label}>Ciudad</label>
+              <select                
+                name="id_ciudad"
+                onChange={(e) => handleInputChange(e)}
+                className={style.input}
+              >
+                <option>Selecciona una ciudad</option>
+                {ciudades &&
+                  ciudades.map((c) => (
+                    <option value={c.id_ciudad} primary={c.nombre_ciudad}>
+                      {c.nombre_ciudad}
+                    </option>
+                  ))}
+              </select>
+
+              </div>
+
+                
+              
                         </div>
                         
                         <div>
