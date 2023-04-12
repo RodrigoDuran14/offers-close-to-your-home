@@ -48,7 +48,7 @@ const createUsuario = async (
   id_ciudad,
   estado,
   email,
-  contraseña,
+  password,
   imagen
 ) => {
   verifyDb();
@@ -57,7 +57,7 @@ const createUsuario = async (
   const salt = await bcrypt.genSalt(10);
 
   // Encriptar la contraseña con el salt generado
-  const hashedPassword = await bcrypt.hash(contraseña, salt);
+  const hashedPassword = await bcrypt.hash(password, salt);
 
   // Crear el usuario en la base de datos con la contraseña encriptada
   const newUser = await Usuario.create({
@@ -72,8 +72,8 @@ const createUsuario = async (
     id_ciudad,
     estado,
     email,
-    contraseña: hashedPassword, // guardar la contraseña encriptada
-
+    password: hashedPassword, // guardar la contraseña encriptada
+    imagen
   });
 
   
@@ -83,7 +83,7 @@ const createUsuario = async (
     subject: "Registro exitoso",
     text: `¡Bienvenido a nuestra aplicación! Tu registro fue exitoso. Tus credenciales son:
            Correo electrónico: ${email}
-           Contraseña: ${contraseña}`,
+           Contraseña: ${password}`,
   };
   
   transporter.sendMail(mailOptions, (error, info) => {

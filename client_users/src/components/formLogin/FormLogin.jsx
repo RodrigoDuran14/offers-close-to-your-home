@@ -57,8 +57,12 @@ export default function FormLogin() {
       const handleLogin = async (values) => {
         try {
           const user = await axios.post(`${BACK_HOST}/usuario/login`, values);
+          console.log("USER:  ",user)
           const session = user.data.session;
           const token = user.data.token;
+          console.log("session:  ",session)
+          console.log("token:  ",token)
+
           window.localStorage.setItem('user_token', JSON.stringify(token));
           window.localStorage.setItem('user_session', JSON.stringify(session));
           const isUserAuthenticated = await login(true);
@@ -117,7 +121,7 @@ export default function FormLogin() {
             <Formik
                 initialValues={{
                     email: '',
-                    contraseña: ''
+                    password: ''
                 }}
                 onSubmit={handleLogin}
                 validate={validation}   
@@ -129,8 +133,8 @@ export default function FormLogin() {
                     <Field name='email' type='email' placeholder='Email' className={styles.formInput} />
                     <ErrorMessage name='email' />
 
-                    <Field name='contraseña' type='password' placeholder='Password' className={styles.formInput} />
-                    <ErrorMessage name='contraseña' />
+                    <Field name='password' type='password' placeholder='Password' className={styles.formInput} />
+                    <ErrorMessage name='password' />
 
                     <div className={styles.botones}
                     // style={{ marginTop: '20px' }}
