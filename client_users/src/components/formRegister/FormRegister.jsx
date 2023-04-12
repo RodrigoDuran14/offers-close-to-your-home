@@ -3,10 +3,10 @@ import axios from "axios";
 import style from "./formRegister.module.css";
 import { Redirect } from "react-router-dom";
 import validations from "./validations";
-import bcrypt from "bcryptjs";
+import bcrypt from "bcryptjs"; // librería para encriptcar contraseñas
 import { getAllCities } from "../../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
-
+import { Image, CloudinaryContext } from "cloudinary-react"; // para guardar las imágenes externamente 
 
 export default function FormRegister() {
   const { ciudades } = useSelector(state => state);
@@ -28,6 +28,7 @@ export default function FormRegister() {
   
     // Realiza las validaciones
     const errors = validations({ primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, direccion, telefono, email, password });
+
   
     // Si hay errores, los muestra y no continúa con la solicitud
     if (Object.keys(errors).length > 0) {
@@ -52,17 +53,64 @@ export default function FormRegister() {
   };
 
   const [shouldRedirect, setShouldRedirect] = useState(false);
-  const handleInputChange = event => {
+
+  // const handleInputChange = event => {
+  //   const property = event.target.name;
+  //   const value = event.target.value;
+  //   //   Verificar si el input es de tipo file
+  //   if (event.target.type === "file") {
+  //     const file = event.target.files[0]; // Obtener el archivo seleccionado
+  //     setForm({ ...form, [property]: file }); // Actualizar el estado con el archivo seleccionado
+  //   } else {
+  //     setForm({ ...form, [property]: value });
+    
+  // };
+
+  const handleInputChange = async event => {
     const property = event.target.name;
     const value = event.target.value;
-    //   Verificar si el input es de tipo file
+    // Verificar si el input es de tipo file
     if (event.target.type === "file") {
       const file = event.target.files[0]; // Obtener el archivo seleccionado
-      setForm({ ...form, [property]: file }); // Actualizar el estado con el archivo seleccionado
+      let valor = 0;
+      if (file) valor =1 
+      console.log(valor);
+      // Subir la imagen a Cloudinary
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", "ajr7own3"); // Reemplazar con tu upload preset de Cloudinary
+      formData.append("api_key", "581299476786456"); // Reemplazar con tu API Key de Cloudinary
+                                 
+  
+      try {
+        const response = await axios.post(
+          "https://api.cloudinary.com/v1_1/dfmkjxjsf/image/upload",
+          formData
+        );
+  
+        // Obtener la URL de la imagen subida desde la respuesta de Cloudinary
+        console.log(response.data.secure_url);
+        const imageUrl = response.data.secure_url;
+        
+  
+        // Actualizar el estado del formulario con la URL de la imagen subida
+        setForm({ 
+          ...form, // Copia el estado actual del formulario
+          imagen: imageUrl // Actualiza la propiedad 'imagen' del estado con la URL de la imagen subida
+        });
+      } catch (error) {
+        console.error("Error al subir la imagen a Cloudinary:", error);
+        // Manejar el error aquí, por ejemplo mostrar un mensaje de error al usuario
+      }
     } else {
-      setForm({ ...form, [property]: value });
+      // Actualizar el estado del formulario para otros tipos de inputs
+      setForm({
+        ...form,
+        [property]: value
+      });
     }
-  };
+  }
+
   const [form, setForm] = useState({
     id_tipo_usuario: 1,
     primer_nombre: "",
@@ -73,13 +121,14 @@ export default function FormRegister() {
     telefono: "",
     email: "",
     password: "",
-    id_ciudad: 0,
+    id_ciudad: null,
     estado: true,
     imagen: "",
   });
 
   return (
     <>
+     
       {shouldRedirect ? (
         <Redirect to="/log-in" />
       ) : (
@@ -88,6 +137,7 @@ export default function FormRegister() {
         <div className={style.contenedor}>
         {/* ----------------------- CONTENEDOR FORMULARIO -----------------------*/}
           <div className={style.contenedorForm}>
+          <CloudinaryContext cloudName="dfmkjxjsf">
             <form onSubmit={handleSubmit}>
         {/* ----------------------- PRIMER NOMBRE -----------------------*/}
               <div className={style.nombres}>
@@ -239,21 +289,27 @@ export default function FormRegister() {
                   Ciudad
                 </label>
 
+                <div>
+
+                {errors.id_ciudad && (
+                <div className={style.errors}>{errors.id_ciudad}</div>
+                )}
                 <div className={style.contenedorDiv}>
                   <select
                     name="id_ciudad"
                     onChange={e => handleInputChange(e)}
                     className={style.select}
                   >
-                    <option>Selecciona una ciudad</option>
+                   <option>Selecciona una ciudad</option>
                     {ciudades &&
                       ciudades.map(c => (
-                    <option  value={c.id_ciudad} primary={c.nombre_ciudad}>
+                        <option key = {c.id_ciudad} value={c.id_ciudad} primary={c.nombre_ciudad}>
                           {c.nombre_ciudad}
                         </option>
                       ))}
                   </select>
                 </div>
+              </div>
               </div>
 
         {/* ----------------------- IMAGEN -----------------------*/}
@@ -268,6 +324,19 @@ export default function FormRegister() {
                   onChange={handleInputChange}
                   className={style.input}
                 />
+                <label htmlFor="imagen" className={style.label}>
+                  Imagen
+                </label>
+                <div>
+  {/* Mostrar la vista previa de la imagen seleccionada o la URL almacenada */}
+  {form.imagen ? (
+    <img
+      className={style.imageFile}
+      src={form.imagen}
+      id="imagen"
+    />
+  ) : null}
+</div>
 
         {/* ----------------------- VISTA PREVIA IMAGEN -----------------------*/}
                 {form.imagen && (
@@ -283,9 +352,11 @@ export default function FormRegister() {
                 Registrase
               </button>
             </form>
+            </CloudinaryContext>
           </div>
         </div>
       )}
+     
     </>
   );
 }

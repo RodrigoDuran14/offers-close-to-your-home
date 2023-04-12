@@ -8,6 +8,9 @@ const router = Router();
 // Importar todos los routers, Ejemplo: const authRouter = require('./auth.js');
 // Configurar los routers, Ejemplo: router.use('/auth', authRouter);
 
+const carga = require("./carga") //CARGA ciudades, categorias, usuarios, comercios y productos http://localhost:3001/carga
+router.use("/carga", carga)
+
 const productos = require("./producto");
 router.use("/products", productos);
 
@@ -32,12 +35,17 @@ router.use("/ciudad", ciudades);
 const venta = require("./venta");
 router.use("/venta", venta)
 
-router.get("/buy-product", function(req, res, next){
-  const productId = req.query.producto_id;
-  // Aquí deberías validar que el ID del producto sea válido antes de usarlo
-  // para buscar el producto en la base de datos
-  paymentInstance.getPymentLink(req, res, productId);
+const pagos = require("./pagos")
+router.use("/pagos", pagos)
+
+router.post("/buy-products", function(req, res, next){
+  const productos = req.body.productos;
+  // Aquí deberías validar que los ID de los productos sean válidos antes de usarlos
+  // para buscar los productos en la base de datos
+  paymentInstance.getPymentLink(req, res, productos);
+
 });
+
 
 module.exports = router;
 

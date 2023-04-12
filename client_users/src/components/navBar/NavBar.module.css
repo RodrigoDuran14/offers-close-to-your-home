@@ -18,12 +18,12 @@ h4 {
 }
 
 .options {
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     position:relative;
-    top:0;
 }
+
 .options::ntn-child(1) {
     position:relative;
     top:0;
@@ -75,15 +75,12 @@ h4 {
 
 
 .texto {
+    margin-bottom: 8px;
     height: 20px;
-    margin-top: 22px;
 }
 
 .icono {
     height: 40px;
-    margin-top: 10px;
-    margin-left: 4px;
-    margin-right: 14px;
 }
 
 .link {
@@ -91,4 +88,11 @@ h4 {
     color: white;
     margin-left: 10px;
     margin-right: 10px;
+}
+
+.logIn{
+    filter: invert();
+    width: 30px;
+    height: 30px;
+    margin-top: 8px;
 }

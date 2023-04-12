@@ -6,7 +6,7 @@ const regexAddress = /^\d+\s[A-z]+\s[A-z]+/; // valida la dirección
 
 export default function validations(values) {
     const errors = {}
-
+      
     if(!values.primer_nombre) errors.primer_nombre = 'Campo Requerido'
     if (blankSpace.test(values.primer_nombre)) errors.primer_nombre = 'El nombre no puede ser un espacio en blanco'
     if (values.primer_nombre.length > 20) errors.primer_nombre = 'Los nombres no deberían sumar más de 20 caracteres'
@@ -44,6 +44,9 @@ export default function validations(values) {
     if (values.password.length > 20) errors.password = 'La contraseña no debería tener más de 20 caracteres'
     if (!regexPassword.test(values.password)) errors.password = 'La contraseña debe contener al menos un número'
     if(!values.password) errors.password = 'Campo Requerido'
+
+
+    if(!values.id_ciudad) errors.id_ciudad = 'Campo Requerido'
 
     return errors
 }

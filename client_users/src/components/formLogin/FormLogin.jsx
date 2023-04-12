@@ -1,5 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
+import { useDispatch } from 'react-redux';
+
 import { Link } from "react-router-dom"
 import { useHistory } from 'react-router-dom';
 import validation from './validation'
@@ -10,6 +12,9 @@ import { initializeApp } from "firebase/app";
 import Google from "../../assets/images/IconGoogle.png"
 
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+
+import { userLoggedIn } from "../../redux/actions";
+
 const firebaseConfig = {
     apiKey: "AIzaSyDIr4a7cej0mw217G8qMwAGMx8R9MEYj2g",
     authDomain: "justoffers-85932.firebaseapp.com",
@@ -27,6 +32,11 @@ const firebaseConfig = {
 //LAUTARO
 export default function FormLogin() {
 
+
+  const estado = true
+
+    const dispatch = useDispatch()
+
     const iconGoogle = Google;
 
     const BACK_HOST = 'http://localhost:3001'
@@ -37,12 +47,15 @@ export default function FormLogin() {
 
     function login(user) {
         if (user) {
+       dispatch(userLoggedIn(estado))
           swal({
             title: 'Bienvenido',
             text: 'Ya puedes navegar con tu cuenta!',
             icon: 'success',
             timer: '2000'
           });
+
+
           return Promise.resolve(true);
         } else {
           swal({

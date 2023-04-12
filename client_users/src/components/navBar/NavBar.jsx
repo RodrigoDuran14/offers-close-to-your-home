@@ -1,17 +1,31 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import SearchBar from "../searchBar/SearchBar";
 import DrawerMenu from "../drawerMenu/DrawerMenu";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import s from "./NavBar.module.css";
 
+import { userLoggedIn } from "../../redux/actions";
+
 // imagenes
 import Logo from "../../assets/images/SoloTextoBlanco.png";
 import Icono from "../../assets/images/SoloIconoNormal.png";
+import LogIn from "../../assets/images/logIn.webp";
 
 const NavBar = () => {
   const logoTexto = Logo;
   const logoIcono = Icono;
+  const logIn = LogIn;
+
+  const estaLogueado = useSelector(state => state.logIn)
+
+
+
+  // function handleClick () {
+  //   dispatch(userLoggedIn("email", "contraseña"))
+  // }
+
 
   return (
     <div className={s.container}>
@@ -56,11 +70,17 @@ const NavBar = () => {
         <SearchBar />
       </div>
 
+      <div>
+        {!estaLogueado ? <Link to="/log-in" className={s.link}>
+          <h4>Iniciar sesión</h4>
+        </Link>  : <img className={s.logIn} src={logIn}/>}
+      </div>
+{/* 
       <div className={s.options}>
         <Link to="/log-in" className={s.link}>
           <h4>Iniciar sesión</h4>
         </Link>
-      </div>
+      </div> */}
 
       <div>
         <Link to="/shopping-cart" >
