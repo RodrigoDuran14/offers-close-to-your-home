@@ -30,6 +30,7 @@ const initialState = {
   product: {},
   filter: [],
   carrito: JSON.parse(window.localStorage.getItem("carrito")) || [],
+  ciudades: [],
 
 };
 
@@ -158,6 +159,11 @@ function rootReducer(state = initialState, action) {
         ...state,
         product: [],
       };
+      case GET_ALL_CITIES:
+        return {
+          ...state,
+          ciudades:action.payload,
+        }
 
     default:
       return state;
