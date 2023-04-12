@@ -21,6 +21,7 @@ import {
   RESTAR_CANTIDAD_CARRITO,
   LOADING,
   READY,
+  USER_LOGIN,
   MERCADO_PAGO
 } from "./actions-type.js";
 
@@ -37,6 +38,7 @@ const initialState = {
   carrito: JSON.parse(window.localStorage.getItem("carrito")) || [],
   ciudades: [],
   display: false,
+  logIn: false,
   linkMercadoPago:""
 };
 
@@ -140,7 +142,8 @@ function rootReducer(state = initialState, action) {
               : item
           ),
         };
-      } else {//No esta en el carrito
+      } else {
+        //No esta en el carrito
         return {
           ...state,
           carrito: [
@@ -170,14 +173,16 @@ function rootReducer(state = initialState, action) {
         ),
       };
 
-    case BORRAR_DEL_CARRITO: 
-      const filter = state.carrito.filter(p => p.id_producto !== action.payload.id_producto)
-      console.log("filter   ", filter)
+    case BORRAR_DEL_CARRITO:
+      const filter = state.carrito.filter(
+        (p) => p.id_producto !== action.payload.id_producto
+      );
+      console.log("filter   ", filter);
 
-      return{
+      return {
         ...state,
-        carrito: filter
-      }
+        carrito: filter,
+      };
 
     case CLEAN_PRODUCT:
       return {
@@ -188,18 +193,25 @@ function rootReducer(state = initialState, action) {
     case GET_ALL_CITIES:
       return {
         ...state,
-        ciudades:action.payload,
-      }
+        ciudades: action.payload,
+      };
 
-    case LOADING: 
+    case LOADING:
       return {
         ...state,
         display: true,
-      }
+      };
 
     case READY:
       return {
         ...state,
+        display: false,
+      };
+    case USER_LOGIN:
+      return {
+        ...state,
+        logIn: action.payload,
+      };
         display: false
       }
       case MERCADO_PAGO:
@@ -207,7 +219,6 @@ function rootReducer(state = initialState, action) {
           ...state,
           linkMercadoPago:action.payload
         }
-
     default:
       return state;
   }
