@@ -79,7 +79,7 @@ const Detail = () => {
 
             <div className={s.buttons}>
               <button style={{ width: '240px' }}>Comprar ahora</button>
-              <button style={{ width: '240px' }}>Agregar al carrito</button>
+              <button style={{ width: '240px' }} onClick={handlerCarrito} >Agregar al carrito</button>
             </div>
 
           </div>

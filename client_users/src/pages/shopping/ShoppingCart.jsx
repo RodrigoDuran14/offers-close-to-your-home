@@ -20,7 +20,8 @@ console.log(storage_cart);
       <h2>Carrito de compras</h2>
       {carrito && carrito.length > 0 ? (
         carrito.map(producto => (
-          <CartCard key={producto.id} 
+          <CartCard key={producto.id}
+          id_producto = {producto.id_producto}
           imagen={producto.imagen} 
           nombre={producto.nombre} 
           valor_con_descuento={producto.valor_con_descuento}
