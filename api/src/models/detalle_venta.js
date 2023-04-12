@@ -6,38 +6,40 @@ module.exports = (sequelize) => {
   sequelize.define("Detalle_venta", {
     id_detalle_venta: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       autoIncrement: true,
-      primaryKey: true,
+      primaryKey: true
+    },
+    id_comercio: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
     cantidad: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    valor_parcial_venta: {
+    valor_total_cantidad: {
       type: DataTypes.FLOAT,
+      allowNull: false,
+    },
+    valor_unitario: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+    },
+    id_pago: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     id_venta: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: "Venta",
-        key: "id_venta",
-      },
     },
     id_producto: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: "Producto",
-        key: "id_producto",
-      },
     },
-    
   },
-  {
-    tableName: 'Detalle_venta',
-    timestamps: false 
-});
+    {
+      tableName: 'Detalle_venta',
+      timestamps: false
+    });
 };

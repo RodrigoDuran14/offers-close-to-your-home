@@ -5,10 +5,11 @@ const URL = "http://localhost:3001";
 
 
 // ========================* CARRITO *========================
-export function agregarAlCarrito(id) {
+export function agregarAlCarrito(id, quantity) {
+  console.log(id);
   return {
     type: action.AGREGAR_AL_CARRITO,
-    payload: id,
+    payload: {id,quantity}
   };
 }
 
@@ -19,6 +20,13 @@ export function eliminarDelCarrito(id) {
   };
 }
 
+
+export function actualizarCarrito(id, cantidad){
+  return{
+    type: action.ACTUALIZAR_CARRITO,
+    payload: {id, cantidad}
+  }
+}
 
 // ========================* USUARIOS *========================
 export function registerUser() {
@@ -199,4 +207,10 @@ export function getDetail(id) {
       )
       .catch((err) => console.log(err));
   };
+}
+
+export function cleanProduct(){
+  return {
+    type: action.CLEAN_PRODUCT
+  }
 }
