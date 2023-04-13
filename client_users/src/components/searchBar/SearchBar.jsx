@@ -5,16 +5,21 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
 import { getProductByName, getAllProducts } from "../../redux/actions";
 import styles from "./SearchBar.module.css";
+import { useHistory } from 'react-router-dom';
 
 const SearchBar = () => {
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleChange = (e) => {
     setInput(e);
-    if (input === "") {
-      dispatch(getAllProducts());
-    }
+        history.push('/home');
+
+    // if (input === "") {
+    //   history.push('/home');
+    //   dispatch(getAllProducts());
+    // }
     dispatch(getProductByName(input));
   };
 

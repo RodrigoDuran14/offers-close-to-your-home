@@ -103,6 +103,7 @@ export const getProductByName = (name) => async (dispatch) => {
 export const getProductByCategory = (category) => {
   console.log(category);
   return { type: action.GET_PRODUCT_BY_CATEGORY, payload: category };
+  
 };
 
 // * 6. action-creator para ordenar productos por nombre ascendente

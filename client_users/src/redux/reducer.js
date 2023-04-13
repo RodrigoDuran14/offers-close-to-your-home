@@ -35,18 +35,18 @@ function rootReducer(state = initialState, action) {
       return { ...state, products: [...state.products, action.payload] };
     case GET_ALL_PRODUCTS:
       return {
-        ...state,
+        ...state,productsFitered: action.payload,
         products: action.payload,
-        productsFitered: action.payload,
+        
       };
     case GET_PRODUCT_BY_ID:
       return { ...state, product: action.payload };
     case GET_PRODUCT_BY_NAME:
-      return { ...state, products: action.payload };
+      return { ...state,productsFitered: action.payload };
     case GET_PRODUCT_BY_CATEGORY:
       return {
         ...state,
-        productsFitered: [...state.products].filter((product) => {
+        productsFitered: [...state.productsFitered].filter((product) => {
           return (
             product.Categoria_producto.nombre_categoria_producto ===
             action.payload
