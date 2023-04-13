@@ -24,6 +24,7 @@ import {
   USER_LOGIN,
   MERCADO_PAGO,
   GET_USER_BY_ID,
+  REVIEWS
 } from "./actions-type.js";
 
 const initialState = {
@@ -42,6 +43,7 @@ const initialState = {
   logIn: false,
   linkMercadoPago: "",
   usuario: [],
+  reviews:[]
 };
 
 function rootReducer(state = initialState, action) {
@@ -224,6 +226,11 @@ function rootReducer(state = initialState, action) {
         ...state,
         usuario: action.payload,
       };
+      case REVIEWS:
+        return{
+          ...state,
+          reviews: action.payload
+        }
     default:
       return state;
   }
