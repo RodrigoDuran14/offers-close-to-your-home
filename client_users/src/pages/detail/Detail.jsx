@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import QuantityDisplay from '../../components/quantityDisplay/QuantityDisplay'
-import { agregarAlCarrito, getProductById, cleanProduct } from '../../redux/actions'
+import { agregarAlCarrito, getProductById, cleanProduct, getReviews } from '../../redux/actions'
 import { Redirect } from "react-router-dom";
 import s from './Detail.module.css'
 import swal from 'sweetalert'
@@ -112,12 +112,15 @@ const Detail = () => {
               <button style={{ width: '240px' }} onClick={handlerComprar}>Comprar</button>
               <button style={{ width: '240px' }} onClick={handlerCarrito}>Agregar al carrito</button>
             </div>
-
+            <div className={s.box2}>
+          <CardsReviews/>
+          </div>
           </div>
         </div>
       )} 
     </>
   )
+  
 
 }
 
