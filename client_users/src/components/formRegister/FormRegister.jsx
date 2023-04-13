@@ -24,10 +24,29 @@ export default function FormRegister() {
     event.preventDefault();
   
     // Obtiene los valores del formulario
-    const { primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, direccion, telefono, email, password,id_ciudad } = form;
+    const { primer_nombre, 
+      segundo_nombre, 
+      primer_apellido, 
+      segundo_apellido, 
+      direccion, 
+      telefono, 
+      email, 
+      password,
+      id_ciudad 
+    } = form;
   
     // Realiza las validaciones
-    const errors = validations({ primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, direccion, telefono, email, password, id_ciudad });
+    const errors = validations({ 
+      primer_nombre, 
+      segundo_nombre, 
+      primer_apellido, 
+      segundo_apellido, 
+      direccion, 
+      telefono, 
+      email, 
+      password, 
+      id_ciudad 
+    });
 
   
     // Si hay errores, los muestra y no continúa con la solicitud
@@ -114,7 +133,7 @@ export default function FormRegister() {
   const [form, setForm] = useState({
     id_tipo_usuario: 1,
     primer_nombre: "",
-    segundo_nombre: "",
+    segundo_nombre: null,
     primer_apellido: "",
     segundo_apellido: "",
     direccion: "",

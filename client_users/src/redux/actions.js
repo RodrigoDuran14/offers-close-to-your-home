@@ -50,10 +50,10 @@ export function userLoggedIn(estado) {
   };
 }
 
-export function getUsuarioByID(id) {
+export function getUsuarioByID(email) {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`${URL}/usuario/${id}`);
+      const response = await axios.get(`${URL}/usuario/${email}`);
       console.log(response);
       // console.log(response.data);
       dispatch({

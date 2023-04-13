@@ -8,34 +8,36 @@ import jwt_decode from 'jwt-decode';
 import s from "./Account.module.css"
 
 const Account = () => {
-
+                /* ------------------- ESTADOS ------------------- */
   const { usuario } = useSelector((state) => state);
+  
+  
+  // const token = Cookies.get('user_token'); 
+  // const [user, setUser] = useState(token)
+  // const [aux, setAux] = useState()
 
-  console.log(usuario);
+  // const decodedToken = jwt_decode(token);
 
-  const token = Cookies.get('user_token'); 
+  // const email = decodedToken.email
 
-  const decodedToken = jwt_decode(token); // Usamos jwt_decode
+  // const dispatch = useDispatch()
 
-  console.log('Decoded Token:', decodedToken);
-  const [user, setUser] = useState(token)
+  // useEffect(() => {
 
-  const dispatch = useDispatch()
+  //   setAux(dispatch(getUsuarioByID(email)))
+  // }, [dispatch, email])
 
-  useEffect(() => {
-    dispatch(getUsuarioByID(decodedToken.id)) // Pasamos el ID del usuario para obtener sus datos
-  }, [dispatch, decodedToken.id])
-
+  
   return (
     <div className={s.contenedor}>
       <h1>Mi cuenta</h1>
-      {usuario && (
+      { usuario && usuario.map(e => {
         <div>
-          <p>Nombre: {usuario.nombre}</p>
-          <p>Correo electrónico: {usuario.email}</p>
-          <p>Número de teléfono: {usuario.telefono}</p>
-        </div>
-      )}
+        <p>Nombre: {e.nombre}</p>
+        <p>Correo electrónico: {e.email}</p>
+        <p>Número de teléfono: {e.telefono}</p>
+      </div>
+      })}
     </div>
   )
 }
