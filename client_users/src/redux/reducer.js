@@ -23,6 +23,7 @@ import {
   READY,
   USER_LOGIN,
   MERCADO_PAGO,
+  REVIEWS
 } from "./actions-type.js";
 
 const initialState = {
@@ -40,6 +41,7 @@ const initialState = {
   display: false,
   logIn: false,
   linkMercadoPago: "",
+  reviews:[]
 };
 
 function rootReducer(state = initialState, action) {
@@ -217,6 +219,11 @@ function rootReducer(state = initialState, action) {
         ...state,
         linkMercadoPago: action.payload,
       };
+      case REVIEWS:
+        return{
+          ...state,
+          reviews: action.payload
+        }
     default:
       return state;
   }

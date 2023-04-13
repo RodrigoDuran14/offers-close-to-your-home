@@ -260,3 +260,17 @@ export function mercadoPago(link) {
     payload: link,
   };
 }
+// REVIEWS // COMENTARIOS
+
+export function getReviews(id) {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`${URL}/products/${id}/calificaciones`);
+       console.log(response.data);
+      dispatch({ type: action.REVIEWS, payload: response.data });
+    } catch (error) {
+   
+      dispatch({ type: action.REVIEWS, payload: error });
+    }
+  };
+}
