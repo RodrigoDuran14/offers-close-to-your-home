@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import QuantityDisplay from '../../components/quantityDisplay/QuantityDisplay'
-import { agregarAlCarrito, actualizarCarrito, getProductById, cleanProduct, getReviews } from '../../redux/actions'
-import Loader from '../../components/loader/loader'
+import { agregarAlCarrito, getProductById, cleanProduct } from '../../redux/actions'
+import { Redirect } from "react-router-dom";
 import s from './Detail.module.css'
 import swal from 'sweetalert'
 import CardsReviews from '../../components/cardsReviews/CardsReviews'
@@ -11,8 +11,7 @@ import CardsReviews from '../../components/cardsReviews/CardsReviews'
 
 const Detail = () => {
 
-  const { product, carrito, display } = useSelector(state => state)
-
+  const { product, carrito } = useSelector(state => state)
   const { id } = useParams()
   const dispatch = useDispatch();
 
@@ -24,12 +23,28 @@ const Detail = () => {
     })
   }, [dispatch,id])
 
+  //Cuando se agrega al carrito
   const handlerCarrito = () => {
-    console.log("añadido");
-      dispatch(agregarAlCarrito(product, quantity))
-    
+    const exists = carrito?.find(e => {
+      return e.id_producto === product.id_producto
+    })
+   if(!exists){
+    dispatch(agregarAlCarrito(product, quantity))
+     swal({
+       title: `Agregaste ${product.nombre}`,
+       icon: "success",
+       timer: "3000",
+       showConfirmButton: false
+     })
+    }else{
+      swal({
+        title: `Este articulo ya está agregado`,
+        text: "Para modificar la cantidad dirijase al carrito de compra",
+        icon: "error",
+        timer: "3000"
+      })
+    }
   }  
-
   // Cantidad de articulos
   const [quantity, setQuantity] = useState(1);
   
@@ -49,20 +64,33 @@ const Detail = () => {
       })
     }
   }
-
+  //Boton comprar ahora
+  const [shouldRedirect, setShouldRedirect] = useState(false);
+  const handlerComprar = () => {
+    const exists = carrito?.find(e => {
+      return e.id_producto === product.id_producto
+    })
+    if(!exists){
+      dispatch(agregarAlCarrito(product, quantity))
+    }
+    setShouldRedirect(true)
+  }
+  
   return (
     <>
-      {display ? <Loader /> : (
-        <div className={s.container}>
+      {carrito && shouldRedirect 
+      ? <Redirect to="/shopping-cart" /> 
+      : (<div className={s.container}>
 
-           <div className={s.container}>
-              <div
-              //  style={{ backgroundImage: `url(${product.imagen})` }} 
-              ><img className={s.image} src={product.imagen}/></div>
-              <div className={s.condicion}>{product.condicion}</div>
-              <hr />
-              <div>
-                <h1>{product.nombre}</h1>
+          <div
+          //  style={{ backgroundImage: `url(${product.imagen})` }} 
+           ><img className={s.image} src={product.imagen} alt={product.nombre}/></div>
+          <div className={s.condicion}>{product.condicion}</div>
+
+          <hr />
+
+          <div>
+            <h1>{product.nombre}</h1>
 
                 <h4 className={s.descripcion_producto}>{product.descripcion_producto}</h4>
 
@@ -80,21 +108,14 @@ const Detail = () => {
                   />
                 </div>
 
-                <div className={s.buttons}>
-                  <button style={{ width: '240px' }}>Comprar ahora</button>
-                  <button style={{ width: '240px' }} onClick={handlerCarrito} >Agregar al carrito</button>
-                </div>
+            <div className={s.buttons}>
+              <button style={{ width: '240px' }} onClick={handlerComprar}>Comprar</button>
+              <button style={{ width: '240px' }} onClick={handlerCarrito}>Agregar al carrito</button>
+            </div>
 
-              </div>
           </div>
-
-          <div className={s.box2}>
-          <CardsReviews/>
-          </div>
-          
         </div>
-        
-      )}
+      )} 
     </>
   )
 
