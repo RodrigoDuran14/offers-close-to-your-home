@@ -21,32 +21,13 @@
     max-height: 100%;
 }
 
-/* .text {
-    border: 1px solid black;
-    height: 100%;
+.eliminar:hover{
+    color: red;
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
-.cantidad {
-    border: 1px solid black;
-    height: 100%;
-    width: 15%;
-}
-
-.precio {
-    border: 1px solid black;
-    height: 100%;
-    width: 15%;
-
-}
-
-.eliminar {
-    position: relative;
-    right: -4px;
-    top: -40px;
-    border: 1px solid black;
-}
-
-@media (min-width: 820px) {
+/* @media (min-width: 820px) {
     .container {
         width: 70%;
         height: 100px;
@@ -55,4 +36,4 @@
     .image {
         height: 100px;
     }
-} */
+}  */
