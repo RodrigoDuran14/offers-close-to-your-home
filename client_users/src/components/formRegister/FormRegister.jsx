@@ -24,10 +24,10 @@ export default function FormRegister() {
     event.preventDefault();
   
     // Obtiene los valores del formulario
-    const { primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, direccion, telefono, email, password } = form;
+    const { primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, direccion, telefono, email, password,id_ciudad } = form;
   
     // Realiza las validaciones
-    const errors = validations({ primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, direccion, telefono, email, password });
+    const errors = validations({ primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, direccion, telefono, email, password, id_ciudad });
 
   
     // Si hay errores, los muestra y no continúa con la solicitud
@@ -328,21 +328,13 @@ export default function FormRegister() {
                   Imagen
                 </label>
                 <div>
-  {/* Mostrar la vista previa de la imagen seleccionada o la URL almacenada */}
-  {form.imagen ? (
-    <img
-      className={style.imageFile}
-      src={form.imagen}
-      id="imagen"
-    />
-  ) : null}
-</div>
-
+                  </div>
+ 
         {/* ----------------------- VISTA PREVIA IMAGEN -----------------------*/}
                 {form.imagen && (
                   <img
                     className={style.imageFile}
-                    src={URL.createObjectURL(form.imagen)}
+                    src={form.imagen}
                     id="imagen"
                   />
                 )}
