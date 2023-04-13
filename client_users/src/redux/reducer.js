@@ -22,7 +22,7 @@ import {
   LOADING,
   READY,
   USER_LOGIN,
-  MERCADO_PAGO
+  MERCADO_PAGO,
 } from "./actions-type.js";
 
 const initialState = {
@@ -39,7 +39,7 @@ const initialState = {
   ciudades: [],
   display: false,
   logIn: false,
-  linkMercadoPago:""
+  linkMercadoPago: "",
 };
 
 function rootReducer(state = initialState, action) {
@@ -212,13 +212,11 @@ function rootReducer(state = initialState, action) {
         ...state,
         logIn: action.payload,
       };
-        display: false
-      }
-      case MERCADO_PAGO:
-        return{
-          ...state,
-          linkMercadoPago:action.payload
-        }
+    case MERCADO_PAGO:
+      return {
+        ...state,
+        linkMercadoPago: action.payload,
+      };
     default:
       return state;
   }

@@ -16,7 +16,7 @@ const getAllUsers = async () => {
         "id_ciudad",
         "estado",
         "email",
-        "contraseña",
+        "password",
         "imagen"
       ],
       include: [
@@ -48,7 +48,7 @@ const getUserById = async idUser => {
         "id_ciudad",
         "estado",
         "email",
-        "contraseña",
+        "password",
         "imagen"
       ],
     });
@@ -73,7 +73,7 @@ const getUserByName = async name => {
         "id_ciudad",
         "estado",
         "email",
-        "contraseña",
+        "password",
         "imagen"
       ],
       where: {

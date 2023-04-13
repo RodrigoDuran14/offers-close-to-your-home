@@ -246,17 +246,10 @@ export function loading() {
   };
 }
 
-
 export function ready() {
   return {
     type: action.READY,
   };
-}
-
-export function ready(){
-  return{
-    type: action.READY
-  }
 }
 
 // MERCADO PAGO
@@ -264,6 +257,6 @@ export function mercadoPago(link) {
   console.log(link);
   return {
     type: action.MERCADO_PAGO,
-    payload: link
+    payload: link,
   };
 }

@@ -149,7 +149,7 @@ const getAllCategorias = async () => {
   const todasLasCategorias = await Categoria_producto.findAll({ raw: true });
 
   if (todasLasCategorias.length) {
-    console.log("todasLasCategorias", todasLasCategorias);
+    //console.log("todasLasCategorias", todasLasCategorias);
     return todasLasCategorias;
   } else {
     for (let i = 0; i < categorias.length; i++) {
