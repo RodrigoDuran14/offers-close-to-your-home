@@ -37,6 +37,8 @@ export default function FormLogin() {
 
   const estado = true
 
+  const logOut = false
+
     const dispatch = useDispatch()
 
     const iconGoogle = Google;
