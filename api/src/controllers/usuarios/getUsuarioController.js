@@ -16,8 +16,8 @@ const getAllUsers = async () => {
         "id_ciudad",
         "estado",
         "email",
-        "contraseña",
-        "imagen",
+        "password",
+        "imagen"
       ],
       include: [
         {model: Tipo_usuario,
@@ -48,8 +48,8 @@ const getUserById = async idUser => {
         "id_ciudad",
         "estado",
         "email",
-        "contraseña",
-        "imagen",
+        "password",
+        "imagen"
       ],
     });
     return user;
@@ -73,8 +73,8 @@ const getUserByName = async name => {
         "id_ciudad",
         "estado",
         "email",
-        "contraseña",
-        "imagen",
+        "password",
+        "imagen"
       ],
       where: {
         [Op.or]: [

@@ -7,7 +7,7 @@ const validacionPostUsuario = (data) => {
     direccion,
     telefono,
     email,
-    contraseña,
+    password,
     imagen,
     id_tipo_usuario,
     id_ciudad,
@@ -18,8 +18,7 @@ const validacionPostUsuario = (data) => {
     !primer_apellido ||
     !direccion ||
     !telefono ||
-    !email ||
-    !contraseña
+    !email 
   ) {
     throw new Error("Todos los campos son obligatorios");
   }
@@ -168,13 +167,13 @@ const validacionPostUsuario = (data) => {
 
   //-------------------contraseña------------------
 
-  if (typeof contraseña !== "string") {
-    throw new Error("Contraseña debe ser un string");
-  }
-
-  if (contraseña.length > 101) {
-    throw new Error("Contraseña puede contener como maximo 100 caracteres");
-  }
+ // if (typeof contraseña !== "string") {
+ //   throw new Error("Contraseña debe ser un string");
+ // }
+//
+ // if (contraseña.length > 101) {
+ //   throw new Error("Contraseña puede contener como maximo 100 caracteres");
+ // }
 
   //-------------------imagen------------------
 

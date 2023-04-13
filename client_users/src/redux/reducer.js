@@ -13,7 +13,16 @@ import {
   FILTER_BY_REFURBISHED_PRODUCTS,
   AGREGAR_AL_CARRITO,
   OFERTAS,
-  ORDERED_BY_NAME_ASC 
+  ORDERED_BY_NAME_ASC,
+  GET_ALL_CITIES,
+  CLEAN_PRODUCT,
+  BORRAR_DEL_CARRITO,
+  SUMAR_CANTIDAD_CARRITO,
+  RESTAR_CANTIDAD_CARRITO,
+  LOADING,
+  READY,
+  USER_LOGIN,
+  MERCADO_PAGO,
 } from "./actions-type.js";
 
 const initialState = {
@@ -26,7 +35,11 @@ const initialState = {
   categorys: [],
   product: {},
   filter: [],
-  carrito: [],
+  carrito: JSON.parse(window.localStorage.getItem("carrito")) || [],
+  ciudades: [],
+  display: false,
+  logIn: false,
+  linkMercadoPago: "",
 };
 
 function rootReducer(state = initialState, action) {
@@ -58,13 +71,17 @@ function rootReducer(state = initialState, action) {
     case ORDERED_BY_NAME_DESC:
       return {
         ...state,
-        products: [...state.products].sort((a, b) => b.nombre.localeCompare(a.nombre))
+        products: [...state.products].sort((a, b) =>
+          b.nombre.localeCompare(a.nombre)
+        ),
       };
-      case ORDERED_BY_NAME_ASC:
-        return {
-          ...state,
-          products: [...state.products].sort((a, b) => a.nombre.localeCompare(b.nombre))
-        };
+    case ORDERED_BY_NAME_ASC:
+      return {
+        ...state,
+        products: [...state.products].sort((a, b) =>
+          a.nombre.localeCompare(b.nombre)
+        ),
+      };
     case GET_CATEGORY:
       return {
         ...state,
@@ -73,13 +90,16 @@ function rootReducer(state = initialState, action) {
     case ORDERED_BY_LOWEST_PRICE:
       return {
         ...state,
-        products: [...state.products].filter(product=>product.valor_con_descuento<100)
-        
+        products: [...state.products].filter(
+          (product) => product.valor_con_descuento < 100
+        ),
       };
     case ORDERED_BY_HIGHEST_PRICE:
       return {
         ...state,
-        products: [...state.products].filter(product=>product.valor_con_descuento>100)
+        products: [...state.products].filter(
+          (product) => product.valor_con_descuento > 100
+        ),
       };
     case FILTER_BY_NEW_PRODUCTS:
       return {
@@ -102,32 +122,103 @@ function rootReducer(state = initialState, action) {
           (item) => item.condicion === "Reacondicionado"
         ),
       };
-      case OFERTAS:
-        return {
-          ...state,
-          products: [...state.products].filter(product=>product.valor_con_descuento>60)
-        };
+    case OFERTAS:
+      return {
+        ...state,
+        products: [...state.products].filter(
+          (product) => product.valor_con_descuento > 60
+        ),
+      };
+
     case AGREGAR_AL_CARRITO:
       const itemExistente = state.carrito.find(
-        (item) => item.id === action.payload.id
+        (item) => item.id_producto === action.payload.id.id_producto
       );
 
       if (itemExistente) {
         return {
           ...state,
           carrito: state.carrito.map((item) =>
-            item.id === action.payload.id
+            item.id_producto === action.payload.id.id_producto
               ? { ...item, cantidad: item.cantidad + 1 }
               : item
           ),
         };
       } else {
+        //No esta en el carrito
         return {
           ...state,
-          carrito: [...state.carrito, { ...action.payload, cantidad: 1 }],
+          carrito: [
+            ...state.carrito,
+            { ...action.payload.id, cantidad: action.payload.quantity },
+          ],
         };
       }
 
+    case SUMAR_CANTIDAD_CARRITO:
+      return {
+        ...state,
+        carrito: state.carrito.map((product) =>
+          product.id_producto === action.payload.id_producto
+            ? { ...product, cantidad: product.cantidad + 1 }
+            : product
+        ),
+      };
+
+    case RESTAR_CANTIDAD_CARRITO:
+      return {
+        ...state,
+        carrito: state.carrito.map((product) =>
+          product.id_producto === action.payload.id_producto
+            ? { ...product, cantidad: product.cantidad - 1 }
+            : product
+        ),
+      };
+
+    case BORRAR_DEL_CARRITO:
+      const filter = state.carrito.filter(
+        (p) => p.id_producto !== action.payload.id_producto
+      );
+      console.log("filter   ", filter);
+
+      return {
+        ...state,
+        carrito: filter,
+      };
+
+    case CLEAN_PRODUCT:
+      return {
+        ...state,
+        product: [],
+      };
+
+    case GET_ALL_CITIES:
+      return {
+        ...state,
+        ciudades: action.payload,
+      };
+
+    case LOADING:
+      return {
+        ...state,
+        display: true,
+      };
+
+    case READY:
+      return {
+        ...state,
+        display: false,
+      };
+    case USER_LOGIN:
+      return {
+        ...state,
+        logIn: action.payload,
+      };
+    case MERCADO_PAGO:
+      return {
+        ...state,
+        linkMercadoPago: action.payload,
+      };
     default:
       return state;
   }

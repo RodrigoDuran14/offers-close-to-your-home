@@ -8,18 +8,20 @@ const loginUser = async (user) => {
     try {
         const db_user = await Usuario.findOne({
             where: {
-                email: user.email
+                email: user.email,
             }
         })
 
+        console.log("DB USER: " ,db_user)
+
         if (db_user) {
-            if (bcrypt.compareSync(user.contraseña, db_user.contraseña)) {
+            if (bcrypt.compareSync(user.password, db_user.password)) {
                 return {
                     msg: 'Login success',
                     session: {
                         ...db_user,
-                        token: generateToken(db_user)
-                    }
+                    },
+                    token: generateToken(db_user)
                 }
             } else {
                 throw new Error('Invalid email or password')

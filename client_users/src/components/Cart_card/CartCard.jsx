@@ -1,24 +1,58 @@
 import { IoTrashBinOutline } from "react-icons/io5";
-import {useDispatch, useSelector } from 'react-redux'
-
-import s from './cartcard.module.css'
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { eliminarDelCarrito, restarCantidad, sumarCantidad } from "../../redux/actions"
+import s from "./cartcard.module.css";
+import QuantityDisplay from "../quantityDisplay/QuantityDisplay";
 
 export default function CartCard(product) {
-    
-    const dispatch = useDispatch()
-function eliminarProducto () {
-    dispatch(eliminarProducto(product.id))
-}
+  const dispatch = useDispatch();
 
-    return (
-        <div className={s.container}>
-            <div className={s.image}>
+  function handleEliminarProducto() {
+    dispatch(eliminarDelCarrito(product));
+  }
+
+  const [quantity, setQuantity] = useState(1);
+
+  const handleDecrease = () => {
+    setQuantity(quantity - 1);
+    dispatch(restarCantidad(product))
+  };
+
+  const handleIncrease = () => {
+    setQuantity(quantity + 1);
+    dispatch(sumarCantidad(product))
+  };
+
+  return (
+    <div >
+          <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
+            <div className={s.container}>
+              <div className={s.image}>
                 <img src={product.imagen} alt={product.nombre} />
-                </div>
-            <div className={s.text}><h3 className={s.name}>Nombre: {product.nombre}</h3></div>
-            <div className={s.cantidad}>Cantidad:{product.cantidad}</div>
-            <div className={s.precio}>$ {product.valor_con_descuento}</div>
-            <div className={s.eliminar} onClick={eliminarProducto}><IoTrashBinOutline size={20}/></div>
-        </div>
-    )
+              </div>
+              <div className={s.text}>
+                <h3 className={s.name}>{product.nombre}</h3>
+              </div>
+              <div className={s.precio}>${product.valor_con_descuento} x unidad</div>
+              <div className={s.quantity}>
+              <QuantityDisplay
+                quantity={product.cantidad}
+                onDecrease={handleDecrease}
+                onIncrease={handleIncrease}
+              />
+              </div>
+              <div>
+                <h3 style={{fontSize: "25px"}}>Subtotal ${product.valor_con_descuento*product.cantidad}</h3>
+              </div>
+              <div className={s.eliminar} onClick={handleEliminarProducto}>
+                <IoTrashBinOutline size={20} />
+              </div>
+            </div>
+          </div>
+          <div style={{display:"flex", justifyContent: "center"}}>
+            <hr style={{width:"90%"}}/>
+          </div>
+    </div>      
+  );
 }

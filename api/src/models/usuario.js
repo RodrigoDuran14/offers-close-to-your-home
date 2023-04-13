@@ -39,12 +39,15 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      contraseña: {
+      password: {
         type: DataTypes.STRING,
         allowNull: false,
       },
       imagen: {
         type: DataTypes.STRING,
+        allowNull: true,
+        defaultValue: "https://cdn-icons-png.flaticon.com/512/711/711769.png",
+        
       }
     },
     {
