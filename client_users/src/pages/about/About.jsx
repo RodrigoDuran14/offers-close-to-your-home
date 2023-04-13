@@ -35,9 +35,6 @@ const About = () => {
           Únete a la comunidad de JustOffers hoy y descubre cómo podemos ayudarte a encontrar las mejores ofertas y apoyar a las PYMES locales.
         </p>
       </div>
-      {/* <img className={styles.img2} src={logo}/> */}
-      <div className={styles.footer}>
-      </div>
     </div>
   )
 }
