@@ -1,5 +1,4 @@
-import axios from "axios"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import CartCard from "../../components/Cart_card/CartCard"
 import styles from './shopping.module.css'
@@ -7,22 +6,19 @@ import {mercadoPago} from "../../redux/actions"
 
 export default function ShoppingCart() {
   const dispatch = useDispatch()
-  const {carrito, display, linkMercadoPago} = useSelector((state) => state);
+  const { carrito, linkMercadoPago } = useSelector((state) => state);
 
-  console.log(carrito);
   useEffect(() => {
     window.localStorage.setItem("carrito", JSON.stringify(carrito));
     window.localStorage.getItem("carrito");
   }, [carrito]);
-
-  const storage_cart = JSON.parse(window.localStorage.getItem("carrito"));
   
-console.log(storage_cart);
+//Suma de subtotales
   let total = 0
   carrito.forEach(producto => {
     total = total + producto.valor_con_descuento*producto.cantidad
   }); 
-
+//Boton de mercadoPago
   const handlerPago = async ()=>{
     const response = await fetch('http://localhost:3001/buy-products', {
       method: 'POST',
@@ -47,7 +43,7 @@ console.log(storage_cart);
           valor_con_descuento={producto.valor_con_descuento}
           cantidad={producto.cantidad}
           total={total}
-          />
+          /> 
         ))
           ) : (
             <p>No hay productos en el carrito.</p>
