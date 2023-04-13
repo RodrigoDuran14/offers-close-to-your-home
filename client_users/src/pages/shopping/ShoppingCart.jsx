@@ -63,12 +63,10 @@ console.log(storage_cart);
         </div> 
       </div>
       
-      {linkMercadoPago?
-      (
-      <div className={styles.mercadoPago}><a href={linkMercadoPago}>Pagar</a>
-      </div>): <button onClick={handlerPago}>Confirmar compra</button>
-
-}
+      {linkMercadoPago
+      ?(<div className={styles.mercadoPago}><a href={linkMercadoPago}>Pagar</a></div>)
+      : <button onClick={handlerPago}>Confirmar compra</button>
+      }
    
     </div>
 

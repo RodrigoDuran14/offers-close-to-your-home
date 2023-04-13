@@ -4,6 +4,7 @@ import { useParams } from 'react-router'
 import QuantityDisplay from '../../components/quantityDisplay/QuantityDisplay'
 import { agregarAlCarrito, actualizarCarrito, getProductById, cleanProduct } from '../../redux/actions'
 import Loader from '../../components/loader/loader'
+import { Link } from 'react-router-dom'
 import s from './Detail.module.css'
 import swal from 'sweetalert'
 // import Footer from '../../components/footer/Footer'
@@ -80,7 +81,9 @@ const Detail = () => {
             </div>
 
             <div className={s.buttons}>
-              <button style={{ width: '240px' }}>Comprar ahora</button>
+              {/* <Link to="shopping-cart"> */}
+                <button style={{ width: '240px' }} onClick={handlerCarrito} >Comprar</button>
+              {/* </Link> */}
               <button style={{ width: '240px' }} onClick={handlerCarrito} >Agregar al carrito</button>
             </div>
 
