@@ -23,6 +23,7 @@ import {
   READY,
   USER_LOGIN,
   MERCADO_PAGO,
+  GET_USER_BY_ID,
 } from "./actions-type.js";
 
 const initialState = {
@@ -40,6 +41,7 @@ const initialState = {
   display: false,
   logIn: false,
   linkMercadoPago: "",
+  usuario: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -216,6 +218,11 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         linkMercadoPago: action.payload,
+      };
+    case GET_USER_BY_ID:
+      return {
+        ...state,
+        usuario: action.payload,
       };
     default:
       return state;
