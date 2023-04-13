@@ -1,12 +1,12 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import SearchBar from "../searchBar/SearchBar";
 import DrawerMenu from "../drawerMenu/DrawerMenu";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import s from "./NavBar.module.css";
 
-import { userLoggedIn } from "../../redux/actions";
+// import { userLoggedIn } from "../../redux/actions";
 
 // imagenes
 import Logo from "../../assets/images/SoloTextoBlanco.png";
