@@ -8,8 +8,7 @@ import Loader from "../loader/loader";
 
 const Cards = () => {
   let { productsFitered } = useSelector((state) => state);
-  const { products} = useSelector((state) => state);
-  productsFitered =  [...new Set([...products, ...productsFitered])];
+
 
   // const dispatch = useDispatch();
  console.log(productsFitered);

@@ -35,8 +35,10 @@ function rootReducer(state = initialState, action) {
       return { ...state, products: [...state.products, action.payload] };
     case GET_ALL_PRODUCTS:
       return {
-        ...state,productsFitered: action.payload,
+        ...state,
         products: action.payload,
+        productsFitered: action.payload,
+
         
       };
     case GET_PRODUCT_BY_ID:
