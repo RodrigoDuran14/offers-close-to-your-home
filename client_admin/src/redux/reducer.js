@@ -70,6 +70,6 @@ export default function rootReducer(state = initialState, action) {
       };     
     
         default:
-            break;
+           return state
     }
 }
