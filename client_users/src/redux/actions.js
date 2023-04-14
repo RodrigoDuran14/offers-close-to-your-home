@@ -50,6 +50,26 @@ export function userLoggedIn(estado) {
   };
 }
 
+export function getUsuarioByID(email) {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`${URL}/usuario?email=${email}`); 
+      console.log(response);
+      // console.log(response.data);
+      dispatch({
+        type: action.GET_USER_BY_ID,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log(error, "No se encontro usuario con ese id");
+      dispatch({
+        type: action.GET_USER_BY_ID,
+        payload: error,
+      });
+    }
+  };
+}
+
 // ========================* PRODUCTOS *========================
 export function createProduct(product) {
   return async (dispatch) => {
@@ -258,5 +278,19 @@ export function mercadoPago(link) {
   return {
     type: action.MERCADO_PAGO,
     payload: link,
+  };
+}
+// REVIEWS // COMENTARIOS
+
+export function getReviews(id) {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`${URL}/products/${id}/calificaciones`);
+       console.log(response.data);
+      dispatch({ type: action.REVIEWS, payload: response.data });
+    } catch (error) {
+   
+      dispatch({ type: action.REVIEWS, payload: error });
+    }
   };
 }

@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import style from "./formRegister.module.css";
+import style from "../formRegister/formRegister.module.css";
 import { Redirect } from "react-router-dom";
-import validations from "./validations";
+import validations from "../formRegister/validations";
 import bcrypt from "bcryptjs"; // librería para encriptcar contraseñas
 import { getAllCities } from "../../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { Image, CloudinaryContext } from "cloudinary-react"; // para guardar las imágenes externamente 
 
-export default function FormRegister() {
+export default function FormUpdate() {
   const { ciudades } = useSelector(state => state);
   const dispatch = useDispatch();
 
