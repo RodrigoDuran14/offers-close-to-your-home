@@ -53,9 +53,10 @@ export function agregarAlCarrito(id, quantity) {
   export function getUsuarioByID(email) {
     return async (dispatch) => {
       try {
-        const response = await axios.get(`${URL}/usuario/${email}`);
-        console.log(response);
-        // console.log(response.data);
+      const response = await axios.get(`${URL}/usuario?email=${email}`); 
+      console.log(response);
+      // console.log(response.data);
+
         dispatch({
           type: action.GET_USER_BY_ID,
           payload: response.data,
@@ -106,6 +107,7 @@ export function agregarAlCarrito(id, quantity) {
   
   export const getProductById = (id) => async (dispatch) => {
     try {
+
       dispatch(loading());
       const res = await axios.get(`${URL}/products/${id}`);
       dispatch({
