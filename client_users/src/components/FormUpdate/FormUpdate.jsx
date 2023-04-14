@@ -147,7 +147,7 @@ export default function FormUpdate() {
 
   return (
     <>
-     
+     <div className={style.link}>
       {shouldRedirect ? (
         <Redirect to="/log-in" />
       ) : (
@@ -343,9 +343,6 @@ export default function FormUpdate() {
                   onChange={handleInputChange}
                   className={style.input}
                 />
-                <label htmlFor="imagen" className={style.label}>
-                  Imagen
-                </label>
                 <div>
                   </div>
  
@@ -360,14 +357,14 @@ export default function FormUpdate() {
               </div>
 
               <button type="submit" className={style.button}>
-                Registrase
+                Actualizar
               </button>
             </form>
             </CloudinaryContext>
           </div>
         </div>
       )}
-     
+     </div>
     </>
   );
 }

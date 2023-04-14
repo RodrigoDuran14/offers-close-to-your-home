@@ -6,7 +6,7 @@ import { agregarAlCarrito, getProductById, cleanProduct, getReviews, cleanReview
 import { Redirect } from "react-router-dom";
 import s from './Detail.module.css'
 import swal from 'sweetalert'
-import CardSReviews from "../../components/cardsReviews/CardsReviews"
+import CardsReviews from "../../components/cardsReviews/CardsReviews"
 
 
 const Detail = () => {
@@ -120,7 +120,7 @@ const Detail = () => {
 
             <div className={s.box2}>
               <div className={s.box2Hijo}>
-                <CardSReviews/>
+                <CardsReviews/>
               </div>
             </div>
         
