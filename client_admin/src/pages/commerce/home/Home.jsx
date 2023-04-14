@@ -1,5 +1,5 @@
 import React from 'react'
-import Cards from "../../components/cards/Cards.jsx"
+import Ventas from "../../../components/commerce/ventas/Ventas"
 // Import Components
 // Import Estilos
 import style from "./Home.module.css"
@@ -9,7 +9,7 @@ function Home () {
   return (
     <div className= {style.container}>
       <div className={style.ventas}>
-        <Cards />
+        <Ventas />
       </div>
     </div>
   )
