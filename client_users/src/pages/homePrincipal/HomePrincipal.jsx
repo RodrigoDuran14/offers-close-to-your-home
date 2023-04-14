@@ -1,7 +1,6 @@
 import React,{useEffect} from "react";
 import CardsCategory from "../../components/cardsCategory/CardsCategory";
 import Carousel from "../../components/carousel/Carusel";
-import Loader from "../../components/loader/loader";
 
  
  

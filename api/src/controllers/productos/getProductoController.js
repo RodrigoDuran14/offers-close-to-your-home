@@ -50,6 +50,8 @@ const searchProductByName = async (nombre) => {
       ],
     }),
   ]);
+  
+
 
   return [...databaseProducts];
 };

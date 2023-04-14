@@ -23,7 +23,12 @@ import {
   READY,
   USER_LOGIN,
   MERCADO_PAGO,
+
   ORDERED_BY_RECIENTES,
+
+  GET_USER_BY_ID,
+  REVIEWS
+
 } from "./actions-type.js";
 
 const initialState = {
@@ -42,10 +47,14 @@ const initialState = {
   display: false,
   logIn: false,
   linkMercadoPago: "",
+  usuario: [],
+  reviews:[]
 };
 
 function rootReducer(state = initialState, action) {
+  console.log("TYPE; ", action.type)
   switch (action.type) {
+
     case CREATE_PRODUCT:
       return { ...state, products: [...state.products, action.payload] };
     case GET_ALL_PRODUCTS:
@@ -268,6 +277,16 @@ function rootReducer(state = initialState, action) {
         ...state,
         linkMercadoPago: action.payload,
       };
+    case GET_USER_BY_ID:
+      return {
+        ...state,
+        usuario: action.payload,
+      };
+      case REVIEWS:
+        return{
+          ...state,
+          reviews: action.payload
+        }
     default:
       return state;
   }

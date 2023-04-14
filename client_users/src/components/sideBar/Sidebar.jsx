@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import styles from "./Sidebar.module.css";
 import * as action from "../../redux/actions";
 
@@ -26,6 +26,8 @@ function Sidebar() {
     });
   }
   const handlerActions = (event) => {
+    event.preventDefault()
+    console.log(event.currentTarget.textContent)
     switch (event.currentTarget.textContent) {
       case "Ver Todo":
         dispatch(action.getAllProducts());
@@ -89,7 +91,7 @@ function Sidebar() {
         dispatch(action.filterByRefurbishedProducts());
         break;
       case "Recientes":
-        dispatch(action.getAllProducts);
+        dispatch(action.orderedByRecientes());
         break;
       case "Ofertas":
         dispatch(action.getAllProducts);
@@ -110,6 +112,7 @@ function Sidebar() {
               <img
                 className={styles.list_img}
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARtJREFUSEvVlNsNQiEQROd2opWonWglaiVqJWol2onmJEvCxYUlGj4k4YswZ2dfkwafabC+egELSSdJa0lPu0dJtyjAHsDWxEstQBdJhxYkAhDx1QSIGDHcAN2bk13LSQQgLYgl8TzY5Iw0bWouIsDDIl5atLkOTngnVby75xcAgi9TrepEAPJPHbwUUQ/qcJZEHb5ykKchdUxeZETJf7VdIwcIpEi9CIkcB9XTA+Dz0EGLhrX5HjkgPSsrtDfJtOi9Nc01AJ3DkJGangPInWgPkK+H6keDEwCtyh+3ozxAmt5mf2e2yt00m+oS0LVfnJzlXTYbyhKQllvY3w4kpXa2/EpAa7lFxXaXXwkIl1dA+fgfzUEUdfj+/4A3ooFEGV62zuoAAAAASUVORK5CYII="
+                alt=""
               />
               <span className={"nav_link"} onClick={handlerActions}>
                 Ver Todo
@@ -121,6 +124,7 @@ function Sidebar() {
               <img
                 className={styles.list_img}
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARtJREFUSEvVlNsNQiEQROd2opWonWglaiVqJWol2onmJEvCxYUlGj4k4YswZ2dfkwafabC+egELSSdJa0lPu0dJtyjAHsDWxEstQBdJhxYkAhDx1QSIGDHcAN2bk13LSQQgLYgl8TzY5Iw0bWouIsDDIl5atLkOTngnVby75xcAgi9TrepEAPJPHbwUUQ/qcJZEHb5ykKchdUxeZETJf7VdIwcIpEi9CIkcB9XTA+Dz0EGLhrX5HjkgPSsrtDfJtOi9Nc01AJ3DkJGangPInWgPkK+H6keDEwCtyh+3ozxAmt5mf2e2yt00m+oS0LVfnJzlXTYbyhKQllvY3w4kpXa2/EpAa7lFxXaXXwkIl1dA+fgfzUEUdfj+/4A3ooFEGV62zuoAAAAASUVORK5CYII="
+                alt=""
               />
               <span className={"nav_link"} onClick={handlerActions}>
                 Ofertas
@@ -132,11 +136,12 @@ function Sidebar() {
               className={`${styles.list_button} ${isOpen ? styles.arrow : ""}`}
               onClick={handleButtonClick}
             >
-              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAXRJREFUSEvFlYtNBDEMROc6gUqASoBKgErgKgEqASoBPZSJZrPezyGdiHTKKmd7bM84OejM63Dm+NoDcC2J31XbPyW9SfpqO9+Law3gQtJzC7oWA8AbSeyztQTwKOmhWeN4jGwBpiL227bbBr/JqgAy+JOkmVNEAOQukpnZjwA4fLQAlL3a3wCiotfWpvv0GwEwwvhFEoanLFdOuy7tmACUCqkTgxMQUhS9+gRwBtlHzqimVEgj2BWTyyxGApA9VdAagmbJlQwzY/uYC7jDZzJokIsT/SNjvuGEfdR6Bs+WWiT9LCsYAUigAuHcA1jx9d14+42dAFbQKM8RhKC0ogpuoXQVbpFsESUIZ0tKWyU5h6XreJhaqmRV/3PuLpj0SYuSuKVBM+HVeFiFXUEjBybVV0XPYsewuXpMJxxWl52JwnjrssvhKu0rgPGG9APzHpeYr2xf14vJ/NuDk/IkW35+Mi1TV/TnJ3MHt9smex797SgrFj8cvm0ZvRlr2QAAAABJRU5ErkJggg==" />
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAXRJREFUSEvFlYtNBDEMROc6gUqASoBKgErgKgEqASoBPZSJZrPezyGdiHTKKmd7bM84OejM63Dm+NoDcC2J31XbPyW9SfpqO9+Law3gQtJzC7oWA8AbSeyztQTwKOmhWeN4jGwBpiL227bbBr/JqgAy+JOkmVNEAOQukpnZjwA4fLQAlL3a3wCiotfWpvv0GwEwwvhFEoanLFdOuy7tmACUCqkTgxMQUhS9+gRwBtlHzqimVEgj2BWTyyxGApA9VdAagmbJlQwzY/uYC7jDZzJokIsT/SNjvuGEfdR6Bs+WWiT9LCsYAUigAuHcA1jx9d14+42dAFbQKM8RhKC0ogpuoXQVbpFsESUIZ0tKWyU5h6XreJhaqmRV/3PuLpj0SYuSuKVBM+HVeFiFXUEjBybVV0XPYsewuXpMJxxWl52JwnjrssvhKu0rgPGG9APzHpeYr2xf14vJ/NuDk/IkW35+Mi1TV/TnJ3MHt9smex797SgrFj8cvm0ZvRlr2QAAAABJRU5ErkJggg==" alt=""/>
               <span className={styles.nav_link}>Categorias</span>
               <img
                 className={styles.list_arrow}
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAJJJREFUSEvt1MEJgDAQRNFvJ9qJdmIn2ol2YiuWIgMRxEOyExAUzMVLmGdmow0Pr+bhfH6g2PCrKpqBFdiLr33ZED2BwqcUPjhIFGiBDdBTJwgjUUCHrkIcoApxARupBRagT/PocrfKBTSHcLhgB7DDHaAq3AHGVI2+gWzn93k4FQnRr8JaDmAFn5t/oFjb9ys6AAkuHBlC5x93AAAAAElFTkSuQmCC"
+                alt=""
               />
             </div>
             <ul className={styles.list_show}>
@@ -180,14 +185,16 @@ function Sidebar() {
               className={`${styles.list_button} ${isOpen ? styles.arrow : ""}`}
               onClick={handleButtonClick}
             >
-              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAXRJREFUSEvFlYtNBDEMROc6gUqASoBKgErgKgEqASoBPZSJZrPezyGdiHTKKmd7bM84OejM63Dm+NoDcC2J31XbPyW9SfpqO9+Law3gQtJzC7oWA8AbSeyztQTwKOmhWeN4jGwBpiL227bbBr/JqgAy+JOkmVNEAOQukpnZjwA4fLQAlL3a3wCiotfWpvv0GwEwwvhFEoanLFdOuy7tmACUCqkTgxMQUhS9+gRwBtlHzqimVEgj2BWTyyxGApA9VdAagmbJlQwzY/uYC7jDZzJokIsT/SNjvuGEfdR6Bs+WWiT9LCsYAUigAuHcA1jx9d14+42dAFbQKM8RhKC0ogpuoXQVbpFsESUIZ0tKWyU5h6XreJhaqmRV/3PuLpj0SYuSuKVBM+HVeFiFXUEjBybVV0XPYsewuXpMJxxWl52JwnjrssvhKu0rgPGG9APzHpeYr2xf14vJ/NuDk/IkW35+Mi1TV/TnJ3MHt9smex797SgrFj8cvm0ZvRlr2QAAAABJRU5ErkJggg==" />
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAXRJREFUSEvFlYtNBDEMROc6gUqASoBKgErgKgEqASoBPZSJZrPezyGdiHTKKmd7bM84OejM63Dm+NoDcC2J31XbPyW9SfpqO9+Law3gQtJzC7oWA8AbSeyztQTwKOmhWeN4jGwBpiL227bbBr/JqgAy+JOkmVNEAOQukpnZjwA4fLQAlL3a3wCiotfWpvv0GwEwwvhFEoanLFdOuy7tmACUCqkTgxMQUhS9+gRwBtlHzqimVEgj2BWTyyxGApA9VdAagmbJlQwzY/uYC7jDZzJokIsT/SNjvuGEfdR6Bs+WWiT9LCsYAUigAuHcA1jx9d14+42dAFbQKM8RhKC0ogpuoXQVbpFsESUIZ0tKWyU5h6XreJhaqmRV/3PuLpj0SYuSuKVBM+HVeFiFXUEjBybVV0XPYsewuXpMJxxWl52JwnjrssvhKu0rgPGG9APzHpeYr2xf14vJ/NuDk/IkW35+Mi1TV/TnJ3MHt9smex797SgrFj8cvm0ZvRlr2QAAAABJRU5ErkJggg==" alt=""/>
+              
               <span className={styles.nav_link}>Ordenar</span>
               <img
                 className={styles.list_arrow}
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAJJJREFUSEvt1MEJgDAQRNFvJ9qJdmIn2ol2YiuWIgMRxEOyExAUzMVLmGdmow0Pr+bhfH6g2PCrKpqBFdiLr33ZED2BwqcUPjhIFGiBDdBTJwgjUUCHrkIcoApxARupBRagT/PocrfKBTSHcLhgB7DDHaAq3AHGVI2+gWzn93k4FQnRr8JaDmAFn5t/oFjb9ys6AAkuHBlC5x93AAAAAElFTkSuQmCC"
+              alt=""
               />
             </div>
-            <ul className={styles.list_show} onClick={handlerActions}>
+            <ul className={styles.list_show}>
               <li className={styles.list_12} onClick={handlerActions}>
                 Por nombre a-z
               </li>
