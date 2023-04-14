@@ -1,7 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Kelly+Slab&display=swap%27');
+
 .contenedor{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 125vh;
 }
+
+.contenedorInfo{
+  display: flex;
+  flex-direction: column;
+  margin: 100px;
+  background-color: #97978D;
+  border: 5px black solid;
+  border-radius: 30px;
+  padding: 20px;
+  height: fit-content;
+  width: 700px;
+}
+
+.informacion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tittle{
+  font-family: 'Kelly slab';
+  font-size: 60px;
+  margin-bottom: 50px;
+}
+
+.aux {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  
+}
+
+.imageFile {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 600px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-right: 20px;
+  
+}
+
+label {
+  font-size: 16px;
+  margin-bottom: 20px;
+  text-align: left;
+  font-size: 20px;
+
+}
+
+@media screen and (max-width: 600px) {
+  .row {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .column {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
+
+/* 
+.informacion{
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 20px;
+}
+
+.aux{
+  display: flex;
+  flex-direction: row;
+} */
+
+.divForm{
+  display: flex;
+  margin-left: 200px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+  background-color: black;
+  color: aliceblue;
+  border-radius: 20px;
+  width: 120px;
+  height: 50px;
+}
+  /* Asegúrate de que la clase ulForm tenga mayor especificidad que ul y li */
+.ulForm {
+    cursor: pointer;
+    list-style: none;
+    float: left;
+    text-decoration: none;
+    position: relative;
+    transition: all .2s ease;
+  }
+  
+  .liForm {
+    float: left;
+    text-decoration: none;
+    position: relative;
+    display: none;
+  }
+  
+  /* Asegúrate de que la clase ulForm tenga mayor especificidad que ul y li en el hover */
+  .ulForm:hover > .liForm {
+    display: block;  
+    margin-top: 730px; 
+  }
+  
+  
+

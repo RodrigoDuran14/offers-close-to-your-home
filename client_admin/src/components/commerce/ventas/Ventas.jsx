@@ -1,13 +1,13 @@
 import React, {useEffect, useState}from "react";
-import Ventas from "../card/Ventas";
-import styles from "./Cards.module.css";
-import { useSelector, useDispatch } from "react-redux";
-import {getAllProducts} from '../../redux/actions'
-import Loader from "../loader/loader";
+import Venta from "../venta/Venta";
+import styles from "./Ventas.module.css";
+//import { useSelector, useDispatch } from "react-redux";
+//import {getAllProducts} from '../../redux/actions'
+//import Loader from "../loader/loader";
 import { Link } from "react-router-dom";
 
 
-const Cards = () => {
+const Ventas = () => {
   // const products = useSelector((state) => state.products);
   // const dispatch = useDispatch();
  
@@ -49,8 +49,8 @@ const Cards = () => {
          </Link>
         </div>
         <div className={styles.card}>
-          <Ventas />
-          <Ventas />
+          <Venta />
+          <Venta />
         </div>
         {/* )
       })} */}
@@ -92,4 +92,4 @@ const Cards = () => {
   );
 };
 
-export default Cards;
+export default Ventas;

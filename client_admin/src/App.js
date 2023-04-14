@@ -1,8 +1,8 @@
 import "./App.css";
 import { HashRouter, Route, Switch, useLocation } from "react-router-dom";
-import Home from "./pages/home/Home";
-import NavBar from "./components/navBar/NavBar";
-import MisVentas from "./pages/MisVentas/MisVentas";
+import Home from "./pages/commerce/home/Home";
+import NavBar from "./components/commerce/navBar/NavBar";
+import MisVentas from "./pages/commerce/MisVentas/MisVentas";
 function App() {
   const location = useLocation();
 
