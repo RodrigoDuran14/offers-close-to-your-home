@@ -72,9 +72,13 @@ console.log(email);
   
   return (
     <div className={s.contenedor}>
-      <h1 className={s.tittle}>Mi cuenta</h1>
+      <div className={s.contenedorInfo}>
+      <div className={s.titulos}>
+      <h1 className={s.tittle}>Mi cuenta:</h1>
+      </div>
+      <div className={s.informacion}>
       { usuario && usuario.map(e => (
-        <div key={e.email}>
+        <div key={e.email} className={s.aux}>
            {e.imagen && (
                   <img
                     className={s.imageFile}
@@ -82,9 +86,8 @@ console.log(email);
                     id="imagen"
                   />
                 )}
-                
                 <div className={s.text}>
-          <label>Nombre: {e.primer_nombre} {e.segundo_nombre} {e.primer_apellido} {e.segundo_apellido}</label> <br></br>
+                <label>Nombre: {e.primer_nombre} {e.segundo_nombre} {e.primer_apellido} {e.segundo_apellido}</label> <br></br>
           <label>Dirección: {e.direccion}</label><br></br>
           <label>Ciudad: {e.Ciudad.nombre_ciudad}</label><br></br>
           <label>Número de teléfono: {e.telefono}</label><br></br>
@@ -92,6 +95,8 @@ console.log(email);
           </div>  
         </div>
       ))}
+      </div>
+      </div>
 <div className={s.divForm}>
   <ul className={s.ulForm}>
     Editar Perfil

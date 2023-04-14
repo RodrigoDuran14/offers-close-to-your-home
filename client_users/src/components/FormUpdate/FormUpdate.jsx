@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import style from "../formRegister/formRegister.module.css";
+import style from "./FormUpdate.module.css";
 import { Redirect } from "react-router-dom";
 import validations from "../formRegister/validations";
 import bcrypt from "bcryptjs"; // librería para encriptcar contraseñas
