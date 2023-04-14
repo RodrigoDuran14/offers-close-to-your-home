@@ -23,12 +23,10 @@ import {
   READY,
   USER_LOGIN,
   MERCADO_PAGO,
-
   ORDERED_BY_RECIENTES,
-
   GET_USER_BY_ID,
-  REVIEWS
-
+  REVIEWS,
+  CLEAN_REVIEWS,
 } from "./actions-type.js";
 
 const initialState = {
@@ -248,6 +246,11 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         product: [],
+      };
+    case   CLEAN_REVIEWS:
+      return {
+        ...state,
+        reviews: [],
       };
 
     case GET_ALL_CITIES:
