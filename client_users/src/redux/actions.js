@@ -166,11 +166,22 @@ export function agregarAlCarrito(id, quantity) {
   export const orderedByLowestPrice = () => {
     return { type: action.ORDERED_BY_LOWEST_PRICE };
   };
+}
+export function cleanReviews() {
+  return {
+    type: action.CLEAN_REVIEWS,
+  };
+}
+
+export function loading() {
+  return {
+    type: action.LOADING
   
   // * 9. action-creator para ordenar productos por mayor precio
   
   export const orderedByHighestPrice = () => {
     return { type: action.ORDERED_BY_HIGHEST_PRICE };
+
   };
   export const orderedByRecientes =()=>{
     return { type: action.ORDERED_BY_RECIENTES};

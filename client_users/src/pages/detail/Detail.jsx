@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import QuantityDisplay from '../../components/quantityDisplay/QuantityDisplay'
-import { agregarAlCarrito, getProductById, cleanProduct, getReviews } from '../../redux/actions'
+import { agregarAlCarrito, getProductById, cleanProduct, getReviews, cleanReviews } from '../../redux/actions'
 import { Redirect } from "react-router-dom";
 import s from './Detail.module.css'
 import swal from 'sweetalert'
@@ -20,6 +20,7 @@ const Detail = () => {
     dispatch(getReviews(id))
     return (()=>{
       dispatch(cleanProduct())
+      dispatch(cleanReviews())
     })
   }, [dispatch,id])
 
@@ -80,48 +81,53 @@ const Detail = () => {
     <>
       {carrito && shouldRedirect 
       ? <Redirect to="/shopping-cart" /> 
-      : (<div className={s.container}>
+      : (<div>
+            <div className={s.box1}>
+              <div className={s.container}>
+                <div
+                ><img className={s.image} src={product.imagen} alt={product.nombre}/></div>
+                <div className={s.condicion}>{product.condicion}</div>
 
-          <div
-          //  style={{ backgroundImage: `url(${product.imagen})` }} 
-           ><img className={s.image} src={product.imagen} alt={product.nombre}/></div>
-          <div className={s.condicion}>{product.condicion}</div>
-
-          <hr />
-
-          <div>
-            <h1>{product.nombre}</h1>
-
-                <h4 className={s.descripcion_producto}>{product.descripcion_producto}</h4>
-
-                <div className={s.precios}>
-                  <h2 className={s.valor_normal}>${product.valor_normal}</h2>
-                  <h1 className={s.valor_con_descuento}>${product.valor_con_descuento}</h1>
-                </div>
+                <hr />
 
                 <div>
-                  <h4>Selecciona la cantidad</h4>
-                  <QuantityDisplay
-                    quantity={quantity}
-                    onDecrease={handleDecrease}
-                    onIncrease={handleIncrease}
-                  />
-                </div>
+                  <h1>{product.nombre}</h1>
 
-            <div className={s.buttons}>
-              <button style={{ width: '240px' }} onClick={handlerComprar}>Comprar</button>
-              <button style={{ width: '240px' }} onClick={handlerCarrito}>Agregar al carrito</button>
+                  <h4 className={s.descripcion_producto}>{product.descripcion_producto}</h4>
+
+                  <div className={s.precios}>
+                    <h2 className={s.valor_normal}>${product.valor_normal}</h2>
+                    <h1 className={s.valor_con_descuento}>${product.valor_con_descuento}</h1>
+                  </div>
+
+                  <div>
+                    <h4>Selecciona la cantidad</h4>
+                        <QuantityDisplay
+                          quantity={quantity}
+                          onDecrease={handleDecrease}
+                          onIncrease={handleIncrease}
+                        />
+                  </div>
+
+                  <div className={s.buttons}>
+                    <button style={{ width: '240px' }} onClick={handlerComprar}>Comprar</button>
+                    <button style={{ width: '240px' }} onClick={handlerCarrito}>Agregar al carrito</button>
+                  </div>
+
+                </div>
+              </div>
             </div>
+
             <div className={s.box2}>
-          <CardSReviews/>
-          </div>
-          </div>
+              <div className={s.box2Hijo}>
+                <CardsReviews/>
+              </div>
+            </div>
+        
         </div>
       )} 
     </>
   )
-  
-
 }
 
 export default Detail
