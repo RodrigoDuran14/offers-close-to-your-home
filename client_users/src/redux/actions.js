@@ -2,7 +2,6 @@ import axios from "axios";
 import * as action from "./actions-type"; // para no escribir todos los action types los obtuve todos con el uso del * y lo renombre como action...para usar colocar la palabra action.[nombre del action-type]
 
 const URL = "http://localhost:3001";
-
 // ========================* CARRITO *========================
 export function agregarAlCarrito(id, quantity) {
   console.log(id);
@@ -47,6 +46,27 @@ export function userLoggedIn(estado) {
   return {
     type: action.USER_LOGIN,
     payload: estado,
+  };
+}
+
+export function getUsuarioByID(email) {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`${URL}/usuario?email=${email}`);
+      console.log(response);
+      // console.log(response.data);
+
+      dispatch({
+        type: action.GET_USER_BY_ID,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log(error, "No se encontro usuario con ese id");
+      dispatch({
+        type: action.GET_USER_BY_ID,
+        payload: error,
+      });
+    }
   };
 }
 
@@ -106,23 +126,20 @@ export const getProductById = (id) => async (dispatch) => {
 // * 4.action-creator para obtener producto por nombre
 
 export const getProductByName = (name) => async (dispatch) => {
-  try {
-    dispatch(loading());
-    const res = await axios.get(`${URL}/products?name=${name}`);
-    const result = res.data;
-    console.log(result);
-    dispatch({
-      type: action.GET_PRODUCT_BY_NAME,
-      payload: result,
-    });
-    dispatch(ready());
-  } catch (error) {
-    console.log(error);
-    // dispatch({
-    //     type: action.GET_PRODUCT_BY_NAME,
-    //     payload: error
-    // })
-  }
+  return { type: action.GET_PRODUCT_BY_NAME, payload: name };
+  // try {
+  //   dispatch(loading());
+  //   const res = await axios.get(`${URL}/products?name=${name}`);
+  //   const result = res.data;
+  //   console.log(result);
+  //   dispatch({
+  //     type: action.GET_PRODUCT_BY_NAME,
+  //     payload: result,
+  //   });
+  //   dispatch(ready());
+  // } catch (error) {
+  //   console.log(error);
+  // }
 };
 
 // * 5. action-creator para obtener producto por categoría
@@ -148,12 +165,25 @@ export const orderedByLowestPrice = () => {
   return { type: action.ORDERED_BY_LOWEST_PRICE };
 };
 
+export function cleanReviews() {
+  return {
+    type: action.CLEAN_REVIEWS,
+  };
+}
+
+export function loading() {
+  return {
+    type: action.LOADING,
+  };
+}
 // * 9. action-creator para ordenar productos por mayor precio
 
 export const orderedByHighestPrice = () => {
   return { type: action.ORDERED_BY_HIGHEST_PRICE };
 };
-
+export const orderedByRecientes = () => {
+  return { type: action.ORDERED_BY_RECIENTES };
+};
 // * 10. action-creator para filtrar productos por condicion (Nuevo,Usado,Reacondicionado,Ofertas)
 
 export const filterByNewProducts = () => {
@@ -240,12 +270,6 @@ export function cleanProduct() {
   };
 }
 
-export function loading() {
-  return {
-    type: action.LOADING,
-  };
-}
-
 export function ready() {
   return {
     type: action.READY,
@@ -266,10 +290,9 @@ export function getReviews(id) {
   return async (dispatch) => {
     try {
       const response = await axios.get(`${URL}/products/${id}/calificaciones`);
-       console.log(response.data);
+      console.log(response.data);
       dispatch({ type: action.REVIEWS, payload: response.data });
     } catch (error) {
-   
       dispatch({ type: action.REVIEWS, payload: error });
     }
   };

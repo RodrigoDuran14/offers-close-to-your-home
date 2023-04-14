@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 
 const Card = ({producto}) => {
 const {nombre, valor_normal,valor_con_descuento, imagen, id_producto, Categoria_producto}=producto;
+console.log("CATEGORIA: ", Categoria_producto)
   return (
     <Link className={styles.link} to={`/detail/${id_producto}`}>
     <div className={styles.container}>

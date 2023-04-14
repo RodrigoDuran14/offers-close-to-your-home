@@ -14,13 +14,13 @@
 .fondo1{
     position: absolute;
     z-index: 900;
-    width: 1536px;
+    width: 1519px;
     /* filter: drop-shadow(10px 10px 20px rgb(0, 0, 0)) */
 }
 
 .fondo2{
     position: absolute;
-    width: 1536px;
+    width: 1519px;
     top: 20px;
     z-index: 800;
     /* filter: drop-shadow(10px 10px 20px rgb(0, 0, 0)) */
