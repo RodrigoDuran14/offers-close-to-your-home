@@ -9,10 +9,11 @@ function CardCategory({nombre_categoria_producto, imagen_categoria_producto}) {/
   const handlerCategory = () => {
     dispatch(getProductByCategory(nombre_categoria_producto))
   }
+ 
 
   return (
-    <Link className={styles.link} to="/home" onClick={handlerCategory}>
-      <div className={styles.container}>
+    <Link className={styles.link} to="/home" onClick={handlerCategory} >
+      <div className={styles.container} >
         <div className={styles.box1}>
           <h1>{nombre_categoria_producto}</h1>
         </div>

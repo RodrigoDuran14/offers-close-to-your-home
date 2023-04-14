@@ -6,6 +6,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
 import { getProductByName, getAllProducts } from "../../redux/actions";
 import styles from "./SearchBar.module.css";
+import { useHistory } from 'react-router-dom';
 
 const SearchBar = () => {
   const [input, setInput] = useState("");
@@ -14,11 +15,14 @@ const SearchBar = () => {
 
   const handleChange = (e) => {
     setInput(e);
-    history.push("/home")
-    if (input === "") {
+        
+    if (e !== "") {
+      history.push("/home");
+      dispatch(getProductByName(input));
+    } else {
+      history.goBack()
       dispatch(getAllProducts());
     }
-    dispatch(getProductByName(input));
   };
 
   return (
@@ -26,7 +30,7 @@ const SearchBar = () => {
       <input
         className={styles.input}
         value={input}
-        onChange={(e) => handleChange(e.target.value)}
+        onChange={(e) => handleChange(e.target.value.trim())}
         type="text"
         required=""
         placeholder="Buscar Ofertas..."

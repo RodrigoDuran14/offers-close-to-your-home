@@ -65,6 +65,7 @@ module.exports = (sequelize) => {
     },
     {
       tableName: "Producto",
+     
     }
   );
 };
