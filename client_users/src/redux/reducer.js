@@ -34,6 +34,7 @@ import {
 const initialState = {
   products: [], //22
   productsFitered: [], //22
+  copyProducts: [],
   productID: [],
   comercios: [],
   ventas: [],
@@ -61,17 +62,25 @@ function rootReducer(state = initialState, action) {
         ...state,
         products: action.payload,
         productsFitered: action.payload,
-
+        copyProducts:action.payload,
         
       };
     case GET_PRODUCT_BY_ID:
       return { ...state, product: action.payload };
     case GET_PRODUCT_BY_NAME:
-      return { ...state,productsFitered: action.payload };
+      return { ...state,
+        productsFitered: state.products.filter(product=>product.nombre===action.payload )
+      };
     case GET_PRODUCT_BY_CATEGORY:
       return {
         ...state,
         productsFitered: [...state.products].filter((product) => {
+          return (
+            product.Categoria_producto.nombre_categoria_producto ===
+            action.payload
+          );
+        }),
+        copyProducts:[...state.products].filter((product) => {
           return (
             product.Categoria_producto.nombre_categoria_producto ===
             action.payload
@@ -83,14 +92,14 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         productsFitered:[...state.productsFitered].sort((a, b) =>
-          b.nombre.toLowerCase().localeCompare(a.nombre.toLowerCase())
+          b.nombre.localeCompare(a.nombre)
         ),
       };
     case ORDERED_BY_NAME_ASC:
       return {
         ...state,
         productsFitered: [...state.productsFitered].sort((a, b) =>
-        a.nombre.toLowerCase().localeCompare(b.nombre.toLowerCase())
+        a.nombre.localeCompare(b.nombre)
         ),
       };
     case GET_CATEGORY:
@@ -128,21 +137,21 @@ function rootReducer(state = initialState, action) {
     case FILTER_BY_NEW_PRODUCTS:
       return {
         ...state,
-        productsFitered: [...state.productsFitered].filter(
+        productsFitered: state.copyProducts.filter(
           (item) => item.condicion === "Nuevo"
         ),
       };
     case FILTER_BY_USED_PRODUCTS:
       return {
         ...state,
-        productsFitered: [...state.productsFitered].filter(
+        productsFitered: state.copyProducts.filter(
           (item) => item.condicion === "Usado"
         ),
       };
     case FILTER_BY_REFURBISHED_PRODUCTS:
       return {
         ...state,
-        productsFitered: [...state.productsFitered].filter(
+        productsFitered: state.copyProducts.filter(
           (item) => item.condicion === "Reacondicionado"
         ),
       };
@@ -157,12 +166,24 @@ function rootReducer(state = initialState, action) {
             return -1;
           }
           return 0;
+        }),
+        Copyproducts:[...state.productsFitered].sort((a, b) =>{
+          if (a.createdAt > b.createdAt) {
+            return 1;
+          }
+          if (b.createdAt> a.createdAt) {
+            return -1;
+          }
+          return 0;
         })
         }
     case OFERTAS:
       return {
         ...state,
         productsFitered: state.products.filter(
+          (product) => product.valor_con_descuento < 60
+        ),
+        copyProducts:state.products.filter(
           (product) => product.valor_con_descuento < 60
         ),
       };
