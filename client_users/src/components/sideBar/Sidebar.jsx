@@ -26,6 +26,8 @@ function Sidebar() {
     });
   }
   const handlerActions = (event) => {
+    event.preventDefault()
+    console.log(event.currentTarget.textContent)
     switch (event.currentTarget.textContent) {
       case "Ver Todo":
         dispatch(action.getAllProducts());
@@ -89,7 +91,7 @@ function Sidebar() {
         dispatch(action.filterByRefurbishedProducts());
         break;
       case "Recientes":
-        dispatch(action.getAllProducts);
+        dispatch(action.orderedByRecientes());
         break;
       case "Ofertas":
         dispatch(action.getAllProducts);
@@ -192,7 +194,7 @@ function Sidebar() {
               alt=""
               />
             </div>
-            <ul className={styles.list_show} onClick={handlerActions}>
+            <ul className={styles.list_show}>
               <li className={styles.list_12} onClick={handlerActions}>
                 Por nombre a-z
               </li>

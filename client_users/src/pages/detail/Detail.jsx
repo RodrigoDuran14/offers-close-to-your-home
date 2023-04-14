@@ -6,8 +6,8 @@ import { agregarAlCarrito, getProductById, cleanProduct, getReviews, cleanReview
 import { Redirect } from "react-router-dom";
 import s from './Detail.module.css'
 import swal from 'sweetalert'
-import CardsReviews from '../../components/cardsReviews/CardsReviews'
-// import Footer from '../../components/footer/Footer'
+import CardSReviews from "../../components/cardsReviews/CardsReviews"
+
 
 const Detail = () => {
 
@@ -128,66 +128,7 @@ const Detail = () => {
       )} 
     </>
   )
-  
-
 }
 
 export default Detail
 
-
-// <section>
-//   <div className={styles.container}>
-//     {product.hasOwnProperty("nombre") ? (
-//       <>
-//         <div className={styles.box1}>
-//           <img src={product.imagen} alt={product.nombre} />
-//         </div>
-
-//         <div className={styles.box2}>
-
-//           <div style={{ marginTop: "0px" }}>
-
-//             <div className={styles.box1}>
-
-//               <div style={{ margin: "10px" }}>
-//                 <span>{product.condicion}</span>
-//               </div>//
-//
-//             </div>
-
-//             <div className={styles.box2}>
-//               <div>
-//                 <h2>{product.nombre}</h2>
-//               </div>
-//               <div>
-//                 <h1>${product.valor_normal}</h1>
-//               </div>
-//               <div>
-//                 <h2>Descripción</h2>
-//               </div>
-//               <div style={{ marginLeft: "20px", marginRight: "20px" }}>
-//                 <p>{product.descripcion_producto}</p>
-//               </div>
-//               <div style={{ display: "flex", justifyContent: "center" }}>
-//                 <h4 style={{ margin: "10px" }}>Cantidad</h4>
-//                 <QuantityDisplay
-//                   quantity={quantity}
-//                   onDecrease={handleDecrease}
-//                   onIncrease={handleIncrease}
-//                 />
-//               </div>
-//               <div className={styles.btn}>
-//                 <button onClick={handlerCarrito}>Añadir al carrito</button>
-//               </div>
-//               <div className={styles.btn}>
-//                 <button>Comprar ahora</button>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </>
-//     ) : (
-//       <Loader />
-//     )}
-//   </div>
-// </section>
