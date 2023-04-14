@@ -5,12 +5,12 @@ import CardCategory from '../cardCategory/CardCategory';
 import styles from "./CardsCategory.module.css"
 
 function CardsCategory() {
-    const { categorys } = useSelector(state => state);
+    const { categorys} = useSelector(state => state);
     const dispatch = useDispatch();
     
     useEffect(() => {
-        dispatch(getCategorys())
-        dispatch(getAllProducts());  
+        dispatch(getCategorys());
+        // dispatch(getAllProducts());
       }, [dispatch])
   return (
     <div className={styles.container}>

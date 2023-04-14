@@ -4,7 +4,7 @@ import Cards from "../../components/cards/Cards";
 import styles from "./Home.module.css";
 
 
-import Sidebar from "../../components/sideBar/Sidebar";
+import Sidebar from "../../components/SideBar/Sidebar";
 
 
 import Carousel from "../../components/carousel/Carusel";
