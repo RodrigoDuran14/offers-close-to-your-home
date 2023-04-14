@@ -65,7 +65,6 @@ module.exports = (sequelize) => {
     },
     {
       tableName: "Producto",
-      timestamps: false,
     }
   );
 };

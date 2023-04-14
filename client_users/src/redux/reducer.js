@@ -24,7 +24,8 @@ import {
   USER_LOGIN,
   MERCADO_PAGO,
   GET_USER_BY_ID,
-  REVIEWS
+  REVIEWS,
+  ORDERED_BY_RECIENTES
 } from "./actions-type.js";
 
 const initialState = {
@@ -47,7 +48,9 @@ const initialState = {
 };
 
 function rootReducer(state = initialState, action) {
+  console.log("TYPE; ", action.type)
   switch (action.type) {
+
     case CREATE_PRODUCT:
       return { ...state, products: [...state.products, action.payload] };
     case GET_ALL_PRODUCTS:
@@ -59,7 +62,7 @@ function rootReducer(state = initialState, action) {
     case GET_PRODUCT_BY_ID:
       return { ...state, product: action.payload };
     case GET_PRODUCT_BY_NAME:
-      return { ...state, products: action.payload };
+      return { ...state, productsFitered: action.payload };
     case GET_PRODUCT_BY_CATEGORY:
       return {
         ...state,
@@ -73,14 +76,14 @@ function rootReducer(state = initialState, action) {
     case ORDERED_BY_NAME_DESC:
       return {
         ...state,
-        products: [...state.products].sort((a, b) =>
+        productsFitered: [...state.productsFitered].sort((a, b) =>
           b.nombre.localeCompare(a.nombre)
         ),
       };
     case ORDERED_BY_NAME_ASC:
       return {
         ...state,
-        products: [...state.products].sort((a, b) =>
+        productsFitered: [...state.productsFitered].sort((a, b) =>
           a.nombre.localeCompare(b.nombre)
         ),
       };
@@ -92,38 +95,97 @@ function rootReducer(state = initialState, action) {
     case ORDERED_BY_LOWEST_PRICE:
       return {
         ...state,
-        products: [...state.products].filter(
-          (product) => product.valor_con_descuento < 100
-        ),
-      };
+        productsFitered: [...state.productsFitered].sort((a, b) =>{
+          if (a.valor_con_descuento > b.valor_con_descuento) {
+            return 1;
+          }
+          if (b.valor_con_descuento > a.valor_con_descuento) {
+            return -1;
+          }
+          return 0;
+        })
+        }
+
     case ORDERED_BY_HIGHEST_PRICE:
       return {
         ...state,
-        products: [...state.products].filter(
-          (product) => product.valor_con_descuento > 100
-        ),
+        productsFitered: [...state.productsFitered].sort((a, b) =>{
+          if (a.valor_con_descuento > b.valor_con_descuento) {
+            return -1;
+          }
+          if (b.valor_con_descuento > a.valor_con_descuento) {
+            return 1;
+          }
+          return 0;
+        })
       };
     case FILTER_BY_NEW_PRODUCTS:
-      return {
-        ...state,
-        products: [...state.products].filter(
-          (item) => item.condicion === "Nuevo"
-        ),
-      };
+      if(!state.productsFitered.length > 0){
+        return {
+          ...state,
+          productsFitered: [...state.products].filter(
+            (item) => item.condicion === "Nuevo"
+            ),
+          };
+      }else{
+        return {
+          ...state,
+          productsFitered: [...state.productsFitered].filter(
+            (item) => item.condicion === "Nuevo"
+            ),
+          };
+        }
+
     case FILTER_BY_USED_PRODUCTS:
-      return {
-        ...state,
-        products: [...state.products].filter(
-          (item) => item.condicion === "Usado"
-        ),
-      };
+      if(state.productsFitered.length > 0){
+        return {
+          ...state,
+          productsFitered: [...state.productsFitered].filter(
+            (item) => item.condicion === "Usado"
+            ),
+          };
+      }else{
+
+        return {
+          ...state,
+          productsFitered: [...state.products].filter(
+            (item) => item.condicion === "Usado"
+            ),
+          };
+        }
     case FILTER_BY_REFURBISHED_PRODUCTS:
+
+      if(state.productsFitered.length > 0){
+        return {
+          ...state,
+          productsFitered: [...state.productsFitered].filter(
+            (item) => item.condicion === "Reacondicionado"
+          ),
+        };
+      }else{
+
+        return {
+          ...state,
+          productsFitered: [...state.products].filter(
+            (item) => item.condicion === "Reacondicionado"
+            ),
+          };
+        }
+          
+    case ORDERED_BY_RECIENTES:
       return {
         ...state,
-        products: [...state.products].filter(
-          (item) => item.condicion === "Reacondicionado"
-        ),
-      };
+        productsFitered: [...state.productsFitered].sort((a, b) =>{
+          if (a.createdAt > b.createdAt) {
+            return -1;
+          }
+          if (b.createdAt > a.createdAt) {
+            return 1;
+          }
+          return 0;
+        })
+      }
+    
     case OFERTAS:
       return {
         ...state,

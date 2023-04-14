@@ -130,11 +130,14 @@ export const getProductByName = (name) => async (dispatch) => {
     dispatch(loading());
     const res = await axios.get(`${URL}/products?name=${name}`);
     const result = res.data;
-    console.log(result);
+    console.log("RESULT: ",result);
     dispatch({
       type: action.GET_PRODUCT_BY_NAME,
       payload: result,
     });
+
+    console.log("RESULT 2: ",result);
+
     dispatch(ready());
   } catch (error) {
     console.log(error);
@@ -154,7 +157,7 @@ export const getProductByCategory = (category) => {
 // * 6. action-creator para ordenar productos por nombre ascendente
 
 export const orderedByNameASC = () => {
-  return { type: action.ORDERED_BY_NAME_ASC };
+  return { type: action.ORDERED_BY_NAME_ASC};
 };
 
 // * 7. action-creator para ordenar productos por nombre descendente
@@ -187,9 +190,15 @@ export const filterByUsedProducts = () => {
 export const filterByRefurbishedProducts = () => {
   return { type: action.FILTER_BY_REFURBISHED_PRODUCTS }; //productos reacondicionados
 };
+
+
 export const filterByOffers = () => {
   return { type: action.OFERTAS }; //productos reacondicionados
 };
+
+export const orderedByRecientes = () =>{
+  return { type: action.ORDERED_BY_RECIENTES}
+}
 
 // * 11. action-creator para filtrar productos por categoria
 export function getCategorys() {

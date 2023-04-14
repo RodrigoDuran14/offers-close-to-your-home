@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
@@ -9,9 +10,11 @@ import styles from "./SearchBar.module.css";
 const SearchBar = () => {
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleChange = (e) => {
     setInput(e);
+    history.push("/home")
     if (input === "") {
       dispatch(getAllProducts());
     }
