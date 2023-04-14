@@ -120,7 +120,7 @@ const Detail = () => {
 
             <div className={s.box2}>
               <div className={s.box2Hijo}>
-                <CardsReviews/>
+                <CardSReviews/>
               </div>
             </div>
         

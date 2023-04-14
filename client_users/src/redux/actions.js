@@ -270,12 +270,6 @@ export function cleanProduct() {
   };
 }
 
-export function loading() {
-  return {
-    type: action.LOADING,
-  };
-}
-
 export function ready() {
   return {
     type: action.READY,
