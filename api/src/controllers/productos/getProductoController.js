@@ -40,6 +40,14 @@ const searchProductByName = async (nombre) => {
           [Op.iLike]: `%${nombre}%`,
         },
       },
+      include: [
+        {
+          model: Categoria_producto,
+          attributes: ["nombre_categoria_producto", "imagen_categoria_producto"],
+          required: true,
+        },
+        { model: Comercio, attributes: ["nombre_comercio"] },
+      ],
     }),
   ]);
 

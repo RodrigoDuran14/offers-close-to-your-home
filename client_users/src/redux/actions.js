@@ -173,7 +173,7 @@ export function agregarAlCarrito(id, quantity) {
     return { type: action.ORDERED_BY_HIGHEST_PRICE };
   };
   export const orderedByRecientes =()=>{
-    return { type: action.ORDER_BY_RECIENTES};
+    return { type: action.ORDERED_BY_RECIENTES};
 
   }
   // * 10. action-creator para filtrar productos por condicion (Nuevo,Usado,Reacondicionado,Ofertas)
