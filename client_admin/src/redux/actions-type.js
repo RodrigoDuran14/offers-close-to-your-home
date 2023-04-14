@@ -1,0 +1,7 @@
+export const CREATE_PRODUCT = "CREATE_PRODUCT"
+export const GET_PRODUCT_BY_NAME = "GET_PRODUCT_BY_NAME"
+export const GET_CATEGORY = "GET_PRODUCT_BY_NAME"
+export const GET_ALL_CITIES = "GET_ALL_CITIES"
+export const LOADING = "LOADING"
+export const READY =  "READY"
+export const COMMERCE_LOGIN = "COMMERCE_LOGIN"
