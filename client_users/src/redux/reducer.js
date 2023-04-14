@@ -153,8 +153,8 @@ function rootReducer(state = initialState, action) {
     case OFERTAS:
       return {
         ...state,
-        products: [...state.products].filter(
-          (product) => product.valor_con_descuento > 60
+        productsFitered: state.products.filter(
+          (product) => product.valor_con_descuento < 60
         ),
       };
 
