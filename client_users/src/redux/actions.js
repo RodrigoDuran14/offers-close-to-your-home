@@ -259,6 +259,11 @@ export function cleanProduct() {
     type: action.CLEAN_PRODUCT,
   };
 }
+export function cleanReviews() {
+  return {
+    type: action.CLEAN_REVIEWS,
+  };
+}
 
 export function loading() {
   return {
