@@ -4,27 +4,21 @@
     align-items: center;
 }
 
-.link{
-    text-decoration: none;
-}
-
 .contenedorForm{
     display: flex;
     flex-direction: column;
     width: 600px;
-    background-color: rgb(249, 245, 245);
+    background-color: #97978D;
     border: 3px black solid;
     border-radius: 10px;
     padding: 5px;
     margin-bottom: 20px;
-    color: black;
-    text-decoration: none;
 }
 
 .nombres{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: center
 }
 
 .apellidos{
@@ -37,14 +31,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-decoration: none;
 }
 .input{
     width: 405px;
     padding: .3rem;
     border-radius: 8px;
     border: 3px black solid;
-    text-decoration: none;
+    margin-top: -20px;
+
 }
 
 .input2{
@@ -53,7 +47,7 @@
     border-radius: 8px;
     border: 3px black solid;
     margin: 5px;
-    text-decoration: none;
+    margin-top: -20px;
 }
 
 .button{
@@ -69,12 +63,12 @@
 
 .label{
     /* position: absolute; */
-    padding: 0 .5rem;
+    /* padding: 0 .5rem; */
     font-size: 20px;
 }
 .label2{
     /* position: absolute; */
-    padding: 0 .5rem;
+    /* padding: 0 .5rem; */
     font-size: 20px;
 }
 

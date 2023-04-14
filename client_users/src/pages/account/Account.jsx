@@ -20,10 +20,9 @@ const Account = () => {
   }, [dispatch]);
 
   const userLogin = usuario.map((e) => e.email === email);
-
   console.log(userLogin);
 
-  console.log(email);
+  // console.log(email);
 
   return (
     <div className={s.contenedor}>
@@ -32,8 +31,8 @@ const Account = () => {
           <h1 className={s.tittle}>Mi cuenta:</h1>
         </div>
         <div className={s.informacion}>
-          {usuario &&
-            usuario.map((e) => (
+          {userLogin &&
+            userLogin.filter((e) => (
               <div key={e.email} className={s.aux}>
                 {e.imagen && (
                   <img className={s.imageFile} src={e.imagen} id="imagen" />
@@ -48,9 +47,9 @@ const Account = () => {
                       <label>Correo electrónico:</label>
                     </div>
                     <div className={s.column}>
-                      <label>{`${e.primer_nombre} ${e.segundo_nombre} ${e.primer_apellido} ${e.segundo_apellido}`}</label>
+                      <label>{e.primer_nombre} {e.segundo_nombre} {e.primer_apellido} {e.segundo_apellido}</label>
                       <label>{e.direccion}</label>
-                      <label>{e.Ciudad.nombre_ciudad}</label>
+                      <label>{e.Ciudad?.nombre_ciudad}</label>
                       <label>{e.telefono}</label>
                       <label>{e.email}</label>
                     </div>
