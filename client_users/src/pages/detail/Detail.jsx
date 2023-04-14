@@ -126,6 +126,7 @@ const Detail = () => {
 
 export default Detail
 
+
 // <section>
 //   <div className={styles.container}>
 //     {product.hasOwnProperty("nombre") ? (
