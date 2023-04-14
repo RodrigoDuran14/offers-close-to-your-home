@@ -18,12 +18,13 @@ export default function Carousel({ numSlides, speed }) {
 
   const renderSlides = () => 
     products.map(p => (
-      <CardOfert key={p.id_producto} imagen={p.imagen} nombre={p.nombre} valor_normal={p.valor_normal} valor_con_descuento={p.valor_con_descuento} />
+      <CardOfert key={p.id_producto} id={p.id_producto} imagen={p.imagen} nombre={p.nombre} valor_normal={p.valor_normal} valor_con_descuento={p.valor_con_descuento} />
     ))
   
 
   return (
-    <div style={{marginTop: '40px', padding: '50px'}}>
+    <div style={{marginTop: '50px', padding: '50px'}}>
+      <h1>Mira las ofertas destacadas!</h1>
       <Slider
         dots={false}
         slidesToShow={numSlides || 5}
