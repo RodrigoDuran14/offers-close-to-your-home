@@ -53,7 +53,7 @@ export function userLoggedIn(estado) {
 export function getUsuarioByID(email) {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`${URL}/usuario/${email}`);
+      const response = await axios.get(`${URL}/usuario?email=${email}`); 
       console.log(response);
       // console.log(response.data);
       dispatch({
