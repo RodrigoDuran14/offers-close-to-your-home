@@ -125,23 +125,20 @@ export function agregarAlCarrito(id, quantity) {
   // * 4.action-creator para obtener producto por nombre
   
   export const getProductByName = (name) => async (dispatch) => {
-    try {
-      dispatch(loading());
-      const res = await axios.get(`${URL}/products?name=${name}`);
-      const result = res.data;
-      console.log(result);
-      dispatch({
-        type: action.GET_PRODUCT_BY_NAME,
-        payload: result,
-      });
-      dispatch(ready());
-    } catch (error) {
-      console.log(error);
-      // dispatch({
-      //     type: action.GET_PRODUCT_BY_NAME,
-      //     payload: error
-      // })
-    }
+    return {type:action.GET_PRODUCT_BY_NAME , payload: name}
+    // try {
+    //   dispatch(loading());
+    //   const res = await axios.get(`${URL}/products?name=${name}`);
+    //   const result = res.data;
+    //   console.log(result);
+    //   dispatch({
+    //     type: action.GET_PRODUCT_BY_NAME,
+    //     payload: result,
+    //   });
+    //   dispatch(ready());
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
   
   // * 5. action-creator para obtener producto por categoría
