@@ -94,10 +94,7 @@ module.exports = {
   LOADING,
   READY,
   MERCADO_PAGO,
-
   ORDERED_BY_RECIENTES,
-  OFERTAS
-
+  OFERTAS,
   REVIEWS
-
 };
