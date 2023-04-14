@@ -92,14 +92,14 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         productsFitered:[...state.productsFitered].sort((a, b) =>
-          b.nombre.toLowerCase().localeCompare(a.nombre.toLowerCase())
+          b.nombre.localeCompare(a.nombre)
         ),
       };
     case ORDERED_BY_NAME_ASC:
       return {
         ...state,
         productsFitered: [...state.productsFitered].sort((a, b) =>
-        a.nombre.toLowerCase().localeCompare(b.nombre.toLowerCase())
+        a.nombre.localeCompare(b.nombre)
         ),
       };
     case GET_CATEGORY:
