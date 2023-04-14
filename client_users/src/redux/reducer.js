@@ -92,7 +92,7 @@ function rootReducer(state = initialState, action) {
       case ORDERED_BY_LOWEST_PRICE:
         return {
           ...state,
-          productsFitered: [...state.products].sort((a, b) =>{
+          productsFitered: [...state.productsFitered].sort((a, b) =>{
             if (a.valor_con_descuento > b.valor_con_descuento) {
               return 1;
             }
@@ -106,7 +106,7 @@ function rootReducer(state = initialState, action) {
       case ORDERED_BY_HIGHEST_PRICE:
         return {
           ...state,
-          productsFitered: [...state.products].sort((a, b) =>{
+          productsFitered: [...state.productsFitered].sort((a, b) =>{
             if (a.valor_con_descuento > b.valor_con_descuento) {
               return -1;
             }
@@ -140,7 +140,7 @@ function rootReducer(state = initialState, action) {
     case ORDERED_BY_RECIENTES:
       return {
         ...state,
-        productsFitered: [...state.products].sort((a, b) =>{
+        productsFitered: [...state.productsFitered].sort((a, b) =>{
           if (a.createdAt > b.createdAt) {
             return 1;
           }
