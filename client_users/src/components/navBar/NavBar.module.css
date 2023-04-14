@@ -96,3 +96,21 @@ h4 {
     height: 30px;
     margin-top: 8px;
 }
+
+
+
+.menuDesplegable {
+    position: absolute;
+    top: 100%;
+    right: 185px;
+    background-color: rgba(0, 0, 0, 0.575);
+    /* border: 1px solid gray; */
+    padding: 1rem;
+    z-index: 999;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+
+.link:hover{
+    color: #54b216 ;
+}
