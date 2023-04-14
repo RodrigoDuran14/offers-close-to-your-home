@@ -7,8 +7,8 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import SearchBar from '../searchBar/SearchBar'
 
 //Import Imagenes
-import Logo from "../../assets/images/SoloTextoBlanco.png"
-import Icono from "../../assets/images/SoloIconoNormal.png"
+import Logo from "../../../assets/images/SoloTextoBlanco.png"
+import Icono from "../../../assets/images/SoloIconoNormal.png"
 
 //Import Estilos
 import s from './NavBar.module.css'
