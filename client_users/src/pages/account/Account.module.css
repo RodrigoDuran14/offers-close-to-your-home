@@ -1,46 +1,35 @@
 .contenedor{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100vh;
 }
 
-.text{
-    display: block;
-    text-align: left;
+.contenedorInfo{
+  display: flex;
+  flex-direction: column;
+  margin: 100px;
+  background-color: blue;
+  border: 5px black solid;
+  border-radius: 30px;
+  padding: 20px;
+  height: fit-content;
 }
 
-.tittle{
-    margin-left:-600px;
+.informacion{
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-between;
+  /* background-color: wheat; */
+  width: 100%;
+  height: 300px;
 }
 
-.imageFile {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    border-radius: 180px;
-    height: 130px;
-    width: 130px;
-    margin-top: 10px;
-    object-fit: cover;
+.aux{
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
 }
-
-
-.divForm {
-    position: relative;
-    border-radius: 100px;
-    padding: 8px;
-    margin-right: 20px;
-    border: none;
-    background-color: black;
-    color: aliceblue;
-    font-size: 20px;
-    list-style: none;
-    margin-top: -390px;
-  }
-
-
   /* Asegúrate de que la clase ulForm tenga mayor especificidad que ul y li */
 .ulForm {
     width: 100px;
