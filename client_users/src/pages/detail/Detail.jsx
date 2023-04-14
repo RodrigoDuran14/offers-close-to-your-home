@@ -6,7 +6,6 @@ import { agregarAlCarrito, actualizarCarrito, getProductById, cleanProduct } fro
 import Loader from '../../components/loader/loader'
 import s from './Detail.module.css'
 import swal from 'sweetalert'
-// import Footer from '../../components/footer/Footer'
 
 const Detail = () => {
 

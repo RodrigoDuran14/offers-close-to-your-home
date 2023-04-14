@@ -18,6 +18,7 @@ const getAllProducts = async () => {
       "estado",
       "imagen",
       "nombre",
+      "createdAt"
     ],
     include: [
       {

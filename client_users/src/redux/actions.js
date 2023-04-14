@@ -69,15 +69,15 @@ export function createProduct(product) {
 export const getAllProducts = () => {
   return async (dispatch) => {
     try {
-      dispatch(loading());
+      // dispatch(loading());
       const response = await axios.get(`${URL}/products`);
       // console.log(response.data);
       dispatch({ type: action.GET_ALL_PRODUCTS, payload: response.data });
-      dispatch(ready());
+      // dispatch(ready());
     } catch (error) {
       console.log(error);
       dispatch({ type: action.GET_ALL_PRODUCTS, payload: error });
-      dispatch(ready());
+      // dispatch(ready());
     }
   };
 };
@@ -86,20 +86,20 @@ export const getAllProducts = () => {
 
 export const getProductById = (id) => async (dispatch) => {
   try {
-    dispatch(loading());
+    // dispatch(loading());
     const res = await axios.get(`${URL}/products/${id}`);
     dispatch({
       type: action.GET_PRODUCT_BY_ID,
       payload: res.data,
     });
-    dispatch(ready());
+    // dispatch(ready());
   } catch (error) {
     console.log(error);
     dispatch({
       type: action.GET_PRODUCT_BY_ID,
       payload: error,
     });
-    dispatch(ready());
+    // dispatch(ready());
   }
 };
 
@@ -108,14 +108,14 @@ export const getProductById = (id) => async (dispatch) => {
 export const getProductByName = (name) => async (dispatch) => {
   try {
     dispatch(loading());
-    const res = await axios.get(`${URL}/products?name=${name}`);
-    const result = res.data;
+    const res = await axios.get(`${URL}/products`);
+    const result = res.data.filter(product=>product.nombre.toLowerCase()===name.toLowerCase())
     console.log(result);
     dispatch({
       type: action.GET_PRODUCT_BY_NAME,
       payload: result,
     });
-    dispatch(ready());
+    // dispatch(ready());
   } catch (error) {
     console.log(error);
     // dispatch({
@@ -171,6 +171,10 @@ export const filterByRefurbishedProducts = () => {
 export const filterByOffers = () => {
   return { type: action.OFERTAS }; //productos reacondicionados
 };
+
+export const orderedByRecientes=()=>{
+  return {type:action.ORDERED_BY_RECIENTES}
+}
 
 // * 11. action-creator para filtrar productos por categoria
 export function getCategorys() {

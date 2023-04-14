@@ -14,13 +14,14 @@ const SearchBar = () => {
 
   const handleChange = (e) => {
     setInput(e);
-        history.push('/home');
-
-    // if (input === "") {
-    //   history.push('/home');
-    //   dispatch(getAllProducts());
-    // }
-    dispatch(getProductByName(input));
+        
+    if (e !== "") {
+      history.push("/home");
+      dispatch(getProductByName(input));
+    } else {
+      history.goBack()
+      dispatch(getAllProducts());
+    }
   };
 
   return (
@@ -28,7 +29,7 @@ const SearchBar = () => {
       <input
         className={styles.input}
         value={input}
-        onChange={(e) => handleChange(e.target.value)}
+        onChange={(e) => handleChange(e.target.value.trim())}
         type="text"
         required=""
         placeholder="Buscar Ofertas..."
