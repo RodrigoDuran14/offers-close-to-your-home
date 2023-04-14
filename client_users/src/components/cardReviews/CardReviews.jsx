@@ -20,4 +20,4 @@ function CardReview({descripcion_motivo, valor_calificacion}) {
     );
   }
   
-export default CardReview
+export default CardReview 
