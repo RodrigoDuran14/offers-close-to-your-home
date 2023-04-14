@@ -6,6 +6,7 @@ import { agregarAlCarrito, getProductById, cleanProduct, getReviews } from '../.
 import { Redirect } from "react-router-dom";
 import s from './Detail.module.css'
 import swal from 'sweetalert'
+import CardSReviews from "../../components/cardsReviews/CardsReviews"
 
 
 const Detail = () => {
@@ -112,7 +113,7 @@ const Detail = () => {
               <button style={{ width: '240px' }} onClick={handlerCarrito}>Agregar al carrito</button>
             </div>
             <div className={s.box2}>
-          <CardsReviews/>
+          <CardSReviews/>
           </div>
           </div>
         </div>
