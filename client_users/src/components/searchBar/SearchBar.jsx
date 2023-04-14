@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
