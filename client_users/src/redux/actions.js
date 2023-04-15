@@ -284,6 +284,12 @@ export function mercadoPago(link) {
     payload: link,
   };
 }
+
+export function cleanMercadoPago() {
+  return {
+    type: action.CLEAN_MERCADO_PAGO
+  }
+}
 // REVIEWS // COMENTARIOS
 
 export function getReviews(id) {
