@@ -6,7 +6,7 @@ import validations from "./validation";
 import bcrypt from "bcryptjs"; // librería para encriptcar contraseñas
 import { getAllCities, getCategorys } from "../../../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
-import { Image, CloudinaryContext } from "cloudinary-react"; // para guardar las imágenes externamente 
+import { CloudinaryContext } from "cloudinary-react"; // para guardar las imágenes externamente 
 import swal from "sweetalert"
 
 export default function FormRegister() {
@@ -380,6 +380,7 @@ export default function FormRegister() {
                     className={style.imageFile}
                     src={form.imagen}
                     id="imagen"
+                    alt="foto perfil"
                   />
                 )}
               </div>
