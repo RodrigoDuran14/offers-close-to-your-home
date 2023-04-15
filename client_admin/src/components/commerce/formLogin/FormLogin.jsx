@@ -112,7 +112,7 @@ export default function FormLogin() {
                                 <div style={{ border: '1px solid grey', width: '90px' }}></div> <span style={{ margin: '0px 10px' }}>¿No tienes cuenta?</span> <div style={{ border: '1px solid grey', width: '90px' }}></div>
                             </div>
     
-                            <Link to={'/registrar-usuario'}>
+                            <Link to={'/registrar-comercio'}>
                                 <button type="button" className={styles.boton}>Registrarse</button>
                             </Link>
                         </div>
