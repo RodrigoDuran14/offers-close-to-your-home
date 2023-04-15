@@ -2,13 +2,14 @@ import CardReview from "../cardReviews/CardReviews"
 import { useSelector } from "react-redux"
 function CardsReviews(){
  const {reviews} = useSelector((state)=> state)
+ console.log(reviews);
     return(
     <div>
         <div style={{display:"flex", justifyContent:"flex-start", margin:"20px"}}>
             <h2>Opiniones acerca del producto</h2>
         </div>
         <hr />
-    {reviews?(
+    {reviews.length?(
         reviews?.map(review => {
             return ( 
                 <CardReview 
@@ -18,7 +19,11 @@ function CardsReviews(){
                 id_producto={review.id_producto}
                 />
             )
-        })): (<h2>Este producto no tiene opiniones aun</h2>)
+        })): (
+                <div style={{margin: "100px"}}>
+                    <p style={{fontSize:"25px"}}>Este producto no tiene opiniones aun</p>
+                </div>
+                )
     }
     </div>
     )

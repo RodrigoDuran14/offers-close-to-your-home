@@ -1,8 +1,8 @@
-import { useEffect } from "react"
+import React, { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import CartCard from "../../components/Cart_card/CartCard"
 import styles from './shopping.module.css'
-import {mercadoPago} from "../../redux/actions"
+import {cleanMercadoPago, mercadoPago} from "../../redux/actions"
 
 export default function ShoppingCart() {
   const dispatch = useDispatch()
@@ -11,6 +11,9 @@ export default function ShoppingCart() {
   useEffect(() => {
     window.localStorage.setItem("carrito", JSON.stringify(carrito));
     window.localStorage.getItem("carrito");
+    return () =>{
+      dispatch(cleanMercadoPago());
+    }
   }, [carrito]);
   
 //Suma de subtotales
@@ -32,22 +35,21 @@ export default function ShoppingCart() {
   }
   
   return (
-    <div>
-      <h2>Carrito de compras</h2>
-      {carrito && carrito.length > 0 ? (
-        carrito.map(producto => (
-          <CartCard key={producto.id}
-          id_producto = {producto.id_producto}
+    <div style={{marginTop:"100px"}}>
+  <h2>Carrito de compras</h2>
+  {carrito.length ? (
+    <React.Fragment>
+      {carrito.map(producto => (
+        <CartCard
+          key={producto.id}
+          id_producto={producto.id_producto}
           imagen={producto.imagen} 
           nombre={producto.nombre} 
           valor_con_descuento={producto.valor_con_descuento}
           cantidad={producto.cantidad}
           total={total}
-          /> 
-        ))
-          ) : (
-            <p>No hay productos en el carrito.</p>
-          )}
+        /> 
+      ))}
       <div className={styles.containerTotal}>
         <div className={styles.total}>
           <div style={{fontSize: "30px", marginLeft: "15px"}}>
@@ -58,13 +60,18 @@ export default function ShoppingCart() {
           </div>
         </div> 
       </div>
-      
-      {linkMercadoPago
-      ?(<div className={styles.mercadoPago}><a href={linkMercadoPago}>Pagar</a></div>)
-      : <button onClick={handlerPago}>Confirmar compra</button>
-      }
-   
-    </div>
+      {linkMercadoPago ? (
+        <div className={styles.mercadoPago}>
+          <a href={linkMercadoPago}>Pagar</a>
+        </div>
+      ) : (
+        <button onClick={handlerPago}>Confirmar compra</button>
+      )}
+    </React.Fragment>
+  ) : (
+    <p>No hay productos en el carrito.</p>
+  )}
+</div>
 
   );
 }
