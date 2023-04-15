@@ -133,7 +133,7 @@ export default function FormRegister() {
   const [form, setForm] = useState({
     id_tipo_usuario: 1,
     primer_nombre: "",
-    segundo_nombre: null,
+    segundo_nombre: "",
     primer_apellido: "",
     segundo_apellido: "",
     direccion: "",

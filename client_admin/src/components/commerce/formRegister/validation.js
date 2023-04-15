@@ -30,7 +30,6 @@ export default function validations(values) {
     if(regexAddress.test(values.direccion)) errors.direccion = 'La dirección de tener números y letras'
     if (values.direccion.length > 101) errors.direccion = 'La dirección no debería sumar más de 100 caracteres'
 
-
     if(!values.telefono) errors.telefono = 'Campo Requerido'
     if (blankSpace.test(values.telefono)) errors.telefono = 'El número de teléfono no puede ser un espacio en blanco'
     if (values.telefono && values.telefono.length < 9) errors.telefono = 'El teléfono no debería contener menos de 9 caracteres'
