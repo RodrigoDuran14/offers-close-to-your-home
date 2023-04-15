@@ -1,57 +1,118 @@
-import React from 'react'
-import {Link} from "react-router-dom"
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import SearchBar from "../searchBar/SearchBar";
+import DrawerMenu from "../drawerMenu/DrawerMenu";
+import s from "./NavBar.module.css";
 
-//Import Componentes
-import DrawerMenu from '../drawerMenu/DrawerMenu'
-import { AiOutlineShoppingCart } from "react-icons/ai";
-import SearchBar from '../searchBar/SearchBar'
+import { commerceLoggedIn } from "../../../redux/actions";
 
-//Import Imagenes
-import Logo from "../../../assets/images/SoloTextoBlanco.png"
-import Icono from "../../../assets/images/SoloIconoNormal.png"
-
-//Import Estilos
-import s from './NavBar.module.css'
-
-
+// imagenes
+import Logo from "../../../assets/images/SoloTextoBlanco.png";
+import Icono from "../../../assets/images/SoloIconoNormal.png";
+import LogIn from "../../../assets/images/logIn.webp";
 
 const NavBar = () => {
-
-    const logoTexto = Logo;
-    const logoIcono = Icono;
     
-    return (
-        <div className={s.container}>
-            <div className={s.menu}>
-                <DrawerMenu />
-            </div>
-            <div className={s.options}>
-            <img className={s.texto} src= {logoTexto} />
-            <img className={s.icono} src= {logoIcono} />
-                <Link to="/" className={s.link}
-                 >
-                    <h4>Inicio</h4>
-                </Link>
-                <Link to="/misventas" className={s.link}
-                >
-                    <h4>Mis Ventas</h4>
-                </Link>
-                <Link to="/about" className={s.link}
-                >
-                    <h4>¿Quienes somos?</h4>
-                </Link>
-            </div>
-            <div className={s.box1}>
-                <SearchBar />
-            </div>
-            <div className={s.options}>
-                <Link to="/login" className={s.link}>
-                    <h4>Iniciar sesión</h4>
-                </Link>
-                <button className={s.button}> <AiOutlineShoppingCart size={25} /> </button>
-            </div>
-        </div>
-    )
-}
+  const logoTexto = Logo;
+  const logoIcono = Icono;
+  const logIn = LogIn;
 
-export default NavBar
+
+  /* ------------- MENU HAMBURGUESA ----    --------- */
+  
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
+  
+  const handleLogInClick = () => {
+    setShowProfileMenu(!showProfileMenu);
+  };
+
+
+  /* ------------- LOGIN MENU ------------- */
+
+  const estaLogueado = useSelector(state => state.logIn)
+  
+
+  /* ------------- LOGOUT ------------- */
+  const dispatch = useDispatch()
+  const logOut = false
+
+  const handleLogOut = () => {
+    dispatch(commerceLoggedIn(logOut))
+  };
+  
+  
+
+
+  return (
+    <div className={s.container}>
+      <div className={s.menu}>
+        <DrawerMenu />
+      </div>
+
+      <div className={s.options}>
+        <Link to={'/'}>
+          <img className={s.texto} src={logoTexto} />
+          <img className={s.icono} src={logoIcono} />
+        </Link>
+      </div>
+
+      <div className={s.nav_text}>
+        <Link
+          to="/"
+          className={s.link}
+        //  style={{ margin: '0px 10px' }}
+        >
+          <h4>Inicio</h4>
+        </Link>
+
+        <Link
+          to="/"
+          className={s.link}
+        // style={{ margin: '0px 10px' }}
+        >
+          <h4>Quiero Comprar</h4>
+        </Link>
+
+        <Link
+          to="/about"
+          className={s.link}
+        // style={{ margin: '0px 10px' }}
+        >
+          <h4>¿Quienes somos?</h4>
+        </Link>
+      </div>
+
+      <div className={s.box1}>
+        <SearchBar />
+      </div>
+      <div>
+  {!estaLogueado ? (
+    <Link to="/login" className={s.link}>
+      <h4>Iniciar sesión</h4>
+    </Link>
+  ) : (
+    <div>
+        <img  onClick={handleLogInClick} className={s.logIn} src={logIn} />
+      {showProfileMenu  && (
+        <div className={s.menuDesplegable}>
+          <Link to="/account" className={s.link}>
+            <h4>Ver perfil</h4>
+          </Link>       
+          <Link to="/account" className={s.link}>
+            <h4>Historial de ventas</h4>
+          </Link>
+          <Link to="/" className={s.link} onClick={handleLogOut}>
+            <h4>Cerrar sesión</h4>
+          </Link>
+        </div>
+      )}
+    </div>
+  )}
+</div>
+    </div>
+  );
+};
+
+
+export default NavBar;

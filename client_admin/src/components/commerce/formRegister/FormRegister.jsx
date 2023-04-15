@@ -2,23 +2,22 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import style from "./formRegister.module.css";
 import { Redirect } from "react-router-dom";
-import validations from "./validations";
+import validations from "./validation";
 import bcrypt from "bcryptjs"; // librería para encriptcar contraseñas
-import { getAllCities } from "../../redux/actions";
+import { getAllCities, getCategorys } from "../../../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { CloudinaryContext } from "cloudinary-react"; // para guardar las imágenes externamente 
 import swal from "sweetalert"
 
-
 export default function FormRegister() {
-  const { ciudades } = useSelector(state => state);
+  const { ciudades, categorys } = useSelector(state => state);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(getCategorys());
     dispatch(getAllCities());
-  }, [dispatch]);
+  }, [getAllCities, getCategorys]);
 
-  console.log(typeof ciudades.id_ciudad);
 
   const [errors, setErrors] = useState({});
 
@@ -26,28 +25,33 @@ export default function FormRegister() {
     event.preventDefault();
   
     // Obtiene los valores del formulario
-    const { primer_nombre, 
-      segundo_nombre, 
-      primer_apellido, 
-      segundo_apellido, 
-      direccion, 
-      telefono, 
-      email, 
+    const {
+      id_categoria_comercio,
+      id_ciudad,
+      nombre_comercio,
+      direccion,
+      telefono,
+      estado,
+      nombre_contacto,
+      cargo,
       password,
-      id_ciudad 
+      email,
+      imagen,
     } = form;
   
     // Realiza las validaciones
     const errors = validations({ 
-      primer_nombre, 
-      segundo_nombre, 
-      primer_apellido, 
-      segundo_apellido, 
-      direccion, 
-      telefono, 
-      email, 
-      password, 
-      id_ciudad 
+        id_categoria_comercio,
+        nombre_comercio,
+        direccion,
+        telefono,
+        estado,
+        nombre_contacto,
+        cargo,
+        password,
+        email,
+        imagen,
+        id_ciudad 
     });
 
   
@@ -62,7 +66,7 @@ export default function FormRegister() {
         setForm({ ...form, password: hashedPassword });
   
         await axios
-          .post("http://localhost:3001/usuario", form)
+          .post("http://localhost:3001/commerce", form)
           .then(res => swal({
             title: 'Registro exitoso',
             text: 'Ya puedes navegar con tu cuenta!',
@@ -70,7 +74,7 @@ export default function FormRegister() {
             timer: '2000'
           }))
           .catch(err => swal({
-            title: 'Error',
+            text: 'Error',
             text: 'intente nuevamente',
             icon: 'error',
             timer: '2000',
@@ -144,25 +148,24 @@ export default function FormRegister() {
   }
 
   const [form, setForm] = useState({
-    id_tipo_usuario: 1,
-    primer_nombre: "",
-    segundo_nombre: "",
-    primer_apellido: "",
-    segundo_apellido: "",
+    id_categoria_comercio: null,
+    id_ciudad: null,
+    nombre_comercio: "",
     direccion: "",
     telefono: "",
-    email: "",
-    password: "",
-    id_ciudad: null,
     estado: true,
-    imagen: "",
+    nombre_contacto: "",
+    cargo: "",
+    password: "",
+    email: "",
+    imagen: ""
   });
 
   return (
     <>
      
       {shouldRedirect ? (
-        <Redirect to="/log-in" />
+        <Redirect to="/login" />
       ) : (
 
         /* ----------------------- CONTENEDOR GENERAL -----------------------*/
@@ -171,81 +174,60 @@ export default function FormRegister() {
           <div className={style.contenedorForm}>
           <CloudinaryContext cloudName="dfmkjxjsf">
             <form onSubmit={handleSubmit}>
-        {/* ----------------------- PRIMER NOMBRE -----------------------*/}
-              <div className={style.nombres}>
+        {/* ----------------------- NOMBRE DE COMERCIO -----------------------*/}
               <div className={style.contenedorDiv}>
-              <label for="" className={style.label2}>
-                  Nombre
+              <label for="" className={style.label}>
+                  Nombre del comercio
                 </label>
                 <input
                   type="text"
-                  name="primer_nombre"
-                  value={form.primer_nombre}
+                  name="nombre_comercio"
+                  value={form.nombre_comercio}
                   onChange={handleInputChange}
-                  className={style.input2}
+                  className={style.input}
                 />
                 
-                {errors.primer_nombre && (
-                <div className={style.errors}>{errors.primer_nombre}</div>
+                {errors.nombre_comercio && (
+                <div className={style.errors}>{errors.nombre_comercio}</div>
                 )}
               </div>
 
-        {/* ----------------------- SEGUNDO NOMBRE -----------------------*/}
+      {/* ----------------------- NOMBRE DE CONTACTO -----------------------*/}
               <div className={style.contenedorDiv}>
-              <label for="" className={style.label2}>
-                  Segundo nombre
+              <label for="" className={style.label}>
+                  Nombre de contacto
                 </label>
                 <input
                   type="text"
-                  name="segundo_nombre"
-                  value={form.segundo_nombre}
+                  name="nombre_contacto"
+                  value={form.nombre_contacto}
                   onChange={handleInputChange}
-                  className={style.input2}
+                  className={style.input}
                 />
-                 {errors.segundo_nombre && (
-                <div className={style.errors}>{errors.segundo_nombre}</div>
-                )}
-               
-                 </div>
-                 </div>
-
-        {/* ----------------------- PRIMER APELLIDO -----------------------*/}
-        <div className={style.apellidos}>
-             <div className={style.contenedorDiv}>
                 
-              <label for="" className={style.label2}>
-                  Apellido
-                </label>
-                <input
-                  type="text"
-                  name="primer_apellido"
-                  value={form.primer_apellido}
-                  onChange={handleInputChange}
-                  className={style.input2}
-                />
-                 {errors.primer_apellido && (
-                <div className={style.errors}>{errors.primer_apellido}</div>
+                {errors.nombre_contacto && (
+                <div className={style.errors}>{errors.nombre_contacto}</div>
                 )}
               </div>
 
-        {/* ----------------------- SEGUNDO APELLIDO -----------------------*/}
+
+              {/* ----------------------- CARGO -----------------------*/}
               <div className={style.contenedorDiv}>
-              <label for="" className={style.label2}>
-                  Segundo apellido
+              <label for="" className={style.label}>
+                  Cargo
                 </label>
                 <input
                   type="text"
-                  name="segundo_apellido"
-                  value={form.segundo_apellido}
+                  name="cargo"
+                  value={form.cargo}
                   onChange={handleInputChange}
-                  className={style.input2}
+                  className={style.input}
                 />
-                 {errors.segundo_apellido && (
-                <div className={style.errors}>{errors.segundo_apellido}</div>
-                )}               
+                
+                {errors.cargo && (
+                <div className={style.errors}>{errors.cargo}</div>
+                )}
               </div>
-              </div>
-
 
         {/* ----------------------- DIRECCION -----------------------*/}
               <div className={style.contenedorDiv}>
@@ -344,6 +326,36 @@ export default function FormRegister() {
               </div>
               </div>
 
+
+              {/* ----------------------- CATEGORIA -----------------------*/}
+              <div className={style.contenedorDiv}>
+                <label for="" className={style.label}>
+                  Categoria
+                </label>
+
+                <div>
+
+                {errors.id_categoria_comercio && (
+                <div className={style.errors}>{errors.id_categoria_comercio}</div>
+                )}
+                <div className={style.contenedorDiv}>
+                  <select
+                    name="id_categoria_comercio"
+                    onChange={e => handleInputChange(e)}
+                    className={style.select}
+                  >
+                   <option>Selecciona una categoria de comercio</option>
+                    {categorys &&
+                      categorys.map(c => (
+                        <option key = {c.id_categoria_comercio} value={c.id_categoria_comercio} primary={c.nombre_categoria_comercio}>
+                          {c.nombre_categoria_comercio}
+                        </option>
+                      ))}
+                  </select>
+                </div>
+              </div>
+              </div>
+
         {/* ----------------------- IMAGEN -----------------------*/}
               <div className={style.contenedorDiv}>
               <label htmlFor="" className={style.label}>
@@ -374,7 +386,7 @@ export default function FormRegister() {
               </div>
 
               <button type="submit" className={style.button}>
-                Registrase
+                Registrarse
               </button>
             </form>
             </CloudinaryContext>

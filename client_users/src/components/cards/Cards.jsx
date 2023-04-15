@@ -23,6 +23,8 @@ const Cards = () => {
       ? productsFitered.slice(conteoInicial, conteoFinal)
       : [];
 
+      
+
   const paginas = [];
 
   const numPaginas = Math.ceil(productsFitered.length / grupo);
@@ -38,9 +40,9 @@ const Cards = () => {
       ) : (
         <>
           <div className={styles.card}>
-            {aux && aux.map((product, index) => {
+            {aux.length ? aux.map((product, index) => {
               return <Card key={index} producto={product} />;
-            })}
+            }) : <div className={styles.alert} > <p>No hay coincidencias</p> </div>}
           </div>
           <div className={styles.paginado}>
             <div className={styles.paginadoAbj}>

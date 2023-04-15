@@ -52,9 +52,9 @@ export function userLoggedIn(estado) {
 export function getUsuarioByID(email) {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`${URL}/usuario?email=${email}`);
+      const response = await axios.get(`${URL}/email?email=${email}`);
       console.log(response);
-      // console.log(response.data);
+      console.log(response.data[0].Ciudad.nombre_ciudad); // Accede a la propiedad nombre_ciudad
 
       dispatch({
         type: action.GET_USER_BY_ID,
@@ -294,6 +294,26 @@ export function getReviews(id) {
       dispatch({ type: action.REVIEWS, payload: response.data });
     } catch (error) {
       dispatch({ type: action.REVIEWS, payload: error });
+    }
+  };
+}
+
+// COMPRAS DEL USUARIO
+
+export function getSales() {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`${URL}/venta`);
+      // console.log(response);
+      dispatch({
+        type: action.GET_SALE_BY_ID,
+        payload: response.data,
+      });
+    } catch (error) {
+      dispatch({
+        type: action.GET_SALE_BY_ID,
+        payload: error,
+      });
     }
   };
 }
