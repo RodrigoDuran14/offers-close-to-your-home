@@ -84,10 +84,11 @@ const Detail = () => {
       : (<div>
             <div className={s.box1}>
               <div className={s.container}>
-                <div
-                ><img className={s.image} src={product.imagen} alt={product.nombre}/></div>
+                <div style={{position:"relative"}}>
+                <div>
+                  <img className={s.image} src={product.imagen} alt={product.nombre}/></div>
                 <div className={s.condicion}>{product.condicion}</div>
-
+                </div>
                 <hr />
 
                 <div>
