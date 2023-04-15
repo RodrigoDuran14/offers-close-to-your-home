@@ -15,15 +15,14 @@ const Account = () => {
 
   const email = decodedToken.email;
 
+
+
   useEffect(() => {
     dispatch(getUsuarioByID(email)); // Actualizar el estado con la respuesta de la acción asincrónica
   }, [dispatch]);
 
-  const userLogin = usuario.map((e) => e.email === email);
-  console.log(userLogin);
-
-  // console.log(email);
-
+  const userLogin = usuario.filter((e) => e.email === email);
+  
   return (
     <div className={s.contenedor}>
       <div className={s.contenedorInfo}>
@@ -32,7 +31,7 @@ const Account = () => {
         </div>
         <div className={s.informacion}>
           {userLogin &&
-            userLogin.filter((e) => (
+            userLogin.map((e) => (
               <div key={e.email} className={s.aux}>
                 {e.imagen && (
                   <img className={s.imageFile} src={e.imagen} id="imagen" />
@@ -49,7 +48,7 @@ const Account = () => {
                     <div className={s.column}>
                       <label>{e.primer_nombre} {e.segundo_nombre} {e.primer_apellido} {e.segundo_apellido}</label>
                       <label>{e.direccion}</label>
-                      <label>{e.Ciudad?.nombre_ciudad}</label>
+                      <label>{e.Ciudad.nombre_ciudad}</label>
                       <label>{e.telefono}</label>
                       <label>{e.email}</label>
                     </div>

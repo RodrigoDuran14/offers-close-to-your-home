@@ -101,7 +101,7 @@ const NavBar = () => {
           <Link to="/account" className={s.link}>
             <h4>Ver perfil</h4>
           </Link>       
-          <Link to="/account" className={s.link}>
+          <Link to="/historial-de-compra" className={s.link}>
             <h4>Historial de compras</h4>
           </Link>
           <Link to="/" className={s.link} onClick={handleLogOut}>

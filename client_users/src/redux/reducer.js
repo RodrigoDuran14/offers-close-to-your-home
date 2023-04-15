@@ -46,13 +46,13 @@ const initialState = {
   logIn: false,
   linkMercadoPago: "",
   usuario: [],
-  reviews:[]
+  reviews: [],
+  compras: [],
 };
 
 function rootReducer(state = initialState, action) {
-  console.log("TYPE; ", action.type)
+  console.log("TYPE; ", action.type);
   switch (action.type) {
-
     case CREATE_PRODUCT:
       return { ...state, products: [...state.products, action.payload] };
     case GET_ALL_PRODUCTS:
@@ -60,14 +60,16 @@ function rootReducer(state = initialState, action) {
         ...state,
         products: action.payload,
         productsFitered: action.payload,
-        copyProducts:action.payload,
-        
+        copyProducts: action.payload,
       };
     case GET_PRODUCT_BY_ID:
       return { ...state, product: action.payload };
     case GET_PRODUCT_BY_NAME:
-      return { ...state,
-        productsFitered: state.products.filter(product=>product.nombre===action.payload )
+      return {
+        ...state,
+        productsFitered: state.products.filter(
+          (product) => product.nombre === action.payload
+        ),
       };
     case GET_PRODUCT_BY_CATEGORY:
       return {
@@ -78,18 +80,18 @@ function rootReducer(state = initialState, action) {
             action.payload
           );
         }),
-        copyProducts:[...state.products].filter((product) => {
+        copyProducts: [...state.products].filter((product) => {
           return (
             product.Categoria_producto.nombre_categoria_producto ===
             action.payload
           );
         }),
       };
-      
+
     case ORDERED_BY_NAME_DESC:
       return {
         ...state,
-        productsFitered:[...state.productsFitered].sort((a, b) =>
+        productsFitered: [...state.productsFitered].sort((a, b) =>
           b.nombre.localeCompare(a.nombre)
         ),
       };
@@ -97,7 +99,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         productsFitered: [...state.productsFitered].sort((a, b) =>
-        a.nombre.localeCompare(b.nombre)
+          a.nombre.localeCompare(b.nombre)
         ),
       };
     case GET_CATEGORY:
@@ -105,33 +107,33 @@ function rootReducer(state = initialState, action) {
         ...state,
         categorys: action.payload,
       };
-      case ORDERED_BY_LOWEST_PRICE:
-        return {
-          ...state,
-          productsFitered: [...state.productsFitered].sort((a, b) =>{
-            if (a.valor_con_descuento > b.valor_con_descuento) {
-              return 1;
-            }
-            if (b.valor_con_descuento > a.valor_con_descuento) {
-              return -1;
-            }
-            return 0;
-          })
+    case ORDERED_BY_LOWEST_PRICE:
+      return {
+        ...state,
+        productsFitered: [...state.productsFitered].sort((a, b) => {
+          if (a.valor_con_descuento > b.valor_con_descuento) {
+            return 1;
           }
-  
-      case ORDERED_BY_HIGHEST_PRICE:
-        return {
-          ...state,
-          productsFitered: [...state.productsFitered].sort((a, b) =>{
-            if (a.valor_con_descuento > b.valor_con_descuento) {
-              return -1;
-            }
-            if (b.valor_con_descuento > a.valor_con_descuento) {
-              return 1;
-            }
-            return 0;
-          })
-        };
+          if (b.valor_con_descuento > a.valor_con_descuento) {
+            return -1;
+          }
+          return 0;
+        }),
+      };
+
+    case ORDERED_BY_HIGHEST_PRICE:
+      return {
+        ...state,
+        productsFitered: [...state.productsFitered].sort((a, b) => {
+          if (a.valor_con_descuento > b.valor_con_descuento) {
+            return -1;
+          }
+          if (b.valor_con_descuento > a.valor_con_descuento) {
+            return 1;
+          }
+          return 0;
+        }),
+      };
     case FILTER_BY_NEW_PRODUCTS:
       return {
         ...state,
@@ -156,32 +158,32 @@ function rootReducer(state = initialState, action) {
     case ORDERED_BY_RECIENTES:
       return {
         ...state,
-        productsFitered: [...state.productsFitered].sort((a, b) =>{
+        productsFitered: [...state.productsFitered].sort((a, b) => {
           if (a.createdAt > b.createdAt) {
             return 1;
           }
-          if (b.createdAt> a.createdAt) {
+          if (b.createdAt > a.createdAt) {
             return -1;
           }
           return 0;
         }),
-        Copyproducts:[...state.productsFitered].sort((a, b) =>{
+        Copyproducts: [...state.productsFitered].sort((a, b) => {
           if (a.createdAt > b.createdAt) {
             return 1;
           }
-          if (b.createdAt> a.createdAt) {
+          if (b.createdAt > a.createdAt) {
             return -1;
           }
           return 0;
-        })
-        }
+        }),
+      };
     case OFERTAS:
       return {
         ...state,
         productsFitered: state.products.filter(
           (product) => product.valor_con_descuento < 60
         ),
-        copyProducts:state.products.filter(
+        copyProducts: state.products.filter(
           (product) => product.valor_con_descuento < 60
         ),
       };
@@ -247,7 +249,7 @@ function rootReducer(state = initialState, action) {
         ...state,
         product: [],
       };
-    case   CLEAN_REVIEWS:
+    case CLEAN_REVIEWS:
       return {
         ...state,
         reviews: [],
@@ -285,11 +287,11 @@ function rootReducer(state = initialState, action) {
         ...state,
         usuario: action.payload,
       };
-      case REVIEWS:
-        return{
-          ...state,
-          reviews: action.payload
-        }
+    case REVIEWS:
+      return {
+        ...state,
+        reviews: action.payload,
+      };
     default:
       return state;
   }
