@@ -1,5 +1,6 @@
 import { FaStar, FaRegStar } from 'react-icons/fa';
 import styles from "./CardReviews.module.css"
+
 function CardReview({descripcion_motivo, valor_calificacion}) {
     const maxStars = 5;
     const filledStars = Math.round(valor_calificacion);
@@ -13,11 +14,19 @@ function CardReview({descripcion_motivo, valor_calificacion}) {
     });
     
     return (
-      <div>
-        <p>{descripcion_motivo}</p>
-        <div className={styles.star}>{starList}</div>
+      <div className={styles.container}>
+        <div className={styles.box}>
+          <div className={styles.star}>
+            {starList}
+          </div>
+
+          <div style={{marginBottom: "20px"}}>
+            <p className={styles.texto}>{descripcion_motivo}</p>
+          </div>
+          <hr />
+        </div>
       </div>
     );
   }
   
-export default CardReview
+export default CardReview 

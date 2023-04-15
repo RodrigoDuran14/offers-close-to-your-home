@@ -3,7 +3,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
-import { getProductByName, getAllProducts } from "../../redux/actions";
+//import { getAllProducts } from "../../../redux/actions";
 import styles from "./SearchBar.module.css";
 
 const SearchBar = () => {
@@ -13,9 +13,9 @@ const SearchBar = () => {
   const handleChange = (e) => {
     setInput(e);
     if (input === "") {
-      dispatch(getAllProducts());
+      //dispatch(getAllProducts());
     }
-    dispatch(getProductByName(input));
+    //dispatch(getProductByName(input));
   };
 
   return (
@@ -26,7 +26,7 @@ const SearchBar = () => {
         onChange={(e) => handleChange(e.target.value)}
         type="text"
         required=""
-        placeholder="Buscar Ofertas..."
+        placeholder="Buscar Tus Ofertas..."
       />
       <button type="submit" className={styles.button}>
         <FontAwesomeIcon icon={faSearch} />

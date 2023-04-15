@@ -1,9 +1,9 @@
 import React from 'react'
-import styles from './Ventas.module.css'
+import styles from './Venta.module.css'
 import { Link } from 'react-router-dom'
 
 
-const Card = () => {
+const Venta = () => {
 
   return (
     /*
@@ -33,4 +33,4 @@ const Card = () => {
   )
 }
 
-export default Card
+export default Venta
