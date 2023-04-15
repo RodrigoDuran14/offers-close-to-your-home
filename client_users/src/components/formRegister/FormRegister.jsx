@@ -7,6 +7,8 @@ import bcrypt from "bcryptjs"; // librería para encriptcar contraseñas
 import { getAllCities } from "../../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { Image, CloudinaryContext } from "cloudinary-react"; // para guardar las imágenes externamente 
+import swal from "sweetalert"
+
 
 export default function FormRegister() {
   const { ciudades } = useSelector(state => state);
@@ -61,8 +63,19 @@ export default function FormRegister() {
   
         await axios
           .post("http://localhost:3001/usuario", form)
-          .then(res => alert(res.data))
-          .catch(err => console.log(err.response.data));
+          .then(res => swal({
+            title: 'Registro exitoso',
+            text: 'Ya puedes navegar con tu cuenta!',
+            icon: 'success',
+            timer: '2000'
+          }))
+          .catch(err => swal({
+            text: 'Error',
+            text: 'intente nuevamente',
+            icon: 'error',
+            timer: '2000',
+            button: 'Accept'
+          }));
   
         setShouldRedirect(true);
       } catch (error) {
