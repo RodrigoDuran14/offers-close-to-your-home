@@ -1,4 +1,4 @@
-const { getAllUsers, getUserByName, getUserById, getUserByEmail } = require("../../controllers/usuarios/getUsuarioController");
+const { getAllUsers, getUserByName, getUserById} = require("../../controllers/usuarios/getUsuarioController");
 
 const getAllUsersHandler = async (req, res, next) => {
   const { name } = req.query;
@@ -22,20 +22,11 @@ const getUserByIdHandler = async (req, res, next) => {
   }
 };
 
-const getUserByEmailHandler = async (req, res, next) => {
-  const { email } = req.query;
-  try {
-    const UserEmail = await getUserById(email)
-    res.status(200).json(UserEmail)
-  } catch (error) {
-    next(error)
-  }
-};
+
 
 module.exports = {
   getAllUsersHandler,
-  getUserByIdHandler,
-  getUserByEmailHandler
+  getUserByIdHandler
 }
 
 
