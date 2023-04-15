@@ -19,7 +19,7 @@ export function createProduct(product) {
 
   export function getCategorys() {
     return async function (dispatch) {
-      const resp = await axios.get(`${URL}/categorias`);
+      const resp = await axios.get(`${URL}/categoriaComercio`);
       dispatch({
         type: action.GET_CATEGORY,
         payload: resp.data,

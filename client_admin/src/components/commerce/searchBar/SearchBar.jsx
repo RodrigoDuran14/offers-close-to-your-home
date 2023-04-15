@@ -26,7 +26,7 @@ const SearchBar = () => {
         onChange={(e) => handleChange(e.target.value)}
         type="text"
         required=""
-        placeholder="Buscar Ofertas..."
+        placeholder="Buscar Tus Ofertas..."
       />
       <button type="submit" className={styles.button}>
         <FontAwesomeIcon icon={faSearch} />
