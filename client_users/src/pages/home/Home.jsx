@@ -7,7 +7,7 @@ import styles from "./Home.module.css";
 import Sidebar from "../../components/sideBar/Sidebar";
 
 
-import Carousel from "../../components/carousel/Carousel";
+//import Carousel from "../../components/carousel/Carousel";
 
 function Home() {
   // const productos = useSelector((state) => state.products)
@@ -31,12 +31,12 @@ function Home() {
         </div>
 
       </section>
-      <section className={styles.section2}>
+      {/*<section className={styles.section2}>
         <div className={styles.slider}>
 
           <Carousel />
         </div>
-      </section>
+  </section>*/}
     </>
 
   );
