@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import CartCard from "../../components/Cart_card/CartCard"
 import styles from './shopping.module.css'
-import {mercadoPago} from "../../redux/actions"
+import {cleanMercadoPago, mercadoPago} from "../../redux/actions"
 
 export default function ShoppingCart() {
   const dispatch = useDispatch()
@@ -11,6 +11,9 @@ export default function ShoppingCart() {
   useEffect(() => {
     window.localStorage.setItem("carrito", JSON.stringify(carrito));
     window.localStorage.getItem("carrito");
+    return () =>{
+      dispatch(cleanMercadoPago());
+    }
   }, [carrito]);
   
 //Suma de subtotales

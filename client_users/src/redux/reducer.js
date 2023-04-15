@@ -28,6 +28,7 @@ import {
   REVIEWS,
   CLEAN_REVIEWS,
   GET_SALE_BY_ID,
+  CLEAN_MERCADO_PAGO,
 } from "./actions-type.js";
 
 const initialState = {
@@ -255,6 +256,11 @@ function rootReducer(state = initialState, action) {
         ...state,
         reviews: [],
       };
+      case CLEAN_MERCADO_PAGO:
+        return {
+          ...state,
+          linkMercadoPago:"",
+        }
 
     case GET_ALL_CITIES:
       return {
