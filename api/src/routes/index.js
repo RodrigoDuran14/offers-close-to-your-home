@@ -14,6 +14,9 @@ router.use("/carga", carga)
 const productos = require("./producto");
 router.use("/products", productos);
 
+const email = require("./email");
+router.use("/email", email);
+
 const allproducts = require("./allProducts");
 router.use("/allProducts", allproducts);
 
