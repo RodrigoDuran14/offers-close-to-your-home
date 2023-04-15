@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUsuarioByID } from "../../redux/actions";
 import Cookies from "js-cookie";
@@ -14,6 +14,7 @@ const Account = () => {
   const decodedToken = jwt_decode(token);
 
   const email = decodedToken.email;
+  console.log(email);
 
 
 
@@ -21,8 +22,10 @@ const Account = () => {
     dispatch(getUsuarioByID(email)); // Actualizar el estado con la respuesta de la acción asincrónica
   }, [dispatch]);
 
+
   const userLogin = usuario.filter((e) => e.email === email);
   
+
   return (
     <div className={s.contenedor}>
       <div className={s.contenedorInfo}>
@@ -48,7 +51,7 @@ const Account = () => {
                     <div className={s.column}>
                       <label>{e.primer_nombre} {e.segundo_nombre} {e.primer_apellido} {e.segundo_apellido}</label>
                       <label>{e.direccion}</label>
-                      <label>{e.Ciudad.nombre_ciudad}</label>
+                      <label>{e.Ciudad.nombre_ciudad}</label> 
                       <label>{e.telefono}</label>
                       <label>{e.email}</label>
                     </div>

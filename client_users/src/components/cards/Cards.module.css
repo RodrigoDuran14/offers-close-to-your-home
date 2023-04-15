@@ -39,3 +39,11 @@
     align-items:center;
     margin-top: 20px;
 }
+
+.alert{
+    padding: 25px;
+    margin-top: 50px;
+    background-color: rgba(181, 178, 178, 0.25);
+    font-size: 2rem;
+    border-radius: 10px;
+}
