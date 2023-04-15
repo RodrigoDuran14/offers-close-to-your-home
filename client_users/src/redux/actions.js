@@ -52,9 +52,9 @@ export function userLoggedIn(estado) {
 export function getUsuarioByID(email) {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`${URL}/usuario?email=${email}`);
+      const response = await axios.get(`${URL}/email?email=${email}`);
       console.log(response);
-      // console.log(response.data);
+      console.log(response.data[0].Ciudad.nombre_ciudad); // Accede a la propiedad nombre_ciudad
 
       dispatch({
         type: action.GET_USER_BY_ID,

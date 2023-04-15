@@ -95,44 +95,6 @@ const getUserByName = async name => {
   }
 };
 
-const getUserByEmail = async email => {
-  try {
-    const users = await Usuario.findAll({
-      attributes: [
-        "id_tipo_usuario",
-        "id_usuario",
-        "primer_nombre",
-        "segundo_nombre",
-        "primer_apellido",
-        "segundo_apellido",
-        "direccion",
-        "telefono",
-        "id_ciudad",
-        "estado",
-        "email",
-        "password",
-        "imagen"
-      ],
-      include: [
-        {
-          model: Tipo_usuario,
-          attributes: ["nombre_tipo_usuario"]
-        },
-        {
-          model: Ciudad,
-          attributes: ["nombre_ciudad"]
-        },
-      ],
-      where: {
-        [Op.or]: [
-          { email: email },
-        ],
-      },
-    });
-    return users;
-  } catch (error) {
-    console.error(error);
-  }
-};
 
-module.exports = { getAllUsers, getUserById, getUserByName, getUserByEmail };
+
+module.exports = { getAllUsers, getUserById, getUserByName};
