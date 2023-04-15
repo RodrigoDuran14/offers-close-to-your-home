@@ -28,7 +28,7 @@ function Home() {
       {/*<section className={styles.section2}>
         <div className={styles.slider}>
           {/* <Carousel /> */}
-        </div>
+        {/* </div>
   </section>*/}
     </>
 

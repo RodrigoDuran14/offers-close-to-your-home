@@ -31,6 +31,7 @@ function App() {
       <Route exact path="/about" component={About} />
       <Route exact path="/shopping-cart" component={ShoppingCart} />
       <Route exact path="/historial-de-compra" component={HistorialDeCompra} />
+      <Route exact path="/comentarios" component={HistorialDeCompra} />
       <Footer />
     </div>
   );
