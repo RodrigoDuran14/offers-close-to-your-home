@@ -27,6 +27,7 @@ import {
   GET_USER_BY_ID,
   REVIEWS,
   CLEAN_REVIEWS,
+  GET_SALE_BY_ID,
 } from "./actions-type.js";
 
 const initialState = {
@@ -291,6 +292,11 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         reviews: action.payload,
+      };
+    case GET_SALE_BY_ID:
+      return {
+        ...state,
+        compras: action.payload,
       };
     default:
       return state;
