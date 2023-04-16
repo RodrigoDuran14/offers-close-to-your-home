@@ -66,3 +66,22 @@ export function createProduct(product) {
         .catch((err) => console.log(err));
     };
   }
+
+
+  export function getCommerceByID(email) {
+    return async (dispatch) => {
+      try {
+        const response = await axios.get(`${URL}/commerce?ByEmail=${email}`);
+        dispatch({
+          type: action.GET_COMMERCE_BY_ID,
+          payload: response.data,
+        });
+      } catch (error) {
+        console.log(error, "No se encontro usuario con ese id");
+        dispatch({
+          type: action.GET_COMMERCE_BY_ID,
+          payload: error,
+        });
+      }
+    };
+  }

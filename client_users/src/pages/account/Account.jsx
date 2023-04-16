@@ -15,7 +15,7 @@ const Account = () => {
 
   const email = decodedToken.email;
   console.log(email);
-a
+
 
 
   useEffect(() => {
@@ -75,5 +75,7 @@ a
     </div>
   );
 };
+
+
 
 export default Account;
