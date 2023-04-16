@@ -5,6 +5,7 @@ const GET_ALL_CITIES = "GET_ALL_CITIES";
 const LOADING = "LOADING";
 const READY = "READY";
 const COMMERCE_LOGIN = "COMMERCE_LOGIN";
+const GET_COMMERCE_BY_ID = "GET_COMMERCE_BY_ID"
 
 module.exports = {
   CREATE_PRODUCT,
@@ -14,4 +15,5 @@ module.exports = {
   LOADING,
   READY,
   COMMERCE_LOGIN,
+  GET_COMMERCE_BY_ID
 };

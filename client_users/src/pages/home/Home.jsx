@@ -25,11 +25,7 @@ function Home() {
           </div>
         </div>
       </section>
-      {/*<section className={styles.section2}>
-        <div className={styles.slider}>
-          {/* <Carousel /> */}
-        </div>
-  </section>*/}
+  
     </>
 
   );
