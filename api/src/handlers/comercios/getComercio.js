@@ -41,10 +41,10 @@ const getByEmailHandler = async (req, res, next) => {
 }
 
 const getByIdHandler = async (req, res, next) => {
-    const { id } = req.query;
+    const { id_comercio } = req.params;
 
     try {
-        const results = await getCommerceId(id)
+        const results = await getCommerceId(id_comercio)
 
         res.status(200).json(results)
 

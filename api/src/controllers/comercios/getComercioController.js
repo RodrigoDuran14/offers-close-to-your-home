@@ -48,10 +48,17 @@ const getOneCommerce = async (email, password) => {
 };
 
 const getCommerceId = async (id_comercio) => {
-  const databaseCommerce = await Comercio.findOne({
-    where: {
-      id_comercio,
-    },
+  const databaseCommerce = await Comercio.findByPk(id_comercio,{
+    attributes:["id_comercio",
+    "nombre_comercio",
+    "direccion",
+    "telefono",
+    "estado",
+    "nombre_contacto",
+    "cargo",
+    "password",
+    "email",
+    "imagen",],
     include: [{
       model: Ciudad,
     },
@@ -65,9 +72,10 @@ const getCommerceId = async (id_comercio) => {
 };
 
 const searchEmailCommerce = async (email) => {
+  const { Op } = require('sequelize');
   const oneMail = await Comercio.findOne({
     where: {
-      email,
+      email: {[Op.eq]:email} ,
     },
     include: [{
       model: Ciudad,

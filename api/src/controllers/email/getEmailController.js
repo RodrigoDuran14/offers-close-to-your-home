@@ -1,4 +1,4 @@
-const { Usuario, Tipo_usuario, Ciudad } = require("../../db");
+const { Usuario, Tipo_usuario, Ciudad , Comercio, Categoria_comercio} = require("../../db");
 const { Op, Sequelize } = require("sequelize");
 
 const getAllUsersEmail = async () => {
@@ -75,6 +75,41 @@ const getUserByEmail = async (email) => {
   }
 };
 
+const getCommerceByEmail = async (email) => {
+  try {
+    const users = await Comercio.findAll({
+      where: {
+        email: { [Op.regexp]: `^${email}$` } // Utiliza una expresión regular para buscar el correo exacto
+      },
+      attributes: [
+        "id_comercio",
+      "nombre_comercio",
+      "direccion",
+      "telefono",
+      "estado",
+      "nombre_contacto",
+      "cargo",
+      "password",
+      "email",
+      "imagen",
+      ],
+      include: [
+        {
+          model: Categoria_comercio,
+          attributes: ["nombre_categoria_comercio"]
+        },
+        {
+          model: Ciudad,
+          attributes: ["nombre_ciudad"]
+        }
+      ],
+    });
+    return users;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 
 // const getUserByEmail = async email => {
 //     try {
@@ -115,4 +150,4 @@ const getUserByEmail = async (email) => {
 //   };
 
 
-  module.exports = { getUserByEmail , getAllUsersEmail };
+  module.exports = { getUserByEmail , getAllUsersEmail, getCommerceByEmail };
