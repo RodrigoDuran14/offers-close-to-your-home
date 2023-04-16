@@ -46,3 +46,24 @@
     color: white;
     text-decoration: none;
 }
+
+.titulo {
+    width: 90%;
+    padding: 10px;
+    border: solid 1px rgb(154, 154, 154);
+    background-color: white;
+    font-size: 25px;
+}
+
+.text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 45vh;
+    margin-top: 20px;
+    margin-bottom: 140px;
+    border: solid 1px rgb(154,154,154);
+    background-color: white;
+    font-size: 20px;
+}

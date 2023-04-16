@@ -4,6 +4,7 @@ import { useState } from "react";
 import { eliminarDelCarrito, restarCantidad, sumarCantidad } from "../../redux/actions"
 import s from "./cartcard.module.css";
 import QuantityDisplay from "../quantityDisplay/QuantityDisplay";
+import swal from "sweetalert";
 
 export default function CartCard(product) {
   const dispatch = useDispatch();
@@ -15,13 +16,22 @@ export default function CartCard(product) {
   const [quantity, setQuantity] = useState(1);
 
   const handleDecrease = () => {
-    setQuantity(quantity - 1);
-    dispatch(restarCantidad(product))
+    if (quantity !== 1) {
+      setQuantity(quantity - 1);
+      dispatch(restarCantidad(product));
+    }
   };
 
   const handleIncrease = () => {
-    setQuantity(quantity + 1);
-    dispatch(sumarCantidad(product))
+    if (quantity !== 10) {
+      setQuantity(quantity + 1);
+      dispatch(sumarCantidad(product))
+    } else {
+      swal({
+        title: 'Número máximo de unidades disponibles',
+        icon: 'info'
+      })
+    }
   };
 
   return (
