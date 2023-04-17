@@ -19,9 +19,12 @@ const Account = () => {
 
   const email = decodedToken.email;
 
+
+
   useEffect(() => {
     dispatch(getUsuarioByEmail(email));
   }, [dispatch, email]);
+
 
   // Actualizar el estado local con los datos del usuario
   useEffect(() => {
@@ -78,6 +81,7 @@ const Account = () => {
             Cambiar Contraseña
           </button>
           {showProfileMenu && <FormUpdatePassword idUsuario={idUsuario} />}
+
         </div>
       </div>
       <div>         
@@ -98,5 +102,7 @@ const Account = () => {
     </div>
   );
 };
+
+
 
 export default Account;

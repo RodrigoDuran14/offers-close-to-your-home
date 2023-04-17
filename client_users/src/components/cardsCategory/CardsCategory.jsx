@@ -10,7 +10,7 @@ function CardsCategory() {
     
     useEffect(() => {
         dispatch(getCategorys());
-        // dispatch(getAllProducts());
+        dispatch(getAllProducts());
       }, [dispatch])
   return (
     <div className={styles.container}>

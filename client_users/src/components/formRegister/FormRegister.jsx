@@ -6,7 +6,7 @@ import validations from "./validations";
 import bcrypt from "bcryptjs"; // librería para encriptcar contraseñas
 import { getAllCities } from "../../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
-import { Image, CloudinaryContext } from "cloudinary-react"; // para guardar las imágenes externamente 
+import { CloudinaryContext } from "cloudinary-react"; // para guardar las imágenes externamente 
 import swal from "sweetalert"
 
 
@@ -63,21 +63,25 @@ export default function FormRegister() {
   
         await axios
           .post("http://localhost:3001/usuario", form)
-          .then(res => swal({
+          .then(res => {
+            swal({
             title: 'Registro exitoso',
             text: 'Ya puedes navegar con tu cuenta!',
             icon: 'success',
             timer: '2000'
-          }))
-          .catch(err => swal({
-            text: 'Error',
+            })
+            setShouldRedirect(true);
+          })
+          .catch(err => {
+            swal({
+            title: 'Error',
             text: 'intente nuevamente',
             icon: 'error',
             timer: '2000',
             button: 'Accept'
-          }));
+            })
+          });
   
-        setShouldRedirect(true);
       } catch (error) {
         console.error("Error al encriptar la password:", error);
       }
@@ -356,6 +360,7 @@ export default function FormRegister() {
                     className={style.imageFile}
                     src={form.imagen}
                     id="imagen"
+                    alt="foto perfil"
                   />
                 )}
               </div>

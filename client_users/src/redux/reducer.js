@@ -30,6 +30,12 @@ import {
   GET_USER_BY_EMAIL,
   PUT_USER,
   PUT_PASSWORD_USER,
+  GET_SALE_BY_ID,
+  CLEAN_MERCADO_PAGO,
+  COUNT_SUMAR,
+  COUNT_AGREGAR,
+  COUNT_RESTAR,
+  COUNT_DELETE
 } from "./actions-type.js";
 
 const initialState = {
@@ -44,34 +50,39 @@ const initialState = {
   product: {},
   filter: [],
   carrito: JSON.parse(window.localStorage.getItem("carrito")) || [],
+  countCarrito: JSON.parse(window.localStorage.getItem("count")) || 0,
   ciudades: [],
   display: false,
   logIn: false,
   linkMercadoPago: "",
   usuario: [],
-  reviews:[]
+  reviews: [],
+  compras: [],
 };
 
 function rootReducer(state = initialState, action) {
-  console.log("TYPE; ", action.type)
+  console.log("TYPE; ", action.type);
   switch (action.type) {
-
     case CREATE_PRODUCT:
       return { ...state, products: [...state.products, action.payload] };
+
     case GET_ALL_PRODUCTS:
       return {
         ...state,
         products: action.payload,
         productsFitered: action.payload,
-        copyProducts:action.payload,
-        
+        copyProducts: action.payload,
       };
+
     case GET_PRODUCT_BY_ID:
       return { ...state, product: action.payload };
+
     case GET_PRODUCT_BY_NAME:
-      return { ...state,
-        productsFitered: state.products.filter(product=>product.nombre===action.payload )
+      return {
+        ...state,
+        productsFitered: action.payload
       };
+
     case GET_PRODUCT_BY_CATEGORY:
       return {
         ...state,
@@ -81,60 +92,64 @@ function rootReducer(state = initialState, action) {
             action.payload
           );
         }),
-        copyProducts:[...state.products].filter((product) => {
+        copyProducts: [...state.products].filter((product) => {
           return (
             product.Categoria_producto.nombre_categoria_producto ===
             action.payload
           );
         }),
       };
-      
+
     case ORDERED_BY_NAME_DESC:
       return {
         ...state,
-        productsFitered:[...state.productsFitered].sort((a, b) =>
+        productsFitered: [...state.productsFitered].sort((a, b) =>
           b.nombre.localeCompare(a.nombre)
         ),
       };
+
     case ORDERED_BY_NAME_ASC:
       return {
         ...state,
         productsFitered: [...state.productsFitered].sort((a, b) =>
-        a.nombre.localeCompare(b.nombre)
+          a.nombre.localeCompare(b.nombre)
         ),
       };
+
     case GET_CATEGORY:
       return {
         ...state,
         categorys: action.payload,
       };
-      case ORDERED_BY_LOWEST_PRICE:
-        return {
-          ...state,
-          productsFitered: [...state.productsFitered].sort((a, b) =>{
-            if (a.valor_con_descuento > b.valor_con_descuento) {
-              return 1;
-            }
-            if (b.valor_con_descuento > a.valor_con_descuento) {
-              return -1;
-            }
-            return 0;
-          })
+
+    case ORDERED_BY_LOWEST_PRICE:
+      return {
+        ...state,
+        productsFitered: [...state.productsFitered].sort((a, b) => {
+          if (a.valor_con_descuento > b.valor_con_descuento) {
+            return 1;
           }
-  
-      case ORDERED_BY_HIGHEST_PRICE:
-        return {
-          ...state,
-          productsFitered: [...state.productsFitered].sort((a, b) =>{
-            if (a.valor_con_descuento > b.valor_con_descuento) {
-              return -1;
-            }
-            if (b.valor_con_descuento > a.valor_con_descuento) {
-              return 1;
-            }
-            return 0;
-          })
-        };
+          if (b.valor_con_descuento > a.valor_con_descuento) {
+            return -1;
+          }
+          return 0;
+        }),
+      };
+
+    case ORDERED_BY_HIGHEST_PRICE:
+      return {
+        ...state,
+        productsFitered: [...state.productsFitered].sort((a, b) => {
+          if (a.valor_con_descuento > b.valor_con_descuento) {
+            return -1;
+          }
+          if (b.valor_con_descuento > a.valor_con_descuento) {
+            return 1;
+          }
+          return 0;
+        }),
+      };
+
     case FILTER_BY_NEW_PRODUCTS:
       return {
         ...state,
@@ -142,6 +157,7 @@ function rootReducer(state = initialState, action) {
           (item) => item.condicion === "Nuevo"
         ),
       };
+
     case FILTER_BY_USED_PRODUCTS:
       return {
         ...state,
@@ -149,6 +165,7 @@ function rootReducer(state = initialState, action) {
           (item) => item.condicion === "Usado"
         ),
       };
+
     case FILTER_BY_REFURBISHED_PRODUCTS:
       return {
         ...state,
@@ -156,35 +173,37 @@ function rootReducer(state = initialState, action) {
           (item) => item.condicion === "Reacondicionado"
         ),
       };
+
     case ORDERED_BY_RECIENTES:
       return {
         ...state,
-        productsFitered: [...state.productsFitered].sort((a, b) =>{
+        productsFitered: [...state.productsFitered].sort((a, b) => {
           if (a.createdAt > b.createdAt) {
             return 1;
           }
-          if (b.createdAt> a.createdAt) {
+          if (b.createdAt > a.createdAt) {
             return -1;
           }
           return 0;
         }),
-        Copyproducts:[...state.productsFitered].sort((a, b) =>{
+        Copyproducts: [...state.productsFitered].sort((a, b) => {
           if (a.createdAt > b.createdAt) {
             return 1;
           }
-          if (b.createdAt> a.createdAt) {
+          if (b.createdAt > a.createdAt) {
             return -1;
           }
           return 0;
-        })
-        }
+        }),
+      };
+
     case OFERTAS:
       return {
         ...state,
         productsFitered: state.products.filter(
           (product) => product.valor_con_descuento < 60
         ),
-        copyProducts:state.products.filter(
+        copyProducts: state.products.filter(
           (product) => product.valor_con_descuento < 60
         ),
       };
@@ -244,18 +263,43 @@ function rootReducer(state = initialState, action) {
         ...state,
         carrito: filter,
       };
+    case COUNT_AGREGAR:
+      return {
+        ...state,
+        countCarrito: state.countCarrito + action.payload
+      }
+    case COUNT_SUMAR:
+      return {
+        ...state,
+        countCarrito: state.countCarrito + 1
+      }
+    case COUNT_RESTAR:
+      return {
+        ...state,
+        countCarrito: state.countCarrito - 1
+      }
+    case COUNT_DELETE:
+      return {
+        ...state,
+        countCarrito: state.countCarrito - action.payload
+      }      
 
     case CLEAN_PRODUCT:
       return {
         ...state,
         product: [],
       };
-    case   CLEAN_REVIEWS:
+
+    case CLEAN_REVIEWS:
       return {
         ...state,
         reviews: [],
       };
-
+    case CLEAN_MERCADO_PAGO:
+      return {
+        ...state,
+        linkMercadoPago: "",
+      };
     case GET_ALL_CITIES:
       return {
         ...state,
@@ -264,8 +308,8 @@ function rootReducer(state = initialState, action) {
 
     case LOADING:
       return {
-        ...state,
-        display: true,
+      ...state,
+      display: true,
       };
 
     case READY:
@@ -273,11 +317,13 @@ function rootReducer(state = initialState, action) {
         ...state,
         display: false,
       };
+
     case USER_LOGIN:
       return {
         ...state,
         logIn: action.payload,
       };
+
     case MERCADO_PAGO:
       return {
         ...state,
@@ -303,6 +349,7 @@ function rootReducer(state = initialState, action) {
           ...state,
           usuario: action.payload,
         } ;   
+
     default:
       return state;
   }

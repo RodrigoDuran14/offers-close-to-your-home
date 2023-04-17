@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom'
 import validation from './validation'
 import swal from 'sweetalert';
 import axios from 'axios'
+import styles from './FormProduct.module.css';
 
 export default function FormCreateProduct() {
     const [image, setImage] = useState('')
@@ -39,7 +40,7 @@ export default function FormCreateProduct() {
 
     }
     return (
-        <div>
+        <div className={styles.contenedor}>
             <Formik
                 initialValues={{
                     nombre: '',
@@ -54,26 +55,28 @@ export default function FormCreateProduct() {
                 onSubmit={handleSubmit}
             >
                 <Form>
+                    nombre del producto
                     <Field name='nombre' type='text' placeholder='Nombre' />
+                   
                     <ErrorMessage name="nombre" />
-
+                     Descripcion del producto
                     <Field name='descripcion_producto' as='textarea' placeholder='Descripción' />
                     <ErrorMessage name="descripcion_producto" />
-
+                      fecha inicial
                     <Field name='fecha_inicial' type='text' />
                     <ErrorMessage name="fecha_inicial" />
-
+                      Fecha final
                     <Field name='fecha_final' type='text' />
                     <ErrorMessage name="fecha_final" />
-
+                     Agregar una imagen
                     <Field name='image' type='file' onChange={handleImage} />
-
+                      Cantidad
                     <Field name='cantidad' type='text' />
                     <ErrorMessage name="cantidad" />
-
+                    Existencia
                     <Field name='existencia' type='number' />
                     <ErrorMessage name="existencia" />
-
+                      Valor
                     <Field name='valor' type='number' />
                     <ErrorMessage name="valor" />
 

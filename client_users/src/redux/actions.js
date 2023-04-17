@@ -32,6 +32,32 @@ export function sumarCantidad(id) {
   };
 }
 
+export function agregarCount(quantity) {
+  return {
+    type: action.COUNT_AGREGAR,
+    payload: quantity
+  }
+}
+
+export function sumarCount() {
+  return {
+    type: action.COUNT_SUMAR,
+  }
+}
+
+export function restarCount() {
+  return {
+    type: action.COUNT_RESTAR,
+  }
+}
+
+export function deleteCount(quantity) {
+  return {
+    type: action.COUNT_DELETE,
+    payload: quantity
+  }
+}
+
 // ========================* USUARIOS *========================
 export function registerUser() {
   return () => {
@@ -155,20 +181,20 @@ export const getProductById = (id) => async (dispatch) => {
 // * 4.action-creator para obtener producto por nombre
 
 export const getProductByName = (name) => async (dispatch) => {
-  return { type: action.GET_PRODUCT_BY_NAME, payload: name };
-  // try {
-  //   dispatch(loading());
-  //   const res = await axios.get(`${URL}/products?name=${name}`);
-  //   const result = res.data;
-  //   console.log(result);
-  //   dispatch({
-  //     type: action.GET_PRODUCT_BY_NAME,
-  //     payload: result,
-  //   });
-  //   dispatch(ready());
-  // } catch (error) {
-  //   console.log(error);
-  // }
+  // return { type: action.GET_PRODUCT_BY_NAME, payload: name };
+  try {
+    dispatch(loading());
+    const res = await axios.get(`${URL}/products?name=${name}`);
+    const result = res.data;
+    console.log(result);
+     dispatch({
+      type: action.GET_PRODUCT_BY_NAME,
+      payload: result,
+    });
+    dispatch(ready());
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 // * 5. action-creator para obtener producto por categoría
@@ -313,6 +339,12 @@ export function mercadoPago(link) {
     payload: link,
   };
 }
+
+export function cleanMercadoPago() {
+  return {
+    type: action.CLEAN_MERCADO_PAGO
+  }
+}
 // REVIEWS // COMENTARIOS
 
 export function getReviews(id) {
@@ -323,6 +355,26 @@ export function getReviews(id) {
       dispatch({ type: action.REVIEWS, payload: response.data });
     } catch (error) {
       dispatch({ type: action.REVIEWS, payload: error });
+    }
+  };
+}
+
+// COMPRAS DEL USUARIO
+
+export function getSales() {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`${URL}/venta`);
+      // console.log(response);
+      dispatch({
+        type: action.GET_SALE_BY_ID,
+        payload: response.data,
+      });
+    } catch (error) {
+      dispatch({
+        type: action.GET_SALE_BY_ID,
+        payload: error,
+      });
     }
   };
 }

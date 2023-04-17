@@ -11,6 +11,7 @@ import NavBar from "./components/navBar/NavBar";
 import HomePrincipal from "./pages/homePrincipal/HomePrincipal";
 import Footer from "./components/footer/Footer";
 import ShoppingCart from "./pages/shopping/ShoppingCart";
+import HistorialDeCompra from "./pages/shoppingHistory/ShoppingHistory";
 // import Footer from "./components/footer/Footer";
 
 function App() {
@@ -29,6 +30,8 @@ function App() {
       <Route exact path="/forgot-password" component={ForgotPassword} />
       <Route exact path="/about" component={About} />
       <Route exact path="/shopping-cart" component={ShoppingCart} />
+      <Route exact path="/historial-de-compra" component={HistorialDeCompra} />
+      <Route exact path="/comentarios" component={HistorialDeCompra} />
       <Footer />
     </div>
   );

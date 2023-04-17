@@ -1,16 +1,20 @@
-import { useEffect } from "react"
+import React, { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import CartCard from "../../components/Cart_card/CartCard"
 import styles from './shopping.module.css'
-import {mercadoPago} from "../../redux/actions"
+import {cleanMercadoPago, mercadoPago} from "../../redux/actions"
 
 export default function ShoppingCart() {
   const dispatch = useDispatch()
-  const { carrito, linkMercadoPago } = useSelector((state) => state);
+  const { carrito, linkMercadoPago, countCarrito } = useSelector((state) => state);
 
   useEffect(() => {
     window.localStorage.setItem("carrito", JSON.stringify(carrito));
+    window.localStorage.setItem("count", JSON.stringify(countCarrito));
     window.localStorage.getItem("carrito");
+    return () =>{
+      dispatch(cleanMercadoPago());
+    }
   }, [carrito]);
   
 //Suma de subtotales
@@ -32,38 +36,52 @@ export default function ShoppingCart() {
   }
   
   return (
-    <div>
-      <h2>Carrito de compras</h2>
-      {carrito && carrito.length > 0 ? (
-        carrito.map(producto => (
-          <CartCard key={producto.id}
-          id_producto = {producto.id_producto}
-          imagen={producto.imagen} 
-          nombre={producto.nombre} 
-          valor_con_descuento={producto.valor_con_descuento}
-          cantidad={producto.cantidad}
-          total={total}
-          /> 
-        ))
-          ) : (
-            <p>No hay productos en el carrito.</p>
-          )}
-      <div className={styles.containerTotal}>
-        <div className={styles.total}>
-          <div style={{fontSize: "30px", marginLeft: "15px"}}>
-            <h3>Total</h3>
-          </div>
-          <div style={{fontSize: "30px", marginRight: "15px"}}>
-            <h3>${total}</h3>
-          </div>
-        </div> 
+    <div style={{marginTop:"100px"}}>
+      <div style={{display:"flex", justifyContent:"center"}}>
+        <div className={styles.titulo}>
+          <h2>Carrito de compras</h2>
+        </div>
       </div>
-      
-      {linkMercadoPago
-      ?(<div className={styles.mercadoPago}><a href={linkMercadoPago}>Pagar</a></div>)
-      : <button onClick={handlerPago}>Confirmar compra</button>
-      }
-   
+      {carrito.length ? (
+        <div style={{marginBottom:"120px"}}>
+          {carrito.map(producto => (
+            <CartCard
+              key={producto.id}
+              id_producto={producto.id_producto}
+              imagen={producto.imagen} 
+              nombre={producto.nombre} 
+              valor_con_descuento={producto.valor_con_descuento}
+              cantidad={producto.cantidad}
+              total={total}
+            /> 
+          ))}
+          <div className={styles.containerTotal}>
+            <div className={styles.total}>
+              <div style={{fontSize: "30px", marginLeft: "15px"}}>
+                <h3>Total</h3>
+              </div>
+              <div style={{fontSize: "30px", marginRight: "15px"}}>
+                <h3>${total}</h3>
+              </div>
+            </div> 
+          </div>
+          {linkMercadoPago ? (
+            <div className={styles.mercadoPago}>
+              <a href={linkMercadoPago}>Pagar</a>
+            </div>
+          ) : (
+            <button onClick={handlerPago}>Confirmar compra</button>
+          )}
+        </div>
+      ) : (
+        <div style={{display: "flex", justifyContent: "center"}}>
+          <div className={styles.text}>
+            <div>
+              <p>No hay productos en el carrito.</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
 
   );

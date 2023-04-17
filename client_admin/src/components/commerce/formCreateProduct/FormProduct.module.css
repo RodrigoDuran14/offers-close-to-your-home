@@ -1,0 +1,11 @@
+.contenedor {
+
+  height: 80vh; /* ajusta la altura según tus necesidades */
+  padding: 1.5rem;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+}
