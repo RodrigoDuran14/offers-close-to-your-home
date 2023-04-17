@@ -63,21 +63,25 @@ export default function FormRegister() {
   
         await axios
           .post("http://localhost:3001/usuario", form)
-          .then(res => swal({
+          .then(res => {
+            swal({
             title: 'Registro exitoso',
             text: 'Ya puedes navegar con tu cuenta!',
             icon: 'success',
             timer: '2000'
-          }))
-          .catch(err => swal({
+            })
+            setShouldRedirect(true);
+          })
+          .catch(err => {
+            swal({
             title: 'Error',
             text: 'intente nuevamente',
             icon: 'error',
             timer: '2000',
             button: 'Accept'
-          }));
+            })
+          });
   
-        setShouldRedirect(true);
       } catch (error) {
         console.error("Error al encriptar la password:", error);
       }

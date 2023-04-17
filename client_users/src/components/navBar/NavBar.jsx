@@ -42,10 +42,8 @@ const NavBar = () => {
   const handleLogOut = () => {
     dispatch(userLoggedIn(logOut))
   };
-  
-  
-
-
+    /* ------------- LOGOUT ------------- */
+  const count = useSelector(state => state.countCarrito)
   return (
     <div className={s.container}>
       <div className={s.menu}>
@@ -112,12 +110,14 @@ const NavBar = () => {
     </div>
   )}
 </div>
-      <div>
-        <Link to="/shopping-cart" >
-        <button className={s.button}>
-          {" "}
-          <AiOutlineShoppingCart size={25} />{" "}
-        </button>
+      <div style={{position: "relative"}}>
+        <Link to="/shopping-cart" style={{textDecoration:"none"}}>
+        <div style={{display:"inline-block", position:"absolute", top:"-10px", right:"6px"}}>
+          <h4 style={{fontSize:"10px", color:"red"}}>{count === 0 ? "": count}</h4>
+        </div>
+        <div className={s.button}>
+          <AiOutlineShoppingCart size={25} />
+        </div>
         </Link>
       </div>
 

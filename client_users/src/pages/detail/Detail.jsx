@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import QuantityDisplay from '../../components/quantityDisplay/QuantityDisplay'
-import { agregarAlCarrito, getProductById, cleanProduct, getReviews, cleanReviews } from '../../redux/actions'
+import { agregarAlCarrito, getProductById, cleanProduct, getReviews, cleanReviews, agregarCount } from '../../redux/actions'
 import { Redirect } from "react-router-dom";
 import s from './Detail.module.css'
 import swal from 'sweetalert'
@@ -31,6 +31,7 @@ const Detail = () => {
     })
    if(!exists){
     dispatch(agregarAlCarrito(product, quantity))
+    dispatch(agregarCount(quantity))
      swal({
        title: `Agregaste ${product.nombre}`,
        icon: "success",
@@ -73,6 +74,7 @@ const Detail = () => {
     })
     if(!exists){
       dispatch(agregarAlCarrito(product, quantity))
+      dispatch(agregarCount(quantity))
     }
     setShouldRedirect(true)
   }

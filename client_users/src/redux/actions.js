@@ -32,6 +32,31 @@ export function sumarCantidad(id) {
   };
 }
 
+export function agregarCount(quantity) {
+  return {
+    type: action.COUNT_AGREGAR,
+    payload: quantity
+  }
+}
+
+export function sumarCount() {
+  return {
+    type: action.COUNT_SUMAR,
+  }
+}
+
+export function restarCount() {
+  return {
+    type: action.COUNT_RESTAR,
+  }
+}
+
+export function deleteCount() {
+  return {
+    type: action.COUNT_DELETE
+  }
+}
+
 // ========================* USUARIOS *========================
 export function registerUser() {
   return () => {
