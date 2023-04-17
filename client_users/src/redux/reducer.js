@@ -27,6 +27,9 @@ import {
   GET_USER_BY_ID,
   REVIEWS,
   CLEAN_REVIEWS,
+  GET_USER_BY_EMAIL,
+  PUT_USER,
+  PUT_PASSWORD_USER,
 } from "./actions-type.js";
 
 const initialState = {
@@ -280,7 +283,7 @@ function rootReducer(state = initialState, action) {
         ...state,
         linkMercadoPago: action.payload,
       };
-    case GET_USER_BY_ID:
+    case GET_USER_BY_EMAIL:
       return {
         ...state,
         usuario: action.payload,
@@ -290,6 +293,16 @@ function rootReducer(state = initialState, action) {
           ...state,
           reviews: action.payload
         }
+      case PUT_USER:
+        return {
+          ...state,
+          usuario: action.payload,
+        };
+      case GET_USER_BY_ID:
+        return {
+          ...state,
+          usuario: action.payload,
+        } ;   
     default:
       return state;
   }
