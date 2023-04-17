@@ -102,6 +102,9 @@ const NavBar = () => {
           <Link to="/account" className={s.link}>
             <h4>Historial de ventas</h4>
           </Link>
+          <Link to="/producto" className={s.link}>
+            <h4>Crear Producto</h4>
+          </Link>
           <Link to="/" className={s.link} onClick={handleLogOut}>
             <h4>Cerrar sesión</h4>
           </Link>

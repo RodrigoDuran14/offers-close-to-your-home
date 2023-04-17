@@ -17,10 +17,11 @@ const SearchBar = () => {
     if (e !== "") {
       history.push("/home");
       dispatch(getProductByName(input));
-    } else {
-      history.goBack()
-      dispatch(getAllProducts());
-    }
+    } 
+    // else {
+      
+    //   dispatch(getAllProducts());
+    // }
   };
 
   return (

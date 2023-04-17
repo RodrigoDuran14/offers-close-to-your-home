@@ -87,8 +87,9 @@ const Detail = () => {
             <div className={s.box1}>
               <div className={s.container}>
                 <div style={{position:"relative"}}>
-                <div>
-                  <img className={s.image} src={product.imagen} alt={product.nombre}/></div>
+                <div className={s.container_img}>
+                  <img className={s.image} src={product.imagen} alt={product.nombre}/>
+                  </div>
                 <div className={s.condicion}>{product.condicion}</div>
                 </div>
                 <hr />
@@ -113,8 +114,8 @@ const Detail = () => {
                   </div>
 
                   <div className={s.buttons}>
-                    <button style={{ width: '240px' }} onClick={handlerComprar}>Comprar</button>
-                    <button style={{ width: '240px' }} onClick={handlerCarrito}>Agregar al carrito</button>
+                    <button className={s.btn}  onClick={handlerComprar}>Comprar</button>
+                    <button className={s.btn} onClick={handlerCarrito}>Agregar al carrito</button>
                   </div>
 
                 </div>

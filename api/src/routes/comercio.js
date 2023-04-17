@@ -9,7 +9,7 @@ const router = Router();
 router.get("/", getAllCommerceHandler)
 router.get("/byName", getByNameHandler)
 router.get("/byEmail", getByEmailHandler)
-router.get("/byId", getByIdHandler)
+router.get("/:id_comercio", getByIdHandler)
 router.get("/login", loginCommerce)
 router.post("/loginCommerce",loginHandler )
 router.post("/", postCommerceHandler)
