@@ -7,6 +7,7 @@ import {
   LOADING,
   READY,
   COMMERCE_LOGIN,
+  GET_COMMERCE_BY_ID
 } from "./actions-type.js";
 
 const initialState = {
@@ -66,6 +67,11 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         logIn: action.payload,
       };
+      case GET_COMMERCE_BY_ID:
+        return{
+          ...state,
+          comercios: action.payload
+        }
 
     default:
       return state;
