@@ -51,9 +51,10 @@ export function restarCount() {
   }
 }
 
-export function deleteCount() {
+export function deleteCount(quantity) {
   return {
-    type: action.COUNT_DELETE
+    type: action.COUNT_DELETE,
+    payload: quantity
   }
 }
 

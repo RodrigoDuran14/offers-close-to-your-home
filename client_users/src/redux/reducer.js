@@ -268,7 +268,7 @@ function rootReducer(state = initialState, action) {
     case COUNT_DELETE:
       return {
         ...state,
-        countCarrito: 0
+        countCarrito: state.countCarrito - action.payload
       }      
 
     case CLEAN_PRODUCT:

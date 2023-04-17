@@ -11,10 +11,11 @@ export default function CartCard(product) {
 
   function handleEliminarProducto() {
     dispatch(eliminarDelCarrito(product));
-    dispatch(deleteCount())
+    dispatch(deleteCount(product.cantidad))
+    console.log(product.cantidad);
   }
 
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(product.cantidad);
 
   const handleDecrease = () => {
     if (quantity !== 1) {
