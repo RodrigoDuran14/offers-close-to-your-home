@@ -4,6 +4,7 @@
     height: 100vh;
     width: 100%;
     background-color: #97978d;
+    margin-bottom: 120px;
 }
 
 .tabla{
@@ -34,16 +35,19 @@
 
 .detalle{
     display: flex;
-    align-items: center;
     border: 3px black solid;
     width: 1300px;
     margin-top: 10px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
 }
 
 .columna{
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 23px;
 }
 
 .img{
@@ -53,5 +57,11 @@
 
 .aux{
     display: flex;
-    margin-right: 40px;
+    margin-top: 23px;
+}
+
+.link{
+    display: flex;
+    color: #97978d;
+    text-decoration: none;
 }

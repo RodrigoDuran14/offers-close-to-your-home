@@ -11,32 +11,27 @@ const SearchBar = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const handleChange = (e) => {
-    setInput(e);
-        
-    if (e !== "") {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(getProductByName(input));
       history.push("/home");
-      dispatch(getProductByName(input));
-    } else {
-      history.goBack()
-      dispatch(getAllProducts());
-    }
+     
   };
 
   return (
-    <div className={styles.container}>
+    <form onSubmit={handleSubmit}className={styles.container}>
       <input
         className={styles.input}
         value={input}
-        onChange={(e) => handleChange(e.target.value.trim())}
+        onChange={(e) => setInput(e.target.value)}
         type="text"
         required=""
         placeholder="Buscar Ofertas..."
       />
-      <button type="submit" className={styles.button}>
+       <button type="submit" className={styles.button}>
         <FontAwesomeIcon icon={faSearch} />
       </button>
-    </div>
+    </form>
   );
 };
 

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import QuantityDisplay from '../../components/quantityDisplay/QuantityDisplay'
-import { agregarAlCarrito, getProductById, cleanProduct, getReviews, cleanReviews } from '../../redux/actions'
+import { agregarAlCarrito, getProductById, cleanProduct, getReviews, cleanReviews, agregarCount } from '../../redux/actions'
 import { Redirect } from "react-router-dom";
 import s from './Detail.module.css'
 import swal from 'sweetalert'
@@ -31,6 +31,7 @@ const Detail = () => {
     })
    if(!exists){
     dispatch(agregarAlCarrito(product, quantity))
+    dispatch(agregarCount(quantity))
      swal({
        title: `Agregaste ${product.nombre}`,
        icon: "success",
@@ -73,6 +74,7 @@ const Detail = () => {
     })
     if(!exists){
       dispatch(agregarAlCarrito(product, quantity))
+      dispatch(agregarCount(quantity))
     }
     setShouldRedirect(true)
   }
@@ -85,8 +87,9 @@ const Detail = () => {
             <div className={s.box1}>
               <div className={s.container}>
                 <div style={{position:"relative"}}>
-                <div>
-                  <img className={s.image} src={product.imagen} alt={product.nombre}/></div>
+                <div className={s.container_img}>
+                  <img className={s.image} src={product.imagen} alt={product.nombre}/>
+                  </div>
                 <div className={s.condicion}>{product.condicion}</div>
                 </div>
                 <hr />
@@ -111,8 +114,8 @@ const Detail = () => {
                   </div>
 
                   <div className={s.buttons}>
-                    <button style={{ width: '240px' }} onClick={handlerComprar}>Comprar</button>
-                    <button style={{ width: '240px' }} onClick={handlerCarrito}>Agregar al carrito</button>
+                    <button className={s.btn}  onClick={handlerComprar}>Comprar</button>
+                    <button className={s.btn} onClick={handlerCarrito}>Agregar al carrito</button>
                   </div>
 
                 </div>

@@ -1,13 +1,9 @@
 import React from "react";
 import Cards from "../../components/cards/Cards";
-// import Filter from '../../components/filter/Filter'
 import styles from "./Home.module.css";
-
-
 import Sidebar from "../../components/sideBar/Sidebar";
 
 
-//import Carousel from "../../components/carousel/Carousel";
 
 function Home() {
   // const productos = useSelector((state) => state.products)
@@ -25,9 +21,11 @@ function Home() {
           </div>
         </div>
       </section>
-
-  
-
+      {/*<section className={styles.section2}>
+        <div className={styles.slider}>
+          {/* <Carousel /> */}
+        {/* </div>
+  </section>*/}
     </>
   );
 }
