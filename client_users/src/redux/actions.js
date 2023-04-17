@@ -75,7 +75,7 @@ export function userLoggedIn(estado) {
   };
 }
 
-export function getUsuarioByID(email) {
+export function getUsuarioByEmail(email) {
   return async (dispatch) => {
     try {
       const response = await axios.get(`${URL}/email?email=${email}`);
@@ -83,11 +83,11 @@ export function getUsuarioByID(email) {
       console.log(response.data[0].Ciudad.nombre_ciudad); // Accede a la propiedad nombre_ciudad
 
       dispatch({
-        type: action.GET_USER_BY_ID,
+        type: action.GET_USER_BY_EMAIL,
         payload: response.data,
       });
     } catch (error) {
-      console.log(error, "No se encontro usuario con ese id");
+      console.log(error, "No se encontro usuario con ese email");
       dispatch({
         type: action.GET_USER_BY_ID,
         payload: error,
@@ -95,6 +95,35 @@ export function getUsuarioByID(email) {
     }
   };
 }
+
+export function putUser(userId, userData) {
+  return () => {
+    axios
+      .put(`${URL}/usuario/${userId}`, userData) 
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
+  };
+}
+
+export const getUserById = (id) => async (dispatch) => {
+  try {
+    dispatch(loading());
+    const res = await axios.get(`${URL}/usuario/${id}`);
+    dispatch({
+      type: action.GET_USER_BY_ID,
+      payload: res.data,
+    });
+    dispatch(ready());
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: action.GET_USER_BY_ID,
+      payload: error,
+    });
+    dispatch(ready());
+  }
+};
+  
 
 // ========================* PRODUCTOS *========================
 export function createProduct(product) {
