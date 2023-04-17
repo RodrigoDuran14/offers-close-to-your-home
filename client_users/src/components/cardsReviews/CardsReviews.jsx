@@ -21,7 +21,7 @@ function CardsReviews(){
             )
         })): (
                 <div style={{margin: "100px"}}>
-                    <p style={{fontSize:"25px"}}>Este producto no tiene opiniones aun</p>
+                    <p style={{fontSize:"1.5rem"}}>Este producto no tiene opiniones aun</p>
                 </div>
                 )
     }
