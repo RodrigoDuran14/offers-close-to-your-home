@@ -4,6 +4,7 @@ import { getCommerceByID } from "../../../redux/actions";
 import Cookies from "js-cookie";
 import jwt_decode from "jwt-decode";
 import s from "./Account.module.css";
+import FormUpdate from "../../../components/commerce/formUpdate/FormUpdate";
 
 const Account = () => {
   const { comercios } = useSelector((state) => state);
@@ -11,7 +12,7 @@ const Account = () => {
   const [email, setEmail] = useState("");
 
   useEffect(() => {
-    const token = Cookies.get("user_token");
+    const token = Cookies.get("commerce_token");
     const decodedToken = jwt_decode(token);
     setEmail(decodedToken.email);
     dispatch(getCommerceByID(decodedToken.email));
@@ -51,7 +52,7 @@ const Account = () => {
           <li className={s.liForm}>
             <a href="#">
               {/* Renderizar el componente FormUpdate dentro del elemento li */}
-             {/*<FormUpdate />*/}
+             <FormUpdate />
             </a>
           </li>
         </ul>

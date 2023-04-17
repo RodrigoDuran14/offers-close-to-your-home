@@ -57,6 +57,7 @@ function rootReducer(state = initialState, action) {
   switch (action.type) {
     case CREATE_PRODUCT:
       return { ...state, products: [...state.products, action.payload] };
+
     case GET_ALL_PRODUCTS:
       return {
         ...state,
@@ -64,8 +65,10 @@ function rootReducer(state = initialState, action) {
         productsFitered: action.payload,
         copyProducts: action.payload,
       };
+
     case GET_PRODUCT_BY_ID:
       return { ...state, product: action.payload };
+
     case GET_PRODUCT_BY_NAME:
       return {
         ...state,
@@ -73,6 +76,7 @@ function rootReducer(state = initialState, action) {
           (product) => product.nombre === action.payload
         ),
       };
+
     case GET_PRODUCT_BY_CATEGORY:
       return {
         ...state,
@@ -97,6 +101,7 @@ function rootReducer(state = initialState, action) {
           b.nombre.localeCompare(a.nombre)
         ),
       };
+
     case ORDERED_BY_NAME_ASC:
       return {
         ...state,
@@ -104,11 +109,13 @@ function rootReducer(state = initialState, action) {
           a.nombre.localeCompare(b.nombre)
         ),
       };
+
     case GET_CATEGORY:
       return {
         ...state,
         categorys: action.payload,
       };
+
     case ORDERED_BY_LOWEST_PRICE:
       return {
         ...state,
@@ -136,6 +143,7 @@ function rootReducer(state = initialState, action) {
           return 0;
         }),
       };
+
     case FILTER_BY_NEW_PRODUCTS:
       return {
         ...state,
@@ -143,6 +151,7 @@ function rootReducer(state = initialState, action) {
           (item) => item.condicion === "Nuevo"
         ),
       };
+
     case FILTER_BY_USED_PRODUCTS:
       return {
         ...state,
@@ -150,6 +159,7 @@ function rootReducer(state = initialState, action) {
           (item) => item.condicion === "Usado"
         ),
       };
+
     case FILTER_BY_REFURBISHED_PRODUCTS:
       return {
         ...state,
@@ -157,6 +167,7 @@ function rootReducer(state = initialState, action) {
           (item) => item.condicion === "Reacondicionado"
         ),
       };
+
     case ORDERED_BY_RECIENTES:
       return {
         ...state,
@@ -179,6 +190,7 @@ function rootReducer(state = initialState, action) {
           return 0;
         }),
       };
+
     case OFERTAS:
       return {
         ...state,
@@ -251,16 +263,18 @@ function rootReducer(state = initialState, action) {
         ...state,
         product: [],
       };
+
     case CLEAN_REVIEWS:
       return {
         ...state,
         reviews: [],
       };
-      case CLEAN_MERCADO_PAGO:
-        return {
-          ...state,
-          linkMercadoPago:"",
-        }
+
+    case CLEAN_MERCADO_PAGO:
+      return {
+        ...state,
+        linkMercadoPago: "",
+      };
 
     case GET_ALL_CITIES:
       return {
@@ -279,31 +293,37 @@ function rootReducer(state = initialState, action) {
         ...state,
         display: false,
       };
+
     case USER_LOGIN:
       return {
         ...state,
         logIn: action.payload,
       };
+
     case MERCADO_PAGO:
       return {
         ...state,
         linkMercadoPago: action.payload,
       };
+
     case GET_USER_BY_ID:
       return {
         ...state,
         usuario: action.payload,
       };
+
     case REVIEWS:
       return {
         ...state,
         reviews: action.payload,
       };
+
     case GET_SALE_BY_ID:
       return {
         ...state,
         compras: action.payload,
       };
+
     default:
       return state;
   }

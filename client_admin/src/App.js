@@ -7,6 +7,7 @@ import Login from "./pages/commerce/login/Login";
 import Register from "./pages/commerce/register/Register";
 import FormCreateProduct from "./components/commerce/formCreateProduct/FormCreateProduct";
 import Account from "./pages/commerce/account/Account";
+import FormUpdate from "./components/commerce/formUpdate/FormUpdate"
 
 function App() {
   const location = useLocation();
@@ -22,6 +23,8 @@ function App() {
           <Route exact path="/registrar-comercio" component={Register} />
           <Route exact path="/producto" component={FormCreateProduct} />
           <Route exact path="/account" component={Account} />
+          <Route exact path="/update" component={FormUpdate} />
+
         </Switch>
       </HashRouter>
     </div>
