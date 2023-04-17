@@ -39,7 +39,6 @@ export default function FormLogin() {
               timer: '2000'
             });
   
-  
             return Promise.resolve(true);
           } else {
             swal({
@@ -54,15 +53,15 @@ export default function FormLogin() {
         const handleLogin = async (values) => {
             try {
               const commerce = await axios.post(`${BACK_HOST}/commerce/loginCommerce`, values);
-              console.log("USER:  ",commerce)
+              console.log("COMMERCE:  ",commerce)
               const session = commerce.data.session;
               const token = commerce.data.token;
               console.log("session:  ",session)
               console.log("token:  ",token)
           
               // Almacenar el token y la sesión en cookies con opciones de seguridad
-              Cookies.set('user_token', token, { secure: true, sameSite: 'strict' });
-              Cookies.set('user_session', JSON.stringify(session), { secure: true, sameSite: 'strict' });
+              Cookies.set('commerce_token', token, { secure: true, sameSite: 'strict' });
+              Cookies.set('commerce_session', JSON.stringify(session), { secure: true, sameSite: 'strict' });
           
               const isUserAuthenticated = await login(true);
               if (isUserAuthenticated) {

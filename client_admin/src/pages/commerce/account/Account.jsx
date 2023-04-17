@@ -4,6 +4,7 @@ import { getCommerceByID } from "../../../redux/actions";
 import Cookies from "js-cookie";
 import jwt_decode from "jwt-decode";
 import s from "./Account.module.css";
+import { Link } from "react-router-dom";
 
 const Account = () => {
   const { comercios } = useSelector((state) => state);
@@ -11,7 +12,7 @@ const Account = () => {
   const [email, setEmail] = useState("");
 
   useEffect(() => {
-    const token = Cookies.get("user_token");
+    const token = Cookies.get("commerce_token");
     const decodedToken = jwt_decode(token);
     setEmail(decodedToken.email);
     dispatch(getCommerceByID(decodedToken.email));
@@ -47,19 +48,11 @@ console.log(userCommerce);
           </div>
         )}
       </div>
-      <div className={s.divForm}>
-        <ul className={s.ulForm}>
-          <li className={s.liForm}>
-            <a href="#">
-              {/* Renderizar el componente FormUpdate dentro del elemento li */}
-             {/*<FormUpdate />*/}
-            </a>
-          </li>
-        </ul>
-      </div>
+      <Link to={"/update"}>
+        <div className={s.divForm}>Editar</div>
+      </Link>
     </div>
   );
-
 };
 
 export default Account;
