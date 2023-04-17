@@ -15,7 +15,7 @@ const Account = () => {
 
   const email = decodedToken.email;
   console.log(email);
-a
+
 
 
   useEffect(() => {

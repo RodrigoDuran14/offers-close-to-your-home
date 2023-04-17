@@ -1,20 +1,17 @@
 .container{
     background-color: black;
-    margin: 0;
     color: aliceblue;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 100%;
     width: 100%;
-    margin-bottom: 0;
-    /* z-index: 998; */
-    /* position: fixed; */
-
-    /* z-index: 998; */
-    /* position: fixed; */   
+    height:auto;
+    /* position:fixed; */
+    bottom: 0;
+    position:relative;
+    margin-top:0;
+   
 }
-
 .logo{
     width: 200px;
 }
