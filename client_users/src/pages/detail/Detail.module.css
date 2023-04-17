@@ -58,7 +58,6 @@ border: none;
 
 .condicion {
     background-color: var(--green-color);
-    width: 30%;
     box-shadow: -3px 3px  rgb(0, 128, 0);
     border-bottom-left-radius: 8px;
     font-size: 25px;
