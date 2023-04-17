@@ -72,16 +72,15 @@ export default function FormRegister() {
             text: 'Ya puedes navegar con tu cuenta!',
             icon: 'success',
             timer: '2000'
-          }))
+          }), setShouldRedirect(true))
           .catch(err => swal({
             text: 'Error',
             text: 'intente nuevamente',
             icon: 'error',
             timer: '2000',
             button: 'Accept'
-          }));
-  
-        setShouldRedirect(true);
+          }), setShouldRedirect(false));
+
       } catch (error) {
         console.error("Error al encriptar la password:", error);
       }

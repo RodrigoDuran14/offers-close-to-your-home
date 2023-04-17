@@ -4,7 +4,7 @@ import { getCommerceByID } from "../../../redux/actions";
 import Cookies from "js-cookie";
 import jwt_decode from "jwt-decode";
 import s from "./Account.module.css";
-import FormUpdate from "../../../components/commerce/formUpdate/FormUpdate";
+import { Link } from "react-router-dom";
 
 const Account = () => {
   const { comercios } = useSelector((state) => state);
@@ -47,19 +47,11 @@ const Account = () => {
           </div>
         )}
       </div>
-      <div className={s.divForm}>
-        <ul className={s.ulForm}>
-          <li className={s.liForm}>
-            <a href="#">
-              {/* Renderizar el componente FormUpdate dentro del elemento li */}
-             <FormUpdate />
-            </a>
-          </li>
-        </ul>
-      </div>
+      <Link to={"/update"}>
+        <div className={s.divForm}>Editar</div>
+      </Link>
     </div>
   );
-
 };
 
 export default Account;

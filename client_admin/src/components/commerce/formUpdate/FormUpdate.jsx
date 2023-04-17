@@ -14,9 +14,9 @@ export default function FormUpdate() {
   const { ciudades, categorys } = useSelector(state => state);
   const dispatch = useDispatch();
 
-  const token = Cookies.get("commerce_session");
-console.log(token)
-let values = JSON.parse(token)
+  const session = Cookies.get("commerce_session");
+console.log(session)
+let values = JSON.parse(session)
 
 let comercio = values.dataValues
 console.log(comercio)
@@ -35,7 +35,6 @@ console.log(comercio)
         nombre_contacto: comercio.nombre_contacto,
         cargo: comercio.cargo,
         email: comercio.email,
-        password: comercio.password,
         imagen: comercio.imagen,
     })
   }, [dispatch]);
@@ -58,7 +57,6 @@ console.log(comercio)
       nombre_contacto,
       cargo,
       email,
-      password,
       imagen, 
     } = form;
   
@@ -73,7 +71,6 @@ console.log(comercio)
       nombre_contacto,
       cargo,
       email,
-      password,
       imagen,
     });
 
@@ -86,16 +83,17 @@ console.log(comercio)
     } else {
       // Si no hay errores, continúa con el proceso de envío del formulario
       try {
-        const salt = bcrypt.genSaltSync(10);
-        const hashedPassword = bcrypt.hashSync(form.password, salt);
-        setForm({ ...form, password: hashedPassword });
+        //const salt = bcrypt.genSaltSync(10);
+        //const hashedPassword = bcrypt.hashSync(form.password, salt);
+        //setForm({ ...form, password: hashedPassword });
         console.log("FORM: ", form)
         dispatch(updateCommerce(form))
-        await axios
-          .put("http://localhost:3001/commerce", form)
-          .then(res => alert(res.data))
-          .catch(err => console.log(err.response.data));
-  
+        //await axios
+        //  .put("http://localhost:3001/commerce", form)
+        //  .then(res => alert(res.data))
+        //  .catch(err => console.log(err.response.data));
+        Cookies.set('commerce_session', JSON.stringify(form), { secure: true, sameSite: 'strict' });
+
         setShouldRedirect(true);
       } catch (error) {
         console.error("Error al encriptar la password:", error);
@@ -171,7 +169,6 @@ console.log(comercio)
       nombre_contacto: "",
       cargo: "",
       email: "",
-      password: "",
       imagen: "",
   });
 
@@ -180,7 +177,7 @@ console.log(comercio)
     <>
      <div className={style.link}>
       {shouldRedirect ? (
-        <Redirect to="/log-in" />
+        <Redirect to="/login" />
       ) : (
         /* ----------------------- CONTENEDOR GENERAL -----------------------*/
         <div className={style.contenedor}>
