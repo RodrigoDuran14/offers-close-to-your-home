@@ -69,9 +69,7 @@ function rootReducer(state = initialState, action) {
     case GET_PRODUCT_BY_NAME:
       return {
         ...state,
-        productsFitered: state.products.filter(
-          (product) => product.nombre === action.payload
-        ),
+        productsFitered: action.payload
       };
     case GET_PRODUCT_BY_CATEGORY:
       return {
