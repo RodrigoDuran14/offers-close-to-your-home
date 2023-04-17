@@ -95,7 +95,13 @@ try {
               setForm(prevForm => ({
                 ...prevForm,
                 [property]: value
-              }));            
+              }));              
+                         // Validar el campo actual y actualizar el estado de errores
+             const currentErrors = validations({ [property]: value });
+             setErrors(prevErrors => ({
+               ...prevErrors,
+               [property]: currentErrors[property]
+             }))     
           };
       
       
@@ -110,15 +116,16 @@ try {
                          <form onSubmit={handleSubmit}>
              <label>Nueva Contraseña:</label>
              <input
-                type="password"
-                name="password"
-                value={form.password}
-                onChange={handleInputChange}
-                className={style.input}
-              />
-                {errors.password && (
-                <div className={style.errors}>{errors.password}</div>
-                )} <br></br>
+                  type="password"
+                  name="password"
+                  value={form.password}
+                  onChange={handleInputChange}
+                  className={style.input}
+                   />
+                   {errors.password && (
+                     <div className={style.errors}>{errors.password}</div>
+                   )}
+                   <br></br>
              <label>Confirmar Contraseña:</label>
              <input
                 type="password"
