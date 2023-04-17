@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 // ACTIONS
 import { getSales } from "../../redux/actions";
-import { getUsuarioByID } from "../../redux/actions";
+import { getUserById } from "../../redux/actions";
 
 // ESTILOS
 import s from "./ShoppingHistory.module.css";
@@ -21,7 +21,7 @@ const HistorialDeCompra = () => {
   const email = decodedToken.email;
 
   useEffect(() => {
-    dispatch(getUsuarioByID(email));
+    dispatch(getUserById(email));
     dispatch(getSales());
   }, [dispatch, email]);
 

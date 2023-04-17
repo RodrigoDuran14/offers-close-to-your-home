@@ -8,7 +8,7 @@ export default function validations(values) {
     if (!values.password) errors.password = 'Campo Requerido'
     
     if (!values.confirmPassword) errors.confirmPassword = 'Debes confirmar la contraseña'
-    if (!values.password === values.confirmPassword) errors.confirmPassword = 'las contraseñas no son iguales'
+    if (values.password !== values.confirmPassword) errors.confirmPassword = 'las contraseñas no son iguales'
      
     return errors
 }
