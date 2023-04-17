@@ -29,6 +29,10 @@ import {
   CLEAN_REVIEWS,
   GET_SALE_BY_ID,
   CLEAN_MERCADO_PAGO,
+  COUNT_SUMAR,
+  COUNT_AGREGAR,
+  COUNT_RESTAR,
+  COUNT_DELETE
 } from "./actions-type.js";
 
 const initialState = {
@@ -43,6 +47,7 @@ const initialState = {
   product: {},
   filter: [],
   carrito: JSON.parse(window.localStorage.getItem("carrito")) || [],
+  countCarrito: JSON.parse(window.localStorage.getItem("count")) || 0,
   ciudades: [],
   display: false,
   logIn: false,
@@ -245,6 +250,26 @@ function rootReducer(state = initialState, action) {
         ...state,
         carrito: filter,
       };
+    case COUNT_AGREGAR:
+      return {
+        ...state,
+        countCarrito: state.countCarrito + action.payload
+      }
+    case COUNT_SUMAR:
+      return {
+        ...state,
+        countCarrito: state.countCarrito + 1
+      }
+    case COUNT_RESTAR:
+      return {
+        ...state,
+        countCarrito: state.countCarrito - 1
+      }
+    case COUNT_DELETE:
+      return {
+        ...state,
+        countCarrito: 0
+      }      
 
     case CLEAN_PRODUCT:
       return {
@@ -256,11 +281,11 @@ function rootReducer(state = initialState, action) {
         ...state,
         reviews: [],
       };
-      case CLEAN_MERCADO_PAGO:
-        return {
-          ...state,
-          linkMercadoPago:"",
-        }
+    case CLEAN_MERCADO_PAGO:
+      return {
+        ...state,
+        linkMercadoPago:"",
+      }
 
     case GET_ALL_CITIES:
       return {
@@ -270,8 +295,8 @@ function rootReducer(state = initialState, action) {
 
     case LOADING:
       return {
-        ...state,
-        display: true,
+      ...state,
+      display: true,
       };
 
     case READY:

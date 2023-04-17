@@ -6,10 +6,11 @@ import {cleanMercadoPago, mercadoPago} from "../../redux/actions"
 
 export default function ShoppingCart() {
   const dispatch = useDispatch()
-  const { carrito, linkMercadoPago } = useSelector((state) => state);
+  const { carrito, linkMercadoPago, countCarrito } = useSelector((state) => state);
 
   useEffect(() => {
     window.localStorage.setItem("carrito", JSON.stringify(carrito));
+    window.localStorage.setItem("count", JSON.stringify(countCarrito));
     window.localStorage.getItem("carrito");
     return () =>{
       dispatch(cleanMercadoPago());

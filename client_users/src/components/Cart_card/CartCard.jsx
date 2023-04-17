@@ -1,7 +1,7 @@
 import { IoTrashBinOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { eliminarDelCarrito, restarCantidad, sumarCantidad } from "../../redux/actions"
+import { deleteCount, eliminarDelCarrito, restarCantidad, restarCount, sumarCantidad, sumarCount } from "../../redux/actions"
 import s from "./cartcard.module.css";
 import QuantityDisplay from "../quantityDisplay/QuantityDisplay";
 import swal from "sweetalert";
@@ -11,6 +11,7 @@ export default function CartCard(product) {
 
   function handleEliminarProducto() {
     dispatch(eliminarDelCarrito(product));
+    dispatch(deleteCount())
   }
 
   const [quantity, setQuantity] = useState(1);
@@ -19,6 +20,7 @@ export default function CartCard(product) {
     if (quantity !== 1) {
       setQuantity(quantity - 1);
       dispatch(restarCantidad(product));
+      dispatch(restarCount())
     }
   };
 
@@ -26,6 +28,7 @@ export default function CartCard(product) {
     if (quantity !== 10) {
       setQuantity(quantity + 1);
       dispatch(sumarCantidad(product))
+      dispatch(sumarCount())
     } else {
       swal({
         title: 'Número máximo de unidades disponibles',
