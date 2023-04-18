@@ -116,6 +116,7 @@ const handleLogin = async (values) => {
 
     const isUserAuthenticated = await login(true);
     if (isUserAuthenticated) {
+      localStorage.setItem("estaLogueado", "database")
       navigateTo('/');
     } else {
       console.log('Login failed');
@@ -144,6 +145,7 @@ const handleLogin = async (values) => {
                     icon: 'success',
                     timer: '2000'
                 });
+                localStorage.setItem("estaLogueado", "google")
                 navigateTo('/'); // Redirigir a la ruta localhost:3000/home
             } else {
                 swal({

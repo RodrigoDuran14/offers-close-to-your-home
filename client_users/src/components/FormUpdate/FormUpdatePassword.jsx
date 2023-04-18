@@ -115,6 +115,8 @@ try {
         <div>
                          <form onSubmit={handleSubmit}>
              <label>Nueva Contraseña:</label>
+             <br></br>
+             <br></br>
              <input
                   type="password"
                   name="password"
@@ -127,6 +129,8 @@ try {
                    )}
                    <br></br>
              <label>Confirmar Contraseña:</label>
+             <br></br>
+             <br></br>
              <input
                 type="password"
                 name="confirmPassword"
@@ -137,6 +141,7 @@ try {
                 {errors.confirmPassword && (
                 <div className={style.errors}>{errors.confirmPassword}</div>
                 )}
+                 <br></br>
                <button type="submit" className={style.button}>
                                Actualizar
                              </button>  

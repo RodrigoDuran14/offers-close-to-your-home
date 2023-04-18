@@ -3,22 +3,24 @@
 .contenedor{
   display: flex;
   flex-direction: row;
-  width: 90%;
+  width: auto;
   height: 125vh;
-  margin-bottom: 150px;
+  margin-bottom: 160px;
 }
 
 .contenedorInfo{
   display: flex;
   flex-direction: column;
-  margin: 100px;
+  margin-top: 85px;
+  margin-left: 60px;
+  margin-bottom: 0px;
   background-color: #97978D;
   border: 5px black solid;
   border-radius: 30px;
-  padding: 20px;
+  padding: 10px;
   height: fit-content;
-  width: 700px;
-  height: 750px;
+  width: auto;
+  height: 630px;
 
 }
 
@@ -31,13 +33,12 @@
 .tittle{
   font-family: 'Kelly slab';
   font-size: 60px;
-  margin-bottom: 50px;
 }
 
 .aux {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 3px;
   
 }
 
@@ -47,9 +48,13 @@
   object-fit: cover;
   border-radius: 50%;
   /* margin-right: 20px; */
-  position: absolute;
-  bottom: -90px;
-  left: 295px;
+  position: relative;
+  left: 25px;  
+  -ms-transform: scale(0.7 , 0.7);
+  -webkit-transform: scale(0.7 , 0.7);
+  -moz-transform: scale(0.7 , 0.7);
+  -o-transform: scale(0.7 , 0.7);
+  transform: scale(0.7 , 0.7);   
 }
 
 .text {
@@ -68,7 +73,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin-right: 20px;
+  margin-right: 10px;
   
 }
 
@@ -175,6 +180,11 @@ label {
 .formUpdate{
   margin-top: -20px;
   margin-left: -30px;
+}
+
+.formPassword{
+  margin-top: 530px;
+  margin-left: -430px;
 }
 
  
