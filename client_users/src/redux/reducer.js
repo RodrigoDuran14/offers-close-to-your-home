@@ -58,7 +58,6 @@ const initialState = {
 };
 
 function rootReducer(state = initialState, action) {
-  console.log("TYPE; ", action.type);
   switch (action.type) {
     case CREATE_PRODUCT:
       return { ...state, products: [...state.products, action.payload] };
