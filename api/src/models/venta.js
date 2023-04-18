@@ -11,13 +11,16 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     fecha: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: false,
     },
     valor_total_venta: {
       type: DataTypes.FLOAT,
       allowNull: false,
     },
+    estado: {
+      type: DataTypes.BOOLEAN
+    }
   },
     {
       tableName: 'Venta',

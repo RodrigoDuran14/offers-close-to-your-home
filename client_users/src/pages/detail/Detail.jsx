@@ -14,6 +14,7 @@ import axios from 'axios'
 const Detail = () => {
 
   const { product, carrito } = useSelector(state => state)
+  console.log(product);
   const { id } = useParams()
   const dispatch = useDispatch();
 
