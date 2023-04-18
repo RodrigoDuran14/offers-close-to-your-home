@@ -71,34 +71,6 @@ export default function FormLogin() {
           return Promise.resolve(false);
         }
       }
-
-
-      // const handleLogin = async (values) => {
-      //   try {
-      //     const user = await axios.post(`${BACK_HOST}/usuario/login`, values);
-      //     console.log("USER:  ",user)
-      //     const session = user.data.session;
-      //     const token = user.data.token;
-      //     console.log("session:  ",session)
-      //     console.log("token:  ",token)
-
-      //     window.localStorage.setItem('user_token', JSON.stringify(token));
-      //     window.localStorage.setItem('user_session', JSON.stringify(session));
-      //     const isUserAuthenticated = await login(true);
-      //     if (isUserAuthenticated) {
-      //       navigateTo('/');
-      //     } else {
-      //       console.log('Login failed');
-      //     }
-      //   } catch (error) {
-      //     const err = error.response.data;
-      //     swal({
-      //       text: err.msg,
-      //       icon: 'error',
-      //       timer: '2000'
-      //     });
-      //   }
-      // };
   
 
 const handleLogin = async (values) => {
@@ -116,6 +88,7 @@ const handleLogin = async (values) => {
 
     const isUserAuthenticated = await login(true);
     if (isUserAuthenticated) {
+      localStorage.setItem("estaLogueado", "database")
       navigateTo('/');
     } else {
       console.log('Login failed');
@@ -144,6 +117,7 @@ const handleLogin = async (values) => {
                     icon: 'success',
                     timer: '2000'
                 });
+                localStorage.setItem("estaLogueado", "google")
                 navigateTo('/'); // Redirigir a la ruta localhost:3000/home
             } else {
                 swal({

@@ -6,25 +6,21 @@ import jwt_decode from "jwt-decode";
 import s from "./Account.module.css";
 import FormUpdate from "../../components/FormUpdate/FormUpdate";
 import FormUpdatePassword from "../../components/FormUpdate/FormUpdatePassword";
-import LogIn from "../../assets/images/logIn.webp";
 
 const Account = () => {
   /* ------------------- ESTADOS ------------------- */
   const usuario = useSelector(state => state.usuario) ?? [];
   const [userData, setUserData] = useState({});
   const dispatch = useDispatch();
+
   const token = Cookies.get("user_token");
   const decodedToken = jwt_decode(token);
-  const logIn = LogIn;
 
-  const email = decodedToken.email;
-
-
+   const email = decodedToken.email;
 
   useEffect(() => {
     dispatch(getUsuarioByEmail(email));
   }, [dispatch, email]);
-
 
   // Actualizar el estado local con los datos del usuario
   useEffect(() => {
@@ -48,7 +44,7 @@ const Account = () => {
       <div className={s.contenedorInfo}>
         <div className={s.titulos}>
           <h1 className={s.tittle}>Mi cuenta:</h1>
-        </div>
+        
         <div className={s.informacion}>
           {userData && (
             <div className={s.aux}>
@@ -57,6 +53,7 @@ const Account = () => {
               )}
             </div>
           )}
+        </div>
         </div>
         <div className={s.text}>
           <div className={s.row}>
@@ -76,13 +73,7 @@ const Account = () => {
             </div>
           </div>
         </div>
-        <div>
-          <button onClick={handleLogInClick} className={s.logIn}>
-            Cambiar Contraseña
-          </button>
-          {showProfileMenu && <FormUpdatePassword idUsuario={idUsuario} />}
-
-        </div>
+       
       </div>
       <div>         
           <div className={s.formUpdate}>          
@@ -97,6 +88,14 @@ const Account = () => {
             </a>
           </li>
         </ul> */}
+        </div>
+
+        <div className={s.formPassword}>
+          <button onClick={handleLogInClick} className={s.logIn}>
+            Cambiar Contraseña
+          </button>
+          {showProfileMenu && <FormUpdatePassword idUsuario={idUsuario} />}
+
         </div>
 
     </div>

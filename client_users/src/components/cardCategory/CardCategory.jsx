@@ -1,10 +1,10 @@
 import React from 'react'
-import styles from './CardCategory.module.css'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { getProductByCategory } from '../../redux/actions';
+import s from './CardCategory.module.css'
 
-function CardCategory({nombre_categoria_producto, imagen_categoria_producto}) {//cosmetica
+function CardCategory({nombre_categoria_producto, imagen_categoria_producto}) {
     const dispatch = useDispatch();
   const handlerCategory = () => {
     dispatch(getProductByCategory(nombre_categoria_producto))
@@ -12,17 +12,13 @@ function CardCategory({nombre_categoria_producto, imagen_categoria_producto}) {/
  
 
   return (
-    <Link className={styles.link} to="/home" onClick={handlerCategory} >
-      <div className={styles.container} >
-        <div className={styles.box1}>
-          <h1>{nombre_categoria_producto}</h1>
+    <Link className={s.link} to="/home" onClick={handlerCategory} >
+      <div className={s.container}>
+        <h4 className={s.nombre}>{nombre_categoria_producto}</h4>
+        <div className={s.box}>
+          <div style={{backgroundImage: `url(${imagen_categoria_producto})`}} className={s.imagen}></div>
         </div>
-        <div className={styles.box}>
-          <img src={imagen_categoria_producto} alt={nombre_categoria_producto} />
-          <span>ver mas...</span>
-        </div>
-        <div className={styles.box}>
-          </div>
+        <span className={s.vermas}>Explorar más...</span>
       </div>
     </Link>
   )
