@@ -42,7 +42,7 @@ const henry = Henry
                     </a>
                     <a
                     className= {styles.links}
-                    href="https://www.linkedin.com/in/mateo-mugnaini/"
+                    href="https://www.linkedin.com/in/lautacorva/"
                     target="_blank"
                     rel="noreferrer">
                         Lautaro Corva
