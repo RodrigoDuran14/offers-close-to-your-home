@@ -130,7 +130,7 @@ const NavBar = () => {
                 right: "6px",
               }}
             >
-              <h4 style={{ fontSize: "10px", color: "red" }}>
+              <h4 style={{ fontSize: "25px", color: "var(--green-color)", textShadow: '0px 0px 5px black' }}>
                 {count === 0 ? "" : count}
               </h4>
             </div>
