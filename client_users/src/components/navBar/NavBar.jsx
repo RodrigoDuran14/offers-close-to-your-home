@@ -11,7 +11,7 @@ import { userLoggedIn } from "../../redux/actions";
 // imagenes
 import Logo from "../../assets/images/SoloTextoBlanco.png";
 import Icono from "../../assets/images/SoloIconoNormal.png";
-import LogIn from "../../assets/images/logIn.webp";
+import logIn from "../../assets/images/logIn.webp";
 
 const NavBar = () => {
   const logoTexto = Logo;
@@ -47,7 +47,8 @@ const NavBar = () => {
     dispatch(userLoggedIn(logOut));
   };
   /* ------------- LOGOUT ------------- */
-  const count = useSelector(state => state.countCarrito);
+  const count = useSelector(state => state.countCarrito)
+
   return (
     <div className={s.container}>
       <div className={s.menu}>
@@ -90,13 +91,26 @@ const NavBar = () => {
       <div className={s.box1}>
         <SearchBar />
       </div>
+
       <div>
+        {!estaLogueado ? (
+          <Link to="/log-in" className={s.link}>
+            <h4>Iniciar sesión</h4>
+          </Link>
+        ) : (
         {estaLogueado === "google" && (
-          // Opción de menú para usuario logueado con Google
+          // Opción de menú para usuario logueado con Google 
           <div>
             <img onClick={handleLogInClick} className={s.logIn} src={logIn} />
             {showProfileMenu && (
               <div className={s.menuDesplegable}>
+
+                <Link to="/account" className={s.link}>
+                  <h4>Ver perfil</h4>
+                </Link>
+                <Link to="/historial-de-compra" className={s.link}>
+                  <h4>Historial de compras</h4>
+                </Link>
                 <Link to="/" className={s.link} onClick={handleLogOut}>
                   <h4>Cerrar sesión</h4>
                 </Link>
@@ -105,30 +119,6 @@ const NavBar = () => {
           </div>
         )}
       </div>
-      {estaLogueado === "database" && (
-        // Opción de menú para usuario logueado con cuenta de registro
-        <div>
-          <img onClick={handleLogInClick} className={s.logIn} src={logIn} />
-          {showProfileMenu && (
-            <div className={s.menuDesplegable}>
-              <Link to="/account" className={s.link}>
-                <h4>Ver perfil</h4>
-              </Link>
-              <Link to="/historial-de-compra" className={s.link}>
-                <h4>Historial de compras</h4>
-              </Link>
-              <Link to="/" className={s.link} onClick={handleLogOut}>
-                <h4>Cerrar sesión</h4>
-              </Link>
-            </div>
-          )}
-        </div>
-      )}
-
-      {!estaLogueado && (
-        // Opción de menú para usuario no logueado
-        <Link to="/log-in" className={s.link}>
-          <h4>Iniciar sesión</h4>
         </Link>
       )}
 

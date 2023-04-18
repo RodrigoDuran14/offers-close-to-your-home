@@ -41,7 +41,7 @@ router.use("/venta", venta)
 const pagos = require("./pagos")
 router.use("/pagos", pagos)
 
-router.post("/buy-products", function(req, res, next){
+router.post("/buy-products", function (req, res, next) {
   const productos = req.body.productos;
   // Aquí deberías validar que los ID de los productos sean válidos antes de usarlos
   // para buscar los productos en la base de datos
