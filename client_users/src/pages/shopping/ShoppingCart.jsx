@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import CartCard from "../../components/Cart_card/CartCard"
 import styles from './shopping.module.css'
-import {cleanMercadoPago, getUsuarioByID, mercadoPago} from "../../redux/actions"
+import {cleanMercadoPago, getUserById, mercadoPago} from "../../redux/actions"
 import { clean } from "./clean"
 import { date } from "./date"
 import { mail } from "./user"
@@ -18,7 +18,7 @@ export default function ShoppingCart() {
     window.localStorage.setItem("carrito", JSON.stringify(carrito));
     window.localStorage.setItem("count", JSON.stringify(countCarrito));
     window.localStorage.getItem("carrito");
-    dispatch(getUsuarioByID(email))
+    dispatch(getUserById(email))
     return () =>{
       dispatch(cleanMercadoPago());
     }

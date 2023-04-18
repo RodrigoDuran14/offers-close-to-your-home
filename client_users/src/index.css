@@ -43,6 +43,11 @@ code {
   padding: 0px 10px;
 }
 
+.form-input:focus {
+  border: 2px solid var(--green-color);
+  outline: none;
+}
+
 button {
   border: none;
   font-size: 18px;

@@ -160,7 +160,7 @@ export default function FormRegister() {
         /* ----------------------- CONTENEDOR GENERAL -----------------------*/
         <div className={s.contenedor}>
           {/* ----------------------- CONTENEDOR FORMULARIO -----------------------*/}
-          <div className='form-container' style={{padding: '15px'}}>
+          <div className='form-container' style={{ padding: '15px' }}>
             <CloudinaryContext cloudName="dfmkjxjsf">
               <form onSubmit={handleSubmit}>
                 {/* ----------------------- PRIMER NOMBRE -----------------------*/}
@@ -323,7 +323,7 @@ export default function FormRegister() {
                         name="id_ciudad"
                         onChange={e => handleInputChange(e)}
                         className='form-input'
-                        style={{width: '300px'}}
+                        style={{ width: '300px' }}
                       >
                         <option>Selecciona una ciudad</option>
                         {ciudades &&
@@ -349,11 +349,6 @@ export default function FormRegister() {
                     onChange={handleInputChange}
                     className='form-input'
                   />
-                  <label htmlFor="imagen" className={s.label}>
-                    Imagen
-                  </label>
-                  <div>
-                  </div>
 
                   {/* ----------------------- VISTA PREVIA IMAGEN -----------------------*/}
                   {form.imagen && (
