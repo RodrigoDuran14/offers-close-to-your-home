@@ -6,8 +6,6 @@ import DrawerMenu from "../drawerMenu/DrawerMenu";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import s from "./NavBar.module.css";
 
-
-
 import { userLoggedIn } from "../../redux/actions";
 
 // imagenes
@@ -18,7 +16,7 @@ import LogIn from "../../assets/images/logIn.webp";
 const NavBar = () => {
   const logoTexto = Logo;
   const logoIcono = Icono;
-  const logIn = LogIn;
+  // const logIn = LogIn;
 
 
   /* ------------- MENU HAMBURGUESA ------------- */
@@ -33,11 +31,14 @@ const NavBar = () => {
   /* ------------- LOGIN MENU ------------- */
 
   const estaLogueado = useSelector(state => state.logIn)
+  const { usuario } = useSelector((state) => state);
+
+  const imgProfile = usuario[0]?.imagen
   
 
   /* ------------- LOGOUT ------------- */
-  const dispatch = useDispatch()
   const logOut = false
+  const dispatch = useDispatch();
 
   const handleLogOut = () => {
     dispatch(userLoggedIn(logOut))
@@ -93,7 +94,7 @@ const NavBar = () => {
     </Link>
   ) : (
     <div>
-        <img  onClick={handleLogInClick} className={s.logIn} src={logIn} />
+        <img  onClick={handleLogInClick} className={s.logIn} src={imgProfile} />
       {showProfileMenu  && (
         <div className={s.menuDesplegable}>
           <Link to="/account" className={s.link}>

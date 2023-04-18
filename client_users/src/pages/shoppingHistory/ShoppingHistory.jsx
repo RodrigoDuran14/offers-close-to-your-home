@@ -49,9 +49,6 @@ const HistorialDeCompra = () => {
                       $: {detalle.Producto.valor_con_descuento}
                     </label>
                     <label className={s.aux}>Cant: {detalle.cantidad}</label>
-                    <Link to="/comentario" className={s.link}>
-                      <h3> Calificar </h3>
-                    </Link>
                   </div>
                 ))}
               </div>
