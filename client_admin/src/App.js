@@ -8,6 +8,7 @@ import Register from "./pages/commerce/register/Register";
 import FormCreateProduct from "./components/commerce/formCreateProduct/FormCreateProduct";
 import Account from "./pages/commerce/account/Account";
 import FormUpdate from "./components/commerce/formUpdate/FormUpdate"
+import FormUpdateProduct from "./components/commerce/formUpdateProduct/FormUpdateProduct";
 
 function App() {
   const location = useLocation();
@@ -24,7 +25,7 @@ function App() {
           <Route exact path="/producto" component={FormCreateProduct} />
           <Route exact path="/account" component={Account} />
           <Route exact path="/update" component={FormUpdate} />
-
+           <Route exact path= "/product/:id" component={FormUpdateProduct}/>
         </Switch>
       </HashRouter>
     </div>
