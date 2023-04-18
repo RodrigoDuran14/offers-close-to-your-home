@@ -33,8 +33,7 @@ const getAllProducts = async () => {
 };
 
 const searchProductByName = async (nombre) => {
-  const databaseProducts = await Promise.all([
-    Producto.findAll({
+  const databaseProducts = await Producto.findAll({
       where: {
         nombre: {
           [Op.iLike]: `%${nombre}%`,
@@ -48,10 +47,7 @@ const searchProductByName = async (nombre) => {
         },
         { model: Comercio, attributes: ["nombre_comercio"] },
       ],
-    }),
-  ]);
-  
-
+    });
 
   return [...databaseProducts];
 };

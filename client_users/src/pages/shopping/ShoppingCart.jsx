@@ -26,10 +26,10 @@ export default function ShoppingCart() {
 //Suma de subtotales
   let total = 0
   carrito.forEach(producto => {
-    total = total + producto.valor_con_descuento*producto.cantidad
-  }); 
-//Boton de mercadoPago
-  const handlerPago = async ()=>{
+    total = total + producto.valor_con_descuento * producto.cantidad
+  });
+  //Boton de mercadoPago
+  const handlerPago = async () => {
     const response = await fetch('http://localhost:3001/buy-products', {
       method: 'POST',
       headers: {
@@ -38,7 +38,7 @@ export default function ShoppingCart() {
       body: JSON.stringify({ productos: carrito })
     });
     const data = await response.json();
-   dispatch(mercadoPago(data.init_point))
+    dispatch(mercadoPago(data.init_point))
   }
   console.log(usuario);
   //post a venta
@@ -67,34 +67,34 @@ export default function ShoppingCart() {
     })  
   }
   return (
-    <div style={{marginTop:"100px"}}>
-      <div style={{display:"flex", justifyContent:"center"}}>
+    <div style={{ marginTop: "100px" }}>
+      <div style={{ display: "flex", justifyContent: "center" }}>
         <div className={styles.titulo}>
           <h2>Carrito de compras</h2>
         </div>
       </div>
       {carrito.length ? (
-        <div style={{marginBottom:"120px"}}>
+        <div style={{ marginBottom: "120px" }}>
           {carrito.map(producto => (
             <CartCard
               key={producto.id}
               id_producto={producto.id_producto}
-              imagen={producto.imagen} 
-              nombre={producto.nombre} 
+              imagen={producto.imagen}
+              nombre={producto.nombre}
               valor_con_descuento={producto.valor_con_descuento}
               cantidad={producto.cantidad}
               total={total}
-            /> 
+            />
           ))}
           <div className={styles.containerTotal}>
             <div className={styles.total}>
-              <div style={{fontSize: "30px", marginLeft: "15px"}}>
+              <div style={{ fontSize: "30px", marginLeft: "15px" }}>
                 <h3>Total</h3>
               </div>
-              <div style={{fontSize: "30px", marginRight: "15px"}}>
+              <div style={{ fontSize: "30px", marginRight: "15px" }}>
                 <h3>${total}</h3>
               </div>
-            </div> 
+            </div>
           </div>
           {linkMercadoPago ? (
             <div className={styles.mercadoPago}>
@@ -108,7 +108,7 @@ export default function ShoppingCart() {
           )}
         </div>
       ) : (
-        <div style={{display: "flex", justifyContent: "center"}}>
+        <div style={{ display: "flex", justifyContent: "center" }}>
           <div className={styles.text}>
             <div>
               <p>No hay productos en el carrito.</p>
