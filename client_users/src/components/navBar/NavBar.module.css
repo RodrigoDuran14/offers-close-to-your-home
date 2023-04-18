@@ -7,34 +7,33 @@
     text-align: center;
     height: auto;
     position: fixed;
-    top: 0; 
+    top: 0;
     width: 100%;
-    z-index:1;
-
+    z-index: 100;
 }
 
-h4 {
-    cursor: pointer
+.sesion {
+    display: none;
 }
 
 .options {
     display: flex;
     justify-content: center;
     align-items: center;
-    position:relative;
+    position: relative;
+    width: 150px;
+    margin: 0;
 }
 
 .options::ntn-child(1) {
-    position:relative;
-    top:0;
+    position: relative;
+    top: 0;
 }
 
 .nav_text {
     display: none;
-    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-
 }
 
 .box1 {
@@ -53,10 +52,14 @@ h4 {
     color: var(--green-color);
 }
 
-@media (min-width: 820px) {
+@media (min-width: 930px) {
     .options {
         display: flex;
         justify-content: space-around;
+    }
+
+    .sesion {
+        display: flex;
     }
 
     .menu {
@@ -70,12 +73,13 @@ h4 {
 
 
 .texto {
-    margin-bottom: 8px;
-    height: 20px;
+    margin-bottom: 5px;
+    height: 15px;
 }
 
 .icono {
-    height: 40px;
+    margin: 0;
+    height: 30px;
 }
 
 .link {
@@ -85,7 +89,7 @@ h4 {
     margin-right: 10px;
 }
 
-.logIn{
+.logIn {
     /* filter: invert(); */
     width: 40px;
     height: 40px;
@@ -107,8 +111,8 @@ h4 {
     z-index: 999;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-  }
+}
 
-.link:hover{
-    color: #54b216 ;
+.link:hover {
+    color: #54b216;
 }
