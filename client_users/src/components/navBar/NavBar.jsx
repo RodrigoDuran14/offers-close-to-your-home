@@ -73,7 +73,7 @@ const NavBar = () => {
         <Link
           to="/"
           className={s.link}
-          // style={{ margin: '0px 10px' }}
+        // style={{ margin: '0px 10px' }}
         >
           <h4>Quiero vender</h4>
         </Link>
@@ -81,7 +81,7 @@ const NavBar = () => {
         <Link
           to="/about"
           className={s.link}
-          // style={{ margin: '0px 10px' }}
+        // style={{ margin: '0px 10px' }}
         >
           <h4>¿Quienes somos?</h4>
         </Link>
@@ -91,19 +91,17 @@ const NavBar = () => {
         <SearchBar />
       </div>
 
-      <div>
+      <div className={s.sesion}>
         {!estaLogueado ? (
           <Link to="/log-in" className={s.link}>
             <h4>Iniciar sesión</h4>
           </Link>
         ) : (
-          <div>
-            {estaLogueado === "google" && (
-  // Opción de menú para usuario logueado con Google 
-  <div>
-    <img onClick={handleLogInClick} className={s.logIn} src={logIn} />
-  </div>
-)}
+          <div style={{display: 'flex'}}>
+            {estaLogueado && (
+              // Opción de menú para usuario logueado con Google              
+                <img onClick={handleLogInClick} className={s.logIn} src={logIn} />
+            )}
 
             {showProfileMenu && (
               <div className={s.menuDesplegable}>
@@ -122,26 +120,27 @@ const NavBar = () => {
           </div>
         )}
 
-      <div style={{ position: "relative" }}>
-        <Link to="/shopping-cart" style={{ textDecoration: "none" }}>
-          <div
-            style={{
-              display: "inline-block",
-              position: "absolute",
-              top: "-10px",
-              right: "6px",
-            }}
-          >
-            <h4 style={{ fontSize: "10px", color: "red" }}>
-              {count === 0 ? "" : count}
-            </h4>
-          </div>
-          <div className={s.button}>
-            <AiOutlineShoppingCart size={25} />
-          </div>
-        </Link>
+        <div style={{ position: "relative" }}>
+          <Link to="/shopping-cart" style={{ textDecoration: "none" }}>
+            <div
+              style={{
+                display: "inline-block",
+                position: "absolute",
+                top: "-10px",
+                right: "6px",
+              }}
+            >
+              <h4 style={{ fontSize: "10px", color: "red" }}>
+                {count === 0 ? "" : count}
+              </h4>
+            </div>
+            <div className={s.button}>
+              <AiOutlineShoppingCart size={40} />
+            </div>
+          </Link>
+        </div>
       </div>
-    </div>
+
     </div>
   );
 };
