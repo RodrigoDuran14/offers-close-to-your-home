@@ -97,12 +97,10 @@ const NavBar = () => {
             <h4>Iniciar sesión</h4>
           </Link>
         ) : (
-          <div>
-            {estaLogueado === "google" && (
-              // Opción de menú para usuario logueado con Google 
-              <div>
+          <div style={{display: 'flex'}}>
+            {estaLogueado && (
+              // Opción de menú para usuario logueado con Google              
                 <img onClick={handleLogInClick} className={s.logIn} src={logIn} />
-              </div>
             )}
 
             {showProfileMenu && (
@@ -137,7 +135,7 @@ const NavBar = () => {
               </h4>
             </div>
             <div className={s.button}>
-              <AiOutlineShoppingCart size={25} />
+              <AiOutlineShoppingCart size={40} />
             </div>
           </Link>
         </div>
