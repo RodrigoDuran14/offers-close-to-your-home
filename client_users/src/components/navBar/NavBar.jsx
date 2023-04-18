@@ -11,7 +11,7 @@ import { userLoggedIn } from "../../redux/actions";
 // imagenes
 import Logo from "../../assets/images/SoloTextoBlanco.png";
 import Icono from "../../assets/images/SoloIconoNormal.png";
-import logIn from "../../assets/images/logIn.webp";
+import LogIn from "../../assets/images/logIn.webp";
 
 const NavBar = () => {
   const logoTexto = Logo;
@@ -66,7 +66,6 @@ const NavBar = () => {
         <Link
           to="/"
           className={s.link}
-          //  style={{ margin: '0px 10px' }}
         >
           <h4>Inicio</h4>
         </Link>
@@ -98,10 +97,14 @@ const NavBar = () => {
             <h4>Iniciar sesión</h4>
           </Link>
         ) : (
-        {estaLogueado === "google" && (
-          // Opción de menú para usuario logueado con Google 
           <div>
-            <img onClick={handleLogInClick} className={s.logIn} src={logIn} />
+            {estaLogueado === "google" && (
+  // Opción de menú para usuario logueado con Google 
+  <div>
+    <img onClick={handleLogInClick} className={s.logIn} src={logIn} />
+  </div>
+)}
+
             {showProfileMenu && (
               <div className={s.menuDesplegable}>
 
@@ -118,9 +121,6 @@ const NavBar = () => {
             )}
           </div>
         )}
-      </div>
-        </Link>
-      )}
 
       <div style={{ position: "relative" }}>
         <Link to="/shopping-cart" style={{ textDecoration: "none" }}>
@@ -141,6 +141,7 @@ const NavBar = () => {
           </div>
         </Link>
       </div>
+    </div>
     </div>
   );
 };

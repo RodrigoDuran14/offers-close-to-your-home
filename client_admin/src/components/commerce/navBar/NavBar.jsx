@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from "react";
+import React, {useEffect, useState, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import SearchBar from "../searchBar/SearchBar";
@@ -33,27 +33,35 @@ const NavBar = () => {
 
 
   /* ------------- LOGIN MENU ------------- */
-
-  const estaLogueado = useSelector(state => state.logIn)
+  const estaLogueado = useSelector(state => state.logIn);
   const { comercios } = useSelector((state) => state);
-
+  
   const dispatch = useDispatch();
-  const token = Cookies.get("user_token");
-  const decodedToken = jwt_decode(token);
-
-  const email = decodedToken.email;
-  // console.log(token);
-
-
-
+  
+  const email = useMemo(() => {
+    const numToken = Cookies.get("user_token");
+    let decodedToken = null;
+  
+    try {
+      decodedToken = jwt_decode(numToken);
+    } catch (error) {
+      // Si hay algún error decodificando el token, lo más probable es que no sea válido
+      console.error(error);
+      decodedToken = null;
+    }
+  
+    return decodedToken ? decodedToken.email : null;
+  }, []);
+  
   useEffect(() => {
-    dispatch(getCommerceByID(email)); // Actualizar el estado con la respuesta de la acción asincrónica
-  }, [dispatch]);
-
-
-  const userLogin = comercios.filter((e) => e.email === email);
-
-  const imgProfile = userLogin[0]?.imagen
+    if (email) {
+      dispatch(getCommerceByID(email)); // Actualizar el estado con la respuesta de la acción asincrónica
+    }
+  }, [dispatch, email]);
+  
+  const userLogin = useMemo(() => comercios.filter((e) => e.email === email), [comercios, email]);
+  const imgProfile = userLogin[0]?.imagen;
+  
 
   /* ------------- LOGOUT ------------- */
   const logOut = false
