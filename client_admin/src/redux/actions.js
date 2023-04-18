@@ -27,6 +27,16 @@ export function createProduct(product) {
     };
   }
 
+  export function getCategoriaProducto() {
+    return async function (dispatch) {
+      const resp = await axios.get(`${URL}/categorias`);
+      dispatch({
+        type: action.GET_CATEGORY_PRODUCT,
+        payload: resp.data,
+      });
+    };
+  }
+
   export function getAllCities() {
     return async (dispatch) => {
       try {
@@ -92,6 +102,23 @@ export function createProduct(product) {
         const response = await axios.put(`${URL}/commerce`, comercio)
         dispatch({
           type: action.UPDATE_COMMERCE,
+          payload: response.data
+        })
+      } catch (error) {
+        dispatch({
+          type: action.UPDATE_COMMERCE,
+          payload: error
+        })
+      }
+    }
+  }
+
+  export function updatePassword(id_comercio, password, newPassword) {
+    return async (dispatch) =>{
+      try {
+        const response = await axios.put(`${URL}/commerce`, id_comercio,  password, newPassword)
+        dispatch({
+          type: action.UPDATE_PASSWORD,
           payload: response.data
         })
       } catch (error) {

@@ -3,7 +3,6 @@ import axios from "axios";
 import style from "./formUpdate.module.css";
 import { Redirect } from "react-router-dom";
 import validations from "./validation";
-import bcrypt from "bcryptjs"; // librería para encriptcar contraseñas
 import { getAllCities, getCategorys, updateCommerce } from "../../../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { Image, CloudinaryContext } from "cloudinary-react"; // para guardar las imágenes externamente 
@@ -129,7 +128,7 @@ console.log(comercio)
       formData.append("file", file);
       formData.append("upload_preset", "ajr7own3"); // Reemplazar con tu upload preset de Cloudinary
       formData.append("api_key", "581299476786456"); // Reemplazar con tu API Key de Cloudinary
-  
+
       try {
         const response = await axios.post(
           "https://api.cloudinary.com/v1_1/dfmkjxjsf/image/upload",

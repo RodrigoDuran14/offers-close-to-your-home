@@ -50,6 +50,9 @@ const Account = () => {
       <Link to={"/update"}>
         <div className={s.divForm}>Editar</div>
       </Link>
+      <Link to={"/updatePassword"}>
+        <div className={s.divForm}>Cambiar contraseña</div>
+      </Link>
     </div>
   );
 };

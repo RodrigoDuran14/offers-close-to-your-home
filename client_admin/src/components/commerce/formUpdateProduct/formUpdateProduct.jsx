@@ -1,23 +1,44 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import style from "./formRegister.module.css";
+import style from "./formUpdate.module.css";
 import { Redirect } from "react-router-dom";
 import validations from "./validation";
-import bcrypt from "bcryptjs"; // librería para encriptcar contraseñas
-import { getAllCities, getCategorys } from "../../../redux/actions";
+import { getCategoriaProducto } from "../../../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
-import { CloudinaryContext } from "cloudinary-react"; // para guardar las imágenes externamente 
-import swal from "sweetalert"
+import { Image, CloudinaryContext } from "cloudinary-react"; // para guardar las imágenes externamente 
+import Cookies from "js-cookie";
 
-export default function FormRegister() {
-  const { ciudades, categorys } = useSelector(state => state);
+
+export default function FormUpdate() {
+  const { categoria } = useSelector(state => state);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getCategorys());
-    dispatch(getAllCities());
-  }, [getAllCities, getCategorys]);
+  const session = Cookies.get("commerce_session");
+console.log(session)
+let values = JSON.parse(session)
 
+let comercio = values.dataValues.id_comercio
+console.log(comercio)
+
+  useEffect(() => {
+    dispatch(getCategoriaProducto())
+    setForm({
+      id_comercio: comercio.id_comercio,
+        id_ciudad: comercio.id_ciudad,
+        id_categoria_comercio: comercio.id_categoria_comercio,
+        nombre_comercio: comercio.nombre_comercio,
+        direccion: comercio.direccion,
+        telefono: comercio.telefono,
+        estado: true,
+        nombre_contacto: comercio.nombre_contacto,
+        cargo: comercio.cargo,
+        email: comercio.email,
+        imagen: comercio.imagen,
+    })
+  }, [dispatch]);
+
+
+  console.log(typeof ciudades.id_ciudad);
 
   const [errors, setErrors] = useState({});
 
@@ -25,7 +46,20 @@ export default function FormRegister() {
     event.preventDefault();
   
     // Obtiene los valores del formulario
-    const {
+    const {id_categoria_comercio,
+      id_ciudad,
+      nombre_comercio,
+      direccion,
+      telefono,
+      estado,
+      nombre_contacto,
+      cargo,
+      email,
+      imagen, 
+    } = form;
+  
+    // Realiza las validaciones
+    const errors = validations({ 
       id_categoria_comercio,
       id_ciudad,
       nombre_comercio,
@@ -34,53 +68,31 @@ export default function FormRegister() {
       estado,
       nombre_contacto,
       cargo,
-      password,
       email,
       imagen,
-    } = form;
-  
-    // Realiza las validaciones
-    const errors = validations({ 
-        id_categoria_comercio,
-        nombre_comercio,
-        direccion,
-        telefono,
-        estado,
-        nombre_contacto,
-        cargo,
-        password,
-        email,
-        imagen,
-        id_ciudad 
     });
 
   
     // Si hay errores, los muestra y no continúa con la solicitud
     if (Object.keys(errors).length > 0) {
-      setErrors(errors); // Actualiza el estado de los errores
+      setErrors(errors);
+      console.log("FORME: ", errors)
+      // Actualiza el estado de los errores
     } else {
       // Si no hay errores, continúa con el proceso de envío del formulario
       try {
-        const salt = bcrypt.genSaltSync(10);
-        const hashedPassword = bcrypt.hashSync(form.password, salt);
-        setForm({ ...form, password: hashedPassword });
-  
-        await axios
-          .post("http://localhost:3001/commerce", form)
-          .then(res => swal({
-            title: 'Registro exitoso',
-            text: 'Ya puedes navegar con tu cuenta!',
-            icon: 'success',
-            timer: '2000'
-          }), setShouldRedirect(true))
-          .catch(err => swal({
-            text: 'Error',
-            text: 'intente nuevamente',
-            icon: 'error',
-            timer: '2000',
-            button: 'Accept'
-          }), setShouldRedirect(false));
-  
+        //const salt = bcrypt.genSaltSync(10);
+        //const hashedPassword = bcrypt.hashSync(form.password, salt);
+        //setForm({ ...form, password: hashedPassword });
+        console.log("FORM: ", form)
+        dispatch(updateCommerce(form))
+        //await axios
+        //  .put("http://localhost:3001/commerce", form)
+        //  .then(res => alert(res.data))
+        //  .catch(err => console.log(err.response.data));
+        Cookies.set('commerce_session', JSON.stringify(form), { secure: true, sameSite: 'strict' });
+
+        setShouldRedirect(true);
       } catch (error) {
         console.error("Error al encriptar la password:", error);
       }
@@ -115,8 +127,7 @@ export default function FormRegister() {
       formData.append("file", file);
       formData.append("upload_preset", "ajr7own3"); // Reemplazar con tu upload preset de Cloudinary
       formData.append("api_key", "581299476786456"); // Reemplazar con tu API Key de Cloudinary
-                                 
-  
+
       try {
         const response = await axios.post(
           "https://api.cloudinary.com/v1_1/dfmkjxjsf/image/upload",
@@ -147,26 +158,25 @@ export default function FormRegister() {
   }
 
   const [form, setForm] = useState({
-    id_categoria_comercio: null,
-    id_ciudad: null,
-    nombre_comercio: "",
-    direccion: "",
-    telefono: "",
-    estado: true,
-    nombre_contacto: "",
-    cargo: "",
-    password: "",
-    email: "",
-    imagen: ""
+      id_categoria_comercio: null,
+      id_ciudad: null,
+      nombre_comercio: "",
+      direccion: "",
+      telefono: "",
+      estado: true,
+      nombre_contacto: "",
+      cargo: "",
+      email: "",
+      imagen: "",
   });
 
+  console.log("form: ", form)
   return (
     <>
-     
+     <div className={style.link}>
       {shouldRedirect ? (
         <Redirect to="/login" />
       ) : (
-
         /* ----------------------- CONTENEDOR GENERAL -----------------------*/
         <div className={style.contenedor}>
         {/* ----------------------- CONTENEDOR FORMULARIO -----------------------*/}
@@ -174,7 +184,7 @@ export default function FormRegister() {
           <CloudinaryContext cloudName="dfmkjxjsf">
             <form onSubmit={handleSubmit}>
         {/* ----------------------- NOMBRE DE COMERCIO -----------------------*/}
-              <div className={style.contenedorDiv}>
+        <div className={style.contenedorDiv}>
               <label for="" className={style.label}>
                   Nombre del comercio
                 </label>
@@ -279,23 +289,6 @@ export default function FormRegister() {
                 )}
               </div>
 
-        {/* ----------------------- CONTRASEÑA -----------------------*/}
-              <div className={style.contenedorDiv}>
-              <label for="" className={style.label}>
-              Contraseña
-                </label>
-                <input
-                  type="password"
-                  name="password"
-                  value={form.password}
-                  onChange={handleInputChange}
-                  className={style.input}
-                />
-                {errors.password && (
-                <div className={style.errors}>{errors.password}</div>
-                )}
-              </div>
-
         {/* ----------------------- CIUDAD -----------------------*/}
               <div className={style.contenedorDiv}>
                 <label for="" className={style.label}>
@@ -385,14 +378,14 @@ export default function FormRegister() {
               </div>
 
               <button type="submit" className={style.button}>
-                Registrarse
+                Actualizar
               </button>
             </form>
             </CloudinaryContext>
           </div>
         </div>
       )}
-     
+     </div>
     </>
   );
 }

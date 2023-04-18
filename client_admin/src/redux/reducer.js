@@ -9,11 +9,14 @@ import {
   COMMERCE_LOGIN,
   GET_COMMERCE_BY_ID,
   UPDATE_COMMERCE,
+  GET_CATEGORY_PRODUCT,
+  UPDATE_PASSWORD
 } from "./actions-type.js";
 
 const initialState = {
   logIn: false,
   products: [],
+  categoriaProducto: [],
   productsFitered: [],
   copyProducts: [],
   comercios: [],
@@ -50,6 +53,12 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         categorys: action.payload,
       };
+
+    case GET_CATEGORY_PRODUCT:
+      return{
+        ...state,
+        categoriaProducto: action.payload,
+      }
 
     case GET_ALL_CITIES:
       return {
@@ -96,6 +105,22 @@ export default function rootReducer(state = initialState, action) {
           ),
         };
       }
+
+      case UPDATE_PASSWORD:
+        const exist = state.comercios.find(
+          (item) => item.id_comercio === action.payload.id_comercio
+        );
+  
+        if (exist) {
+          return {
+            ...state,
+            comercios: state.comercios.map((item) =>
+              item.id_comercio === action.payload.id_comercio
+                ? action.payload
+                : item
+            ),
+          };
+        }
 
     default:
       return state;
