@@ -7,7 +7,7 @@ import Carousel from "../../components/carousel/Carousel";
  function HomePrincipal() {
 // 
   return (  
-        <div>          
+        <div style={{minHeight: '100vh'}}>          
             <Carousel numSlides={5} speed={2000}/>
           
             <CardsCategory />          

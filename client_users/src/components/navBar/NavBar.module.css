@@ -50,7 +50,7 @@ h4 {
 }
 
 .button:hover {
-    color: #54b216 ;
+    color: var(--green-color);
 }
 
 @media (min-width: 820px) {

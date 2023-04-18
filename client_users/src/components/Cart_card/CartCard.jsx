@@ -2,9 +2,9 @@ import { IoTrashBinOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { deleteCount, eliminarDelCarrito, restarCantidad, restarCount, sumarCantidad, sumarCount } from "../../redux/actions"
-import s from "./cartcard.module.css";
 import QuantityDisplay from "../quantityDisplay/QuantityDisplay";
 import swal from "sweetalert";
+import s from "./cartcard.module.css";
 
 export default function CartCard(product) {
   const dispatch = useDispatch();

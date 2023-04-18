@@ -22,9 +22,9 @@ const NavBar = () => {
 
 
   /* ------------- MENU HAMBURGUESA ------------- */
-  
+
   const [showProfileMenu, setShowProfileMenu] = useState(false);
-  
+
   const handleLogInClick = () => {
     setShowProfileMenu(!showProfileMenu);
   };
@@ -33,7 +33,7 @@ const NavBar = () => {
   /* ------------- LOGIN MENU ------------- */
 
   const estaLogueado = useSelector(state => state.logIn)
-  
+
 
   /* ------------- LOGOUT ------------- */
   const dispatch = useDispatch()
@@ -42,7 +42,7 @@ const NavBar = () => {
   const handleLogOut = () => {
     dispatch(userLoggedIn(logOut))
   };
-    /* ------------- LOGOUT ------------- */
+  /* ------------- LOGOUT ------------- */
   const count = useSelector(state => state.countCarrito)
   return (
     <div className={s.container}>
@@ -86,38 +86,40 @@ const NavBar = () => {
       <div className={s.box1}>
         <SearchBar />
       </div>
+
       <div>
-  {!estaLogueado ? (
-    <Link to="/log-in" className={s.link}>
-      <h4>Iniciar sesión</h4>
-    </Link>
-  ) : (
-    <div>
-        <img  onClick={handleLogInClick} className={s.logIn} src={logIn} />
-      {showProfileMenu  && (
-        <div className={s.menuDesplegable}>
-          <Link to="/account" className={s.link}>
-            <h4>Ver perfil</h4>
-          </Link>       
-          <Link to="/historial-de-compra" className={s.link}>
-            <h4>Historial de compras</h4>
+        {!estaLogueado ? (
+          <Link to="/log-in" className={s.link}>
+            <h4>Iniciar sesión</h4>
           </Link>
-          <Link to="/" className={s.link} onClick={handleLogOut}>
-            <h4>Cerrar sesión</h4>
-          </Link>
-        </div>
-      )}
-    </div>
-  )}
-</div>
-      <div style={{position: "relative"}}>
-        <Link to="/shopping-cart" style={{textDecoration:"none"}}>
-        <div style={{display:"inline-block", position:"absolute", top:"-10px", right:"6px"}}>
-          <h4 style={{fontSize:"10px", color:"red"}}>{count === 0 ? "": count}</h4>
-        </div>
-        <div className={s.button}>
-          <AiOutlineShoppingCart size={25} />
-        </div>
+        ) : (
+          <div>
+            <img onClick={handleLogInClick} className={s.logIn} src={logIn} />
+            {showProfileMenu && (
+              <div className={s.menuDesplegable}>
+                <Link to="/account" className={s.link}>
+                  <h4>Ver perfil</h4>
+                </Link>
+                <Link to="/historial-de-compra" className={s.link}>
+                  <h4>Historial de compras</h4>
+                </Link>
+                <Link to="/" className={s.link} onClick={handleLogOut}>
+                  <h4>Cerrar sesión</h4>
+                </Link>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+      
+      <div style={{ position: "relative" }}>
+        <Link to="/shopping-cart" style={{ textDecoration: "none" }}>
+          <div style={{ display: "inline-block", position: "absolute", top: "-10px", right: "6px" }}>
+            <h4 style={{ fontSize: "10px", color: "red" }}>{count === 0 ? "" : count}</h4>
+          </div>
+          <div className={s.button}>
+            <AiOutlineShoppingCart size={25} />
+          </div>
         </Link>
       </div>
 
