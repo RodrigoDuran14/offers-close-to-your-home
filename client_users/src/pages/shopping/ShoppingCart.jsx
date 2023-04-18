@@ -1,23 +1,29 @@
 import React, { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import CartCard from "../../components/Cart_card/CartCard"
-import { cleanMercadoPago, mercadoPago } from "../../redux/actions"
 import styles from './shopping.module.css'
+import {cleanMercadoPago, getUsuarioByID, mercadoPago} from "../../redux/actions"
+import { clean } from "./clean"
+import { date } from "./date"
+import { mail } from "./user"
+import axios from "axios"
+import swal from "sweetalert"
 
 export default function ShoppingCart() {
   const dispatch = useDispatch()
-  const { carrito, linkMercadoPago, countCarrito } = useSelector((state) => state);
-
+  const { carrito, linkMercadoPago, countCarrito, usuario } = useSelector((state) => state);
+  console.log(usuario);
   useEffect(() => {
+    const email = mail() 
     window.localStorage.setItem("carrito", JSON.stringify(carrito));
     window.localStorage.setItem("count", JSON.stringify(countCarrito));
     window.localStorage.getItem("carrito");
-    return () => {
+    dispatch(getUsuarioByID(email))
+    return () =>{
       dispatch(cleanMercadoPago());
     }
   }, [carrito]);
-
-  //Suma de subtotales
+//Suma de subtotales
   let total = 0
   carrito.forEach(producto => {
     total = total + producto.valor_con_descuento * producto.cantidad
@@ -34,7 +40,32 @@ export default function ShoppingCart() {
     const data = await response.json();
     dispatch(mercadoPago(data.init_point))
   }
-
+  console.log(usuario);
+  //post a venta
+  const handlerDetalleVenta = async () => {
+    const fecha = date();
+    const detalle_venta =  clean(carrito);
+    const valor_total_venta = detalle_venta.reduce((a,b) => {
+      return a + b.valor_total_cantidad},0)
+    const venta = {
+      fecha,
+      valor_total_venta,
+      id_usuario: usuario[0].id_usuario,
+      detalle_venta
+    }
+    await axios.post("http://localhost:3001/venta",venta)
+    .then(response =>{
+      console.log(response.data);
+    })
+    .catch(error => {
+      swal({
+        title: "Ocurrio un error",
+        text: `error`,
+        icon: "error",
+        timer: "3000"
+      })          
+    })  
+  }
   return (
     <div style={{ marginTop: "100px" }}>
       <div style={{ display: "flex", justifyContent: "center" }}>
@@ -67,7 +98,10 @@ export default function ShoppingCart() {
           </div>
           {linkMercadoPago ? (
             <div className={styles.mercadoPago}>
-              <a href={linkMercadoPago}>Pagar</a>
+              <a
+              target="_blank"
+              onClick={handlerDetalleVenta} 
+              href={linkMercadoPago}>Pagar</a>
             </div>
           ) : (
             <button onClick={handlerPago}>Confirmar compra</button>
