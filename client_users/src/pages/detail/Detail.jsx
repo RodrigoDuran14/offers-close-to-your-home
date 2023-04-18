@@ -14,6 +14,7 @@ import axios from 'axios'
 const Detail = () => {
 
   const { product, carrito } = useSelector(state => state)
+  console.log(product);
   const { id } = useParams()
   const dispatch = useDispatch();
 
@@ -111,9 +112,9 @@ const [valor_calificacion, setValor_calificacion] = useState();
                   </div>
                 <div className={s.condicion}>{product.condicion}</div>
                 </div>
-                <hr />
+                <hr style={{height: '90%', margin: '20px'}}/>
 
-                <div>
+                <div style={{maxWidth: '60%'}}>
                   <h1>{product.nombre}</h1>
 
                   <h4 className={s.descripcion_producto}>{product.descripcion_producto}</h4>
@@ -132,9 +133,9 @@ const [valor_calificacion, setValor_calificacion] = useState();
                         />
                   </div>
 
-                  <div className={s.buttons}>
-                    <button className={s.btn}  onClick={handlerComprar}>Comprar</button>
-                    <button className={s.btn} onClick={handlerCarrito}>Agregar al carrito</button>
+                  <div style={{margin: '15px'}}>
+                    <button style={{width: '250px'}} onClick={handlerComprar}>Comprar</button>
+                    <button style={{width: '250px'}} onClick={handlerCarrito}>Agregar al carrito</button>
                   </div>
 
                 </div>
@@ -149,7 +150,7 @@ const [valor_calificacion, setValor_calificacion] = useState();
             <div className={s.formulario}>
               <h1>Comentario</h1>
             <form className={s.form} onSubmit={handleSubmit}>
-                <label>Comentario</label>
+                <label>¿Qué te pareció este producto?</label>
                 <input 
                 className={s.input} 
                 type="text"

@@ -114,6 +114,7 @@ export function getProductCategory() {
         payload: error,
       });
     }
+
   };
 }
 
@@ -133,3 +134,39 @@ export const getAllProducts = () => {
     }
   };
 };
+
+
+  
+
+  export function getAllCategorias() {
+    return async (dispatch) => {
+      try {
+        const response = await axios.get(`${URL}/categorias`);
+        // console.log(response.data);
+        dispatch({ type: action.GET_ALL_CATEGORIAS, payload: response.data });
+      } catch (error) {
+        console.log(error);
+        dispatch({ type: action.GET_ALL_CATEGORIAS, payload: error });
+      }
+    };
+  }
+
+
+  export function updateProduct(producto) {
+    return async (dispatch) =>{
+      try {
+        const response = await axios.put(`${URL}/products/editProduct`, producto)
+        dispatch({
+          type: action.UPDATE_PRODUCT,
+          payload: response.data
+        })
+      } catch (error) {
+        dispatch({
+          type: action.UPDATE_PRODUCT,
+          payload: error
+        })
+      }
+    }
+  }
+
+

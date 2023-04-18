@@ -49,8 +49,8 @@ const initialState = {
   categorys: [],
   product: {},
   filter: [],
-  carrito: JSON.parse(window.localStorage.getItem("carrito")) || [],
-  countCarrito: JSON.parse(window.localStorage.getItem("count")) || 0,
+  carrito: [],
+  countCarrito: 0,
   ciudades: [],
   display: false,
   logIn: false,
@@ -61,7 +61,6 @@ const initialState = {
 };
 
 function rootReducer(state = initialState, action) {
-  console.log("TYPE; ", action.type);
   switch (action.type) {
     case CREATE_PRODUCT:
       return { ...state, products: [...state.products, action.payload] };

@@ -7,7 +7,6 @@ import { useHistory } from 'react-router-dom';
 import validation from './validation'
 import swal from 'sweetalert'
 import axios from 'axios'
-import styles from "../formLogin/FormLogin.module.css"
 import { initializeApp } from "firebase/app";
 import Google from "../../assets/images/IconGoogle.png"
 
@@ -16,6 +15,8 @@ import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { userLoggedIn } from "../../redux/actions";
 
 import Cookies from 'js-cookie';
+
+import styles from "../formLogin/FormLogin.module.css"
 
 const firebaseConfig = {
     apiKey: "AIzaSyDIr4a7cej0mw217G8qMwAGMx8R9MEYj2g",
@@ -100,6 +101,7 @@ const handleLogin = async (values) => {
       icon: 'error',
       timer: '2000'
     });
+    console.log(err)
   }
 };
 
@@ -153,10 +155,10 @@ const handleLogin = async (values) => {
             >
                 <Form className='form-container'>
 
-                    <Field name='email' type='email' placeholder='Email' className={styles.formInput} />
+                    <Field name='email' type='email' placeholder='Email' className='form-input' />
                     <ErrorMessage name='email' />
 
-                    <Field name='password' type='password' placeholder='Password' className={styles.formInput} />
+                    <Field name='password' type='password' placeholder='Password' className='form-input' />
                     <ErrorMessage name='password' />
 
                     <div className={styles.botones}

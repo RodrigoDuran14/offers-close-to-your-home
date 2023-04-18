@@ -11,12 +11,12 @@ import { userLoggedIn } from "../../redux/actions";
 // imagenes
 import Logo from "../../assets/images/SoloTextoBlanco.png";
 import Icono from "../../assets/images/SoloIconoNormal.png";
-import LogIn from "../../assets/images/logIn.webp";
+import logIn from "../../assets/images/logIn.webp";
 
 const NavBar = () => {
   const logoTexto = Logo;
   const logoIcono = Icono;
-  const logIn = LogIn;
+  const LogIn = logIn;
 
   /* ------------- MENU HAMBURGUESA ------------- */
 
@@ -43,10 +43,13 @@ const NavBar = () => {
 
   const handleLogOut = () => {
     // Elimina el estado de inicio de sesión del almacenamiento local del navegador
-    localStorage.removeItem("estaLogueado");
+    window.localStorage.removeItem("estaLogueado");
+    window.localStorage.removeItem('carrito');
+    window.localStorage.removeItem('count');
     dispatch(userLoggedIn(logOut));
   };
   /* ------------- LOGOUT ------------- */
+
   const count = useSelector(state => state.countCarrito)
 
   return (
@@ -73,7 +76,7 @@ const NavBar = () => {
         <Link
           to="/"
           className={s.link}
-          // style={{ margin: '0px 10px' }}
+        // style={{ margin: '0px 10px' }}
         >
           <h4>Quiero vender</h4>
         </Link>
@@ -81,7 +84,7 @@ const NavBar = () => {
         <Link
           to="/about"
           className={s.link}
-          // style={{ margin: '0px 10px' }}
+        // style={{ margin: '0px 10px' }}
         >
           <h4>¿Quienes somos?</h4>
         </Link>
@@ -91,30 +94,28 @@ const NavBar = () => {
         <SearchBar />
       </div>
 
-      <div>
+      <div className={s.sesion}>
         {!estaLogueado ? (
           <Link to="/log-in" className={s.link}>
             <h4>Iniciar sesión</h4>
           </Link>
         ) : (
-          <div>
-            {estaLogueado === "google" && (
-  // Opción de menú para usuario logueado con Google 
-  <div>
-    <img onClick={handleLogInClick} className={s.logIn} src={logIn} />
-  </div>
-)}
+          <div style={{display: 'flex'}}>
+            {estaLogueado && (
+              // Opción de menú para usuario logueado con Google              
+                <img onClick={handleLogInClick} className={s.logIn} src={LogIn} />
+            )}
 
             {showProfileMenu && (
               <div className={s.menuDesplegable}>
 
-                <Link to="/account" className={s.link}>
+                <Link to="/account" className={s.link_menu} onClick={handleLogInClick}>
                   <h4>Ver perfil</h4>
                 </Link>
-                <Link to="/historial-de-compra" className={s.link}>
+                <Link to="/historial-de-compra" className={s.link_menu} onClick={handleLogInClick}>
                   <h4>Historial de compras</h4>
                 </Link>
-                <Link to="/" className={s.link} onClick={handleLogOut}>
+                <Link to="/" className={s.link_menu} onClick={handleLogOut}>
                   <h4>Cerrar sesión</h4>
                 </Link>
               </div>
@@ -122,26 +123,27 @@ const NavBar = () => {
           </div>
         )}
 
-      <div style={{ position: "relative" }}>
-        <Link to="/shopping-cart" style={{ textDecoration: "none" }}>
-          <div
-            style={{
-              display: "inline-block",
-              position: "absolute",
-              top: "-10px",
-              right: "6px",
-            }}
-          >
-            <h4 style={{ fontSize: "10px", color: "red" }}>
-              {count === 0 ? "" : count}
-            </h4>
-          </div>
-          <div className={s.button}>
-            <AiOutlineShoppingCart size={25} />
-          </div>
-        </Link>
+        <div style={{ position: "relative" }}>
+          <Link to="/shopping-cart" style={{ textDecoration: "none" }}>
+            <div
+              style={{
+                display: "inline-block",
+                position: "absolute",
+                top: "-10px",
+                right: "6px",
+              }}
+            >
+              <h4 style={{ fontSize: "25px", color: "var(--green-color)", textShadow: '0px 0px 5px black' }}>
+                {count === 0 ? "" : count}
+              </h4>
+            </div>
+            <div className={s.button}>
+              <AiOutlineShoppingCart size={40} />
+            </div>
+          </Link>
+        </div>
       </div>
-    </div>
+
     </div>
   );
 };

@@ -90,6 +90,9 @@ const getProductById = async (idProduct) => {
       "estado",
       "id_categoria_producto",
     ],
+    include: [
+      { model: Comercio, attributes: ["nombre_comercio", "id_comercio"] },
+    ],
   });
 
   return dbdata;
