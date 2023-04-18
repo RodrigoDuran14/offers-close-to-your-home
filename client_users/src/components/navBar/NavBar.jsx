@@ -106,13 +106,13 @@ const NavBar = () => {
             {showProfileMenu && (
               <div className={s.menuDesplegable}>
 
-                <Link to="/account" className={s.link}>
+                <Link to="/account" className={s.link_menu} onClick={handleLogInClick}>
                   <h4>Ver perfil</h4>
                 </Link>
-                <Link to="/historial-de-compra" className={s.link}>
+                <Link to="/historial-de-compra" className={s.link_menu} onClick={handleLogInClick}>
                   <h4>Historial de compras</h4>
                 </Link>
-                <Link to="/" className={s.link} onClick={handleLogOut}>
+                <Link to="/" className={s.link_menu} onClick={handleLogOut}>
                   <h4>Cerrar sesión</h4>
                 </Link>
               </div>

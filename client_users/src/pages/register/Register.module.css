@@ -3,7 +3,20 @@
 .container {
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 100px;
+}
+
+.logo {
+    width: 90vw;
+    margin-bottom: 10px;
+}
+
+@media (min-width: 900px) {
+    .logo {
+        width: 50vw;
+        align-self: flex-end;
+    }
 }
