@@ -7,7 +7,6 @@ import { useHistory } from 'react-router-dom';
 import validation from './validation'
 import swal from 'sweetalert'
 import axios from 'axios'
-import styles from "../formLogin/FormLogin.module.css"
 import { initializeApp } from "firebase/app";
 import Google from "../../assets/images/IconGoogle.png"
 
@@ -16,6 +15,8 @@ import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { userLoggedIn } from "../../redux/actions";
 
 import Cookies from 'js-cookie';
+
+import styles from "../formLogin/FormLogin.module.css"
 
 const firebaseConfig = {
     apiKey: "AIzaSyDIr4a7cej0mw217G8qMwAGMx8R9MEYj2g",
@@ -71,34 +72,6 @@ export default function FormLogin() {
           return Promise.resolve(false);
         }
       }
-
-
-      // const handleLogin = async (values) => {
-      //   try {
-      //     const user = await axios.post(`${BACK_HOST}/usuario/login`, values);
-      //     console.log("USER:  ",user)
-      //     const session = user.data.session;
-      //     const token = user.data.token;
-      //     console.log("session:  ",session)
-      //     console.log("token:  ",token)
-
-      //     window.localStorage.setItem('user_token', JSON.stringify(token));
-      //     window.localStorage.setItem('user_session', JSON.stringify(session));
-      //     const isUserAuthenticated = await login(true);
-      //     if (isUserAuthenticated) {
-      //       navigateTo('/');
-      //     } else {
-      //       console.log('Login failed');
-      //     }
-      //   } catch (error) {
-      //     const err = error.response.data;
-      //     swal({
-      //       text: err.msg,
-      //       icon: 'error',
-      //       timer: '2000'
-      //     });
-      //   }
-      // };
   
 
 const handleLogin = async (values) => {
@@ -116,6 +89,7 @@ const handleLogin = async (values) => {
 
     const isUserAuthenticated = await login(true);
     if (isUserAuthenticated) {
+      localStorage.setItem("estaLogueado", "database")
       navigateTo('/');
     } else {
       console.log('Login failed');
@@ -127,6 +101,7 @@ const handleLogin = async (values) => {
       icon: 'error',
       timer: '2000'
     });
+    console.log(err)
   }
 };
 
@@ -144,6 +119,7 @@ const handleLogin = async (values) => {
                     icon: 'success',
                     timer: '2000'
                 });
+                localStorage.setItem("estaLogueado", "google")
                 navigateTo('/'); // Redirigir a la ruta localhost:3000/home
             } else {
                 swal({
@@ -179,10 +155,10 @@ const handleLogin = async (values) => {
             >
                 <Form className='form-container'>
 
-                    <Field name='email' type='email' placeholder='Email' className={styles.formInput} />
+                    <Field name='email' type='email' placeholder='Email' className='form-input' />
                     <ErrorMessage name='email' />
 
-                    <Field name='password' type='password' placeholder='Password' className={styles.formInput} />
+                    <Field name='password' type='password' placeholder='Password' className='form-input' />
                     <ErrorMessage name='password' />
 
                     <div className={styles.botones}

@@ -26,7 +26,7 @@ const getAllProducts = async () => {
         attributes: ["nombre_categoria_producto", "imagen_categoria_producto"],
         required: true,
       },
-      { model: Comercio, attributes: ["nombre_comercio"] },
+      { model: Comercio, attributes: ["nombre_comercio", "id_comercio"] },
     ],
   });
   return databaseProducts;
@@ -88,6 +88,9 @@ const getProductById = async (idProduct) => {
       "condicion",
       "estado",
       "id_categoria_producto",
+    ],
+    include: [
+      { model: Comercio, attributes: ["nombre_comercio", "id_comercio"] },
     ],
   });
 

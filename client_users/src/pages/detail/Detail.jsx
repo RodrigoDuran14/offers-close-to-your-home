@@ -8,12 +8,17 @@ import s from './Detail.module.css'
 import swal from 'sweetalert'
 import CardsReviews from "../../components/cardsReviews/CardsReviews"
 
+import axios from 'axios'
+
 
 const Detail = () => {
 
   const { product, carrito } = useSelector(state => state)
+  console.log(product);
   const { id } = useParams()
   const dispatch = useDispatch();
+
+const URL = 'http://localhost:3001'
 
   useEffect(() => {
     dispatch(getProductById(id))
@@ -79,6 +84,21 @@ const Detail = () => {
     setShouldRedirect(true)
   }
   
+const [descripcion_motivo, setDescripcion_motivo] = useState();
+const [valor_calificacion, setValor_calificacion] = useState();
+
+  async function handleSubmit(){
+    const data = {
+      id: id,
+      descripcion_motivo,
+      valor_calificacion       
+    }
+    await axios.post(`${URL}/products/${id}/calificacion`, data)
+    setDescripcion_motivo()
+    setValor_calificacion()
+  }
+
+
   return (
     <>
       {carrito && shouldRedirect 
@@ -92,9 +112,9 @@ const Detail = () => {
                   </div>
                 <div className={s.condicion}>{product.condicion}</div>
                 </div>
-                <hr />
+                <hr style={{height: '90%', margin: '20px'}}/>
 
-                <div>
+                <div style={{maxWidth: '60%'}}>
                   <h1>{product.nombre}</h1>
 
                   <h4 className={s.descripcion_producto}>{product.descripcion_producto}</h4>
@@ -113,9 +133,9 @@ const Detail = () => {
                         />
                   </div>
 
-                  <div className={s.buttons}>
-                    <button className={s.btn}  onClick={handlerComprar}>Comprar</button>
-                    <button className={s.btn} onClick={handlerCarrito}>Agregar al carrito</button>
+                  <div style={{margin: '15px'}}>
+                    <button style={{width: '250px'}} onClick={handlerComprar}>Comprar</button>
+                    <button style={{width: '250px'}} onClick={handlerCarrito}>Agregar al carrito</button>
                   </div>
 
                 </div>
@@ -127,7 +147,32 @@ const Detail = () => {
                 <CardsReviews/>
               </div>
             </div>
-        
+            <div className={s.formulario}>
+              <h1>Comentario</h1>
+            <form className={s.form} onSubmit={handleSubmit}>
+                <label>¿Qué te pareció este producto?</label>
+                <input 
+                className={s.input} 
+                type="text"
+                value={descripcion_motivo}
+                onChange={(e) => setDescripcion_motivo(e.target.value)}
+                />
+         <label>Calificar</label>
+                <select 
+                className={s.select} 
+                value={valor_calificacion}
+                onChange={(e) => setValor_calificacion(e.target.value)}
+                >
+                <option value="0">Punteaje</option>
+                <option value="1">⭐</option>
+                <option value="2">⭐⭐</option>
+                <option value="3">⭐⭐⭐</option>
+                <option value="4">⭐⭐⭐⭐</option>
+                <option value="5">⭐⭐⭐⭐⭐</option>
+</select>
+                <button className={s.btn} type='submit'>Enviar</button>
+            </form>
+        </div>
         </div>
       )} 
     </>
