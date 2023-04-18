@@ -90,18 +90,6 @@ export default function FormRegister() {
 
   const [shouldRedirect, setShouldRedirect] = useState(false);
 
-  // const handleInputChange = event => {
-  //   const property = event.target.name;
-  //   const value = event.target.value;
-  //   //   Verificar si el input es de tipo file
-  //   if (event.target.type === "file") {
-  //     const file = event.target.files[0]; // Obtener el archivo seleccionado
-  //     setForm({ ...form, [property]: file }); // Actualizar el estado con el archivo seleccionado
-  //   } else {
-  //     setForm({ ...form, [property]: value });
-    
-  // };
-
   const handleInputChange = async event => {
     const property = event.target.name;
     const value = event.target.value;

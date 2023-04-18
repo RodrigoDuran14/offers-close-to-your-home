@@ -86,11 +86,13 @@ h4 {
 }
 
 .logIn{
-    filter: invert();
-    width: 30px;
-    height: 30px;
+    /* filter: invert(); */
+    width: 40px;
+    height: 40px;
     margin-top: 8px;
     cursor: pointer;
+    object-fit: cover;
+    border-radius: 400px;
 }
 
 
