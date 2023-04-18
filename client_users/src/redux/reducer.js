@@ -27,6 +27,9 @@ import {
   GET_USER_BY_ID,
   REVIEWS,
   CLEAN_REVIEWS,
+  GET_USER_BY_EMAIL,
+  PUT_USER,
+  PUT_PASSWORD_USER,
   GET_SALE_BY_ID,
   CLEAN_MERCADO_PAGO,
   COUNT_SUMAR,
@@ -326,24 +329,26 @@ function rootReducer(state = initialState, action) {
         ...state,
         linkMercadoPago: action.payload,
       };
-
-    case GET_USER_BY_ID:
+    case GET_USER_BY_EMAIL:
       return {
         ...state,
         usuario: action.payload,
       };
-
-    case REVIEWS:
-      return {
-        ...state,
-        reviews: action.payload,
-      };
-
-    case GET_SALE_BY_ID:
-      return {
-        ...state,
-        compras: action.payload,
-      };
+      case REVIEWS:
+        return{
+          ...state,
+          reviews: action.payload
+        }
+      case PUT_USER:
+        return {
+          ...state,
+          usuario: action.payload,
+        };
+      case GET_USER_BY_ID:
+        return {
+          ...state,
+          usuario: action.payload,
+        } ;   
 
     default:
       return state;

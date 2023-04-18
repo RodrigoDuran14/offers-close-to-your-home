@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 // ACTIONS
 import { getSales } from "../../redux/actions";
-import { getUsuarioByID } from "../../redux/actions";
+import { getUserById } from "../../redux/actions";
 
 // ESTILOS
 import s from "./ShoppingHistory.module.css";
@@ -21,7 +21,7 @@ const HistorialDeCompra = () => {
   const email = decodedToken.email;
 
   useEffect(() => {
-    dispatch(getUsuarioByID(email));
+    dispatch(getUserById(email));
     dispatch(getSales());
   }, [dispatch, email]);
 
@@ -49,9 +49,6 @@ const HistorialDeCompra = () => {
                       $: {detalle.Producto.valor_con_descuento}
                     </label>
                     <label className={s.aux}>Cant: {detalle.cantidad}</label>
-                    <Link to="/comentario" className={s.link}>
-                      <h3> Calificar </h3>
-                    </Link>
                   </div>
                 ))}
               </div>

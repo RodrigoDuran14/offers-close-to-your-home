@@ -91,11 +91,12 @@ h4 {
 }
 
 .logIn{
-    filter: invert();
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     margin-top: 8px;
     cursor: pointer;
+    object-fit: cover;
+    border-radius: 400px;
 }
 
 
@@ -103,7 +104,7 @@ h4 {
 .menuDesplegable {
     position: absolute;
     top: 100%;
-    right: 185px;
+    right: 50px;
     background-color: rgba(0, 0, 0, 0.575);
     /* border: 1px solid gray; */
     padding: 1rem;
