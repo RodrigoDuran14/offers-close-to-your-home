@@ -38,7 +38,7 @@ const NavBar = () => {
   const { comercios } = useSelector((state) => state);
 
   const dispatch = useDispatch();
-  const token = Cookies.get("user_token");
+  const token = Cookies.get("commerce_token");
   const decodedToken = jwt_decode(token);
 
   const email = decodedToken.email;
