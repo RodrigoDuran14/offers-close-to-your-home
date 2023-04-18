@@ -92,16 +92,15 @@ const NavBar = () => {
       </div>
 
       <div className={s.sesion}>
-        {!estaLogueado ? (
+        {!estaLogueado && (
           <Link to="/log-in" className={s.link}>
             <h4>Iniciar sesión</h4>
           </Link>
-        ) : (
-          <div style={{display: 'flex'}}>
-            {estaLogueado && (
-              // Opción de menú para usuario logueado con Google              
+        ) }
+
+            {estaLogueado  === "database" && (
+          <div style={{display: 'flex'}}>              
                 <img onClick={handleLogInClick} className={s.logIn} src={logIn} />
-            )}
 
             {showProfileMenu && (
               <div className={s.menuDesplegable}>
@@ -116,9 +115,26 @@ const NavBar = () => {
                   <h4>Cerrar sesión</h4>
                 </Link>
               </div>
-            )}
+                )}
           </div>
-        )}
+            )}
+        
+
+        {estaLogueado  === "google" && (
+          <div style={{display: 'flex'}}>              
+                <img onClick={handleLogInClick} className={s.logIn} src={logIn} />
+
+            {showProfileMenu && (
+              <div className={s.menuDesplegable}>
+                <Link to="/" className={s.link_menu} onClick={handleLogOut}>
+                  <h4>Cerrar sesión</h4>
+                </Link>
+              </div>
+                )}
+          </div>
+            )}
+
+
 
         <div style={{ position: "relative" }}>
           <Link to="/shopping-cart" style={{ textDecoration: "none" }}>
