@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, {useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import SearchBar from "../searchBar/SearchBar";
 import DrawerMenu from "../drawerMenu/DrawerMenu";
 import s from "./NavBar.module.css";
 
+import Cookies from "js-cookie";
+import jwt_decode from "jwt-decode";
+
 import { commerceLoggedIn } from "../../../redux/actions";
+import { getCommerceByID } from "../../../redux/actions";
 
 // imagenes
 import Logo from "../../../assets/images/SoloTextoBlanco.png";
@@ -31,10 +35,27 @@ const NavBar = () => {
   /* ------------- LOGIN MENU ------------- */
 
   const estaLogueado = useSelector(state => state.logIn)
-  
+  const { comercios } = useSelector((state) => state);
+
+  const dispatch = useDispatch();
+  const token = Cookies.get("user_token");
+  const decodedToken = jwt_decode(token);
+
+  const email = decodedToken.email;
+  // console.log(token);
+
+
+
+  useEffect(() => {
+    dispatch(getCommerceByID(email)); // Actualizar el estado con la respuesta de la acción asincrónica
+  }, [dispatch]);
+
+
+  const userLogin = comercios.filter((e) => e.email === email);
+
+  const imgProfile = userLogin[0]?.imagen
 
   /* ------------- LOGOUT ------------- */
-  const dispatch = useDispatch()
   const logOut = false
 
   const handleLogOut = () => {
@@ -93,7 +114,7 @@ const NavBar = () => {
     </Link>
   ) : (
     <div>
-        <img  onClick={handleLogInClick} className={s.logIn} src={logIn} />
+        <img  onClick={handleLogInClick} className={s.logIn} src={imgProfile} />
       {showProfileMenu  && (
         <div className={s.menuDesplegable}>
           <Link to="/account" className={s.link}>

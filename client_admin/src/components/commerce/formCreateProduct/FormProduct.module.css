@@ -1,11 +1,19 @@
 .contenedor {
+display: flex;
+flex-direction: column;
+justify-content: center;
+height: 100vh;
+}
 
-  height: 80vh; /* ajusta la altura según tus necesidades */
-  padding: 1.5rem;
-  border-radius: 40px;
+.titulo{
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  margin: auto;
+  margin-top: 100px;
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
