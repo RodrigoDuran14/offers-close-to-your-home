@@ -11,12 +11,12 @@ import { userLoggedIn } from "../../redux/actions";
 // imagenes
 import Logo from "../../assets/images/SoloTextoBlanco.png";
 import Icono from "../../assets/images/SoloIconoNormal.png";
-import LogIn from "../../assets/images/logIn.webp";
+import logIn from "../../assets/images/logIn.webp";
 
 const NavBar = () => {
   const logoTexto = Logo;
   const logoIcono = Icono;
-  const logIn = LogIn;
+  const LogIn = logIn;
 
   /* ------------- MENU HAMBURGUESA ------------- */
 
@@ -43,10 +43,13 @@ const NavBar = () => {
 
   const handleLogOut = () => {
     // Elimina el estado de inicio de sesión del almacenamiento local del navegador
-    localStorage.removeItem("estaLogueado");
+    window.localStorage.removeItem("estaLogueado");
+    window.localStorage.removeItem('carrito');
+    window.localStorage.removeItem('count');
     dispatch(userLoggedIn(logOut));
   };
   /* ------------- LOGOUT ------------- */
+
   const count = useSelector(state => state.countCarrito)
 
   return (
@@ -100,7 +103,7 @@ const NavBar = () => {
           <div style={{display: 'flex'}}>
             {estaLogueado && (
               // Opción de menú para usuario logueado con Google              
-                <img onClick={handleLogInClick} className={s.logIn} src={logIn} />
+                <img onClick={handleLogInClick} className={s.logIn} src={LogIn} />
             )}
 
             {showProfileMenu && (

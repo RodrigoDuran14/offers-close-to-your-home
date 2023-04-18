@@ -3,6 +3,10 @@ import * as action from "./actions-type"; // para no escribir todos los action t
 
 const URL = "http://localhost:3001";
 // ========================* CARRITO *========================
+export function actualizarStock(arrayProductos) {
+  axios.put(`${URL}/products`)
+}
+
 export function agregarAlCarrito(id, quantity) {
   console.log(id);
   return {

@@ -150,7 +150,7 @@ const [valor_calificacion, setValor_calificacion] = useState();
             <div className={s.formulario}>
               <h1>Comentario</h1>
             <form className={s.form} onSubmit={handleSubmit}>
-                <label>Comentario</label>
+                <label>¿Qué te pareció este producto?</label>
                 <input 
                 className={s.input} 
                 type="text"
