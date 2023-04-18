@@ -1,7 +1,7 @@
 const {getProductById} = require("../../controllers/productos/getProductoController")
 const {editProduct} = require ("../../controllers/productos/putProductsController")
 
-const putProductHandler = async (req, res, next) => {
+const putProductoHandler = async (req, res, next) => {
     const { id_comercio,
         id_producto, 
          nombre,
@@ -40,5 +40,5 @@ const putProductHandler = async (req, res, next) => {
 }
 
 module.exports = {
-    putProductHandler
+    putProductoHandler
 }
