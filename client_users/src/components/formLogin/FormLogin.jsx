@@ -61,7 +61,26 @@ export default function FormLogin() {
       });
 
 
+
       return Promise.resolve(true);
+      
+const handleLogin = async (values) => {
+  try {
+    const user = await axios.post(`${BACK_HOST}/usuario/login`, values);
+    console.log("USER:  ",user)
+    const session = user.data.session;
+    const token = user.data.token;
+    console.log("session:  ",session)
+    console.log("token:  ",token)
+
+    // Almacenar el token y la sesión en cookies con opciones de seguridad
+    Cookies.set('user_token', token, { secure: true, sameSite: 'strict' });
+    Cookies.set('user_session', JSON.stringify(session), { secure: true, sameSite: 'strict' });
+
+    const isUserAuthenticated = await login(true);
+    if (isUserAuthenticated) {
+      localStorage.setItem("estaLogueado", "database")
+      navigateTo('/');
     } else {
       swal({
         text: 'Usuario o contraseña incorrectos',
@@ -72,35 +91,6 @@ export default function FormLogin() {
       return Promise.resolve(false);
     }
   }
-
-  const handleLogin = async (values) => {
-    try {
-      const user = await axios.post(`${BACK_HOST}/usuario/login`, values);
-      console.log("USER:  ", user)
-      const session = user.data.session;
-      const token = user.data.token;
-      console.log("session:  ", session)
-      console.log("token:  ", token)
-
-      // Almacenar el token y la sesión en cookies con opciones de seguridad
-      Cookies.set('user_token', token, { secure: true, sameSite: 'strict' });
-      Cookies.set('user_session', JSON.stringify(session), { secure: true, sameSite: 'strict' });
-
-      const isUserAuthenticated = await login(true);
-      if (isUserAuthenticated) {
-        navigateTo('/');
-      } else {
-        console.log('Login failed');
-      }
-    } catch (error) {
-      const err = error.response.data;
-      swal({
-        text: 'Invalid email or password',
-        icon: 'error',
-        timer: '2000'
-      });
-    }
-  };
 
 
   // carolina
@@ -131,6 +121,38 @@ export default function FormLogin() {
         icon: 'error',
         timer: '2000'
       });
+      
+      
+// carolina
+    const handleGoogleLogin = async () => {
+        try {
+            const result = await signInWithPopup(auth, new GoogleAuthProvider());
+            const user = result.user;
+            if (user) {
+                swal({
+                    title: 'Bienvenido',
+                    text: 'Ya puedes navegar con tu cuenta!',
+                    icon: 'success',
+                    timer: '2000'
+                });
+                localStorage.setItem("estaLogueado", "google")
+                navigateTo('/'); // Redirigir a la ruta localhost:3000/home
+            } else {
+                swal({
+                    text: 'Usuario o contraseña incorrectos',
+                    icon: 'error',
+                    timer: '2000',
+                    button: 'Accept'
+                });
+            }
+        } catch (error) {
+            const err = error.response.data;
+            swal({
+                text: err.msg,
+                icon: 'error',
+                timer: '2000'
+            });
+        }
     }
   }
   //carolina final
