@@ -11,7 +11,7 @@ import { userLoggedIn } from "../../redux/actions";
 // imagenes
 import Logo from "../../assets/images/SoloTextoBlanco.png";
 import Icono from "../../assets/images/SoloIconoNormal.png";
-import LogIn from "../../assets/images/logIn.webp";
+import logIn from "../../assets/images/logIn.webp";
 
 const NavBar = () => {
   const logoTexto = Logo;
