@@ -39,7 +39,7 @@ const NavBar = () => {
   const dispatch = useDispatch();
   
   const email = useMemo(() => {
-    const numToken = Cookies.get("user_token");
+    const numToken = Cookies.get("commerce_token");
     let decodedToken = null;
   
     try {

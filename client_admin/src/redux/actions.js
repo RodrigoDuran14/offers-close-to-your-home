@@ -116,3 +116,20 @@ export function getProductCategory() {
     }
   };
 }
+
+
+export const getAllProducts = () => {
+  return async (dispatch) => {
+    try {
+
+      const response = await axios.get(`${URL}/products`);
+      // console.log(response.data);
+      dispatch({ type: action.GET_ALL_PRODUCTS, payload: response.data });
+
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: action.GET_ALL_PRODUCTS, payload: error });
+
+    }
+  };
+};

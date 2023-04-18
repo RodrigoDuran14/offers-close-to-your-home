@@ -2,6 +2,7 @@ const { Producto, Comercio, Categoria_producto } = require("../../db");
 const axios = require("axios");
 const { Op } = require("sequelize");
 
+
 const getAllProducts = async () => {
   // buscar en la bbd
   const databaseProducts = await Producto.findAll({
@@ -26,7 +27,7 @@ const getAllProducts = async () => {
         attributes: ["nombre_categoria_producto", "imagen_categoria_producto"],
         required: true,
       },
-      { model: Comercio, attributes: ["nombre_comercio"] },
+      { model: Comercio, attributes: ["nombre_comercio", "id_comercio"] },
     ],
   });
   return databaseProducts;
