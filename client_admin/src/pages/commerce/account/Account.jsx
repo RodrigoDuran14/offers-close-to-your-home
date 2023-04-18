@@ -4,6 +4,7 @@ import { getCommerceByID } from "../../../redux/actions";
 import Cookies from "js-cookie";
 import jwt_decode from "jwt-decode";
 import s from "./Account.module.css";
+import { Link } from "react-router-dom";
 
 const Account = () => {
   const { comercios } = useSelector((state) => state);
@@ -11,14 +12,14 @@ const Account = () => {
   const [email, setEmail] = useState("");
 
   useEffect(() => {
-    const token = Cookies.get("user_token");
+    const token = Cookies.get("commerce_token");
     const decodedToken = jwt_decode(token);
     setEmail(decodedToken.email);
     dispatch(getCommerceByID(decodedToken.email));
   }, [dispatch]);
 
   const userCommerce = comercios.find((commerce) => commerce.email === email);
-
+console.log(userCommerce);
   return (
     <div className={s.container}>
       <div className={s.contenedorInfo}>
@@ -43,22 +44,15 @@ const Account = () => {
                 <label>{userCommerce.email}</label>
               </div>
             </div>
+              <img className={s.imageFile} src={userCommerce.imagen} alt="" />
           </div>
         )}
       </div>
-      <div className={s.divForm}>
-        <ul className={s.ulForm}>
-          <li className={s.liForm}>
-            <a href="#">
-              {/* Renderizar el componente FormUpdate dentro del elemento li */}
-             {/*<FormUpdate />*/}
-            </a>
-          </li>
-        </ul>
-      </div>
+      <Link to={"/update"}>
+        <div className={s.divForm}>Editar</div>
+      </Link>
     </div>
   );
-
 };
 
 export default Account;

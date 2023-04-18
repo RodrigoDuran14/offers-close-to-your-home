@@ -59,7 +59,7 @@ const validacionPostUsuario = (data) => {
     throw new Error("Nombre puede contener como maximo 50 caracteres");
   }
 
-  if (
+  if (segundo_nombre &&
     !/^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/i.test(
       segundo_nombre
     )

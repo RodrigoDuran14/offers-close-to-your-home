@@ -8,6 +8,8 @@ import s from './Detail.module.css'
 import swal from 'sweetalert'
 import CardsReviews from "../../components/cardsReviews/CardsReviews"
 
+import axios from 'axios'
+
 
 const Detail = () => {
 
@@ -15,6 +17,8 @@ const Detail = () => {
   console.log(product);
   const { id } = useParams()
   const dispatch = useDispatch();
+
+const URL = 'http://localhost:3001'
 
   useEffect(() => {
     dispatch(getProductById(id))
@@ -80,6 +84,21 @@ const Detail = () => {
     setShouldRedirect(true)
   }
   
+const [descripcion_motivo, setDescripcion_motivo] = useState();
+const [valor_calificacion, setValor_calificacion] = useState();
+
+  async function handleSubmit(){
+    const data = {
+      id: id,
+      descripcion_motivo,
+      valor_calificacion       
+    }
+    await axios.post(`${URL}/products/${id}/calificacion`, data)
+    setDescripcion_motivo()
+    setValor_calificacion()
+  }
+
+
   return (
     <>
       {carrito && shouldRedirect 
@@ -128,7 +147,32 @@ const Detail = () => {
                 <CardsReviews/>
               </div>
             </div>
-        
+            <div className={s.formulario}>
+              <h1>Comentario</h1>
+            <form className={s.form} onSubmit={handleSubmit}>
+                <label>Comentario</label>
+                <input 
+                className={s.input} 
+                type="text"
+                value={descripcion_motivo}
+                onChange={(e) => setDescripcion_motivo(e.target.value)}
+                />
+         <label>Calificar</label>
+                <select 
+                className={s.select} 
+                value={valor_calificacion}
+                onChange={(e) => setValor_calificacion(e.target.value)}
+                >
+                <option value="0">Punteaje</option>
+                <option value="1">⭐</option>
+                <option value="2">⭐⭐</option>
+                <option value="3">⭐⭐⭐</option>
+                <option value="4">⭐⭐⭐⭐</option>
+                <option value="5">⭐⭐⭐⭐⭐</option>
+</select>
+                <button className={s.btn} type='submit'>Enviar</button>
+            </form>
+        </div>
         </div>
       )} 
     </>
