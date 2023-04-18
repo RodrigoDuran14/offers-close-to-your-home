@@ -51,7 +51,8 @@ export default function ShoppingCart() {
       fecha,
       valor_total_venta,
       id_usuario: usuario[0].id_usuario,
-      detalle_venta
+      detalle_venta,
+      estado:false
     }
     await axios.post("http://localhost:3001/venta",venta)
     .then(response =>{
