@@ -16,9 +16,7 @@ const editProduct = async (nombre,
     
     const editOneProduct = await Producto.update(
         {
-            nombre,
-            id_producto,
-            id_comercio,
+            nombre,          
             cantidad,
             descripcion_producto,
             existencia,
