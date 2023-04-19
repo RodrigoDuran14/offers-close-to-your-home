@@ -3,22 +3,21 @@ import { useSelector, useDispatch } from "react-redux";
 import { getUsuarioByEmail } from "../../redux/actions";
 import Cookies from "js-cookie";
 import jwt_decode from "jwt-decode";
-import s from "./Account.module.css";
 import FormUpdate from "../../components/FormUpdate/FormUpdate";
 import FormUpdatePassword from "../../components/FormUpdate/FormUpdatePassword";
 
+import s from "./Account.module.css";
+
 const Account = () => {
   /* ------------------- ESTADOS ------------------- */
-  const usuario = useSelector(state => state.usuario) ?? [];
   const [userData, setUserData] = useState({});
   const dispatch = useDispatch();
+  const usuario = useSelector(state => state.usuario) ?? [];
 
   const token = Cookies.get("user_token");
   const decodedToken = jwt_decode(token);
 
-   const email = decodedToken.email;
-
-
+  const email = decodedToken.email;
 
   useEffect(() => {
     dispatch(getUsuarioByEmail(email));
@@ -31,7 +30,7 @@ const Account = () => {
     }
   }, [usuario]);
 
-  console.log(userData?.Ciudad?.nombre_ciudad);
+  console.log('CIUDAD USUARIO', userData?.Ciudad?.nombre_ciudad);
 
   /* ------------- MENU HAMBURGUESA ------------- */
 
@@ -43,65 +42,39 @@ const Account = () => {
 
   const idUsuario = usuario.length > 0 ? usuario[0].id_usuario : null;
 
+  const nombreUsuario = userData.primer_nombre + ' ' + userData?.segundo_nombre + ' ' + userData.primer_apellido + ' ' + userData?.segundo_apellido
+
   return (
-    <div className={s.contenedor}>
-      <div className={s.contenedorInfo}>
-        <div className={s.titulos}>
-          <h1 className={s.tittle}>Mi cuenta:</h1>
-        
-        <div className={s.informacion}>
-          {userData && (
-            <div className={s.aux}>
-              {userData.imagen && (
-                <img className={s.imageFile} src={userData.imagen} id="imagen" />
-              )}
-            </div>
-          )}
+    <div className={s.container}>
+
+      <div className={s.usuario}>
+        <h2 style={{ marginBottom: '15px', textAlign: 'left', fontSize: '30px' }}>Mi cuenta</h2>
+        <div className={s.datos}>
+          <div style={{ backgroundImage: `url(${userData.imagen})` }} className={s.imagen}></div>
+          
+          <span className={s.label}>Nombre</span>
+          <h3 className={s.dato_nombre}>{nombreUsuario}</h3>
+
+          <span className={s.label}>Email</span>
+          <h3 className={s.dato}>{userData.email}</h3>
+
+          <span className={s.label}>Ciudad</span>
+          <h3 className={s.dato}>{userData?.Ciudad?.nombre_ciudad}</h3>
+
+          <span className={s.label}>Dirección</span>
+          <h3 className={s.dato}>{userData.direccion}</h3>
+
+          <span className={s.label}>Teléfono</span>
+          <h3 className={s.dato}>{userData.telefono}</h3>
         </div>
-        </div>
-        <div className={s.text}>
-          <div className={s.row}>
-            <div className={s.column}>
-              <label>Nombre:</label>
-              <label>Dirección:</label>
-              <label>Ciudad:</label>
-              <label>Número de teléfono:</label>
-              <label>Correo electrónico:</label>
-            </div>
-            <div className={s.column}>
-              <label>{`${userData.primer_nombre} ${userData.segundo_nombre} ${userData.primer_apellido} ${userData.segundo_apellido}`}</label>
-              <label>{userData.direccion}</label>
-              <label>{userData?.Ciudad?.nombre_ciudad }</label>              
-              <label>{userData.telefono}</label>
-              <label>{userData.email}</label>
-            </div>
-          </div>
-        </div>
-       
+
       </div>
-      <div>         
-          <div className={s.formUpdate}>          
-         <FormUpdate idUsuario={idUsuario} />
-          </div>
-        {/* <ul className={s.ulForm}>
-          Editar Perfil
-          <li className={s.liForm}>
-            <a href="#">
-            
-              <FormUpdate idUsuario={idUsuario} />
-            </a>
-          </li>
-        </ul> */}
-        </div>
 
-        <div className={s.formPassword}>
-          <button onClick={handleLogInClick} className={s.logIn}>
-            Cambiar Contraseña
-          </button>
-          {showProfileMenu && <FormUpdatePassword idUsuario={idUsuario} />}
-
-        </div>
-
+      <div className={s.update}>
+        <FormUpdate idUsuario={idUsuario} />
+        <button onClick={handleLogInClick}>Quiero cambiar mi contraseña</button>
+        {showProfileMenu && <FormUpdatePassword idUsuario={idUsuario} mostrarProp={true} />}
+      </div>
     </div>
   );
 };

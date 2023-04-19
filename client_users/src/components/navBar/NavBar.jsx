@@ -12,11 +12,12 @@ import { userLoggedIn } from "../../redux/actions";
 import Logo from "../../assets/images/SoloTextoBlanco.png";
 import Icono from "../../assets/images/SoloIconoNormal.png";
 import logIn from "../../assets/images/logIn.webp";
+import Profile from '../../assets/images/profile.png'
 
 const NavBar = () => {
   const logoTexto = Logo;
   const logoIcono = Icono;
-  const LogIn = logIn;
+  const profile = Profile;
 
   /* ------------- MENU HAMBURGUESA ------------- */
 
@@ -104,7 +105,7 @@ const NavBar = () => {
 
             {estaLogueado  === "database" && (
           <div style={{display: 'flex'}}>              
-                <img onClick={handleLogInClick} className={s.logIn} src={logIn} />
+                <img onClick={handleLogInClick} className={s.logIn} src={profile} />
 
             {showProfileMenu && (
               <div className={s.menuDesplegable}>
@@ -166,4 +167,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-

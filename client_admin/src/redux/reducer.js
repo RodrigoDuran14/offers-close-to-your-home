@@ -12,7 +12,9 @@ import {
   GET_ALL_CATEGORIAS,
   UPDATE_PRODUCT,
   GET_PRODUCT_BY_CATEGORY,
-  GET_PRODUCT_BY_ID
+  GET_PRODUCT_BY_ID,
+  GET_ALL_COMMERCE,
+  GET_ALL_USERS
      
 } from "./actions-type.js";
 
@@ -30,7 +32,8 @@ const initialState = {
   display: false,
   categorias:[],
   productCategory: [],
-
+  allUsers:[],
+  allCommerce:[]
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -131,7 +134,16 @@ export default function rootReducer(state = initialState, action) {
 
       case GET_PRODUCT_BY_ID:
         return { ...state, product: action.payload };
-      
+      case GET_ALL_COMMERCE:
+        return{
+          ...state,
+          allCommerce: action.payload
+        }
+        case GET_ALL_USERS:
+          return{
+            ...state,
+            allUsers: action.payload
+          }
     default:
       return state;
   }

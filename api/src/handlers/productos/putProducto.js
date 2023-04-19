@@ -44,7 +44,7 @@ const borradoLogicoHandler = async (req, res, next) => {
     const { id_producto} = req.params
 
     try {
-       const results = await borradoLogico ( id_producto)
+       const results = await borradoLogico (id_producto)
 
        res.status(200).json(results)
     } catch (error) {

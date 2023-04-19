@@ -67,6 +67,7 @@ const NavBar = () => {
   const logOut = false
 
   const handleLogOut = () => {
+     Cookies.set("commerce_session",[])
     dispatch(commerceLoggedIn(logOut))
   };
   

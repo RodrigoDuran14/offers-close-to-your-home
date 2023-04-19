@@ -14,38 +14,14 @@ const putProductController = async (producto) => {
             for (let i = 0; i < producto.length; i++) {
                 Producto.update(
                     {
-                        existencia: producto[i].cantidad
+                        existencia: producto[i].nuevoStock
                     },
                     {
                         where: { id_producto: producto[i].id_producto }
                     }
                 )                
             }
-            
-
-            // const actualizado = await Producto.update(
-            //     {
-            //         existencia: producto.cantidad
-            //     },
-            //     {
-            //         where: { id_producto: producto.id_producto }
-            //     }
-            // )
-
-            // return actualizado
-
-            // arrayStock.forEach( async (producto) => {
-            //     await Producto.update(
-            //         {
-            //             existencia: producto.cantidad
-            //         },
-            //         {
-            //             where: { id_producto: producto.id_producto }
-            //         }
-            //     );
-            // });
-
-            // return 'Modificado con éxito'
+            return "Producto/s actualizado"
         }
     } catch (error) {
         return error
