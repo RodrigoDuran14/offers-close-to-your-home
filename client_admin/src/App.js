@@ -12,6 +12,8 @@ import HomeAdmin from "./pages/admin/HomeAdmin";
 import CreateProduct from "./pages/commerce/createProduct/CreateProduct";
 import Comercios from "./components/admin/Comercios/Comercios";
 import Usuarios from "./components/admin/Usuarios/Usuarios";
+import DetailUser from "./components/admin/Usuarios/detailUser/DetailUser";
+import DetailCommerce from "./components/admin/Comercios/DetailCommerce/DetailCommerce";
 
 
 function App() {
@@ -33,8 +35,8 @@ function App() {
            <Route exact path="/admin" component={HomeAdmin}/>
            <Route exact path="/admin/comercios" component={Comercios}/>
            <Route exact path="/admin/usuarios" component={Usuarios}/>
-
-
+          <Route exact path="/admin/usuarioDetail/:id_usuario" component={DetailUser} />
+          <Route exact path="/admin/comercioDetail/:id_comercio" component={DetailCommerce} />
            
         </Switch>
       </HashRouter>

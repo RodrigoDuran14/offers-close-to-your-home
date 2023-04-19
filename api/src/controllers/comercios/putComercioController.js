@@ -41,4 +41,13 @@ const editCommerce = async (id_comercio, id_categoria_comercio, id_ciudad, nombr
     }
 }
 
-module.exports = { editCommerce, editPassword };
+const borradoLogico = async (id_comercio) => {
+    const comercio = await Comercio.update({estado:false},{where:{
+        id_comercio
+    }
+    })
+  
+    return comercio
+}
+
+module.exports = { editCommerce, editPassword, borradoLogico };

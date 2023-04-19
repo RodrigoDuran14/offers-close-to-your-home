@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { IoTrashBinOutline } from "react-icons/io5";
 import { FiEdit } from "react-icons/fi";
 import s from "./Usuarios.module.css"
+import { Link } from "react-router-dom";
 
 
 
@@ -13,6 +14,7 @@ function Usuarios () {
   useEffect(()=>{
     dispatch(getAllUsers())
   },[])
+  console.log(allUsers)
   
 
         return (
@@ -30,7 +32,7 @@ function Usuarios () {
                   </tr>
                 </thead>
                 <tbody>
-                  {allUsers.map((p) => {
+                  {allUsers.length ? allUsers.map((p) => {
                      
                     return (
                       <tr key={p.id_usuario}>
@@ -38,8 +40,8 @@ function Usuarios () {
                         <td>{p.primer_apellido}</td>
                         <td>{p.email}</td>
                         <td>{p.Ciudad.nombre_ciudad}</td>
-                        <td>                     
-                            <FiEdit />                 
+                        <td> 
+                                   
                         </td>
                         <td>
                           <button>
@@ -48,7 +50,7 @@ function Usuarios () {
                         </td>
                       </tr>
                     );
-                  })}
+                  }): <p>aun no hay usuarios</p>}
                 </tbody>
               </table>
             </div>

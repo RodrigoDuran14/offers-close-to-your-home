@@ -31,7 +31,7 @@ function Comercios () {
                   </tr>
                 </thead>
                 <tbody>
-                  {allCommerce.map((p) => {
+                  {allCommerce.length ?allCommerce.map((p) => {
                     return (
                       <tr key={p.id_comercio}>
                         <td>{p.nombre_comercio}</td>
@@ -49,7 +49,7 @@ function Comercios () {
                         </td>
                       </tr>
                     );
-                  })}
+                  }): <p>Aun no hay comercios</p>}
                 </tbody>
               </table>
             </div>

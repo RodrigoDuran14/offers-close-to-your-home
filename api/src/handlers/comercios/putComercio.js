@@ -1,6 +1,7 @@
 const {
   editCommerce,
   editPassword,
+  borradoLogico
 } = require("../../controllers/comercios/putComercioController");
 const {
   getCommerceId,
@@ -49,6 +50,18 @@ const putCommerceHandler = async (req, res, next) => {
   }
 };
 
+const borradoLogicoHandler = async (req, res, next) => {
+  const { id_comercio} = req.params
+
+  try {
+     const results = await borradoLogico (id_comercio)
+
+     res.status(200).json(results)
+  } catch (error) {
+      next(error)
+  }
+}
+
 module.exports = {
-  putCommerceHandler,
+  putCommerceHandler, borradoLogicoHandler
 };

@@ -49,6 +49,7 @@ export function ready() {
     type: action.READY,
   };
 }
+
 export function commerceLoggedIn(estado) {
   return {
     type: action.COMMERCE_LOGIN,
@@ -216,4 +217,20 @@ export const getAllProducts = () => {
   
       }
     };
+  };
+
+  export const getUserById = (id) => async (dispatch) => {
+    try {
+      const res = await axios.get(`${URL}/usuario/${id}`);
+      dispatch({
+        type: action.GET_USER_BY_ID,
+        payload: res.data,
+      });
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: action.GET_USER_BY_ID,
+        payload: error,
+      });
+    }
   };

@@ -14,14 +14,14 @@ import {
   GET_PRODUCT_BY_CATEGORY,
   GET_PRODUCT_BY_ID,
   GET_ALL_COMMERCE,
-  GET_ALL_USERS
-     
+  GET_ALL_USERS,
+  GET_USER_BY_ID,
 } from "./actions-type.js";
 
 const initialState = {
   logIn: false,
   products: [],
-  product:[],
+  product: [],
   productsFitered: [],
   copyProducts: [],
   comercios: [],
@@ -30,10 +30,11 @@ const initialState = {
   categorys: [],
   ciudades: [],
   display: false,
-  categorias:[],
+  categorias: [],
   productCategory: [],
-  allUsers:[],
-  allCommerce:[]
+  allUsers: [],
+  allCommerce: [],
+  usuario: [],
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -92,27 +93,27 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         comercios: action.payload,
       };
-       case GET_ALL_CATEGORIAS:
-        return{
+    case GET_ALL_CATEGORIAS:
+      return {
+        ...state,
+        categorias: action.payload,
+      };
+    case UPDATE_PRODUCT:
+      const exist = state.products.find(
+        (item) => item.id_producto === action.payload.id_producto
+      );
+      if (exist) {
+        return {
           ...state,
-          categorias: action.payload
-        }
-        case UPDATE_PRODUCT:
-          const exist = state.products.find(
-            (item) => item.id_producto === action.payload.id_producto
-          );
-          if (exist) {
-            return {
-              ...state,
-              products: state.products.map((item) =>
-                item.id_producto === action.payload.id_producto
-                  ? action.payload
-                  : item
-              ),
-            };
-          }
+          products: state.products.map((item) =>
+            item.id_producto === action.payload.id_producto
+              ? action.payload
+              : item
+          ),
+        };
+      }
 
-      case UPDATE_COMMERCE:
+    case UPDATE_COMMERCE:
       const existe = state.comercios.find(
         (item) => item.id_comercio === action.payload.id_comercio
       );
@@ -132,18 +133,27 @@ export default function rootReducer(state = initialState, action) {
         productCategory: action.payload,
       };
 
-      case GET_PRODUCT_BY_ID:
-        return { ...state, product: action.payload };
-      case GET_ALL_COMMERCE:
-        return{
-          ...state,
-          allCommerce: action.payload
-        }
-        case GET_ALL_USERS:
-          return{
-            ...state,
-            allUsers: action.payload
-          }
+    case GET_PRODUCT_BY_ID:
+      return { ...state, product: action.payload };
+
+    case GET_ALL_COMMERCE:
+      return {
+        ...state,
+        allCommerce: action.payload,
+      };
+
+    case GET_ALL_USERS:
+      return {
+        ...state,
+        allUsers: action.payload,
+      };
+
+    case GET_USER_BY_ID:
+      return {
+        ...state,
+        usuario: action.payload,
+      };
+
     default:
       return state;
   }

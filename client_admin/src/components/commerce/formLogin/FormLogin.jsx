@@ -65,6 +65,7 @@ export default function FormLogin() {
           
               const isUserAuthenticated = await login(true);
               if (isUserAuthenticated) {
+                
                 navigateTo('/');
               } else {
                 console.log('Login failed');
