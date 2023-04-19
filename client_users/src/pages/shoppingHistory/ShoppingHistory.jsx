@@ -14,11 +14,13 @@ import s from "./ShoppingHistory.module.css";
 const HistorialDeCompra = () => {
   const dispatch = useDispatch();
 
-  const { usuario } = useSelector((state) => state);
+  const { usuario, compras } = useSelector((state) => state);
   const token = Cookies.get("user_token");
   const decodedToken = jwt_decode(token);
 
   const email = decodedToken.email;
+
+  // console.log(usuario)
 
   useEffect(() => {
     dispatch(getUserById(email));
@@ -27,9 +29,10 @@ const HistorialDeCompra = () => {
 
   // Filtrar las compras del usuario logueado
   const comprasUsuario = useSelector((state) =>
-    state.compras.filter((compra) => compra.Usuario.email === email)
+    state.compras.filter((compras) => compras.Usuario.email === email)
   );
 
+  console.log(comprasUsuario);
   return (
     <div className={s.contenedor}>
       <div className={s.tabla}>
