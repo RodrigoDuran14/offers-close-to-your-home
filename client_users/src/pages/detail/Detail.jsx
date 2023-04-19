@@ -17,6 +17,7 @@ const Detail = () => {
   console.log(product);
   const { id } = useParams()
   const dispatch = useDispatch();
+  const estaLogueado = localStorage.getItem("estaLogueado");
 
 const URL = 'http://localhost:3001'
 
@@ -34,23 +35,31 @@ const URL = 'http://localhost:3001'
     const exists = carrito?.find(e => {
       return e.id_producto === product.id_producto
     })
-   if(!exists){
-    dispatch(agregarAlCarrito(product, quantity))
-    dispatch(agregarCount(quantity))
-     swal({
-       title: `Agregaste ${product.nombre}`,
-       icon: "success",
-       timer: "3000",
-       showConfirmButton: false
-     })
-    }else{
-      swal({
-        title: `Este articulo ya está agregado`,
-        text: "Para modificar la cantidad dirijase al carrito de compra",
-        icon: "error",
-        timer: "3000"
-      })
-    }
+   if(estaLogueado === "database" || estaLogueado === "google"){
+    if(!exists){
+      dispatch(agregarAlCarrito(product, quantity))
+      dispatch(agregarCount(quantity))
+       swal({
+         title: `Agregaste ${product.nombre}`,
+         icon: "success",
+         timer: "3000",
+         showConfirmButton: false
+       })
+      }else{
+        swal({
+          title: `Este articulo ya está agregado`,
+          text: "Para modificar la cantidad dirijase al carrito de compra",
+          icon: "error",
+          timer: "3000"
+        })
+      }
+   }else{
+    swal({
+      title: `Debe de iniciar sesion para comprar`,
+      icon: "info",
+      timer: "3000"
+    })
+   }
   }  
   // Cantidad de articulos
   const [quantity, setQuantity] = useState(1);
@@ -77,11 +86,19 @@ const URL = 'http://localhost:3001'
     const exists = carrito?.find(e => {
       return e.id_producto === product.id_producto
     })
-    if(!exists){
-      dispatch(agregarAlCarrito(product, quantity))
-      dispatch(agregarCount(quantity))
+    if(estaLogueado === "database" || estaLogueado === "google"){
+      if(!exists){
+        dispatch(agregarAlCarrito(product, quantity))
+        dispatch(agregarCount(quantity))
+      }
+      setShouldRedirect(true)
+    }else{
+      swal({
+        title: `Debe de iniciar sesion para comprar`,
+        icon: "info",
+        timer: "3000"
+      })
     }
-    setShouldRedirect(true)
   }
   
 const [descripcion_motivo, setDescripcion_motivo] = useState();
