@@ -35,7 +35,7 @@ import {
   COUNT_SUMAR,
   COUNT_AGREGAR,
   COUNT_RESTAR,
-  COUNT_DELETE
+  COUNT_DELETE,
 } from "./actions-type.js";
 
 const initialState = {
@@ -79,7 +79,7 @@ function rootReducer(state = initialState, action) {
     case GET_PRODUCT_BY_NAME:
       return {
         ...state,
-        productsFitered: action.payload
+        productsFitered: action.payload,
       };
 
     case GET_PRODUCT_BY_CATEGORY:
@@ -265,23 +265,23 @@ function rootReducer(state = initialState, action) {
     case COUNT_AGREGAR:
       return {
         ...state,
-        countCarrito: state.countCarrito + action.payload
-      }
+        countCarrito: state.countCarrito + action.payload,
+      };
     case COUNT_SUMAR:
       return {
         ...state,
-        countCarrito: state.countCarrito + 1
-      }
+        countCarrito: state.countCarrito + 1,
+      };
     case COUNT_RESTAR:
       return {
         ...state,
-        countCarrito: state.countCarrito - 1
-      }
+        countCarrito: state.countCarrito - 1,
+      };
     case COUNT_DELETE:
       return {
         ...state,
-        countCarrito: state.countCarrito - action.payload
-      }      
+        countCarrito: state.countCarrito - action.payload,
+      };
 
     case CLEAN_PRODUCT:
       return {
@@ -307,8 +307,8 @@ function rootReducer(state = initialState, action) {
 
     case LOADING:
       return {
-      ...state,
-      display: true,
+        ...state,
+        display: true,
       };
 
     case READY:
@@ -333,21 +333,26 @@ function rootReducer(state = initialState, action) {
         ...state,
         usuario: action.payload,
       };
-      case REVIEWS:
-        return{
-          ...state,
-          reviews: action.payload
-        }
-      case PUT_USER:
-        return {
-          ...state,
-          usuario: action.payload,
-        };
-      case GET_USER_BY_ID:
-        return {
-          ...state,
-          usuario: action.payload,
-        } ;   
+    case REVIEWS:
+      return {
+        ...state,
+        reviews: action.payload,
+      };
+    case PUT_USER:
+      return {
+        ...state,
+        usuario: action.payload,
+      };
+    case GET_USER_BY_ID:
+      return {
+        ...state,
+        usuario: action.payload,
+      };
+    case GET_SALE_BY_ID:
+      return {
+        ...state,
+        compras: action.payload,
+      };
 
     default:
       return state;
