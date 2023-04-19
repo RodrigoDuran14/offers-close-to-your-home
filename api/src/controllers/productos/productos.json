@@ -12,7 +12,7 @@
           "condicion": "Usado",
           "imagen": "https://m.media-amazon.com/images/I/71AYSsdxNBL._AC_UL400_.jpg",
           "id_categoria_producto": 1,
-          "id_comercio": 2
+          "id_comercio": 1
       },
       {
         "nombre": "Camisa COOFANDY ",
@@ -26,7 +26,7 @@
           "condicion": "Nuevo",
           "imagen": "https://m.media-amazon.com/images/I/61DSf-iLZML._AC_UL400_.jpg",
           "id_categoria_producto": 1,
-          "id_comercio": 2
+          "id_comercio": 1
       },
       {
         "nombre": "Camisa holgada con estampado",
@@ -40,13 +40,13 @@
           "condicion": "Nuevo",
           "imagen": "https://m.media-amazon.com/images/I/61OfXuXmXXL._AC_UL400_.jpg",
           "id_categoria_producto": 1,
-          "id_comercio": 2
+          "id_comercio": 1
       },
       {
         "nombre": "conjunto para mujer",
           "fecha_inicial" :"2023-02-20",
           "fecha_final" :"2023-12-31",
-          "descripcion_producto": "conjunto deportivo de 2 piezas de verano para mujer, estilo casual, manga corta",
+          "descripcion_producto": "conjunto deportivo de 1 piezas de verano para mujer, estilo casual, manga corta",
           "cantidad": 0,
           "existencia": 121,
           "valor_normal": 19,
@@ -54,7 +54,7 @@
           "condicion": "Usado",
           "imagen": "https://m.media-amazon.com/images/I/81zFDHLQ8WL._AC_UL400_.jpg",
           "id_categoria_producto": 1,
-          "id_comercio": 2
+          "id_comercio": 1
       },
       {
         "nombre": "Blusa suelta casual",
