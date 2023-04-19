@@ -14,26 +14,30 @@ const Products = () => {
   const dispatch = useDispatch();
 
   const session = Cookies.get("commerce_session");
+
   console.log(session);
-  let values = JSON.parse(session);
-
-  let comercio = values.dataValues;
-  console.log(comercio);
-
   useEffect(() => {
     dispatch(getAllProducts());
   }, [dispatch]);
 
+ 
+    let values = JSON.parse(session);
+
+  let comercio = values.dataValues;
+  console.log(comercio);
+  
+  
   const productsCommerce = products.filter(
     (p) => p.Comercio.id_comercio === comercio.id_comercio
   );
+  
   //   console.log(productsCommerce)
   //   console.log(products)
   //   // console.log(products.Comercio.id_comercio)
   //   console.log(products?.Comercio?.id_comercio);
 
   // console.log(products[0].Comercio.id_comercio)
-
+  
 
   return (
     <>
@@ -48,8 +52,8 @@ const Products = () => {
           </tr>
         </thead>
         <tbody>
-          {productsCommerce.map((p) => {
-
+          {session?productsCommerce.map((p) => {
+             
             return (
               <tr key={p.id_producto}>
                 <td>{p.nombre}</td>
@@ -69,7 +73,7 @@ const Products = () => {
                 </td>
               </tr>
             );
-          })}
+          }):<tr>no hay pa </tr>}
         </tbody>
       </table>
     </>

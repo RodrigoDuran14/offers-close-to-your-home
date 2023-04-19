@@ -180,7 +180,7 @@ const [errors, setErrors] = useState({});
   });
   const handleBorrar = async (id_producto) => {
     try {
-      await axios.put(`http://localhost:3001/delete/${id_producto}`);
+      await axios.put(`http://localhost:3001/products/delete/${id_producto}`);
     } catch (error) {
       console.log(error);
     }

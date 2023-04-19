@@ -186,3 +186,34 @@ export const getAllProducts = () => {
   };
 
 
+  export const getAllCommerce = () => {
+    return async (dispatch) => {
+      try {
+  
+        const response = await axios.get(`${URL}/commerce`);
+        // console.log(response.data);
+        dispatch({ type: action.GET_ALL_COMMERCE, payload: response.data });
+  
+      } catch (error) {
+        console.log(error);
+        dispatch({ type: action.GET_ALL_COMMERCE, payload: error });
+  
+      }
+    };
+  };
+  
+  export const getAllUsers = () => {
+    return async (dispatch) => {
+      try {
+  
+        const response = await axios.get(`${URL}/usuario`);
+        // console.log(response.data);
+        dispatch({ type: action.GET_ALL_USERS, payload: response.data });
+  
+      } catch (error) {
+        console.log(error);
+        dispatch({ type: action.GET_ALL_USERS, payload: error });
+  
+      }
+    };
+  };
