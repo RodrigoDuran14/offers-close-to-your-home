@@ -5,6 +5,7 @@ import { getAllCities, userLoggedIn, getUserById } from "../../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { Image, CloudinaryContext } from "cloudinary-react"; // para guardar las imágenes externamente 
 import swal from "sweetalert";
+import validations from "./validations";
 
 export default function FormUpdate({ idUsuario, updateUserData }) {
   const { ciudades } = useSelector(state => state);
@@ -21,6 +22,15 @@ export default function FormUpdate({ idUsuario, updateUserData }) {
     id_ciudad: null,
     imagen: "",
   });
+  const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    // Llama a la función validations con el estado del formulario actual
+    const currentErrors = validations(form);
+    // Actualiza el estado de los errores con los errores actuales
+    setErrors(currentErrors);
+  }, [form]);
+
   const updatedUserData = updateUserData;
   console.log(updatedUserData);
   const usuarioId = idUsuario;
@@ -30,14 +40,11 @@ export default function FormUpdate({ idUsuario, updateUserData }) {
     dispatch(getAllCities()); // ejecutamos la action que trae todas las ciudades para mostrarlas en el input ciudad
   }, [dispatch]);
 
-  useEffect(() => {
-    setForm(prevForm => ({
-      ...prevForm,
-      id_usuario: idUsuario
-    }));
-  }, [idUsuario]);
+
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    
       // captura de datos del estado form
       const data = {
       id_usuario: form.id_usuario,
@@ -52,7 +59,35 @@ export default function FormUpdate({ idUsuario, updateUserData }) {
       estado: form.estado,
       imagen: form.imagen
     };
+
+      // Obtiene los valores del formulario
+      const { primer_nombre,
+        segundo_nombre,
+        primer_apellido,
+        segundo_apellido,
+        direccion,
+        telefono,
+        email,
+        password,
+        id_ciudad
+      } = form;
+
+      // Realiza las validaciones
+      const errors = validations({
+        primer_nombre,
+        segundo_nombre,
+        primer_apellido,
+        segundo_apellido,
+        direccion,
+        telefono,
+        email,
+        password,
+        id_ciudad
+      });
   
+      if (Object.keys(errors).length > 0) {
+        setErrors(errors); // Actualiza el estado de los errores
+      } else {  
     // Remover propiedades con valores falsy (vacíos) del objeto data
     const filteredData = Object.fromEntries(
       Object.entries(data).filter(([_, value]) => !!value)
@@ -76,6 +111,8 @@ export default function FormUpdate({ idUsuario, updateUserData }) {
         timer: '2000',
         button: 'Accept'
       }));
+
+    }
   };  
 
   const handleInputChange = async event => {
@@ -118,9 +155,23 @@ export default function FormUpdate({ idUsuario, updateUserData }) {
         ...prevForm,
         [property]: value
       }));
-    }
-  };
-
+      
+      const currentErrors = validations({ [property]: value });
+      // setErrors(prevErrors => ({
+        //   ...prevErrors,
+        //   [property]: currentErrors[property]
+        // }))  
+        setErrors({ ...errors, [property]: currentErrors[property] });
+      }
+    };
+        
+      useEffect(() => {
+        setForm(prevForm => ({
+          ...prevForm,
+          id_usuario: idUsuario
+        }));
+      }, [idUsuario]);
+    
 
 
   return (
@@ -147,7 +198,12 @@ export default function FormUpdate({ idUsuario, updateUserData }) {
                   value={form.primer_nombre}
                   onChange={handleInputChange}
                   className={style.input2}
-                />              
+                />  
+                
+                {errors.primer_nombre && (
+                      <div className={style.errors}>{errors.primer_nombre}</div>
+                    )}
+
               </div>
 
         {/* ----------------------- SEGUNDO NOMBRE -----------------------*/}
@@ -162,6 +218,9 @@ export default function FormUpdate({ idUsuario, updateUserData }) {
                   onChange={handleInputChange}
                   className={style.input2}
                 />
+                {errors.segundo_nombre && (
+                      <div className={style.errors}>{errors.segundo_nombre}</div>
+                    )}
                  </div>
                  </div>
 
@@ -179,6 +238,9 @@ export default function FormUpdate({ idUsuario, updateUserData }) {
                   onChange={handleInputChange}
                   className={style.input2}
                 />
+                {errors.primer_apellido && (
+                  <div className={style.errors}>{errors.primer_apellido}</div>
+                )}
                  </div>
 
         {/* ----------------------- SEGUNDO APELLIDO -----------------------*/}
@@ -193,6 +255,9 @@ export default function FormUpdate({ idUsuario, updateUserData }) {
                   onChange={handleInputChange}
                   className={style.input2}
                 />
+                {errors.segundo_apellido && (
+                  <div className={style.errors}>{errors.segundo_apellido}</div>
+                )}
                 </div>
               </div>
 
@@ -209,6 +274,9 @@ export default function FormUpdate({ idUsuario, updateUserData }) {
                   onChange={handleInputChange}
                   className={style.input}
                 />
+                {errors.direccion && (
+                  <div className={style.errors}>{errors.direccion}</div>
+                )}
                   </div>
 
         {/* ----------------------- TELEFONO -----------------------*/}
@@ -223,6 +291,9 @@ export default function FormUpdate({ idUsuario, updateUserData }) {
                   onChange={handleInputChange}
                   className={style.input}
                 />
+                 {errors.telefono && (
+                    <div className={style.errors}>{errors.telefono}</div>
+                  )}
               </div>
 
         {/* ----------------------- EMAIL -----------------------*/}
@@ -237,6 +308,9 @@ export default function FormUpdate({ idUsuario, updateUserData }) {
                   onChange={handleInputChange}
                   className={style.input}
                 />
+                {errors.email && (
+                    <div className={style.errors}>{errors.email}</div>
+                  )}
               </div>
 
 
@@ -247,6 +321,9 @@ export default function FormUpdate({ idUsuario, updateUserData }) {
                 </label>
 
                 <div>
+                {errors.id_ciudad && (
+                      <div className={style.errors}>{errors.id_ciudad}</div>
+                    )}
                 <div className={style.contenedorDiv}>
                   <select
                     name="id_ciudad"
