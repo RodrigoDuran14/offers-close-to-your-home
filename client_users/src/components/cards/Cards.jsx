@@ -9,7 +9,6 @@ const Cards = () => {
   const { productsFitered, display } = useSelector((state) => state);
 
 
-
   // PAGINADO
 
   const [numeroPagina, setNumeroPagina] = useState(1);
@@ -35,6 +34,7 @@ const Cards = () => {
 
   return (
     <div className={styles.container}>
+      
       {display ? (
         <Loader />
       ) : (

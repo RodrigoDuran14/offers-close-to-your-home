@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import validations from "./validations";
@@ -402,6 +403,7 @@ export default function FormCreateProduct() {
                     id="imagen"
                     alt="foto perfil"
                   />
+
                 )}
               </div>
 
@@ -409,11 +411,12 @@ export default function FormCreateProduct() {
                 Crear Producto
               </button>
             </form>
+
             </CloudinaryContext>
           </div>
         </div>
       )}
-     
+
     </>
   );
 }

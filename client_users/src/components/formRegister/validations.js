@@ -1,6 +1,6 @@
 const blankSpace = /^\s+$/ // Espacio en blanco
 const regexEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i // Email válido
-const regexPassword = /^(?=.*?[a-z0-9])(?=.*?[a-z0-9]).{6,10}$/ // Password al menos un número
+const regexPassword = /^(?=.*?\d)[a-zA-Z0-9]{6,10}$/; // Password al menos un número
 const regexLetters = /^[ a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/ // Solo letras
 const regexAddress = /^\d+\s[A-z]+\s[A-z]+/; // valida la dirección
 const regexTelefono = /^[0-9]+$/;
@@ -46,7 +46,7 @@ export default function validations(values) {
     
     if (values.password.length < 8) errors.password = 'La contraseña debe tener más de 8 caracteres'
     if (values.password.length > 20) errors.password = 'La contraseña no debería tener más de 20 caracteres'
-    if (regexPassword.test(values.password)) errors.password = 'La contraseña debe contener al menos un número'
+    if (!regexPassword.test(values.password)) errors.password = 'La contraseña debe contener al menos un número'
     if (!values.password) errors.password = 'Campo Requerido'
 
 

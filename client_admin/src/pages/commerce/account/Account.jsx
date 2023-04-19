@@ -19,7 +19,6 @@ const Account = () => {
   }, [dispatch]);
 
   const userCommerce = comercios.find((commerce) => commerce.email === email);
- console.log("esteasd",userCommerce)
   return (
     <div className={s.container}>
       <div className={s.contenedorInfo}>
@@ -44,6 +43,7 @@ const Account = () => {
                 <label>{userCommerce.email}</label>
               </div>
             </div>
+              <img className={s.imageFile} src={userCommerce.imagen} alt="" />
           </div>
         )}
       </div>
