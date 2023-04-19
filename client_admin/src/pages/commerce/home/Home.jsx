@@ -7,27 +7,22 @@ import style from "./Home.module.css"
 import Cookies from "js-cookie";
 
 
-function Home () {
+function Home() {
   const session = Cookies.get("commerce_session");
 
   return (
     <>
-      {session?
-        <div className= {style.container}>
-      <div className={style.ventas}>
-<Ventas />
-<Products />
-
-
-     
-      </div>
-      </div>: <p>no hay nada pa </p>
-}
-   
+      {session ?
+        <div className={style.container}>
+          <div className={style.ventas}>
+            <Ventas />
+            <hr style={{width: '95%', margin: '25px'}}/>
+            <Products />
+          </div>
+        </div> : <p> No hay nada pa </p>
+      }
     </>
-
   )
-  
 }
 
 export default Home
