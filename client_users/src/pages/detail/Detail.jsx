@@ -62,7 +62,7 @@ const URL = 'http://localhost:3001'
   }
 
   const handleIncrease = () => {
-    if (quantity !== 10) {
+    if (quantity !== product.existencia) {
       setQuantity(quantity + 1);
     } else {
       swal({
@@ -126,6 +126,9 @@ const [valor_calificacion, setValor_calificacion] = useState();
 
                   <div>
                     <h4>Selecciona la cantidad</h4>
+                    {product.existencia!==1 
+                    ? (<span style={{color:"gray"}}>({product.existencia} disponibles)</span>)
+                    : (<span style={{color:"gray"}}>({product.existencia} disponible)</span>)}
                         <QuantityDisplay
                           quantity={quantity}
                           onDecrease={handleDecrease}

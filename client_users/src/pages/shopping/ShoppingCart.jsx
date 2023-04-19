@@ -50,30 +50,43 @@ export default function ShoppingCart() {
   console.log(usuario);
   //post a venta
   const handlerDetalleVenta = async () => {
-    const fecha = date();
-    const detalle_venta = clean(carrito);
-    const valor_total_venta = detalle_venta.reduce((a, b) => {
-      return a + b.valor_total_cantidad
-    }, 0)
-    const venta = {
-      fecha,
-      valor_total_venta,
-      id_usuario: usuario[0].id_usuario,
-      detalle_venta,
-      estado:false
-    }
-    await axios.post("http://localhost:3001/venta", venta)
-      .then(response => {
-        console.log(response.data);
-      })
-      .catch(error => {
-        swal({
-          title: "Ocurrio un error",
-          text: `error`,
+    // const fecha = date();
+    // const detalle_venta = clean(carrito);
+    // const valor_total_venta = detalle_venta.reduce((a, b) => {
+    //   return a + b.valor_total_cantidad
+    // }, 0)
+    // const venta = {
+    //   fecha,
+    //   valor_total_venta,
+    //   id_usuario: usuario[0].id_usuario,
+    //   detalle_venta,
+    //   estado:false
+    // }
+    // await axios.post("http://localhost:3001/venta", venta)
+    //   .then(response => {
+    //     console.log(response.data);
+    //   })
+    //   .catch(error => {
+    //     swal({
+    //       title: "Ocurrio un error",
+    //       text: `${error}`,
+    //       icon: "error",
+    //       timer: "3000"
+    //     })
+    //   })
+    const stockActualizado = enviarStock(carrito)
+    await axios.put("http://localhost:3001/products", stockActualizado)
+    .then(response => {
+      console.log(response.data);
+    })
+    .catch(error => {
+      swal({
+        title: "Ocurrio un error",
+          text: `${error}`,
           icon: "error",
           timer: "3000"
-        })
       })
+    })  
   }
   return (
     <div style={{ marginTop: "100px" }}>
