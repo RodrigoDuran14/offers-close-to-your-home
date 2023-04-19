@@ -40,7 +40,7 @@ const HistorialDeCompra = () => {
           <h1>Historial de compras:</h1>
         </div>
         {comprasUsuario.length > 0 ? (
-          <div>
+          <div className={s.venta}>
             {comprasUsuario.map((compra) => (
               <div key={compra._id}>
                 <h3>Compra realizada el {compra.fecha}</h3>

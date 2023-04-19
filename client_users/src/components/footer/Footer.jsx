@@ -49,7 +49,7 @@ const henry = Henry
                     </a>
                     <a
                     className= {styles.links}
-                    href="https://www.linkedin.com/in/mateo-mugnaini/"
+                    href="https://www.linkedin.com/in/christian-ringler-139581235/"
                     target="_blank"
                     rel="noreferrer">
                         Chris Ringler
