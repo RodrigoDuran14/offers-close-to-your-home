@@ -71,6 +71,15 @@ tr {
   margin: 15px;
 }
 
+th {
+  margin: 10px;
+  border: 1px solid black;
+}
+
+table {
+  width: 100%;
+}
+
 button {
   border: none;
   font-size: 18px;
