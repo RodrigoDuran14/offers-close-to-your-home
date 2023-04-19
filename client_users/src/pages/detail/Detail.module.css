@@ -11,17 +11,10 @@
 }
 
 div>.image {
-    width: 300px;
-    height: 300px;
-    border: none;
-}
-
-.image {
-    width: 100%;
+    width: auto;
     height: auto;
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    max-height: 420px;
+    border: none;
 }
 
 .precios {
@@ -65,16 +58,6 @@ div>.image {
     color: #f1f1f1;
 }
 
-.btn {
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
-    padding: 4px 8px;
-    margin: 5px;
-
-}
 
 @media (min-width: 820px) {
     .container {

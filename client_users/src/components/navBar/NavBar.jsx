@@ -11,12 +11,12 @@ import { userLoggedIn } from "../../redux/actions";
 // imagenes
 import Logo from "../../assets/images/SoloTextoBlanco.png";
 import Icono from "../../assets/images/SoloIconoNormal.png";
-import LogIn from "../../assets/images/logIn.webp";
+import logIn from "../../assets/images/logIn.webp";
 
 const NavBar = () => {
   const logoTexto = Logo;
   const logoIcono = Icono;
-  const logIn = LogIn;
+  const LogIn = logIn;
 
   /* ------------- MENU HAMBURGUESA ------------- */
 
@@ -43,10 +43,13 @@ const NavBar = () => {
 
   const handleLogOut = () => {
     // Elimina el estado de inicio de sesión del almacenamiento local del navegador
-    localStorage.removeItem("estaLogueado");
+    window.localStorage.removeItem("estaLogueado");
+    window.localStorage.removeItem('carrito');
+    window.localStorage.removeItem('count');
     dispatch(userLoggedIn(logOut));
   };
   /* ------------- LOGOUT ------------- */
+
   const count = useSelector(state => state.countCarrito)
 
   return (
@@ -96,6 +99,7 @@ const NavBar = () => {
           <Link to="/log-in" className={s.link}>
             <h4>Iniciar sesión</h4>
           </Link>
+
         ) }
 
             {estaLogueado  === "database" && (
@@ -146,7 +150,7 @@ const NavBar = () => {
                 right: "6px",
               }}
             >
-              <h4 style={{ fontSize: "10px", color: "red" }}>
+              <h4 style={{ fontSize: "25px", color: "var(--green-color)", textShadow: '0px 0px 5px black' }}>
                 {count === 0 ? "" : count}
               </h4>
             </div>

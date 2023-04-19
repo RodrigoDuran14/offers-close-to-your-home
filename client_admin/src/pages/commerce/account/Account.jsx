@@ -7,10 +7,10 @@ import s from "./Account.module.css";
 import { Link } from "react-router-dom";
 
 const Account = () => {
+  
   const { comercios } = useSelector((state) => state);
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
-
   useEffect(() => {
     const token = Cookies.get("commerce_token");
     const decodedToken = jwt_decode(token);
@@ -19,7 +19,6 @@ const Account = () => {
   }, [dispatch]);
 
   const userCommerce = comercios.find((commerce) => commerce.email === email);
-console.log(userCommerce);
   return (
     <div className={s.container}>
       <div className={s.contenedorInfo}>
@@ -48,10 +47,12 @@ console.log(userCommerce);
           </div>
         )}
       </div>
+      
       <Link to={"/update"}>
         <div className={s.divForm}>Editar</div>
       </Link>
     </div>
+    
   );
 };
 

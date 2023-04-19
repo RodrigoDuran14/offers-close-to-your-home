@@ -6,8 +6,12 @@ import MisVentas from "./pages/commerce/MisVentas/MisVentas";
 import Login from "./pages/commerce/login/Login";
 import Register from "./pages/commerce/register/Register";
 import Account from "./pages/commerce/account/Account";
-import FormUpdate from "./components/commerce/formUpdate/FormUpdate";
+
+import FormUpdate from "./components/commerce/formUpdate/FormUpdate"
+import FormUpdateProduct from "./components/commerce/formUpdateProduct/FormUpdateProduct";
+
 import CreateProduct from "./pages/commerce/createProduct/CreateProduct";
+
 
 function App() {
   const location = useLocation();
@@ -24,6 +28,9 @@ function App() {
           <Route exact path="/producto" component={CreateProduct} />
           <Route exact path="/account" component={Account} />
           <Route exact path="/update" component={FormUpdate} />
+
+           <Route exact path= "/product/:id" component={FormUpdateProduct}/>
+
         </Switch>
       </HashRouter>
     </div>

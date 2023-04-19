@@ -9,6 +9,8 @@ import {
   COMMERCE_LOGIN,
   GET_COMMERCE_BY_ID,
   UPDATE_COMMERCE,
+  GET_ALL_CATEGORIAS,
+  UPDATE_PRODUCT
   GET_PRODUCT_BY_CATEGORY,
 } from "./actions-type.js";
 
@@ -23,7 +25,9 @@ const initialState = {
   categorys: [],
   ciudades: [],
   display: false,
+  categorias:[]
   productCategory: [],
+
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -82,8 +86,27 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         comercios: action.payload,
       };
+       case GET_ALL_CATEGORIAS:
+        return{
+          ...state,
+          categorias: action.payload
+        }
+        case UPDATE_PRODUCT:
+          const exist = state.products.find(
+            (item) => item.id_producto === action.payload.id_producto
+          );
+          if (exist) {
+            return {
+              ...state,
+              products: state.products.map((item) =>
+                item.id_producto === action.payload.id_producto
+                  ? action.payload
+                  : item
+              ),
+            };
+          }
 
-    case UPDATE_COMMERCE:
+      case UPDATE_COMMERCE:
       const existe = state.comercios.find(
         (item) => item.id_comercio === action.payload.id_comercio
       );
