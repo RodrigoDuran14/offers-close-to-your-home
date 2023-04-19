@@ -7,10 +7,10 @@ import s from "./Account.module.css";
 import { Link } from "react-router-dom";
 
 const Account = () => {
+  
   const { comercios } = useSelector((state) => state);
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
-
   useEffect(() => {
     const token = Cookies.get("commerce_token");
     const decodedToken = jwt_decode(token);
@@ -19,7 +19,6 @@ const Account = () => {
   }, [dispatch]);
 
   const userCommerce = comercios.find((commerce) => commerce.email === email);
-
   return (
     <div className={s.container}>
       <div className={s.contenedorInfo}>
@@ -44,9 +43,11 @@ const Account = () => {
                 <label>{userCommerce.email}</label>
               </div>
             </div>
+              <img className={s.imageFile} src={userCommerce.imagen} alt="" />
           </div>
         )}
       </div>
+      
       <Link to={"/update"}>
         <div className={s.divForm}>Editar</div>
       </Link>
@@ -54,6 +55,7 @@ const Account = () => {
         <div className={s.divForm}>Cambiar contraseña</div>
       </Link>
     </div>
+    
   );
 };
 

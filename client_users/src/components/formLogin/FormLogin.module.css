@@ -1,43 +1,33 @@
-.container{
-    background-color: black;
+.container {
+    background-color: white;
     height: auto;
-    padding: 1.5rem;
-    border-radius: 40px;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 10px rgba(116, 116, 116, 0.548);
 }
 
-
-.formInput{
-    border: none;
-    border-radius: 20px;
-    height: 2rem;
-    width: 90%;
-    /* font-size: 1.5rem; */
-    padding: 5px ;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}
-
-.botones{
+.botones {
     margin-top: 20px;
     margin-bottom: 0.20rem;
 }
 
-.boton{
-    border: none;
-    border-radius: 20px;
-    height: 2.5rem;
-}
-
-.botonRedes{
+.botonRedes {
     border: none;
     border-radius: 50px;
-    background-color: rgb(0, 0, 0);
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(75, 75, 75, 0.548);
     display: flex;
     align-items: center;
 }
 
-.btnRedes{
+.btnRedes {
     width: 20px;
     height: 20px;
     object-fit: cover;
+    transition: 0.1s;
+}
+
+.botonRedes:hover {
+    transform: scale(1.1);
+    background-color: rgb(230, 230, 230);
 }

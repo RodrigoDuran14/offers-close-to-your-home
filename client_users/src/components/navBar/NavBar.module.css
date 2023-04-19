@@ -7,34 +7,28 @@
     text-align: center;
     height: auto;
     position: fixed;
-    top: 0; 
+    top: 0;
     width: 100%;
-    z-index:1;
-
+    z-index: 100;
 }
 
-h4 {
-    cursor: pointer
+.sesion {
+    display: none;
 }
 
 .options {
     display: flex;
     justify-content: center;
     align-items: center;
-    position:relative;
-}
-
-.options::ntn-child(1) {
-    position:relative;
-    top:0;
+    position: relative;
+    width: 150px;
+    margin: 0;
 }
 
 .nav_text {
     display: none;
-    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-
 }
 
 .box1 {
@@ -50,32 +44,24 @@ h4 {
 }
 
 .button:hover {
-    color: #54b216 ;
+    color: var(--green-color);
 }
-
-@media (min-width: 820px) {
-    .options {
-        display: flex;
-        justify-content: space-around;
-    }
-
-    .menu {
-        display: none;
-    }
-
-    .nav_text {
-        display: flex;
-    }
-}
-
 
 .texto {
-    margin-bottom: 8px;
-    height: 20px;
+    margin-bottom: 5px;
+    height: 15px;
 }
 
 .icono {
-    height: 40px;
+    margin: 0;
+    height: 30px;
+}
+
+.link_menu {
+    text-decoration: none;
+    color: black;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .link {
@@ -85,28 +71,66 @@ h4 {
     margin-right: 10px;
 }
 
-.logIn{
-    filter: invert();
-    width: 30px;
-    height: 30px;
-    margin-top: 8px;
+
+.logIn {
+    width: 50px;
+    height: 50px;
     cursor: pointer;
+    object-fit: cover;
+    border-radius: 400px;
+    margin: 0;
+    box-shadow: 0px 0px 5px rgba(158, 158, 158, 0.521);
 }
-
-
 
 .menuDesplegable {
     position: absolute;
     top: 100%;
-    right: 185px;
-    background-color: rgba(0, 0, 0, 0.575);
-    /* border: 1px solid gray; */
+    right: 65px;
+    background-color: rgba(255, 255, 255, 0.589);
+    backdrop-filter: blur(10px);
     padding: 1rem;
     z-index: 999;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-  }
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.712);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
 
-.link:hover{
-    color: #54b216 ;
+.link:hover {
+    color: #54b216;
+}
+
+.link_menu:hover {
+    color: #54b216;
+}
+
+@media (min-width: 930px) {
+    .options {
+        display: flex;
+        justify-content: space-around;
+        width: 200px;
+        margin: 0;
+    }
+
+    .sesion {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 180px;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .nav_text {
+        display: flex;
+    }
+
+    .texto {
+        height: 19px;
+    }
+
+    .icono {
+        height: 30px;
+    }
 }

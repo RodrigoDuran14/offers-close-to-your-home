@@ -52,6 +52,9 @@ const FORGOT_PASSWORD = "FORGOT_PASSWORD"; //para cuando olvide contraseña
 const REGISTER_USER = "REGISTER_USER"; // para el registro de usuario por 1ra vez
 const USER_DETAILS = "USER_DETAILS";
 const GET_ALL_CITIES = "GET_ALL_CITIES"; // para el registro de usurio por 1ra vez
+const GET_USER_BY_EMAIL = "GET_USER_BY_EMAIL";
+const PUT_USER = "PUT_USER"; // actualiza los datos del usuario menos la contraseña
+const PUT_PASSWORD_USER = "PUT_PASSWORD_USER"; // actualiza la contraseña del usuario
 
 //* LOADER
 
@@ -106,6 +109,9 @@ module.exports = {
   CLEAN_REVIEWS,
   ORDERED_BY_RECIENTES,
   OFERTAS,
+  GET_USER_BY_EMAIL,
+  PUT_USER,
+  PUT_PASSWORD_USER,
   COUNT_SUMAR,
   COUNT_RESTAR,
   COUNT_AGREGAR,
