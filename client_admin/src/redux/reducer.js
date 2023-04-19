@@ -60,12 +60,6 @@ export default function rootReducer(state = initialState, action) {
         categorys: action.payload,
       };
 
-    case GET_CATEGORY_PRODUCT:
-      return{
-        ...state,
-        categoriaProducto: action.payload,
-      }
-
     case GET_ALL_CITIES:
       return {
         ...state,
