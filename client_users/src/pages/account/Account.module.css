@@ -1,192 +1,72 @@
 @import url('https://fonts.googleapis.com/css2?family=Kelly+Slab&display=swap%27');
 
-.contenedor{
+.container {
   display: flex;
-  flex-direction: row;
-  width: auto;
-  height: 125vh;
-  margin-bottom: 160px;
-}
-
-.contenedorInfo{
-  display: flex;
-  flex-direction: column;
-  margin-top: 85px;
-  margin-left: 60px;
-  margin-bottom: 0px;
-  background-color: #97978D;
-  border: 5px black solid;
-  border-radius: 30px;
-  padding: 10px;
-  height: fit-content;
-  width: auto;
-  height: 630px;
-
-}
-
-.informacion {
-  display: flex;
-  flex-direction: column;
+  min-height: 100vh;
   align-items: center;
+  justify-content: space-around;
+  margin-top: 90px;
+  margin-bottom: 70px;
 }
 
-.tittle{
-  font-family: 'Kelly slab';
-  font-size: 60px;
+.usuario {
+  min-height: 70vh;
+  padding: 30px;
+  box-shadow: 0px 0px 5px rgba(126, 125, 125, 0.74);
+  min-width: 45%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.925),
+    rgba(255, 255, 255, 0.925)
+  ), url('../../assets/images/SoloIconoNegro.png');
 }
 
-.aux {
-  display: flex;
-  align-items: center;
-  margin-bottom: 3px;
-  
-}
-
-.imageFile {
-  width: 290px;
-  height: 290px;
-  object-fit: cover;
-  border-radius: 50%;
-  /* margin-right: 20px; */
-  position: relative;
-  left: 25px;  
-  -ms-transform: scale(0.7 , 0.7);
-  -webkit-transform: scale(0.7 , 0.7);
-  -moz-transform: scale(0.7 , 0.7);
-  -o-transform: scale(0.7 , 0.7);
-  transform: scale(0.7 , 0.7);   
-}
-
-.text {
+.datos {
   display: flex;
   flex-direction: column;
-}
-
-.row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 600px;
-}
-
-.column {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  margin-right: 10px;
-  
-}
-
-label {
-  font-size: 16px;
-  margin-bottom: 20px;
-  text-align: left;
-  font-size: 20px;
-
-}
-
-@media screen and (max-width: 600px) {
-  .row {
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-  }
-
-  .column {
-    margin-right: 0;
-    margin-bottom: 10px;
-  }
-}
-
-/* 
-.informacion{
-  display: flex;
-  margin-top: 20px;
-  justify-content: space-between;
-  width: 100%;
-  font-size: 20px;
-}
-
-.aux{
-  display: flex;
-  flex-direction: row;
-} */
-
-.divForm{
-  display: flex;
-  margin-left: 200px;
   align-items: center;
   justify-content: center;
-  margin-top: 100px;
-  background-color: black;
-  color: aliceblue;
-  border-radius: 20px;
-  width: 120px;
-  height: 50px;
+}
+.dato_nombre {
+  align-self: flex-start;
+  text-align: left;
+  margin: 0;
+  font-size: 25px;
 }
 
-.ulForm {
-    cursor: pointer;
-    list-style: none;
-    float: left;
-    text-decoration: none;
-    position: relative;
-    transition: all .2s ease;
-  }
-  
-  .liForm {
-    float: left;
-    text-decoration: none;
-    position: relative;
-    display: none;
-  }
-  
- 
-  .ulForm:hover > .liForm {
-    display: block;  
-    margin-top: 500px; 
-    margin-right: 130px;
-    overflow-y:scroll;
-  }
-
-  .logIn{
-    width: auto;
-    height: auto;
-    margin-bottom: 8px;
-    cursor: pointer;
+.dato {
+  align-self: flex-start;
+  text-align: left;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
 }
 
-.menuDesplegable {
-  position: absolute;
-  top: 100%;
-  background-color: rgba(0, 0, 0, 0.575);
-  /* border: 1px solid gray; */
-  padding: 1rem;
-  z-index: 999;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+.label {
+  align-self: flex-start;
+  margin-top: 5px;
+  font-size: 15px;
 }
 
-.button{
-  border-radius: 100px;
-  padding: 8px;
-  margin-right: 20px;
-  border: none; 
-  background-color: black;
-  color: aliceblue;  
-  font-size: 20px;  
+.imagen {
+  height: 290px;
+  width: 290px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  align-self: flex-end;
+  border-radius: 4px;
+  box-shadow: 0px 0px 5px rgba(126, 125, 125, 0.74);
+  outline: 1px solid var(--green-color);
 }
 
-.formUpdate{
-  margin-top: -20px;
-  margin-left: -30px;
-}
 
-.formPassword{
-  margin-top: 530px;
-  margin-left: -430px;
+.update {
+  display: flex;
+  flex-direction: column;
 }
-
  
   
   
