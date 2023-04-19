@@ -7,7 +7,7 @@ const actualizarUsuario = async (id_usuario, updateData) => {
       if (!updateData || Object.keys(updateData).length === 0) {
         throw new Error("No se proporcionaron datos de actualización");
       }
-  
+      
       // Actualiza los campos específicos del usuario en la base de datos
       const [filasActualizadas, [usuarioActualizado]] = await Usuario.update(updateData, {
         where: { id_usuario },
@@ -18,7 +18,7 @@ const actualizarUsuario = async (id_usuario, updateData) => {
       if (filasActualizadas === 0) {
         throw new Error("No se encontró el usuario especificado");
       }
-  
+      
       // Retorna el usuario actualizado
       return usuarioActualizado;
     } catch (error) {
