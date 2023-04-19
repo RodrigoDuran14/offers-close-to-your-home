@@ -169,4 +169,20 @@ export const getAllProducts = () => {
     }
   }
 
+  export const getProductById = (id) => async (dispatch) => {
+    try {
+      const res = await axios.get(`${URL}/products/${id}`);
+      dispatch({
+        type: action.GET_PRODUCT_BY_ID,
+        payload: res.data,
+      });
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: action.GET_PRODUCT_BY_ID,
+        payload: error,
+      });
+    }
+  };
+
 

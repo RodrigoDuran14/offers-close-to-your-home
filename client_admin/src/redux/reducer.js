@@ -10,13 +10,16 @@ import {
   GET_COMMERCE_BY_ID,
   UPDATE_COMMERCE,
   GET_ALL_CATEGORIAS,
-  UPDATE_PRODUCT
+  UPDATE_PRODUCT,
   GET_PRODUCT_BY_CATEGORY,
+  GET_PRODUCT_BY_ID
+     
 } from "./actions-type.js";
 
 const initialState = {
   logIn: false,
   products: [],
+  product:[],
   productsFitered: [],
   copyProducts: [],
   comercios: [],
@@ -25,7 +28,7 @@ const initialState = {
   categorys: [],
   ciudades: [],
   display: false,
-  categorias:[]
+  categorias:[],
   productCategory: [],
 
 };
@@ -125,6 +128,10 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         productCategory: action.payload,
       };
+
+      case GET_PRODUCT_BY_ID:
+        return { ...state, product: action.payload };
+      
     default:
       return state;
   }

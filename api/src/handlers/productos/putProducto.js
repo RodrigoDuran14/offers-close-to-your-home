@@ -1,5 +1,6 @@
 const {getProductById} = require("../../controllers/productos/getProductoController")
 const {editProduct} = require ("../../controllers/productos/putProductsController")
+const {borradoLogico} = require ("../../controllers/productos/putProductsController.js")
 
 const putProductoHandler = async (req, res, next) => {
     const { id_comercio,
@@ -39,6 +40,20 @@ const putProductoHandler = async (req, res, next) => {
     }
 }
 
+const borradoLogicoHandler = async (req, res, next) => {
+    const { id_producto} = req.params
+
+    try {
+       const results = await borradoLogico ( id_producto)
+
+       res.status(200).json(results)
+    } catch (error) {
+        next(error)
+    }
+}
+
+
 module.exports = {
-    putProductoHandler
+    putProductoHandler,
+    borradoLogicoHandler
 }

@@ -4,7 +4,10 @@ import Cookies from "js-cookie";
 import { useEffect } from "react";
 import { getAllProducts } from "../../../redux/actions";
 import { FiEdit } from "react-icons/fi";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
+import { IoTrashBinOutline } from "react-icons/io5";
+import axios from "axios";
+
 const Products = () => {
   const products = useSelector((state) => state.products) ?? [];
 
@@ -30,6 +33,8 @@ const Products = () => {
   //   console.log(products?.Comercio?.id_comercio);
 
   // console.log(products[0].Comercio.id_comercio)
+
+
   return (
     <>
       <table>
@@ -44,18 +49,23 @@ const Products = () => {
         </thead>
         <tbody>
           {productsCommerce.map((p) => {
+
             return (
-              <tr key={p.Comercio?.id_producto}>
+              <tr key={p.id_producto}>
                 <td>{p.nombre}</td>
                 <td>{p.descripcion_producto}</td>
                 <td>{p.existencia}</td>
                 <td>
-                  <Link to={`/product/${p.Comercio.id_comercio}`}>
+                  <Link to={`/product/${p.id_producto}`}>
                     <FiEdit />
                   </Link>
                 </td>
                 <td>
-                  <button></button>
+                  <button
+                    
+                  >
+                    <IoTrashBinOutline />
+                  </button>
                 </td>
               </tr>
             );
