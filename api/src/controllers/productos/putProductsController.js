@@ -1,4 +1,4 @@
-const { Producto} = require("../../db")
+const { Producto } = require("../../db")
 
 const editProduct = async (nombre,
     id_producto,
@@ -13,16 +13,15 @@ const editProduct = async (nombre,
     valor_normal,
     valor_con_descuento,
     condicion,) => {
-    
+
     const editOneProduct = await Producto.update(
         {
             nombre,
-            id_producto,
-            id_comercio,
             cantidad,
             descripcion_producto,
             existencia,
             fecha_final,
+            estado:false,
             fecha_inicial,
             imagen,
             id_categoria_producto,
@@ -33,10 +32,17 @@ const editProduct = async (nombre,
         {
             where: { id_producto },
         }
-        );
-        
-        return editOneProduct;
-    };
-    
+    );
 
-module.exports = { editProduct };
+    return editOneProduct;
+};
+const borradoLogico = async (id_producto) => {
+    const product = await Producto.update({estado:false},{where:{
+        id_producto
+    }
+    })
+  
+    return product
+}
+
+module.exports = { editProduct, borradoLogico };

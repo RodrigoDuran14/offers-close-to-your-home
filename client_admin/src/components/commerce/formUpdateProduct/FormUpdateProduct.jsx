@@ -2,32 +2,52 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import style from "./FormUpdateProduct.module.css";
 import { Redirect } from "react-router-dom";
-import {  updateProduct, getAllCategorias } from "../../../redux/actions";
+import {  updateProduct, getAllCategorias, getProductById } from "../../../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { Image, CloudinaryContext } from "cloudinary-react"; // para guardar las imágenes externamente 
 import Cookies from "js-cookie";
+import { useParams } from "react-router";
 
 
-export default function FormUpdateProduct({id_producto}) {
-   
-    const {categorias} = useSelector(state => state);
+
+export default function FormUpdateProduct() {
+  
+  const {categorias} = useSelector(state => state);
   const dispatch = useDispatch();
-
+  const {id_producto} = useParams();
   const session = Cookies.get("commerce_session");
+  
+  let values = JSON.parse(session)
+  
+  let comercio = values.dataValues
+  
 
-let values = JSON.parse(session)
-
-let comercio = values.dataValues
 
 
+
+
+// useEffect(() => {
+//     dispatch(getAllCategorias());
+//   const chris = dispatch(getProductById(id_producto))
+
+//   }, [dispatch]);
+//   const [errors, setErrors] = useState({});
 
 useEffect(() => {
-    dispatch(getAllCategorias());
-  }, [dispatch]);
-  const [errors, setErrors] = useState({});
+  dispatch(getAllCategorias());
+  dispatch(getProductById(id_producto))
+    .then((result) => {
+      // Aquí puedes acceder a la información devuelta por getProductById
+      console.log("resultttttt",result);
+    })
+    .catch((error) => {
+      // Aquí puedes manejar el error en caso de que getProductById falle
+      console.error(error);
+    });
 
+}, [dispatch, id_producto]);
 
-
+const [errors, setErrors] = useState({});
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -45,11 +65,16 @@ useEffect(() => {
         valor_con_descuento,
         condicion,
     } = form;
-  
+
+    
+    // cantidad = parseInt(cantidad);
+    // existencia = parseInt(existencia);
+    // valor_normal = parseFloat(valor_normal);
+    // valor_con_descuento = parseFloat(valor_con_descuento);
     // Realiza las validaciones
     
-
-  
+    
+    
     // Si hay errores, los muestra y no continúa con la solicitud
     if (Object.keys(errors).length > 0) {
       setErrors(errors);
@@ -58,16 +83,19 @@ useEffect(() => {
     } else {
       // Si no hay errores, continúa con el proceso de envío del formulario
       try {
+        const filteredData = Object.fromEntries(
+          Object.entries(form).filter(([_, value]) => !!value)
+        );
         //const salt = bcrypt.genSaltSync(10);
         //const hashedPassword = bcrypt.hashSync(form.password, salt);
         //setForm({ ...form, password: hashedPassword });
         console.log("FORM: ", form)
-        dispatch(updateProduct(form))
+        dispatch(updateProduct(filteredData))
         //await axios
         //  .put("http://localhost:3001/commerce", form)
         //  .then(res => alert(res.data))
         //  .catch(err => console.log(err.response.data));
-        Cookies.set('commerce_session', JSON.stringify(form), { secure: true, sameSite: 'strict' });
+        // Cookies.set('commerce_session', JSON.stringify(form), { secure: true, sameSite: 'strict' });
 
         setShouldRedirect(true);
       } catch (error) {
@@ -135,7 +163,7 @@ useEffect(() => {
   }
 
   const [form, setForm] = useState({
-    nombre:"",
+    nombre:"auto",
     fecha_inicial:"",
     fecha_final:"",
     descripcion_producto:"",
@@ -147,11 +175,19 @@ useEffect(() => {
     id_categoria_producto:"",
     imagen: "",
     id_comercio:comercio.id_comercio,
-    id_producto:id_producto
+    id_producto: Number(id_producto)
 
   });
+  const handleBorrar = async (id_producto) => {
+    try {
+      await axios.put(`http://localhost:3001/delete/${id_producto}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
 
-  console.log("form: ", form)
+  console.log("formmmmmmmmmmmmmmmmmmmm: ", form)
   return (
     <>
      
@@ -190,7 +226,7 @@ useEffect(() => {
                 fecha_inicial
                </label>
                <input
-                 type="text"
+                 type="date"
                  name="fecha_inicial"
                  value={form.fecha_inicial}
                  onChange={handleInputChange}
@@ -211,7 +247,7 @@ useEffect(() => {
                  fecha_final
                </label>
                <input
-                 type="text"
+                 type="date"
                  name="fecha_final"
                  value={form.fecha_final}
                  onChange={handleInputChange}
@@ -239,25 +275,6 @@ useEffect(() => {
                )}               
              </div>
              </div>
-
-
-       {/* ----------------------- Cantidad -----------------------*/}
-             <div className={style.contenedorDiv}>
-             <label for="" className={style.label}>
-                cantidad
-               </label>
-               <input
-                 type="number"
-                 name="cantidad"
-                 value={form.cantidad}
-                 onChange={handleInputChange}
-                 className={style.input}
-               />
-                {errors.cantidad && (
-               <div className={style.errors}>{errors.cantidad}</div>
-               )}
-             </div>
-
        {/* ----------------------- EXISTENCIA -----------------------*/}
              <div className={style.contenedorDiv}>
              <label for="" className={style.label}>
@@ -298,13 +315,11 @@ useEffect(() => {
              <label for="" className={style.label}>
              condicion
                </label>
-               <input
-                 type="text"
-                 name="condicion"
-                 value={form.condicion}
-                 onChange={handleInputChange}
-                 className={style.input}
-               />
+              <select name="condicion" onChange={handleInputChange}  className={style.select}>
+                <option value="Nuevo">Nuevo</option>
+                <option value="Reacondicionado">Reacondicionado</option>
+                <option value="Usado">Usado</option>
+              </select>
                 {errors.condicion && (
                <div className={style.errors}>{errors.condicion}</div>
                )}
@@ -388,6 +403,11 @@ useEffect(() => {
              <button type="submit" className={style.button}>
                 Modificar Producto
              </button>
+             <button
+                    onClick={()=>{handleBorrar(id_producto)} }
+                  >
+                  borrar
+                  </button>
            </form>
            </CloudinaryContext>
          </div>

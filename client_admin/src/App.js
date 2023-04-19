@@ -29,7 +29,7 @@ function App() {
           <Route exact path="/account" component={Account} />
           <Route exact path="/update" component={FormUpdate} />
 
-           <Route exact path= "/product/:id" component={FormUpdateProduct}/>
+           <Route exact path= "/product/:id_producto" component={FormUpdateProduct}/>
 
         </Switch>
       </HashRouter>
