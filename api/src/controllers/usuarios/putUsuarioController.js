@@ -18,7 +18,7 @@ const actualizarUsuario = async (id_usuario, updateData) => {
       if (filasActualizadas === 0) {
         throw new Error("No se encontró el usuario especificado");
       }
-  
+      
       // Retorna el usuario actualizado
       return usuarioActualizado;
     } catch (error) {

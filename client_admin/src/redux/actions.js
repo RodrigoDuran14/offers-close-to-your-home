@@ -114,5 +114,106 @@ export function getProductCategory() {
         payload: error,
       });
     }
+
   };
 }
+
+
+export const getAllProducts = () => {
+  return async (dispatch) => {
+    try {
+
+      const response = await axios.get(`${URL}/products`);
+      // console.log(response.data);
+      dispatch({ type: action.GET_ALL_PRODUCTS, payload: response.data });
+
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: action.GET_ALL_PRODUCTS, payload: error });
+
+    }
+  };
+};
+
+
+  
+
+  export function getAllCategorias() {
+    return async (dispatch) => {
+      try {
+        const response = await axios.get(`${URL}/categorias`);
+        // console.log(response.data);
+        dispatch({ type: action.GET_ALL_CATEGORIAS, payload: response.data });
+      } catch (error) {
+        console.log(error);
+        dispatch({ type: action.GET_ALL_CATEGORIAS, payload: error });
+      }
+    };
+  }
+
+
+  export function updateProduct(producto) {
+    return async (dispatch) =>{
+      try {
+        const response = await axios.put(`${URL}/products/editProduct`, producto)
+        dispatch({
+          type: action.UPDATE_PRODUCT,
+          payload: response.data
+        })
+      } catch (error) {
+        dispatch({
+          type: action.UPDATE_PRODUCT,
+          payload: error
+        })
+      }
+    }
+  }
+
+  export const getProductById = (id) => async (dispatch) => {
+    try {
+      const res = await axios.get(`${URL}/products/${id}`);
+      dispatch({
+        type: action.GET_PRODUCT_BY_ID,
+        payload: res.data,
+      });
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: action.GET_PRODUCT_BY_ID,
+        payload: error,
+      });
+    }
+  };
+
+
+  export const getAllCommerce = () => {
+    return async (dispatch) => {
+      try {
+  
+        const response = await axios.get(`${URL}/commerce`);
+        // console.log(response.data);
+        dispatch({ type: action.GET_ALL_COMMERCE, payload: response.data });
+  
+      } catch (error) {
+        console.log(error);
+        dispatch({ type: action.GET_ALL_COMMERCE, payload: error });
+  
+      }
+    };
+  };
+  
+  export const getAllUsers = () => {
+    return async (dispatch) => {
+      try {
+  
+        const response = await axios.get(`${URL}/usuario`);
+        // console.log(response.data);
+        dispatch({ type: action.GET_ALL_USERS, payload: response.data });
+  
+      } catch (error) {
+        console.log(error);
+        dispatch({ type: action.GET_ALL_USERS, payload: error });
+  
+      }
+    };
+  };

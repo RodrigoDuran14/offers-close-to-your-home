@@ -19,8 +19,29 @@ export default function FormRegister() {
   }, [dispatch]);
 
   console.log(typeof ciudades.id_ciudad);
+  const [form, setForm] = useState({
+    id_tipo_usuario: 1,
+    primer_nombre: "",
+    segundo_nombre: "",
+    primer_apellido: "",
+    segundo_apellido: "",
+    direccion: "",
+    telefono: "",
+    email: "",
+    password: "",
+    id_ciudad: null,
+    estado: true,
+    imagen: "",
+  });
 
   const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    // Llama a la función validations con el estado del formulario actual
+    const currentErrors = validations(form);
+    // Actualiza el estado de los errores con los errores actuales
+    setErrors(currentErrors);
+  }, [form]);
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -128,27 +149,23 @@ export default function FormRegister() {
       }
     } else {
       // Actualizar el estado del formulario para otros tipos de inputs
-      setForm({
-        ...form,
+      setForm(prevForm => ({
+        ...prevForm,
         [property]: value
-      });
+      }));
+
+      const currentErrors = validations({ [property]: value });
+      // setErrors(prevErrors => ({
+      //   ...prevErrors,
+      //   [property]: currentErrors[property]
+      // }))  
+      setErrors({ ...errors, [property]: currentErrors[property] });
+
+
     }
   }
 
-  const [form, setForm] = useState({
-    id_tipo_usuario: 1,
-    primer_nombre: "",
-    segundo_nombre: "",
-    primer_apellido: "",
-    segundo_apellido: "",
-    direccion: "",
-    telefono: "",
-    email: "",
-    password: "",
-    id_ciudad: null,
-    estado: true,
-    imagen: "",
-  });
+  
 
   return (
     <>
@@ -285,7 +302,7 @@ export default function FormRegister() {
                     onChange={handleInputChange}
                     className='form-input'
                   />
-                  {errors.password && (
+                  {errors.email && (
                     <div className={s.errors}>{errors.email}</div>
                   )}
                 </div>
