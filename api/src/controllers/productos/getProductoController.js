@@ -35,20 +35,20 @@ const getAllProducts = async () => {
 
 const searchProductByName = async (nombre) => {
   const databaseProducts = await Producto.findAll({
-      where: {
-        nombre: {
-          [Op.iLike]: `%${nombre}%`,
-        },
+    where: {
+      nombre: {
+        [Op.iLike]: `%${nombre}%`,
       },
-      include: [
-        {
-          model: Categoria_producto,
-          attributes: ["nombre_categoria_producto", "imagen_categoria_producto"],
-          required: true,
-        },
-        { model: Comercio, attributes: ["nombre_comercio"] },
-      ],
-    });
+    },
+    include: [
+      {
+        model: Categoria_producto,
+        attributes: ["nombre_categoria_producto", "imagen_categoria_producto"],
+        required: true,
+      },
+      { model: Comercio, attributes: ["nombre_comercio"] },
+    ],
+  });
 
   return [...databaseProducts];
 };
@@ -106,12 +106,16 @@ const getAllCategorias = async () => {
         "https://media.ambito.com/p/6f5d891ba726a94d0a32b461085e5a84/adjuntos/239/imagenes/038/124/0038124118/1200x675/smart/ropa-indumentariajpg.jpg",
     },
     {
-      nombre_categoria_producto: "Electrodomesticos",
-      imagen_categoria_producto:
-        "https://www.semana.com/resizer/OS-i-9QcsuU_4bwAj2J23Le98sg=/1280x720/smart/filters:format(jpg):quality(80)/cloudfront-us-east-1.images.arcpublishing.com/semana/TGVVZATTDJGO7D3AW2P3RQDY5E.jpg",
+      nombre_categoria_producto: "Electrodomésticos",
+      imagen_categoria_producto: "https://vivirmejor.mx/wp-content/uploads/2020/09/Renueva-electrodomesticos_0.jpg",
     },
     {
-      nombre_categoria_producto: "Informatica",
+      nombre_categoria_producto: "Deportes",
+      imagen_categoria_producto:
+        "https://proyectocoqui.org/wp-content/uploads/2022/10/En-que-hay-que-fijarse-al-comprar-ropa-de-deporte.jpg",
+    },
+    {
+      nombre_categoria_producto: "Informática",
       imagen_categoria_producto:
         "https://concepto.de/wp-content/uploads/2014/10/hardware-e1551046878558.jpg",
     },
@@ -141,11 +145,6 @@ const getAllCategorias = async () => {
         "https://thumbs.dreamstime.com/b/herramientas-de-jardiner%C3%ADa-sobre-un-fondo-plano-madera-plana-vista-la-parte-superior-165590766.jpg",
     },
     {
-      nombre_categoria_producto: "Deportes",
-      imagen_categoria_producto:
-        "https://proyectocoqui.org/wp-content/uploads/2022/10/En-que-hay-que-fijarse-al-comprar-ropa-de-deporte.jpg",
-    },
-    {
       nombre_categoria_producto: "Joyería",
       imagen_categoria_producto:
         "https://images7.alphacoders.com/421/421542.jpg",
@@ -154,7 +153,7 @@ const getAllCategorias = async () => {
       nombre_categoria_producto: "Herramientas",
       imagen_categoria_producto:
         "https://png.pngtree.com/thumb_back/fh260/background/20210910/pngtree-toolbox-labor-wrench-screwdriver-manual-photography-map-with-map-image_839810.jpg",
-    },
+    }
   ];
   let categoriasGuardadas = [];
   const todasLasCategorias = await Categoria_producto.findAll({ raw: true });
