@@ -18,6 +18,8 @@ const Account = () => {
 
    const email = decodedToken.email;
 
+
+
   useEffect(() => {
     dispatch(getUsuarioByEmail(email));
   }, [dispatch, email]);
@@ -28,6 +30,8 @@ const Account = () => {
       setUserData(usuario[0]);
     }
   }, [usuario]);
+
+  console.log(userData?.Ciudad?.nombre_ciudad);
 
   /* ------------- MENU HAMBURGUESA ------------- */
 
