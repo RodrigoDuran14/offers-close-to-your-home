@@ -62,7 +62,7 @@ export default function ShoppingCart() {
     let values = JSON.parse(session)
     
     let cookieUsuario = values.dataValues
-    console.log(cookieUsuario, "USUARIO")
+    // console.log(cookieUsuario, "USUARIO")
     
     const fecha = date();
     const detalle_venta = clean(carrito);
@@ -92,8 +92,8 @@ export default function ShoppingCart() {
     await axios.put("http://localhost:3001/products", stockActualizado)
     .then(response => {
       console.log(response.data);
-      setShouldRedirect(false)
-      // window.location.reload()
+      setShouldRedirect(true)
+      window.location.reload()
     })
     .catch(error => {
       swal({
