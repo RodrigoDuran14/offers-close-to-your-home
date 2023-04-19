@@ -147,7 +147,7 @@ const NavBar = () => {
                 display: "inline-block",
                 position: "absolute",
                 top: "-10px",
-                right: "9px",
+                right: "6px",
               }}
             >
               <h4 style={{ fontSize: "25px", color: "var(--green-color)", textShadow: '0px 0px 5px black' }}>
@@ -166,4 +166,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-
