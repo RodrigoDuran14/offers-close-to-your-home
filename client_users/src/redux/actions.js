@@ -93,7 +93,7 @@ export function getUsuarioByEmail(email) {
     } catch (error) {
       console.log(error, "No se encontro usuario con ese email");
       dispatch({
-        type: action.GET_USER_BY_ID,
+        type: action.GET_USER_BY_EMAIL,
         payload: error,
       });
     }

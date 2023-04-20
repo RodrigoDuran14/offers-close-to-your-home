@@ -101,6 +101,7 @@ export default function FormUpdateProduct() {
   };
 
   const [shouldRedirect, setShouldRedirect] = useState(false);
+  
   // const handleInputChange = event => {
   //   const property = event.target.name;
   //   const value = event.target.value;
