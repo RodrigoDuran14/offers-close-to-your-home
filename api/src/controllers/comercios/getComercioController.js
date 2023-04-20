@@ -15,6 +15,7 @@ const getCommerce = async () => {
       "password",
       "email",
       "imagen",
+      "admin"
     ],
     include: [{
       model: Ciudad,
@@ -58,7 +59,8 @@ const getCommerceId = async (id_comercio) => {
     "cargo",
     "password",
     "email",
-    "imagen",],
+    "imagen",
+    "admin"],
     include: [{
       model: Ciudad,
     },

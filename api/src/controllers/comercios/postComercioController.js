@@ -15,7 +15,7 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-const createCommerce = async (id_ciudad, id_categoria_comercio,nombre_comercio, direccion, telefono, estado, nombre_contacto, cargo, password, email, imagen) => {
+const createCommerce = async (id_ciudad, id_categoria_comercio,nombre_comercio, direccion, telefono, estado, nombre_contacto, cargo, password, email, imagen, admin) => {
 
   if (password) {
     const salt = await bcrypt.genSalt(10);
@@ -34,7 +34,8 @@ const createCommerce = async (id_ciudad, id_categoria_comercio,nombre_comercio, 
     email,
     imagen,
     id_ciudad,
-    id_categoria_comercio
+    id_categoria_comercio,
+    admin
   });
 
   // Enviar correo electrónico al usuario con sus credenciales

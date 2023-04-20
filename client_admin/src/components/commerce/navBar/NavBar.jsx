@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import SearchBar from "../searchBar/SearchBar";
 import DrawerMenu from "../drawerMenu/DrawerMenu";
 
@@ -20,6 +20,9 @@ const NavBar = () => {
   const logoTexto = Logo;
   const logoIcono = Icono;
   const profile = Profile;
+  const location = useLocation();
+
+  const URLUSERS = ""
 
   /* ------------- MENU HAMBURGUESA ----    --------- */
 
@@ -30,7 +33,6 @@ const NavBar = () => {
   };
 
   /* ------------- LOGIN MENU ------------- */
-  const estaLogueado = useSelector((state) => state.logIn);
   const { comercios } = useSelector((state) => state);
 
   const dispatch = useDispatch();
@@ -62,10 +64,13 @@ const NavBar = () => {
   );
   const imgProfile = userLogin[0]?.imagen;
 
+  const estaLogueado = localStorage.getItem("estaLogueado");
+
   /* ------------- LOGOUT ------------- */
   const logOut = false;
 
   const handleLogOut = () => {
+    window.localStorage.removeItem("estaLogueado");
     Cookies.set("commerce_session", []);
     dispatch(commerceLoggedIn(logOut));
   };
@@ -76,58 +81,433 @@ const NavBar = () => {
         <DrawerMenu />
       </div>
 
-      <div className={s.options}>
-        <Link to={"/"}>
-          <img className={s.texto} src={logoTexto} />
-          <img className={s.icono} src={logoIcono} />
-        </Link>
-      </div>
-
-      <div className={s.nav_text}>
-        <Link to="/home" className={s.link}>
-          <h4>Inicio</h4>
-        </Link>
-
-        <Link to="/home" className={s.link}>
-          <h4>Quiero Comprar</h4>
-        </Link>
-
-        <Link to="/about" className={s.link}>
-          <h4>¿Quienes somos?</h4>
-        </Link>
-      </div>
-
-      <div className={s.box1}>
-        <SearchBar />
-      </div>
-
-      <div className={s.sesion}>
-        {!estaLogueado ? (
-          <Link to="/login" className={s.link}>
-            <h4>Iniciar sesión</h4>
+      {location.pathname == "/admin" && (
+        <>
+          <div className={s.options}>
+            <Link to={"/admin"}>
+              <img className={s.texto} src={logoTexto} />
+              <img className={s.icono} src={logoIcono} />
+            </Link>
+          </div>
+          <Link to="/admin" className={s.link}>
+            <h4>Inicio</h4>
           </Link>
-        ) : (
-          <div>
-            <img onClick={handleLogInClick} className={s.logIn} src={profile} />
-            {showProfileMenu && (
-              <div className={s.menuDesplegable}>
-                <Link to="/account" className={s.link_menu}>
-                  <h4>Ver perfil</h4>
-                </Link>
-                <Link to="/account" className={s.link_menu}>
-                  <h4>Historial de ventas</h4>
-                </Link>
-                <Link to="/producto" className={s.link_menu}>
-                  <h4>Crear Producto</h4>
-                </Link>
-                <Link to="/" className={s.link_menu} onClick={handleLogOut}>
-                  <h4>Cerrar sesión</h4>
-                </Link>
+          <button onClick={handleLogOut}>Cerrar sesion</button>
+        </>
+      )}
+
+      {location.pathname == "/admin/comercios" && (
+        <>
+          <div className={s.options}>
+            <Link to={"/admin"}>
+              <img className={s.texto} src={logoTexto} />
+              <img className={s.icono} src={logoIcono} />
+            </Link>
+          </div>
+          <Link to="/admin" className={s.link}>
+            <h4>Inicio</h4>
+          </Link>
+          <button onClick={handleLogOut}>Cerrar sesion</button>
+        </>
+      )}
+
+      {location.pathname == "/admin/usuarios" && (
+        <>
+          <div className={s.options}>
+            <Link to={"/admin"}>
+              <img className={s.texto} src={logoTexto} />
+              <img className={s.icono} src={logoIcono} />
+            </Link>
+          </div>
+          <Link to="/admin" className={s.link}>
+            <h4>Inicio</h4>
+          </Link>
+          <button onClick={handleLogOut}>Cerrar sesion</button>
+        </>
+      )}
+
+      {location.pathname == "/about" && (
+        <>
+          {" "}
+          <div className={s.options}>
+            <Link to={"/home"}>
+              <img className={s.texto} src={logoTexto} />
+              <img className={s.icono} src={logoIcono} />
+            </Link>
+          </div>
+          <div className={s.nav_text}>
+            <Link to="/home" className={s.link}>
+              <h4>Inicio</h4>
+            </Link>
+
+            <Link to={`${URLUSERS}`} className={s.link}>
+              <h4>Quiero Comprar</h4>
+            </Link>
+
+          </div>
+          <div className={s.box1}>
+            <SearchBar />
+          </div>
+          <div className={s.sesion}>
+            {!estaLogueado ? (
+              <Link to="/login" className={s.link}>
+                <h4>Iniciar sesión</h4>
+              </Link>
+            ) : (
+              <div>
+                <img
+                  onClick={handleLogInClick}
+                  className={s.logIn}
+                  src={profile}
+                />
+                {showProfileMenu && (
+                  <div className={s.menuDesplegable}>
+                    <Link to="/account" className={s.link_menu}>
+                      <h4>Ver perfil</h4>
+                    </Link>
+                    <Link to="/producto" className={s.link_menu}>
+                      <h4>Crear Producto</h4>
+                    </Link>
+                    <Link to="/" className={s.link_menu} onClick={handleLogOut}>
+                      <h4>Cerrar sesión</h4>
+                    </Link>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>{" "}
+        </>
+      )}
+
+      {location.pathname == "/account" && (
+        <>
+          {" "}
+          <div className={s.options}>
+            <Link to={"/home"}>
+              <img className={s.texto} src={logoTexto} />
+              <img className={s.icono} src={logoIcono} />
+            </Link>
+          </div>
+          <div className={s.nav_text}>
+            <Link to="/home" className={s.link}>
+              <h4>Inicio</h4>
+            </Link>
+
+            <Link to={`${URLUSERS}`} className={s.link}>
+              <h4>Quiero Comprar</h4>
+            </Link>
+
+            <Link to="/about" className={s.link}>
+              <h4>¿Quienes somos?</h4>
+            </Link>
+          </div>
+          <div className={s.box1}>
+            <SearchBar />
+          </div>
+          <div className={s.sesion}>
+            {!estaLogueado ? (
+              <Link to="/login" className={s.link}>
+                <h4>Iniciar sesión</h4>
+              </Link>
+            ) : (
+              <div>
+                <img
+                  onClick={handleLogInClick}
+                  className={s.logIn}
+                  src={profile}
+                />
+                {showProfileMenu && (
+                  <div className={s.menuDesplegable}>
+                   
+                    <Link to="/producto" className={s.link_menu}>
+                      <h4>Crear Producto</h4>
+                    </Link>
+                    <Link to="/" className={s.link_menu} onClick={handleLogOut}>
+                      <h4>Cerrar sesión</h4>
+                    </Link>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>{" "}
+        </>
+      )}
+
+      {location.pathname == "/home" && (
+        <>
+          <div className={s.options}>
+            <Link to={"/home"}>
+              <img className={s.texto} src={logoTexto} />
+              <img className={s.icono} src={logoIcono} />
+            </Link>
+          </div>
+          <div className={s.nav_text}>
+            
+
+            <Link to={`${URLUSERS}`} className={s.link}>
+              <h4>Quiero Comprar</h4>
+            </Link>
+
+            <Link to="/about" className={s.link}>
+              <h4>¿Quienes somos?</h4>
+            </Link>
+          </div>
+          <div className={s.box1}>
+            <SearchBar />
+          </div>
+          <div className={s.sesion}>
+            {!estaLogueado ? (
+              <Link to="/login" className={s.link}>
+                <h4>Iniciar sesión</h4>
+              </Link>
+            ) : (
+              <div>
+                <img
+                  onClick={handleLogInClick}
+                  className={s.logIn}
+                  src={profile}
+                />
+                {showProfileMenu && (
+                  <div className={s.menuDesplegable}>
+                    <Link to="/account" className={s.link_menu}>
+                      <h4>Ver perfil</h4>
+                    </Link>
+                    <Link to="/producto" className={s.link_menu}>
+                      <h4>Crear Producto</h4>
+                    </Link>
+                    <Link to="/" className={s.link_menu} onClick={handleLogOut}>
+                      <h4>Cerrar sesión</h4>
+                    </Link>
+                  </div>
+                )}
               </div>
             )}
           </div>
-        )}
-      </div>
+        </>
+      )}
+
+      {location.pathname == "/producto" && (
+        <>
+          {" "}
+          <div className={s.options}>
+            <Link to={"/home"}>
+              <img className={s.texto} src={logoTexto} />
+              <img className={s.icono} src={logoIcono} />
+            </Link>
+          </div>
+          <div className={s.nav_text}>
+            <Link to="/home" className={s.link}>
+              <h4>Inicio</h4>
+            </Link>
+
+            <Link to={`${URLUSERS}`} className={s.link}>
+              <h4>Quiero Comprar</h4>
+            </Link>
+
+            <Link to="/about" className={s.link}>
+              <h4>¿Quienes somos?</h4>
+            </Link>
+          </div>
+          <div className={s.box1}>
+            <SearchBar />
+          </div>
+          <div className={s.sesion}>
+            {!estaLogueado ? (
+              <Link to="/login" className={s.link}>
+                <h4>Iniciar sesión</h4>
+              </Link>
+            ) : (
+              <div>
+                <img
+                  onClick={handleLogInClick}
+                  className={s.logIn}
+                  src={profile}
+                />
+                {showProfileMenu && (
+                  <div className={s.menuDesplegable}>
+                    <Link to="/account" className={s.link_menu}>
+                      <h4>Ver perfil</h4>
+                    </Link>
+                    
+                    <Link to="/" className={s.link_menu} onClick={handleLogOut}>
+                      <h4>Cerrar sesión</h4>
+                    </Link>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>{" "}
+        </>
+      )}
+
+      {location.pathname == "/product/" && (
+        <>
+          {" "}
+          <div className={s.options}>
+            <Link to={"/home"}>
+              <img className={s.texto} src={logoTexto} />
+              <img className={s.icono} src={logoIcono} />
+            </Link>
+          </div>
+          <div className={s.nav_text}>
+            <Link to="/home" className={s.link}>
+              <h4>Inicio</h4>
+            </Link>
+
+            <Link to={`${URLUSERS}`} className={s.link}>
+              <h4>Quiero Comprar</h4>
+            </Link>
+
+            <Link to="/about" className={s.link}>
+              <h4>¿Quienes somos?</h4>
+            </Link>
+          </div>
+          <div className={s.box1}>
+            <SearchBar />
+          </div>
+          <div className={s.sesion}>
+            {!estaLogueado ? (
+              <Link to="/login" className={s.link}>
+                <h4>Iniciar sesión</h4>
+              </Link>
+            ) : (
+              <div>
+                <img
+                  onClick={handleLogInClick}
+                  className={s.logIn}
+                  src={profile}
+                />
+                {showProfileMenu && (
+                  <div className={s.menuDesplegable}>
+                    <Link to="/account" className={s.link_menu}>
+                      <h4>Ver perfil</h4>
+                    </Link>
+                    <Link to="/producto" className={s.link_menu}>
+                      <h4>Crear Producto</h4>
+                    </Link>
+                    <Link to="/" className={s.link_menu} onClick={handleLogOut}>
+                      <h4>Cerrar sesión</h4>
+                    </Link>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>{" "}
+        </>
+      )}
+
+{location.pathname == "/registrar-comercio" && (
+        <>
+          {" "}
+          <div className={s.options}>
+            <Link to={"/home"}>
+              <img className={s.texto} src={logoTexto} />
+              <img className={s.icono} src={logoIcono} />
+            </Link>
+          </div>
+          <div className={s.nav_text}>
+            <Link to="/home" className={s.link}>
+              <h4>Inicio</h4>
+            </Link>
+
+            <Link to={`${URLUSERS}`} className={s.link}>
+              <h4>Quiero Comprar</h4>
+            </Link>
+
+            <Link to="/about" className={s.link}>
+              <h4>¿Quienes somos?</h4>
+            </Link>
+          </div>
+          <div className={s.box1}>
+            <SearchBar />
+          </div>
+          <div className={s.sesion}>
+            {!estaLogueado ? (
+              <Link to="/login" className={s.link}>
+                <h4>Iniciar sesión</h4>
+              </Link>
+            ) : (
+              <div>
+                <img
+                  onClick={handleLogInClick}
+                  className={s.logIn}
+                  src={profile}
+                />
+                {showProfileMenu && (
+                  <div className={s.menuDesplegable}>
+                    <Link to="/account" className={s.link_menu}>
+                      <h4>Ver perfil</h4>
+                    </Link>
+                    <Link to="/producto" className={s.link_menu}>
+                      <h4>Crear Producto</h4>
+                    </Link>
+                    <Link to="/" className={s.link_menu} onClick={handleLogOut}>
+                      <h4>Cerrar sesión</h4>
+                    </Link>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>{" "}
+        </>
+      )}
+
+{location.pathname == "/update" && (
+        <>
+          {" "}
+          <div className={s.options}>
+            <Link to={"/home"}>
+              <img className={s.texto} src={logoTexto} />
+              <img className={s.icono} src={logoIcono} />
+            </Link>
+          </div>
+          <div className={s.nav_text}>
+            <Link to="/home" className={s.link}>
+              <h4>Inicio</h4>
+            </Link>
+
+            <Link to={`${URLUSERS}`} className={s.link}>
+              <h4>Quiero Comprar</h4>
+            </Link>
+
+            <Link to="/about" className={s.link}>
+              <h4>¿Quienes somos?</h4>
+            </Link>
+          </div>
+          <div className={s.box1}>
+            <SearchBar />
+          </div>
+          <div className={s.sesion}>
+            {!estaLogueado ? (
+              <Link to="/login" className={s.link}>
+                <h4>Iniciar sesión</h4>
+              </Link>
+            ) : (
+              <div>
+                <img
+                  onClick={handleLogInClick}
+                  className={s.logIn}
+                  src={profile}
+                />
+                {showProfileMenu && (
+                  <div className={s.menuDesplegable}>
+                    <Link to="/account" className={s.link_menu}>
+                      <h4>Ver perfil</h4>
+                    </Link>
+                    <Link to="/producto" className={s.link_menu}>
+                      <h4>Crear Producto</h4>
+                    </Link>
+                    <Link to="/" className={s.link_menu} onClick={handleLogOut}>
+                      <h4>Cerrar sesión</h4>
+                    </Link>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>{" "}
+        </>
+      )}
+
     </div>
   );
 };

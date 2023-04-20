@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { getAllCommerce } from "../../../redux/actions";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import s from "./Comercios.module.css";
 import axios from "axios";
 
@@ -8,8 +8,10 @@ function Comercios() {
   const dispatch = useDispatch();
   const allCommerce = useSelector((state) => state.allCommerce);
   useEffect(() => {
-    dispatch(getAllCommerce());
+      dispatch(getAllCommerce());
   }, [allCommerce]);
+
+  const [state,setState] = useState(allCommerce)
 
 
   function buscarId(id_comercio) {

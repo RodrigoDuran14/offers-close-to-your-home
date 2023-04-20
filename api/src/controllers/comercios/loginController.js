@@ -13,9 +13,15 @@ console.log(commerce)
             }
         })
    console.log("asd: ", db_commerce)
-      
 
-        if (db_commerce) {
+   const admin = await Comercio.findOne({
+    where: {
+        email: commerce.email,
+        admin:true
+    }
+})
+
+        if (db_commerce || admin) {
             const passwordMatch = await bcrypt.compare(commerce.password, db_commerce.password);
             if (passwordMatch) {
                 const token = generateToken(db_commerce);

@@ -21,8 +21,6 @@ export default function FormLogin() {
 
   const dispatch = useDispatch()
 
-
-
   const BACK_HOST = 'http://localhost:3001'
   const history = useHistory()
   const navigateTo = (url) => {
@@ -65,7 +63,19 @@ export default function FormLogin() {
 
       const isUserAuthenticated = await login(true);
       if (isUserAuthenticated) {
-        navigateTo('/');
+        const session = Cookies.get("commerce_session");// trae los datos de las cookies
+        console.log(session)
+        let values = JSON.parse(session)//convierte a json los datos
+
+        let comercio = values.dataValues// estan todos los datos del comercio o usuario como un objeto
+        console.log(comercio)
+        localStorage.setItem("estaLogueado", "database")
+        if(comercio.admin) {
+          navigateTo("/admin")
+        }else{
+          navigateTo('/home');
+        }
+    
       } else {
         console.log('Login failed');
       }

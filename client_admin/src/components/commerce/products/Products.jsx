@@ -17,7 +17,7 @@ const Products = () => {
   console.log(session);
   useEffect(() => {
     dispatch(getAllProducts());
-  }, [dispatch]);
+  }, [products]);
 
 
   let values = JSON.parse(session);
