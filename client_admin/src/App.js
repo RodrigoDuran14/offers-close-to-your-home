@@ -33,6 +33,7 @@ function App() {
           <Route exact path="/admin" component={HomeAdmin} />
           <Route exact path="/admin/comercios" component={Comercios} />
           <Route exact path="/admin/usuarios" component={Usuarios} />
+          <Route exact path="/about" component={About} />
         </Switch>
       </HashRouter>
     </div>
