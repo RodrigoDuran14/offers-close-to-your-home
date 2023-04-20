@@ -22,7 +22,7 @@ const NavBar = () => {
   const profile = Profile;
   const location = useLocation();
 
-  const URLUSERS = ""
+  const URLUSERS = "";
 
   /* ------------- MENU HAMBURGUESA ----    --------- */
 
@@ -92,7 +92,9 @@ const NavBar = () => {
           <Link to="/admin" className={s.link}>
             <h4>Inicio</h4>
           </Link>
-          <button onClick={handleLogOut}>Cerrar sesion</button>
+          <Link to={"/"}>
+            <button onClick={handleLogOut}>Cerrar sesion</button>
+          </Link>{" "}
         </>
       )}
 
@@ -107,7 +109,9 @@ const NavBar = () => {
           <Link to="/admin" className={s.link}>
             <h4>Inicio</h4>
           </Link>
-          <button onClick={handleLogOut}>Cerrar sesion</button>
+          <Link to={"/"}>
+            <button onClick={handleLogOut}>Cerrar sesion</button>
+          </Link>{" "}
         </>
       )}
 
@@ -122,7 +126,9 @@ const NavBar = () => {
           <Link to="/admin" className={s.link}>
             <h4>Inicio</h4>
           </Link>
-          <button onClick={handleLogOut}>Cerrar sesion</button>
+          <Link to={"/"}>
+            <button onClick={handleLogOut}>Cerrar sesion</button>
+          </Link>
         </>
       )}
 
@@ -143,7 +149,6 @@ const NavBar = () => {
             <Link to={`${URLUSERS}`} className={s.link}>
               <h4>Quiero Comprar</h4>
             </Link>
-
           </div>
           <div className={s.box1}>
             <SearchBar />
@@ -218,7 +223,6 @@ const NavBar = () => {
                 />
                 {showProfileMenu && (
                   <div className={s.menuDesplegable}>
-                   
                     <Link to="/producto" className={s.link_menu}>
                       <h4>Crear Producto</h4>
                     </Link>
@@ -242,8 +246,6 @@ const NavBar = () => {
             </Link>
           </div>
           <div className={s.nav_text}>
-            
-
             <Link to={`${URLUSERS}`} className={s.link}>
               <h4>Quiero Comprar</h4>
             </Link>
@@ -328,7 +330,7 @@ const NavBar = () => {
                     <Link to="/account" className={s.link_menu}>
                       <h4>Ver perfil</h4>
                     </Link>
-                    
+
                     <Link to="/" className={s.link_menu} onClick={handleLogOut}>
                       <h4>Cerrar sesión</h4>
                     </Link>
@@ -396,7 +398,7 @@ const NavBar = () => {
         </>
       )}
 
-{location.pathname == "/registrar-comercio" && (
+      {location.pathname == "/registrar-comercio" && (
         <>
           {" "}
           <div className={s.options}>
@@ -452,7 +454,7 @@ const NavBar = () => {
         </>
       )}
 
-{location.pathname == "/update" && (
+      {location.pathname == "/update" && (
         <>
           {" "}
           <div className={s.options}>
@@ -507,7 +509,6 @@ const NavBar = () => {
           </div>{" "}
         </>
       )}
-
     </div>
   );
 };

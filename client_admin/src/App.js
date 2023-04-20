@@ -1,5 +1,5 @@
 import "./App.css";
-import { HashRouter, Route, Switch, useLocation } from "react-router-dom";
+import { HashRouter, Route, Switch, useLocation, Redirect } from "react-router-dom";
 import Home from "./pages/commerce/home/Home";
 import NavBar from "./components/commerce/navBar/NavBar";
 import Login from "./pages/commerce/login/Login";
@@ -12,6 +12,7 @@ import CreateProduct from "./pages/commerce/createProduct/CreateProduct";
 import Comercios from "./components/admin/Comercios/Comercios";
 import Usuarios from "./components/admin/Usuarios/Usuarios";
 import About from "./pages/commerce/about/About";
+
 
 function App() {
   const location = useLocation();
