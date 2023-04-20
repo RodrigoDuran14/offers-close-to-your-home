@@ -4,7 +4,6 @@
     height: fit-content;
     width: 100%;
     background-color: #97978d;
-    margin-bottom: 120px;
 }
 
 .tabla{
@@ -37,7 +36,7 @@
 .detalle{
     display: flex;
     border: 3px black solid;
-    width: 1300px;
+    width: 1000px;
     margin-top: 10px;
     justify-content: space-between;
     align-items: center;

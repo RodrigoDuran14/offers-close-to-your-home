@@ -114,13 +114,14 @@ export default function FormLogin() {
       } else {
         console.log('Login failed');
       }
+      
 
     } catch (error) {
       const err = error.response.data;
       swal({
-        title: 'Bienvenido',
-        text: 'Ya puedes navegar con tu cuenta!',
-        icon: 'success',
+        title: 'Error',
+        text: 'Vuelve a intentarlo!',
+        icon: 'error',
         timer: '2000'
       });
     }

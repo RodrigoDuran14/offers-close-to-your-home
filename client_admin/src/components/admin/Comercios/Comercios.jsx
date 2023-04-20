@@ -69,7 +69,7 @@ function Comercios() {
         </thead>
         <tbody>
           {allCommerce.map((p) => {
-            if (p.estado)
+            if (p.estado && !p.admin)
               return (
                 <tr key={p.id_comercio}>
                   <td>{p.nombre_comercio}</td>
@@ -112,7 +112,7 @@ function Comercios() {
         </thead>
         <tbody>
           {allCommerce.map((p) => {
-            if (!p.estado)
+            if (!p.estado && !p.admin)
               return (
                 <tr key={p.id_comercio} className={s.eliminados}>
                   <td>{p.nombre_comercio}</td>
