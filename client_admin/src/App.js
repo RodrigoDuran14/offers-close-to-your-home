@@ -20,7 +20,7 @@ function App() {
   return (
     <div className="App">
       <HashRouter>
-        {location?.pathname == "/login" ? null : <NavBar />}
+        {location?.pathname === "/login" ? null : <NavBar />}
         <Switch>
           <Route exact path="/" component={Login} />;
           <Route exact path="/home" component={Home} />;
