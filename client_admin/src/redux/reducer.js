@@ -10,13 +10,19 @@ import {
   GET_COMMERCE_BY_ID,
   UPDATE_COMMERCE,
   GET_ALL_CATEGORIAS,
-  UPDATE_PRODUCT
+  UPDATE_PRODUCT,
   GET_PRODUCT_BY_CATEGORY,
+  GET_PRODUCT_BY_ID,
+  GET_ALL_COMMERCE,
+  GET_ALL_USERS,
+  GET_USER_BY_EMAIL,
+     
 } from "./actions-type.js";
 
 const initialState = {
   logIn: false,
   products: [],
+  product:[],
   productsFitered: [],
   copyProducts: [],
   comercios: [],
@@ -25,9 +31,11 @@ const initialState = {
   categorys: [],
   ciudades: [],
   display: false,
-  categorias:[]
+  categorias:[],
   productCategory: [],
-
+  allUsers:[],
+  allCommerce:[],
+  usuario: [],
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -125,6 +133,25 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         productCategory: action.payload,
       };
+
+      case GET_PRODUCT_BY_ID:
+        return { ...state, product: action.payload };
+      case GET_ALL_COMMERCE:
+        return{
+          ...state,
+          allCommerce: action.payload
+        }
+        case GET_ALL_USERS:
+          return{
+            ...state,
+            allUsers: action.payload
+          }
+
+          case GET_USER_BY_EMAIL:
+            return {
+              ...state,
+              usuario: action.payload,
+            }
     default:
       return state;
   }

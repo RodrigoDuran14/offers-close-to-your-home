@@ -58,7 +58,7 @@ class paymentService{
         picture_url: producto.imagen,
         category_id: producto.id_categoria_producto,
         quantity: productos[i].cantidad,
-        unit_price: producto.valor_normal
+        unit_price: producto.valor_con_descuento
       });
     }
   

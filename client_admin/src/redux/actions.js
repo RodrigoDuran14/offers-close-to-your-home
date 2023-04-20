@@ -115,7 +115,28 @@ export function getProductCategory() {
       });
     }
 
-  }
+  };
+}
+
+
+export const getAllProducts = () => {
+  return async (dispatch) => {
+    try {
+
+      const response = await axios.get(`${URL}/products`);
+      // console.log(response.data);
+      dispatch({ type: action.GET_ALL_PRODUCTS, payload: response.data });
+
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: action.GET_ALL_PRODUCTS, payload: error });
+
+    }
+  };
+};
+
+
+  
 
   export function getAllCategorias() {
     return async (dispatch) => {
@@ -148,3 +169,64 @@ export function getProductCategory() {
     }
   }
 
+  export const getProductById = (id) => async (dispatch) => {
+    try {
+      const res = await axios.get(`${URL}/products/${id}`);
+      dispatch({
+        type: action.GET_PRODUCT_BY_ID,
+        payload: res.data,
+      });
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: action.GET_PRODUCT_BY_ID,
+        payload: error,
+      });
+    }
+  };
+
+
+  export const getAllCommerce = () => {
+    return async (dispatch) => {
+      try {
+  
+        const response = await axios.get(`${URL}/commerce`);
+        // console.log(response.data);
+        dispatch({ type: action.GET_ALL_COMMERCE, payload: response.data });
+  
+      } catch (error) {
+        console.log(error);
+        dispatch({ type: action.GET_ALL_COMMERCE, payload: error });
+  
+      }
+    };
+  };
+  
+  export const getAllUsers = () => {
+    return async (dispatch) => {
+      try {
+  
+        const response = await axios.get(`${URL}/usuario`);
+        // console.log(response.data);
+        dispatch({ type: action.GET_ALL_USERS, payload: response.data });
+  
+      } catch (error) {
+        console.log(error);
+        dispatch({ type: action.GET_ALL_USERS, payload: error });
+  
+      }
+    };
+  };
+
+
+  export function getUsuarioByEmail(email) {
+    return async (dispatch) => {
+      
+        const response = await axios.get(`${URL}/email?email=${email}`);
+        dispatch({
+          type: action.GET_USER_BY_EMAIL,
+          payload: response.data,
+        });
+     
+    };
+  }
