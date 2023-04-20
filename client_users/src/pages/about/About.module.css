@@ -1,39 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Kelly+Slab&display=swap');
 
 .container{
-    width: 100%;
+    width: 90%;
     height: 100vh;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
+    margin-top: 20px;
+    margin-bottom: 70px;
 }
 
-.container2{
+.texto {
     display: flex;
-    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 90vw;
 }
 
 .titulo{
     text-decoration: underline;
+    width: 100%;
     margin-top: 80px;
+    margin-bottom: 40px;
     font-size: 30px;
     font-family: "Kelly Slab";
+    text-align: right;
 }
 
 .parrafos{
-    /* display: flex;
-    flex-wrap: wrap; */
-    width: 70%;
+    width: 60%;
     text-align: justify;
-    font-size: 16px;
-    margin-top: 180px;
-    margin-left: -600px;
-    margin-bottom: 400px;
-    
+    font-size: 18px;
 }
 
 .img{
+    margin-top: 100px;
+    filter: opacity(50%);
     position: absolute;
     left: -160px;
     top: 270px;

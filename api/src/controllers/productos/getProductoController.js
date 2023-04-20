@@ -110,11 +110,6 @@ const getAllCategorias = async () => {
       imagen_categoria_producto: "https://vivirmejor.mx/wp-content/uploads/2020/09/Renueva-electrodomesticos_0.jpg",
     },
     {
-      nombre_categoria_producto: "Deportes",
-      imagen_categoria_producto:
-        "https://proyectocoqui.org/wp-content/uploads/2022/10/En-que-hay-que-fijarse-al-comprar-ropa-de-deporte.jpg",
-    },
-    {
       nombre_categoria_producto: "Informática",
       imagen_categoria_producto:
         "https://concepto.de/wp-content/uploads/2014/10/hardware-e1551046878558.jpg",
@@ -143,6 +138,11 @@ const getAllCategorias = async () => {
       nombre_categoria_producto: "Jardinería",
       imagen_categoria_producto:
         "https://thumbs.dreamstime.com/b/herramientas-de-jardiner%C3%ADa-sobre-un-fondo-plano-madera-plana-vista-la-parte-superior-165590766.jpg",
+    },
+    {
+      nombre_categoria_producto: "Deportes",
+      imagen_categoria_producto:
+        "https://proyectocoqui.org/wp-content/uploads/2022/10/En-que-hay-que-fijarse-al-comprar-ropa-de-deporte.jpg",
     },
     {
       nombre_categoria_producto: "Joyería",
