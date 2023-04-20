@@ -95,7 +95,7 @@ function Comercios() {
 
       {allCommerce.some(p=>p.estado === false) ? <>
         <h2 style={{ color: "var(--green-color)", margin: "15px" }}>
-        Listado de comercios
+        Listado de comercios baneados
       </h2>
       <table>
         <thead>

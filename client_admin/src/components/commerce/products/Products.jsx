@@ -45,7 +45,7 @@ const Products = () => {
           <tr>
             <th>Nombre</th>
             <th>Descripción</th>
-            <th>Stock</th>
+            <th style={{padding: '0.5rem'}}> Stock </th>
             <th>Editar o eliminar</th>
           </tr>
         </thead>
