@@ -12,7 +12,7 @@
           "condicion": "Usado",
           "imagen": "https://m.media-amazon.com/images/I/71AYSsdxNBL._AC_UL400_.jpg",
           "id_categoria_producto": 1,
-          "id_comercio": 1
+          "id_comercio": 2
       },
       {
         "nombre": "Camisa COOFANDY ",
@@ -26,7 +26,7 @@
           "condicion": "Nuevo",
           "imagen": "https://m.media-amazon.com/images/I/61DSf-iLZML._AC_UL400_.jpg",
           "id_categoria_producto": 1,
-          "id_comercio": 1
+          "id_comercio": 2
       },
       {
         "nombre": "Camisa holgada con estampado",
@@ -40,7 +40,7 @@
           "condicion": "Nuevo",
           "imagen": "https://m.media-amazon.com/images/I/61OfXuXmXXL._AC_UL400_.jpg",
           "id_categoria_producto": 1,
-          "id_comercio": 1
+          "id_comercio": 2
       },
       {
         "nombre": "conjunto para mujer",
@@ -54,7 +54,7 @@
           "condicion": "Usado",
           "imagen": "https://m.media-amazon.com/images/I/81zFDHLQ8WL._AC_UL400_.jpg",
           "id_categoria_producto": 1,
-          "id_comercio": 1
+          "id_comercio": 2
       },
       {
         "nombre": "Blusa suelta casual",
@@ -68,7 +68,7 @@
           "condicion": "Nuevo",
           "imagen": "https://m.media-amazon.com/images/I/5149Q8Y-s+L._AC_UL400_.jpg",
           "id_categoria_producto": 1,
-          "id_comercio": 1
+          "id_comercio": 2
       },
       {
         "nombre": "Blusa de Rayas",
@@ -82,7 +82,7 @@
           "condicion": "Nuevo",
           "imagen": "https://http2.mlstatic.com/D_NQ_NP_932520-MLC54199095172_032023-W.webp",
           "id_categoria_producto": 1,
-          "id_comercio": 1
+          "id_comercio": 2
       },
       {
         "nombre": "Blusa Lorenzo Di Pontti",
@@ -96,7 +96,7 @@
           "condicion": "Nuevo",
           "imagen": "https://http2.mlstatic.com/D_NQ_NP_965686-MLC53395491796_012023-W.webp",
           "id_categoria_producto": 1,
-          "id_comercio": 1
+          "id_comercio": 2
       },
       {
         "nombre": "Blusa Carolina Herrera",
@@ -110,7 +110,7 @@
           "condicion": "Nuevo",
           "imagen": "https://http2.mlstatic.com/D_NQ_NP_601612-MLC53265879926_012023-W.webp",
           "id_categoria_producto": 1,
-          "id_comercio": 1
+          "id_comercio": 2
       },
       {
         "nombre": "Blusa Manga Larga",
@@ -124,7 +124,7 @@
           "condicion": "Reacondicionado",
           "imagen": "https://http2.mlstatic.com/D_NQ_NP_673547-MLC52770382731_122022-W.webp",
           "id_categoria_producto": 1,
-          "id_comercio": 1
+          "id_comercio": 2
       },
       {
         "nombre": "Blusa Mezclilla",
@@ -138,7 +138,7 @@
           "condicion": "Reacondicionado",
           "imagen": "https://http2.mlstatic.com/D_NQ_NP_825940-MLC53180327665_012023-W.webp",
           "id_categoria_producto": 1,
-          "id_comercio": 1
+          "id_comercio": 2
       },
       {
         "nombre": "Poleron Damasco",
@@ -152,7 +152,7 @@
           "condicion": "Nuevo",
           "imagen": "https://http2.mlstatic.com/D_NQ_NP_745337-MLC49183072475_022022-W.webp",
           "id_categoria_producto": 1,
-          "id_comercio": 1
+          "id_comercio": 2
       },
       
     {
@@ -167,7 +167,7 @@
         "condicion": "Nuevo",
         "imagen": "https://http2.mlstatic.com/D_NQ_NP_899771-MLC51455285648_092022-W.webp",
         "id_categoria_producto": 1,
-        "id_comercio": 1
+        "id_comercio": 2
     },
       {
         "nombre": "Poleron Chicago Bulls",
@@ -181,7 +181,7 @@
           "condicion": "Nuevo",
           "imagen": "https://http2.mlstatic.com/D_NQ_NP_694848-MLC52319574089_112022-W.webp",
           "id_categoria_producto": 1,
-          "id_comercio": 1
+          "id_comercio": 2
       },
       {
         "nombre": "Polera Hello Kitty",
@@ -195,7 +195,7 @@
           "condicion": "Reacondicionado",
           "imagen": "https://http2.mlstatic.com/D_NQ_NP_670552-MLC51114128224_082022-W.webp",
           "id_categoria_producto": 1,
-          "id_comercio": 1
+          "id_comercio": 2
       },
       {
         "nombre": "Polera de Mujer El Principito",
@@ -209,7 +209,7 @@
           "condicion": "Nuevo",
           "imagen": "https://http2.mlstatic.com/D_NQ_NP_692420-MLC54875952598_042023-W.webp",
           "id_categoria_producto": 1,
-          "id_comercio": 1
+          "id_comercio": 2
       },
       
 
@@ -225,7 +225,7 @@
         "condicion": "Nuevo",
         "imagen": "https://http2.mlstatic.com/D_NQ_NP_843747-MLC52591831451_112022-W.webphttps://http2.mlstatic.com/D_NQ_NP_698336-MLC49183080221_022022-W.webp",
         "id_categoria_producto": 1,
-        "id_comercio": 1
+        "id_comercio": 2
     },
       {
         "nombre": "Polera de Mujer",
@@ -239,7 +239,7 @@
           "condicion": "Nuevo",
           "imagen": "https://http2.mlstatic.com/D_NQ_NP_698336-MLC49183080221_022022-W.webp",
           "id_categoria_producto": 1,
-          "id_comercio": 1
+          "id_comercio": 2
       },
       {
         "nombre": "Camiseta Slim",
@@ -253,7 +253,7 @@
           "condicion": "Reacondicionado",
           "imagen": "https://http2.mlstatic.com/D_NQ_NP_996067-MLC51298442586_082022-W.webp",
           "id_categoria_producto": 1,
-          "id_comercio": 1
+          "id_comercio": 2
       },
       {
         "nombre": "Camiseta",
@@ -267,7 +267,7 @@
           "condicion": "Usado",
           "imagen": "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/440/198/products/fnatic-2023-frente1-27c900231f143b92b316747583425994-640-0.webp",
           "id_categoria_producto": 1,
-          "id_comercio": 1
+          "id_comercio": 2
       },
       {
         "nombre": "Pantalon Rip Stop Negro - Hombre y Mujer",
@@ -281,7 +281,7 @@
         "condicion": "Nuevo",
         "imagen": "https://alcatraz.com.ar/wp-content/uploads/2018/05/Pantalon-Ripstop-negro-frente-sin-cinto.jpg",
         "id_categoria_producto": 1,
-        "id_comercio": 1
+        "id_comercio": 2
       },
       {
         "nombre": "Cubierta de lavadora",
@@ -295,7 +295,7 @@
         "condicion": "Nuevo",
         "imagen": "https://m.media-amazon.com/images/I/71R+bWbV2qL._AC_UY218_.jpg",
         "id_categoria_producto": 2,
-        "id_comercio": 1
+        "id_comercio": 2
       },
       {
         "nombre": "Cubierta de lavadora",
@@ -309,7 +309,7 @@
         "condicion": "Nuevo",
         "imagen": "https://m.media-amazon.com/images/I/71R+bWbV2qL._AC_UY218_.jpg",
         "id_categoria_producto": 2,
-        "id_comercio": 1
+        "id_comercio": 2
       },
       {
         "nombre": "Freidora de aire",
@@ -323,7 +323,7 @@
         "condicion": "Usado",
         "imagen": "https://m.media-amazon.com/images/I/91ayYfAfdiL._AC_UY218_.jpg",
         "id_categoria_producto": 2,
-        "id_comercio": 1
+        "id_comercio": 2
       },
       {
         "nombre": "Tostadora de 2 rebanadas",
@@ -337,7 +337,7 @@
         "condicion": "Nuevo",
         "imagen": "https://m.media-amazon.com/images/I/81yYa+sHotL._AC_UY218_.jpg",
         "id_categoria_producto": 2,
-        "id_comercio": 1
+        "id_comercio": 2
       },
       {
         "nombre": "Microondas",
@@ -351,7 +351,7 @@
         "condicion": "Nuevo",
         "imagen": "https://bgh.com.ar/wp-content/uploads/2020/08/Trifuncion-1280x720-1.png",
         "id_categoria_producto": 2,
-        "id_comercio": 1
+        "id_comercio": 2
 
 
       },
@@ -367,7 +367,7 @@
         "condicion": "Usado",
         "imagen": "https://electroluxar.vtexassets.com/arquivos/ids/159945/heladera-no-frost-electrolux-dfn3000p-plata-265lts-_Detalhe1.png?v=637541009901930000",
         "id_categoria_producto": 2,
-        "id_comercio": 1
+        "id_comercio": 2
       },
       {
         "nombre": "Cámara PTZ 20x",
@@ -381,7 +381,7 @@
         "condicion": "Nuevo",
         "imagen": "https://m.media-amazon.com/images/I/61i0HghzcIL._AC_UY218_.jpg",
         "id_categoria_producto": 3,
-        "id_comercio": 1
+        "id_comercio": 2
       },
       {
         "nombre": "Altavoces para computadora",
@@ -395,7 +395,7 @@
         "condicion": "Reacondicionado",
         "imagen": "https://m.media-amazon.com/images/I/71gvJ9fQYSL._AC_UY218_.jpg",
         "id_categoria_producto": 3,
-        "id_comercio": 1
+        "id_comercio": 2
       },
       {
         "nombre": "Altavoces para computadora",
@@ -409,7 +409,7 @@
         "condicion": "Nuevo",
         "imagen": "https://m.media-amazon.com/images/I/812JIrl8ldL._AC_UY218_.jpg",
         "id_categoria_producto": 3,
-        "id_comercio": 1
+        "id_comercio": 2
       },
       {
         "nombre": "Concentrador USB 3.0 ",
@@ -423,7 +423,7 @@
         "condicion": "Nuevo",
         "imagen": "https://m.media-amazon.com/images/I/71g-KQfA-DL._AC_UL400_.jpg",
         "id_categoria_producto": 3,
-        "id_comercio": 1
+        "id_comercio": 2
       },
       {
         "nombre": "Comfort Almohada de apoyo",
@@ -437,7 +437,7 @@
         "condicion": "Nuevo",
         "imagen": "https://m.media-amazon.com/images/I/81+60Yi7auL._AC_UL400_.jpg",
         "id_categoria_producto": 3,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "Alfombrilla para mouse",
@@ -451,7 +451,7 @@
         "condicion": "Nuevo",
         "imagen": "https://m.media-amazon.com/images/I/713AjEe2ueL._AC_UY218_.jpg",
         "id_categoria_producto": 3,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "ANYPLUS USB C Hub Ethernet",
@@ -465,7 +465,7 @@
         "condicion": "Usado",
         "imagen": "https://m.media-amazon.com/images/I/71cDBZngncL._AC_UY218_.jpg",
         "id_categoria_producto": 3,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "Computadora de escritorio Dell",
@@ -479,7 +479,7 @@
         "condicion": "Nuevo",
         "imagen": "https://m.media-amazon.com/images/I/61VbcdeTHcL._AC_UL400_.jpg",
         "id_categoria_producto": 3,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "Computadora de escritorio Lenovo",
@@ -493,7 +493,7 @@
         "condicion": "Usado",
         "imagen": "https://m.media-amazon.com/images/I/91Fb+Pcxe-L._AC_UY218_.jpg",
         "id_categoria_producto": 3,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "Laptop de negocios Lenovo",
@@ -507,7 +507,7 @@
         "condicion": "Reacondicionado",
         "imagen": "https://m.media-amazon.com/images/I/71WeMyK0UnL._AC_UY218_.jpg",
         "id_categoria_producto": 3,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "Acer Aspire 5 A515-56-32DK",
@@ -521,7 +521,7 @@
         "condicion": "Nuevo",
         "imagen": "https://m.media-amazon.com/images/I/71pvhTrmZDL._AC_UY218_.jpg",
         "id_categoria_producto": 3,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "HP Nueva laptop 2022",
@@ -535,7 +535,7 @@
         "condicion": "Usado",
         "imagen": "https://m.media-amazon.com/images/I/71TK5dRc6iL._AC_UL400_.jpg",
         "id_categoria_producto": 3,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "Monitor curvado para juegos",
@@ -549,7 +549,7 @@
         "condicion": "Nuevo",
         "imagen": "https://m.media-amazon.com/images/I/81YGDZgLyyL._AC_UL400_.jpg",
         "id_categoria_producto": 3,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "Monitor de juegos Acer",
@@ -563,7 +563,7 @@
         "condicion": "Nuevo",
         "imagen": "https://m.media-amazon.com/images/I/71P0M7tKjYL._AC_UY218_.jpg",
         "id_categoria_producto": 3,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "Monitor de Computadora curvado",
@@ -577,7 +577,7 @@
         "condicion": "Nuevo",
         "imagen": "https://m.media-amazon.com/images/I/61sqwnf7fgL._AC_UY218_.jpg",
         "id_categoria_producto": 3,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "Monitor de Computadora",
@@ -591,7 +591,7 @@
         "condicion": "Nuevo",
         "imagen": "https://m.media-amazon.com/images/I/71z4J2DT7dL._AC_UY218_.jpg",
         "id_categoria_producto": 3,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "Monitor de Computadora",
@@ -605,7 +605,7 @@
         "condicion": "Nuevo",
         "imagen": "https://m.media-amazon.com/images/I/71z4J2DT7dL._AC_UY218_.jpg",
         "id_categoria_producto": 3,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "memoria Corsair",
@@ -619,7 +619,7 @@
         "condicion": "Reacondicionado",
         "imagen": "https://m.media-amazon.com/images/I/51gCXtjJKhL._AC_UY218_.jpg",
         "id_categoria_producto": 3,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "Disco RAM PC8500 ",
@@ -633,7 +633,7 @@
         "condicion": "Nuevo",
         "imagen": "https://m.media-amazon.com/images/I/81nVQGHArTS._AC_UY218_.jpg",
         "id_categoria_producto": 3,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "Mouse Fnatic",
@@ -647,7 +647,7 @@
         "condicion": "Nuevo",
         "imagen": "https://us.maxgaming.com/bilder/artiklar/zoom/20946_1.jpg?m=1644594243",
         "id_categoria_producto": 3,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "Teclado Fnatic",
@@ -661,7 +661,7 @@
         "condicion": "Reacondicionado",
         "imagen": "https://http2.mlstatic.com/D_NQ_NP_774250-MLA46836566216_072021-O.webp",
         "id_categoria_producto": 3,
-        "id_comercio": 1
+        "id_comercio": 3
       },
        {
         "nombre": "Hidratante facial",
@@ -675,7 +675,7 @@
         "condicion": "Nuevo",
         "imagen": "https://m.media-amazon.com/images/I/71f4yA90LcL._AC_UL400_.jpg",
         "id_categoria_producto": 4,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "3 protectores faciales ",
@@ -689,7 +689,7 @@
         "condicion": "Nuevo",
         "imagen": "https://m.media-amazon.com/images/I/71KXsb8-bBL._AC_UL400_.jpg",
         "id_categoria_producto": 4,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "Cosmetics Champú espesante ",
@@ -703,7 +703,7 @@
         "condicion": "Nuevo",
         "imagen": "https://m.media-amazon.com/images/I/4190hhgutYL._AC_UL400_.jpg",
         "id_categoria_producto": 4,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "Bolsa de maquillaje",
@@ -717,7 +717,7 @@
         "condicion": "Reacondicionado",
         "imagen": "https://m.media-amazon.com/images/I/81YEGz0G-BL._AC_UL400_.jpg",
         "id_categoria_producto": 4,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "Hidratante facial",
@@ -731,7 +731,7 @@
         "condicion": "Usado",
         "imagen": "https://m.media-amazon.com/images/I/71HfNEvxASL._AC_UL400_.jpg",
         "id_categoria_producto": 4,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "Esponjas de maquillaje",
@@ -745,7 +745,7 @@
         "condicion": "Nuevo",
         "imagen": "https://m.media-amazon.com/images/I/717avqvLqIL._AC_UL400_.jpg",
         "id_categoria_producto": 4,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "Juego de 16 brochas de maquillaje ",
@@ -759,7 +759,7 @@
         "condicion": "Nuevo",
         "imagen": "https://m.media-amazon.com/images/I/71COMXPN3kL._AC_UL400_.jpg",
         "id_categoria_producto": 4,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "Crema Facial",
@@ -773,7 +773,7 @@
         "condicion": "Nuevo",
         "imagen": "https://m.media-amazon.com/images/I/41Jt+2nZzRL._AC_UL400_.jpg",
         "id_categoria_producto": 4,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "Suero potenciador de pestañas",
@@ -787,7 +787,7 @@
         "condicion": "Nuevo",
         "imagen": "https://m.media-amazon.com/images/I/51rEmBXZZPL._AC_UL400_.jpg",
         "id_categoria_producto": 4,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "maquillaje de 22 piezas",
@@ -801,7 +801,7 @@
         "condicion": "Usado",
         "imagen": "https://m.media-amazon.com/images/I/71F4oVJAKrL._AC_UL400_.jpg",
         "id_categoria_producto": 4,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "Rubor en crema",
@@ -815,7 +815,7 @@
         "condicion": "Nuevo",
         "imagen": "https://http2.mlstatic.com/D_NQ_NP_674321-MLA54837913239_042023-O.webp",
         "id_categoria_producto": 4,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "Mac Satin Lipstick",
@@ -829,7 +829,7 @@
         "condicion": "Reacondicionado",
         "imagen": "https://juleriaque.vtexassets.com/arquivos/ids/204147-800-auto?v=638085758380170000&width=800&height=auto&aspect=true",
         "id_categoria_producto": 4,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "Batido rico en proteínas",
@@ -843,7 +843,7 @@
         "condicion": "Nuevo",
         "imagen": "https://m.media-amazon.com/images/I/81LMGwM0UvL._AC_UL400_.jpg",
         "id_categoria_producto": 5,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "Splenda Diabetes Care Batido",
@@ -857,7 +857,7 @@
         "condicion": "Nuevo",
         "imagen": "https://m.media-amazon.com/images/I/91PfTRgno+L._AC_UL400_.jpg",
         "id_categoria_producto": 5,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "Papas fritas",
@@ -871,7 +871,7 @@
         "condicion": "Nuevo",
         "imagen": "https://m.media-amazon.com/images/I/710vht30mQL._AC_UL400_.jpg",
         "id_categoria_producto": 5,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": " Paquete de pan",
@@ -885,7 +885,7 @@
         "condicion": "Nuevo",
         "imagen": "https://m.media-amazon.com/images/I/81XidKbKR4L._AC_UL400_.jpg",
         "id_categoria_producto": 5,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": " Energizante Monstere",
@@ -899,7 +899,7 @@
         "condicion": "Nuevo",
         "imagen": "https://m.media-amazon.com/images/I/91FC-Ky23lL._AC_UL400_.jpg",
         "id_categoria_producto": 5,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "Paquete Gatorade",
@@ -913,7 +913,7 @@
         "condicion": "Nuevo",
         "imagen": "https://m.media-amazon.com/images/I/91FC-Ky23lL._AC_UL400_.jpg",
         "id_categoria_producto": 5,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "Condimento McCormick ",
@@ -927,7 +927,7 @@
         "condicion": "Usado",
         "imagen": "https://m.media-amazon.com/images/I/711aN1BvQ-L._AC_UL400_.jpg",
         "id_categoria_producto": 5,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "Puré de manzana para niños",
@@ -941,7 +941,7 @@
         "condicion": "Nuevo",
         "imagen": "https://m.media-amazon.com/images/I/813FCAMufwS._AC_UL400_.jpg",
         "id_categoria_producto": 5,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "Paquete de cereales",
@@ -955,7 +955,7 @@
         "condicion": "Nuevo",
         "imagen": "https://m.media-amazon.com/images/I/81Cn1O-hEdL._AC_UL400_.jpg",
         "id_categoria_producto": 5,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "Paquete avena ",
@@ -969,7 +969,7 @@
         "condicion": "Nuevo",
         "imagen": "https://m.media-amazon.com/images/I/911XLyCu1RL._AC_UL400_.jpg",
         "id_categoria_producto": 5,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "Pan Integral",
@@ -983,7 +983,7 @@
         "condicion": "Nuevo",
         "imagen": "https://supercristian.com.ar/wp-content/uploads/2020/08/84194-1.jpg",
         "id_categoria_producto": 5,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "Galletitas Pitusas",
@@ -997,7 +997,7 @@
         "condicion": "Reacondicionado",
         "imagen": "https://http2.mlstatic.com/D_NQ_NP_608904-MLA51442741719_092022-O.webp",
         "id_categoria_producto": 5,
-        "id_comercio": 1
+        "id_comercio": 3
       },
       {
         "nombre": "Kick Scooter",
@@ -1011,7 +1011,7 @@
         "condicion": "Nuevo",
         "imagen": "https://m.media-amazon.com/images/I/71ic0BJhgeL._AC_UL400_.jpg",
         "id_categoria_producto": 6,
-        "id_comercio": 1
+        "id_comercio": 3
     },
     {
       "nombre": "Mini Basketball",
@@ -1025,7 +1025,7 @@
       "condicion": "Nuevo",
       "imagen": "https://m.media-amazon.com/images/I/71KMndw2ZAL._AC_UL400_.jpg",
       "id_categoria_producto": 6,
-      "id_comercio": 1
+      "id_comercio": 3
   },
     {
       "nombre": "Mini Basketball",
@@ -1039,7 +1039,7 @@
       "condicion": "Nuevo",
       "imagen": "https://m.media-amazon.com/images/I/711NTHMh72L._AC_UL400_.jpg",
       "id_categoria_producto": 6,
-      "id_comercio": 1
+      "id_comercio": 3
   },
     {
       "nombre": "Juguetes robot para niños",
@@ -1053,7 +1053,7 @@
       "condicion": "Nuevo",
       "imagen": "https://m.media-amazon.com/images/I/71bGMkEzNeS._AC_UL400_.jpg",
       "id_categoria_producto": 6,
-      "id_comercio": 1
+      "id_comercio": 3
   },
     {
       "nombre": " arco y flecha",
@@ -1067,7 +1067,7 @@
       "condicion": "Nuevo",
       "imagen": "https://m.media-amazon.com/images/I/810kwSIaf6L._AC_UL400_.jpg",
       "id_categoria_producto": 6,
-      "id_comercio": 1
+      "id_comercio": 3
   },
     {
       "nombre": "Láser recargable para niños",
@@ -1081,7 +1081,7 @@
       "condicion": "Nuevo",
       "imagen": "https://m.media-amazon.com/images/I/91S7uBwMRkL._AC_UL400_.jpg",
       "id_categoria_producto": 6,
-      "id_comercio": 1
+      "id_comercio": 3
   },
     {
       "nombre": "Camiones de juguete",
@@ -1095,7 +1095,7 @@
       "condicion": "Nuevo",
       "imagen": "https://m.media-amazon.com/images/I/81-+9X4YmpL._AC_UL400_.jpg",
       "id_categoria_producto": 6,
-      "id_comercio": 1
+      "id_comercio": 3
   },
     {
       "nombre": "Threeking Coche de acrobacias ",
@@ -1109,7 +1109,7 @@
       "condicion": "Nuevo",
       "imagen": "https://m.media-amazon.com/images/I/61ag7P1sgPL._AC_UL400_.jpg",
       "id_categoria_producto": 6,
-      "id_comercio": 1
+      "id_comercio": 3
   },
     {
       "nombre": "robot RC regalos para niños",
@@ -1123,7 +1123,7 @@
       "condicion": "Nuevo",
       "imagen": "https://m.media-amazon.com/images/I/718ysJsJMlL._AC_UL400_.jpg",
       "id_categoria_producto": 6,
-      "id_comercio": 1
+      "id_comercio": 3
   },
     {
       "nombre": "Juegos de construcción educativo",
@@ -1137,7 +1137,7 @@
       "condicion": "Usado",
       "imagen": "https://m.media-amazon.com/images/I/81mnHgAWL0L._AC_UL400_.jpg",
       "id_categoria_producto": 6,
-      "id_comercio": 1
+      "id_comercio": 3
   },
     {
       "nombre": "Almohadilla antideslizante para niños",
@@ -1151,7 +1151,7 @@
       "condicion": "Usado",
       "imagen": "https://m.media-amazon.com/images/I/91knAl6GktL._AC_UL400_.jpg",
       "id_categoria_producto": 6,
-      "id_comercio": 1
+      "id_comercio": 3
   },
     {
       "nombre": "Hamourd Robot juguetes",
@@ -1165,7 +1165,7 @@
       "condicion": "Usado",
       "imagen": "https://m.media-amazon.com/images/I/716V68zd4uL._AC_UL400_.jpg",
       "id_categoria_producto": 6,
-      "id_comercio": 1
+      "id_comercio": 3
 
   },
     {
@@ -1180,7 +1180,7 @@
       "condicion": "Usado",
       "imagen": "https://m.media-amazon.com/images/I/71y-+xNKRgL._AC_UL400_.jpg",
       "id_categoria_producto": 6,
-      "id_comercio": 1
+      "id_comercio": 3
 
   },
     {
@@ -1195,7 +1195,7 @@
       "condicion": "Usado",
       "imagen": "https://jugueteriascarrousel.com.ar/wp-content/uploads/2020/07/bjjMesa-de-trabajo-1-copia.jpg",
       "id_categoria_producto": 6,
-      "id_comercio": 1
+      "id_comercio": 2
 
   },
     {
@@ -1210,7 +1210,7 @@
         "condicion": "Reacondicionado",
         "imagen": "https://ae01.alicdn.com/kf/H2afd675ea01942dba6e53a2d105e5c67M/TOMY-Pokemon-Elf-bola-pokebola-de-Pikachu-bolsillo-variante-de-monstruo-de-juguete-MODELO-DE-figura.jpg_Q90.jpg_.webp",
         "id_categoria_producto": 6,
-        "id_comercio": 1
+        "id_comercio": 2
 
     },
     {
@@ -1225,7 +1225,7 @@
         "condicion": "Usado",
         "imagen": "https://ciudad-muebles.com.ar/wp-content/uploads/2020/03/Aparado-Vajillero-5.jpg",
         "id_categoria_producto": 7,
-        "id_comercio": 1
+        "id_comercio": 2
 
     },
     {
@@ -1240,7 +1240,7 @@
       "condicion": "Nuevo",
       "imagen": "https://m.media-amazon.com/images/I/71Ig8EddoKL._AC_UL400_.jpg",
       "id_categoria_producto": 7,
-      "id_comercio": 1
+      "id_comercio": 2
   },
   {
     "nombre": "Mesita de noche",
@@ -1254,7 +1254,7 @@
     "condicion": "Nuevo",
     "imagen": "https://m.media-amazon.com/images/I/81+TPpTJRJL._AC_UL400_.jpg",
     "id_categoria_producto": 7,
-    "id_comercio": 1
+    "id_comercio": 2
 },
   {
     "nombre": "Almacenamiento de zapatos",
@@ -1268,7 +1268,7 @@
     "condicion": "Nuevo",
     "imagen": "https://m.media-amazon.com/images/I/71H0juLcLEL._AC_UL400_.jpg",
     "id_categoria_producto": 7,
-    "id_comercio": 1
+    "id_comercio": 2
 },
   {
     "nombre": "Sofá cama futón",
@@ -1282,7 +1282,7 @@
     "condicion": "Nuevo",
     "imagen": "https://m.media-amazon.com/images/I/71WoTeW8yfL._AC_UL400_.jpg",
     "id_categoria_producto": 7,
-    "id_comercio": 1
+    "id_comercio": 2
 },
   {
     "nombre": "Archivador lateral",
@@ -1296,7 +1296,7 @@
     "condicion": "Nuevo",
     "imagen": "https://m.media-amazon.com/images/I/3137YYiP0VL._AC_UL400_.jpg",
     "id_categoria_producto": 7,
-    "id_comercio": 1
+    "id_comercio": 2
 },
   {
     "nombre": "Banco tapizado",
@@ -1310,7 +1310,7 @@
     "condicion": "Nuevo",
     "imagen": "https://m.media-amazon.com/images/I/81TPNCAezTL._AC_UL400_.jpg",
     "id_categoria_producto": 7,
-    "id_comercio": 1
+    "id_comercio": 2
 },
   {
     "nombre": "Juego de mesa y sillas ",
@@ -1324,7 +1324,7 @@
     "condicion": "Nuevo",
     "imagen": "https://m.media-amazon.com/images/I/71hg2qESGHL._AC_UL400_.jpg",
     "id_categoria_producto": 7,
-    "id_comercio": 1
+    "id_comercio": 2
 },
   {
     "nombre": "Fundas de sofá ",
@@ -1338,7 +1338,7 @@
     "condicion": "Nuevo",
     "imagen": "https://m.media-amazon.com/images/I/514+Ld67S5L._AC_UL400_.jpg",
     "id_categoria_producto": 7,
-    "id_comercio": 1
+    "id_comercio": 2
 },
   {
     "nombre": "funda para asiento",
@@ -1352,7 +1352,7 @@
     "condicion": "Usado",
     "imagen": "https://m.media-amazon.com/images/I/61isEJuvpqL._AC_UL400_.jpg",
     "id_categoria_producto": 7,
-    "id_comercio": 1
+    "id_comercio": 2
 },
   {
     "nombre": "Mecedora y otomana",
@@ -1366,7 +1366,7 @@
     "condicion": "Usado",
     "imagen": "https://m.media-amazon.com/images/I/81zqzFznlgL._AC_UL400_.jpg",
     "id_categoria_producto": 7,
-    "id_comercio": 1
+    "id_comercio": 2
 },
     {
       "nombre": "Juego de seccionales",
@@ -1380,7 +1380,7 @@
       "condicion": "Reacondicionado",
       "imagen": "https://m.media-amazon.com/images/I/71IGcqSrqzL._AC_UL400_.jpg",
       "id_categoria_producto": 7,
-      "id_comercio": 1
+      "id_comercio": 2
   },
     {
       "nombre": "Juego de seccionales",
@@ -1394,7 +1394,7 @@
       "condicion": "Reacondicionado",
       "imagen": "https://m.media-amazon.com/images/I/81cy6CfEctL._AC_UL400_.jpg",
       "id_categoria_producto": 7,
-      "id_comercio": 1
+      "id_comercio": 2
   },
     {
         "nombre": "Sillón Sofá ",
@@ -1408,7 +1408,7 @@
         "condicion": "Reacondicionado",
         "imagen": "https://cortineriaconfort.com/wp-content/uploads/2022/04/sillon-sofa-3-cuerpos-napoles-premium-83779.jpg",
         "id_categoria_producto": 7,
-        "id_comercio": 1
+        "id_comercio": 2
     },
     {
         "nombre": "Pala Corazón",
@@ -1422,7 +1422,7 @@
         "condicion": "Usado",
         "imagen": "https://http2.mlstatic.com/D_NQ_NP_964536-MLA46941972173_082021-O.webp",
         "id_categoria_producto": 8,
-        "id_comercio": 1
+        "id_comercio": 2
     },
     {
         "nombre": "Motosierra Ligera",
@@ -1436,7 +1436,7 @@
         "condicion": "Nuevo",
         "imagen": "https://static.stihl.com/upload/assetmanager/modell_imagefilename/scaled/websize/128f09124a6445ffbb73783aa779ada9.jpg",
         "id_categoria_producto": 8,
-        "id_comercio": 1
+        "id_comercio": 2
     },
     
     {
@@ -1451,7 +1451,7 @@
         "condicion": "Nuevo",
         "imagen": "https://http2.mlstatic.com/D_NQ_NP_706814-MLA31030391926_062019-O.webp",
         "id_categoria_producto": 9,
-        "id_comercio": 1
+        "id_comercio": 2
     },
     {
         "nombre": "Pelota Argentina - Adidas",
@@ -1465,7 +1465,7 @@
         "condicion": "Reacondicionado",
         "imagen": "https://sporting.vtexassets.com/arquivos/ids/557628/6HM8141-000-1.jpg?v=637928169669670000",
         "id_categoria_producto": 9,
-        "id_comercio": 1
+        "id_comercio": 2
     },
     {
       "nombre": "Short deportivo para hombre",
@@ -1479,7 +1479,7 @@
       "condicion": "Nuevo",
       "imagen": "https://m.media-amazon.com/images/I/61akbRq0bQL._AC_UL400_.jpg",
       "id_categoria_producto": 9,
-      "id_comercio": 1
+      "id_comercio": 2
   },
   {
     "nombre": "Zapatos Jordan",
@@ -1493,7 +1493,7 @@
     "condicion": "Reacondicionado",
     "imagen": "https://m.media-amazon.com/images/I/61PZyk7PN-L._AC_UL400_.jpg",
     "id_categoria_producto": 9,
-    "id_comercio": 1
+    "id_comercio": 2
 },
 {
   "nombre": "Camiseta Adidas",
@@ -1507,7 +1507,7 @@
   "condicion": "Reacondicionado",
   "imagen": "https://m.media-amazon.com/images/I/71-aWSs0nBL._AC_UL400_.jpg",
   "id_categoria_producto": 9,
-  "id_comercio": 1
+  "id_comercio": 2
 },
 {
   "nombre": "Zapatos Jordan Baloncesto",
@@ -1521,7 +1521,7 @@
   "condicion": "Nuevo",
   "imagen": "https://m.media-amazon.com/images/I/71LhZFbEztL._AC_UL400_.jpg",
   "id_categoria_producto": 9,
-  "id_comercio": 1
+  "id_comercio": 3
 },
 {
   "nombre": "Pantalon Corto para Hombre",
@@ -1535,7 +1535,7 @@
   "condicion": "Usado",
   "imagen": "https://m.media-amazon.com/images/I/81ck-BqSEOL._AC_UL400_.jpg",
   "id_categoria_producto": 9,
-  "id_comercio": 1
+  "id_comercio": 3
 },
 {
   "nombre": "Calcetines Under Armour ",
@@ -1549,7 +1549,7 @@
   "condicion": "Nuevo",
   "imagen": "https://m.media-amazon.com/images/I/71SXehtyvML._AC_UL400_.jpg",
   "id_categoria_producto": 9,
-  "id_comercio": 1
+  "id_comercio": 3
 },
 {
   "nombre": "Lentes Oakley",
@@ -1563,7 +1563,7 @@
   "condicion": "Nuevo",
   "imagen": "https://m.media-amazon.com/images/I/513fR7oMtlL._AC_UL400_.jpg",
   "id_categoria_producto": 9,
-  "id_comercio": 1
+  "id_comercio": 3
 },
 {
   "nombre": " Bolsa deportivo",

@@ -50,6 +50,19 @@ export default function FormCreateProduct() {
     valor_con_descuento = parseFloat(valor_con_descuento);
 
     // Realiza las validaciones
+    const errors = validations({ 
+      nombre,
+      descripcion_producto,
+      existencia,
+      fecha_final,
+      fecha_inicial,
+      imagen,
+      id_categoria_producto,
+      valor_normal,
+      valor_con_descuento,
+      condicion,
+  });
+
     // ...
 
     // Si hay errores, los muestra y no continúa con la solicitud
@@ -162,7 +175,7 @@ export default function FormCreateProduct() {
     fecha_inicial: "",
     fecha_final: "",
     descripcion_producto: "",
-    cantidad: "",
+    // cantidad: "",
     existencia: "",
     valor_normal: "",
     valor_con_descuento: "",
@@ -218,9 +231,11 @@ export default function FormCreateProduct() {
 
                   </div>
 
+
                   {/* ----------------------- fecha final -----------------------*/}
                   <div className={style.apellidos}>
                     <div className={style.contenedorDiv}>
+
 
                       <label for="" className='form-label'>
                         Fecha final
@@ -239,7 +254,9 @@ export default function FormCreateProduct() {
                   </div>
                 </div>
 
+
                 {/* ----------------------- descripcion de producto -----------------------*/}
+
                 <div className={style.contenedorDiv}>
                   <label for="" className='form-label'>
                     Descripción del producto
@@ -248,7 +265,9 @@ export default function FormCreateProduct() {
                     name="descripcion_producto"
                     value={form.descripcion_producto}
                     onChange={handleInputChange}
+
                     className='form-textarea'
+
                   />
                   {errors.descripcion_producto && (
                     <div className={style.errors}>{errors.descripcion_producto}</div>
@@ -335,6 +354,7 @@ export default function FormCreateProduct() {
                   {errors.id_categoria_producto && (
                     <div className={style.errors}>{errors.id_categoria_producto}</div>
                   )}
+
                   <div className={style.contenedorDiv}>
                     <select
                       name="id_categoria_producto"
@@ -349,6 +369,7 @@ export default function FormCreateProduct() {
                           </option>
                         ))}
                     </select>
+
                   </div>
                 </div>
               </div>

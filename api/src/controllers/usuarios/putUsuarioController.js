@@ -26,8 +26,22 @@ const actualizarUsuario = async (id_usuario, updateData) => {
       throw new Error("Ocurrió un error al actualizar el usuario: " + error.message);
     }
   };
+
+  const editUser = async (id_usuario, estado) => {
+    
+    const editOneUser = await Usuario.update(
+        {
+          estado,
+        },
+        {
+            where: { id_usuario },
+        }
+        );
+        
+        return editOneUser;
+    };
   
-  module.exports = { actualizarUsuario };
+  module.exports = { actualizarUsuario, editUser };
   
   
   

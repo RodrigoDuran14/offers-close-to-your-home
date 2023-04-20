@@ -1,5 +1,5 @@
-const {actualizarUsuario} = require("../../controllers/usuarios/putUsuarioController")
-
+const {actualizarUsuario, editUser} = require("../../controllers/usuarios/putUsuarioController")
+const {getUserById} = require("../../controllers/usuarios/getUsuarioController")
 
 // Handler
 const actualizarUsuarioHandler = async (req, res, next) => {
@@ -17,6 +17,22 @@ const actualizarUsuarioHandler = async (req, res, next) => {
       next(error);
     }
   };
+
+
+  const putUserHandler = async (req, res, next) => {
+    const { id_usuario, estado } = req.body
+
+    try {
+        await editUser(id_usuario, estado)
+        const results = await getUserById(id_usuario)
+
+        res.status(200).json(results)
+
+    } catch (error) {
+        next(error)
+    }
+}
+
   
-  module.exports = { actualizarUsuarioHandler };
+  module.exports = { actualizarUsuarioHandler, putUserHandler };
   
