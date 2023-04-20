@@ -48,7 +48,7 @@ const Account = () => {
     <div className={s.container}>
 
       <div className={s.usuario}>
-        <h2 style={{ marginBottom: '15px', textAlign: 'left', fontSize: '30px' }}>Mi cuenta</h2>
+        <h1 style={{ marginBottom: '15px', textAlign: 'left', fontSize: '30px' }}>Mi cuenta</h1>
         <div className={s.datos}>
           <div style={{ backgroundImage: `url(${userData.imagen})` }} className={s.imagen}></div>
           
