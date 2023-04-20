@@ -1,23 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Kelly+Slab&display=swap%27');
 
-.contenedor{
+.contenedor {
   display: flex;
-  flex-direction: row;
   width: 100%;
-  height: 125vh;
+  height: 600px;
+  background-color: #f1f1f1ff;
+  position:relative;
+  margin-top:2rem
 }
 
-.contenedorInfo{
+.contenedorInfo {
   display: flex;
   flex-direction: column;
   margin: 100px;
-  background-color: #97978D;
-  border: 5px black solid;
-  border-radius: 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.3);
+  border: solid 1px rgba(0, 0, 0, 0.2);
+  /* border-radius: 30px; */
   padding: 20px;
   height: fit-content;
   width: 700px;
-  height: 750px;
+  height: 100%;
 
 }
 
@@ -27,7 +29,7 @@
   align-items: center;
 }
 
-.tittle{
+.tittle {
   font-family: 'Kelly slab';
   font-size: 60px;
   margin-bottom: 50px;
@@ -37,7 +39,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 20px;
-  
+
 }
 
 .imageFile {
@@ -47,18 +49,23 @@
   border-radius: 50%;
   position: absolute;
   bottom: -90px;
-  left: 335px;
+  left: 45%;
+  top:12%;
+  position: absolute;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.3);
+
 }
 
 .text {
   display: flex;
   flex-direction: column;
+  margin-top:1rem;
 }
 
 .row {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 600px;
 }
 
@@ -67,14 +74,20 @@
   flex-direction: column;
   justify-content: flex-start;
   margin-right: 20px;
-  
-}
 
+}
+.column1 label {
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-right: 1.5rem;
+}
 label {
-  font-size: 16px;
+  font-weight:lighter;
   margin-bottom: 20px;
   text-align: left;
-  font-size: 20px;
+  font-size: 1rem;
 
 }
 
@@ -105,40 +118,44 @@ label {
   flex-direction: row;
 } */
 
-.divForm{
+.divForm {
   display: flex;
   margin-left: 200px;
   align-items: center;
   justify-content: center;
-  margin-top: 100px;
-  background-color: black;
+  margin-top: 1rem;
+  background-color: var(--green-color);;
   color: aliceblue;
   border-radius: 20px;
   width: 120px;
-  height: 50px;
+  height: 40px;
+  position:absolute;
+  bottom:18% 
 }
-  /* Asegúrate de que la clase ulForm tenga mayor especificidad que ul y li */
+
+a{
+  text-decoration:none;
+}
+/* Asegúrate de que la clase ulForm tenga mayor especificidad que ul y li */
 .ulForm {
-    cursor: pointer;
-    list-style: none;
-    float: left;
-    text-decoration: none;
-    position: relative;
-    transition: all .2s ease;
-  }
-  
-  .liForm {
-    float: left;
-    text-decoration: none;
-    position: relative;
-    display: none;
-  }
-  
-  /* Asegúrate de que la clase ulForm tenga mayor especificidad que ul y li en el hover */
-  .ulForm:hover > .liForm {
-    display: block;  
-    margin-top: 730px; 
-  }
-  
-  
+  cursor: pointer;
+  list-style: none;
+  float: left;
+  text-decoration: none;
+  position: relative;
+  transition: all .2s ease;
+}
+
+.liForm {
+  float: left;
+  text-decoration: none;
+  position: relative;
+  display: none;
+}
+
+/* Asegúrate de que la clase ulForm tenga mayor especificidad que ul y li en el hover */
+.ulForm:hover>.liForm {
+  display: block;
+  margin-top: 730px;
+}
 
