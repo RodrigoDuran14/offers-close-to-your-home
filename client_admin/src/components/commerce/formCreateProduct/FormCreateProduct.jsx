@@ -174,248 +174,216 @@ export default function FormCreateProduct() {
 
   return (
     <>
-
       {shouldRedirect ? (
         <Redirect to="/" />
       ) : (
+        <div className='form-container' style={{padding: '15px'}}>
+          <CloudinaryContext cloudName="dfmkjxjsf">
+            <form onSubmit={handleSubmit}>
+              {/* ----------------------- nombre -----------------------*/}
+              
+                <div className={style.contenedorDiv}>
+                  <label for="" className='form-label'>
+                    Nombre del producto
+                  </label>
+                  <input
+                    type="text"
+                    name="nombre"
+                    value={form.nombre}
+                    onChange={handleInputChange}
+                    className='form-input'
+                  />
 
-        /* ----------------------- CONTENEDOR GENERAL -----------------------*/
-        <div className={style.contenedor}>
-          {/* ----------------------- CONTENEDOR FORMULARIO -----------------------*/}
-          <div className={style.contenedorForm}>
-            <CloudinaryContext cloudName="dfmkjxjsf">
-              <form onSubmit={handleSubmit}>
-                {/* ----------------------- nombre -----------------------*/}
-                <div className={style.nombres}>
-                  <div className={style.contenedorDiv}>
-                    <label for="" className={style.label2}>
-                      Nombre
-                    </label>
-                    <input
-                      type="text"
-                      name="nombre"
-                      value={form.nombre}
-                      onChange={handleInputChange}
-                      className={style.input2}
-                    />
+                  {errors.nombre && (
+                    <div className={style.errors}>{errors.nombre}</div>
+                  )}
+                </div>
 
-                    {errors.nombre && (
-                      <div className={style.errors}>{errors.nombre}</div>
-                    )}
-                  </div>
-
+                <div className={style.fechas}>
                   {/* ----------------------- fecha_inicial -----------------------*/}
                   <div className={style.contenedorDiv}>
-                    <label for="" className={style.label2}>
-                      fecha_inicial
+                    <label for="" className='form-label'>
+                      Fecha inicial
                     </label>
                     <input
-                      type="text"
+                      type="date"
                       name="fecha_inicial"
                       value={form.fecha_inicial}
                       onChange={handleInputChange}
-                      className={style.input2}
+                      className='form-input'
                     />
                     {errors.fecha_inicial && (
                       <div className={style.errors}>{errors.fecha_inicial}</div>
                     )}
 
                   </div>
-                </div>
 
-                {/* ----------------------- fecha final -----------------------*/}
-                <div className={style.apellidos}>
-                  <div className={style.contenedorDiv}>
-
-                    <label for="" className={style.label2}>
-                      fecha_final
-                    </label>
-                    <input
-                      type="text"
-                      name="fecha_final"
-                      value={form.fecha_final}
-                      onChange={handleInputChange}
-                      className={style.input2}
-                    />
-                    {errors.fecha_final && (
-                      <div className={style.errors}>{errors.fecha_final}</div>
-                    )}
-                  </div>
-
-                  {/* ----------------------- descripcion de producto -----------------------*/}
-                  <div className={style.contenedorDiv}>
-                    <label for="" className={style.label2}>
-                      descripcion_producto
-                    </label>
-                    <input
-                      type="text"
-                      name="descripcion_producto"
-                      value={form.descripcion_producto}
-                      onChange={handleInputChange}
-                      className={style.input2}
-                    />
-                    {errors.descripcion_producto && (
-                      <div className={style.errors}>{errors.descripcion_producto}</div>
-                    )}
-                  </div>
-                </div>
-
-
-                {/* ----------------------- Cantidad -----------------------*/}
-                <div className={style.contenedorDiv}>
-                  <label for="" className={style.label}>
-                    cantidad
-                  </label>
-                  <input
-                    type="number"
-                    name="cantidad"
-                    value={form.cantidad}
-                    onChange={handleInputChange}
-                    className={style.input}
-                  />
-                  {errors.cantidad && (
-                    <div className={style.errors}>{errors.cantidad}</div>
-                  )}
-                </div>
-
-                {/* ----------------------- EXISTENCIA -----------------------*/}
-                <div className={style.contenedorDiv}>
-                  <label for="" className={style.label}>
-                    existencia
-                  </label>
-                  <input
-                    type="number"
-                    name="existencia"
-                    value={form.existencia}
-                    onChange={handleInputChange}
-                    className={style.input}
-                  />
-                  {errors.telefono && (
-                    <div className={style.errors}>{errors.existencia}</div>
-                  )}
-                </div>
-
-                {/* ----------------------- VALOR NORMAL -----------------------*/}
-                <div className={style.contenedorDiv}>
-                  <label for="" className={style.label}>
-                    valor_normal
-                  </label>
-                  <input
-                    type="number"
-                    name="valor_normal"
-                    value={form.valor_normal}
-                    onChange={handleInputChange}
-                    className={style.input}
-                  />
-                  {errors.valor_normal && (
-                    <div className={style.errors}>{errors.valor_normal}</div>
-                  )}
-                </div>
-
-
-
-                <div className={style.contenedorDiv}>
-                  <label for="" className={style.label}>
-                    condicion
-                  </label>
-                  <input
-                    type="text"
-                    name="condicion"
-                    value={form.condicion}
-                    onChange={handleInputChange}
-                    className={style.input}
-                  />
-                  {errors.condicion && (
-                    <div className={style.errors}>{errors.condicion}</div>
-                  )}
-                </div>
-
-                {/* ----------------------- VALOR CON DESCUENTO  -----------------------*/}
-                <div className={style.contenedorDiv}>
-                  <label for="" className={style.label}>
-                    valor_con_descuento
-                  </label>
-                  <input
-                    type="number"
-                    name="valor_con_descuento"
-                    value={form.valor_con_descuento}
-                    onChange={handleInputChange}
-                    className={style.input}
-                  />
-                  {errors.valor_con_descuento && (
-                    <div className={style.errors}>{errors.valor_con_descuento}</div>
-                  )}
-                </div>
-
-                {/* ----------------------- CIUDAD -----------------------*/}
-                <div className={style.contenedorDiv}>
-                  <label for="" className={style.label}>
-                    id_categoria_producto
-                  </label>
-
-                  <div>
-
-                    {errors.id_categoria_producto && (
-                      <div className={style.errors}>{errors.id_categoria_producto}</div>
-                    )}
+                  {/* ----------------------- fecha final -----------------------*/}
+                  <div className={style.apellidos}>
                     <div className={style.contenedorDiv}>
-                      <select
-                        name="id_categoria_producto"
-                        onChange={e => handleInputChange(e)}
-                        className={style.select}
-                      >
-                        <option>Selecciona categoria</option>
-                        {categorias &&
-                          categorias.map(c => (
-                            <option key={c.id_categoria_producto} value={c.id_categoria_producto} primary={c.nombre_categoria_producto}>
-                              {c.nombre_categoria_producto}
-                            </option>
-                          ))}
-                      </select>
+
+                      <label for="" className='form-label'>
+                        Fecha final
+                      </label>
+                      <input
+                        type="date"
+                        name="fecha_final"
+                        value={form.fecha_final}
+                        onChange={handleInputChange}
+                        className='form-input'
+                      />
+                      {errors.fecha_final && (
+                        <div className={style.errors}>{errors.fecha_final}</div>
+                      )}
                     </div>
                   </div>
                 </div>
 
-                {/* ----------------------- IMAGEN -----------------------*/}
+                {/* ----------------------- descripcion de producto -----------------------*/}
                 <div className={style.contenedorDiv}>
-                  <label htmlFor="" className={style.label}>
-                    Imagen
+                  <label for="" className='form-label'>
+                    Descripción del producto
                   </label>
-                  <input
-                    type="file"
-                    id="imagen"
-                    name="imagen"
+                  <textarea
+                    name="descripcion_producto"
+                    value={form.descripcion_producto}
                     onChange={handleInputChange}
-                    className={style.input}
+                    className='form-textarea'
                   />
-                  <label htmlFor="imagen" className={style.label}>
-                    Imagen
-                  </label>
-                  <div>
-                  </div>
-
-                  {/* ----------------------- VISTA PREVIA IMAGEN -----------------------*/}
-                  {form.imagen && (
-                    <img
-                      className={style.imageFile}
-                      src={form.imagen}
-                      id="imagen"
-                      alt="foto perfil"
-                    />
-
+                  {errors.descripcion_producto && (
+                    <div className={style.errors}>{errors.descripcion_producto}</div>
                   )}
                 </div>
 
-                <button type="submit" className={style.button}>
-                  Crear Producto
-                </button>
-              </form>
+              {/* ----------------------- EXISTENCIA -----------------------*/}
+              <div className={style.contenedorDiv}>
+                <label for="" className='form-label'>
+                  Stock disponible
+                </label>
+                <input
+                  type="number"
+                  name="existencia"
+                  value={form.existencia}
+                  onChange={handleInputChange}
+                  className='form-input'
+                />
+                {errors.telefono && (
+                  <div className={style.errors}>{errors.existencia}</div>
+                )}
+              </div>
 
-            </CloudinaryContext>
-          </div>
+              {/* ----------------------- VALOR NORMAL -----------------------*/}
+              <div className={style.contenedorDiv}>
+                <label for="" className='form-label'>
+                  Valor regular
+                </label>
+                <input
+                  type="number"
+                  name="valor_normal"
+                  value={form.valor_normal}
+                  onChange={handleInputChange}
+                  className='form-input'
+                />
+                {errors.valor_normal && (
+                  <div className={style.errors}>{errors.valor_normal}</div>
+                )}
+              </div>
+
+
+
+              <div className={style.contenedorDiv}>
+                <label for="" className='form-label'>
+                  Condicion del producto
+                </label>
+                <input
+                  type="text"
+                  name="condicion"
+                  value={form.condicion}
+                  onChange={handleInputChange}
+                  className='form-input'
+                />
+                {errors.condicion && (
+                  <div className={style.errors}>{errors.condicion}</div>
+                )}
+              </div>
+
+              {/* ----------------------- VALOR CON DESCUENTO  -----------------------*/}
+              <div className={style.contenedorDiv}>
+                <label for="" className='form-label'>
+                  Valor con descuento aplicado
+                </label>
+                <input
+                  type="number"
+                  name="valor_con_descuento"
+                  value={form.valor_con_descuento}
+                  onChange={handleInputChange}
+                  className='form-input'
+                />
+                {errors.valor_con_descuento && (
+                  <div className={style.errors}>{errors.valor_con_descuento}</div>
+                )}
+              </div>
+
+              {/* ----------------------- CIUDAD -----------------------*/}
+              <div className={style.contenedorDiv}>
+                <label for="" className='form-label'>
+                  Categoria
+                </label>
+
+                <div>
+
+                  {errors.id_categoria_producto && (
+                    <div className={style.errors}>{errors.id_categoria_producto}</div>
+                  )}
+                  <div className={style.contenedorDiv}>
+                    <select
+                      name="id_categoria_producto"
+                      onChange={e => handleInputChange(e)}
+                      className='form-input'
+                    >
+                      <option>Selecciona categoria</option>
+                      {categorias &&
+                        categorias.map(c => (
+                          <option key={c.id_categoria_producto} value={c.id_categoria_producto} primary={c.nombre_categoria_producto}>
+                            {c.nombre_categoria_producto}
+                          </option>
+                        ))}
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              {/* ----------------------- IMAGEN -----------------------*/}
+              <div className={style.contenedorDiv}>
+                <label htmlFor="" className='form-label'>
+                  Imagen
+                </label>
+                <input
+                  type="file"
+                  id="imagen"
+                  name="imagen"
+                  onChange={handleInputChange}
+                  className='form-input'
+                />                
+
+                {/* ----------------------- VISTA PREVIA IMAGEN -----------------------*/}
+                {form.imagen && (
+                  <img
+                    className={style.imageFile}
+                    src={form.imagen}
+                    id="imagen"
+                    alt="foto perfil"
+                  />
+                )}
+              </div>
+
+              <button type="submit" style={{fontSize: '25px'}}>Publicar oferta</button>
+            </form>
+
+          </CloudinaryContext>
         </div>
-      )}
-
+      )
+      }
     </>
   );
 }
