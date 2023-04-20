@@ -50,6 +50,19 @@ export default function FormCreateProduct() {
     valor_con_descuento = parseFloat(valor_con_descuento);
 
     // Realiza las validaciones
+    const errors = validations({ 
+      nombre,
+      descripcion_producto,
+      existencia,
+      fecha_final,
+      fecha_inicial,
+      imagen,
+      id_categoria_producto,
+      valor_normal,
+      valor_con_descuento,
+      condicion,
+  });
+
     // ...
 
     // Si hay errores, los muestra y no continúa con la solicitud
@@ -162,7 +175,7 @@ export default function FormCreateProduct() {
     fecha_inicial: "",
     fecha_final: "",
     descripcion_producto: "",
-    cantidad: "",
+    // cantidad: "",
     existencia: "",
     valor_normal: "",
     valor_con_descuento: "",
@@ -210,7 +223,7 @@ export default function FormCreateProduct() {
                       fecha_inicial
                     </label>
                     <input
-                      type="text"
+                      type="date"
                       name="fecha_inicial"
                       value={form.fecha_inicial}
                       onChange={handleInputChange}
@@ -231,7 +244,7 @@ export default function FormCreateProduct() {
                       fecha_final
                     </label>
                     <input
-                      type="text"
+                      type="date"
                       name="fecha_final"
                       value={form.fecha_final}
                       onChange={handleInputChange}
@@ -262,7 +275,7 @@ export default function FormCreateProduct() {
 
 
                 {/* ----------------------- Cantidad -----------------------*/}
-                <div className={style.contenedorDiv}>
+                {/* <div className={style.contenedorDiv}>
                   <label for="" className={style.label}>
                     cantidad
                   </label>
@@ -276,7 +289,7 @@ export default function FormCreateProduct() {
                   {errors.cantidad && (
                     <div className={style.errors}>{errors.cantidad}</div>
                   )}
-                </div>
+                </div> */}
 
                 {/* ----------------------- EXISTENCIA -----------------------*/}
                 <div className={style.contenedorDiv}>
@@ -289,6 +302,7 @@ export default function FormCreateProduct() {
                     value={form.existencia}
                     onChange={handleInputChange}
                     className={style.input}
+                    min="0"
                   />
                   {errors.telefono && (
                     <div className={style.errors}>{errors.existencia}</div>
@@ -306,6 +320,7 @@ export default function FormCreateProduct() {
                     value={form.valor_normal}
                     onChange={handleInputChange}
                     className={style.input}
+                    min="0"
                   />
                   {errors.valor_normal && (
                     <div className={style.errors}>{errors.valor_normal}</div>
@@ -341,6 +356,7 @@ export default function FormCreateProduct() {
                     value={form.valor_con_descuento}
                     onChange={handleInputChange}
                     className={style.input}
+                    min="0"
                   />
                   {errors.valor_con_descuento && (
                     <div className={style.errors}>{errors.valor_con_descuento}</div>
