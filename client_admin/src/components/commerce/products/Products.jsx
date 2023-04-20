@@ -5,8 +5,7 @@ import { useEffect } from "react";
 import { getAllProducts } from "../../../redux/actions";
 import { FiEdit } from "react-icons/fi";
 import { Link } from "react-router-dom";
-import { IoTrashBinOutline } from "react-icons/io5";
-import axios from "axios";
+
 
 const Products = () => {
   const products = useSelector((state) => state.products) ?? [];
@@ -52,7 +51,7 @@ const Products = () => {
         </thead>
         <tbody>
           {session ? productsCommerce.map((p) => {
-
+            if(p.estado)
             return (
               <>
                 <tr key={p.id_producto}>
@@ -65,10 +64,10 @@ const Products = () => {
                     </Link>
                   </td>
                 </tr>
-                <hr style={{ width: '250%' }} />
+                <hr style={{ width: '520%' } } />
               </>
             );
-          }) : <tr> No hay nada pa </tr>}
+          }): null}
         </tbody>
       </table>
     </>

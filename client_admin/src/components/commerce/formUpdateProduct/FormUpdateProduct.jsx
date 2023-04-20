@@ -172,7 +172,7 @@ export default function FormUpdateProduct() {
   return (
     <>
       {shouldRedirect ? (
-        <Redirect to="/" />
+        <Redirect to="/home" />
       ) : (
 
         /* ----------------------- CONTENEDOR GENERAL -----------------------*/
