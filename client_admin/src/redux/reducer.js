@@ -14,7 +14,8 @@ import {
   GET_PRODUCT_BY_CATEGORY,
   GET_PRODUCT_BY_ID,
   GET_ALL_COMMERCE,
-  GET_ALL_USERS
+  GET_ALL_USERS,
+  GET_USER_BY_EMAIL,
      
 } from "./actions-type.js";
 
@@ -33,7 +34,8 @@ const initialState = {
   categorias:[],
   productCategory: [],
   allUsers:[],
-  allCommerce:[]
+  allCommerce:[],
+  usuario: [],
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -144,6 +146,12 @@ export default function rootReducer(state = initialState, action) {
             ...state,
             allUsers: action.payload
           }
+
+          case GET_USER_BY_EMAIL:
+            return {
+              ...state,
+              usuario: action.payload,
+            }
     default:
       return state;
   }
