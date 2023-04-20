@@ -30,7 +30,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       telefono: {
-        type: DataTypes.BIGINT,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       estado: {
@@ -58,6 +58,10 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      admin:{
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+      }
     },
     {
       tableName: "Comercio",

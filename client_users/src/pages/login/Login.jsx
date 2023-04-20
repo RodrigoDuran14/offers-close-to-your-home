@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import FormLogin from '../../components/formLogin/FormLogin'
-import s from './Login.module.css'
 import FondoVerde from "../../assets/images/Fondo3.png"
 import Fondo2 from "../../assets/images/Fondo2.png"
-import Logo from "../../assets/images/SoloTextoNegro.png"
+import Logo from "../../assets/images/LogoCompleto.png"
+import ButtonBack from "../../components/buttonBack/ButtonBack";
+import s from './Login.module.css'
 
 
 const Login = () => {
@@ -13,13 +14,14 @@ const Login = () => {
   const logo = Logo
   return (
     <div className={s.container}>
-        <img className={s.logo} src={logo} alt="texto del logo"/>
+      <img className={s.logo} src={logo} alt="texto del logo" />
+      <ButtonBack />
+
       <div className={s.formulario}>
-      {/* <h1 >JustOffers</h1>       */}
-      <FormLogin /> 
+        <FormLogin />
       </div>
-      <img className={s.fondo1} src={fondo1} alt = "fondo tipo wave"/>
-      <img className={s.fondo2} src={fondo2} alt = "fondo tipo wave"/>
+
+      <p style={{ marginTop: '25px', color: 'gray' }}>Al continuar, aceptas las Condiciones de uso y el Aviso de privacidad de JustOffers.</p>
     </div>
   );
 };

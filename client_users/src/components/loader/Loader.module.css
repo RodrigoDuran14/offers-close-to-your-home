@@ -4,6 +4,12 @@
     width: 80px;
     height: 80px;
     filter: invert(1);
+
+    margin-left: 50vw;
+    margin-right: 50vw;
+    margin-top: 200px;
+    margin-bottom: 200px;
+
   }
 
   .contenedor div {

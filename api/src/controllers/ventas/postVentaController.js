@@ -1,45 +1,41 @@
-const { Venta, Detalle_venta } = require("../../db");
+const { Venta, Detalle_venta, Producto, } = require("../../db");
 
 
 const createVenta = async (fecha, valor_total_venta, id_usuario) => {
-  console.log(2)
+
   const newVenta = await Venta.create({
     fecha,
     valor_total_venta,
     id_usuario
   });
-  console.log(3, newVenta)
+
   return newVenta;
 };
 
-const createDetalleVenta = async (arrayDetalleventa, id_venta) => {
+const createDetalleVenta = async (arrayDetalleventa, newVenta) => {
 
-  console.log(4)
-  arrayDetalleventa.map(async (i) => {
-    console.log(5, i)
-    const newDetallVenta = await Detalle_venta.create({
+  const resultMap = await Promise.all(arrayDetalleventa.map(async (i) => {
+    const findProducto = await Producto.findOne({
+      where: {
+        id_producto: i.id_producto
+      }
+    })
 
+    const newPago = await Detalle_venta.create({
+      id_comercio: i.id_comercio,
       cantidad: i.cantidad,
-      valor_parcial_venta: i.valor_parcial_venta,
-      id_producto: i.id_producto,
-      id_venta,
+      valor_total_cantidad: i.valor_total_cantidad,
+      valor_unitario: i.valor_unitario,
+      id_pago: i.id_pago,
+      id_venta: newVenta.id_venta,
+      id_producto: i.id_producto
 
-    });
-
-    console.log(6, newDetallVenta)
+    })
   })
-
-  const Oneventa = await Venta.findOne({
-    where: { id_venta },
-    include: [{
-      model: Detalle_venta,
-
-    }
-    ]
-  });
-  console.log(7, Oneventa)
-  return Oneventa
-
+  )
+  return newVenta.id_venta
 };
 
+
 module.exports = { createVenta, createDetalleVenta };
+

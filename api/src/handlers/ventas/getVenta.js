@@ -1,4 +1,4 @@
-const { getVenta} = require("../../controllers/ventas/getVentaController")
+const { getVenta, getVentasUsuario } = require("../../controllers/ventas/getVentaController")
 
 
 const getAllVentasHandler = async (req, res, next) => {
@@ -13,6 +13,19 @@ const getAllVentasHandler = async (req, res, next) => {
     }
 }
 
+const getAllVentasUsuarioHandler = async (req, res, next) => {
+    const { idUsuario } = req.query;
+
+    try {
+        const results = await getVentasUsuario(idUsuario)
+
+        res.status(200).json(results)
+
+    } catch (error) {
+        next(error)
+    }
+}
+
 module.exports = {
-    getAllVentasHandler
+    getAllVentasHandler, getAllVentasUsuarioHandler
 }

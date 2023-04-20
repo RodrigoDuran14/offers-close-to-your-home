@@ -1,218 +1,271 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import styles from "./Sidebar.module.css";
 import * as action from "../../redux/actions";
 
 function Sidebar() {
-  const [isOpen, setIsOpen] = useState(false);
-    // const allProducts = useSelector((state) => state.products);
-  //   const ByCategory = useSelector((state) => state.productsFitered);
   const dispatch = useDispatch();
+  const [showCategories, setShowCategories] = useState(false);
+  const [showOrdenar, setShowOrdenar] = useState(false);
+  const [showCondicion, setShowCondicion] = useState(false);
+  const [showPrecio, setShowPrecio] = useState(false);
 
- 
-  function handleButtonClick(event) {
-    let listElements = document.querySelectorAll(".list_button--click");
-    listElements.forEach((listElement) => {
-      listElement.addEventListener("click", () => {
-        listElement.classList.toggle("arrow");
 
-        let height = 0;
-        let menu = listElement.nextElementSibling;
-        if (menu.clientHeight === 0) {
-          height = menu.scrollHeight;
-        }
-        menu.style.height = `${height}px`;
-      });
-    });
-  }
-  const handlerActions = (event) => {
-    switch (event.currentTarget.textContent) {
-      case "Ver Todo":
-        dispatch(action.getAllProducts());
-        break;
-        case "Ofertas":
-            dispatch(action.getAllProducts());
-            break;
-      case "Indumentaria":
-        dispatch(action.getProductByCategory(event.currentTarget.textContent));
-        break;
-      case "Deportes":
-        dispatch(action.getProductByCategory(event.currentTarget.textContent));
-        break;
-      case "Cosmética":
-        dispatch(action.getProductByCategory(event.currentTarget.textContent));
-        break;
-
-      case "Jardinería":
-        dispatch(action.getProductByCategory(event.currentTarget.textContent));
-        break;
-      case "Informatica":
-        dispatch(action.getProductByCategory(event.currentTarget.textContent));
-        break;
-      case "Alimentos":
-        dispatch(action.getProductByCategory(event.currentTarget.textContent));
-        break;
-      case "Herramientas":
-        dispatch(action.getProductByCategory(event.currentTarget.textContent));
-        break;
-      case "Juguetes":
-        dispatch(action.getProductByCategory(event.currentTarget.textContent));
-        break;
-      case "Muebles":
-        dispatch(action.getProductByCategory(event.currentTarget.textContent));
-        break;
-      case "Joyería":
-        dispatch(action.getProductByCategory(event.currentTarget.textContent));
-        break;
-      case "Electrodomesticos":
-        dispatch(action.getProductByCategory(event.currentTarget.textContent));
-        break;
-      case "Por nombre a-z":
-        dispatch(action.orderedByNameASC() );
-        break;
-      case "Por nombre z-a":
-        dispatch(action.orderedByNameDESC());
-        break;
-      case "Mayor precio":
-        dispatch(action.orderedByHighestPrice());
-        break;
-      case "Menor precio":
-        dispatch(action.orderedByLowestPrice());
-        break;
-      case "Nuevos":
-        dispatch(action.filterByNewProducts());
-        break;
-      case "Usados":
-        dispatch(action.filterByUsedProducts());
-        break; 
-        case "Reacondicionado":
-        dispatch(action.filterByRefurbishedProducts());
-        break;
-      case "Recientes":
-        dispatch(action.getAllProducts);
-        break;
-      case "Ofertas":
-        dispatch(action.getAllProducts);
-        break;
-      default:
-        dispatch(action.getAllProducts());
-
-        break;
-    }
+  const handleClick = () => {
+    setShowCategories(!showCategories);
   };
-
+  const handleClick2 = () => {
+    setShowOrdenar(!showOrdenar);
+  };
+  const handleClick3 = () => {
+    setShowPrecio(!showPrecio);
+  };
+    const handleClick4 = () => {
+    setShowCondicion(!showCondicion);
+  };
   return (
-    <div className="nav_contenedor">
+    <div className={styles.nav_contenedor}>
       <nav className={styles.nav}>
         <ul className={styles.list}>
           <li className={styles.list_item}>
             <div className={styles.list_button}>
-              <img
-                className={styles.list_img}
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARtJREFUSEvVlNsNQiEQROd2opWonWglaiVqJWol2onmJEvCxYUlGj4k4YswZ2dfkwafabC+egELSSdJa0lPu0dJtyjAHsDWxEstQBdJhxYkAhDx1QSIGDHcAN2bk13LSQQgLYgl8TzY5Iw0bWouIsDDIl5atLkOTngnVby75xcAgi9TrepEAPJPHbwUUQ/qcJZEHb5ykKchdUxeZETJf7VdIwcIpEi9CIkcB9XTA+Dz0EGLhrX5HjkgPSsrtDfJtOi9Nc01AJ3DkJGangPInWgPkK+H6keDEwCtyh+3ozxAmt5mf2e2yt00m+oS0LVfnJzlXTYbyhKQllvY3w4kpXa2/EpAa7lFxXaXXwkIl1dA+fgfzUEUdfj+/4A3ooFEGV62zuoAAAAASUVORK5CYII="
-              />
-              <span className={"nav_link"} onClick={handlerActions}>
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAASBJREFUSEvllIENwkAMA80msAlsApMAk8AmsAlsAjqpfrnPA20lkBCR0NN8aidO0pk+bLMP4+sZwUHSeiT5XtJR0jXfaxHsJG1HgjscEt4vVhPMJV2625Wks6SlpFP3Hx/GM/5Nl7VjuFtkFTWBpQHYYK4os3PcO1+vB5lFEjtbV0SW9AeSTITqieUsVSQQ0nBZ63jrZMnYlDL9rrYQtwhSwwQa42eSiO9JlPrTPMCZJqTDyGqon3EltkeQ2dZTSkbcD/UXZeopst4GdCaAUyEnP/z0Cku/E3hLMPUT8jAQzyr4KgFNzmZbBpqOTJy2SRV4Pxo97i0a95MIWovWBPsPgld6t3rQ8pXPRL3JPDMxXpyhgBn3MFlT530w+e8T3AEGdlkZEzbOHwAAAABJRU5ErkJggg==" />
+              <span
+                tabindex="0"
+                className={styles.nav_link}
+                onClick={() => dispatch(action.getAllProducts())}
+              >
                 Ver Todo
               </span>
             </div>
           </li>
           <li className={styles.list_item}>
             <div className={styles.list_button}>
-              <img
-                className={styles.list_img}
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARtJREFUSEvVlNsNQiEQROd2opWonWglaiVqJWol2onmJEvCxYUlGj4k4YswZ2dfkwafabC+egELSSdJa0lPu0dJtyjAHsDWxEstQBdJhxYkAhDx1QSIGDHcAN2bk13LSQQgLYgl8TzY5Iw0bWouIsDDIl5atLkOTngnVby75xcAgi9TrepEAPJPHbwUUQ/qcJZEHb5ykKchdUxeZETJf7VdIwcIpEi9CIkcB9XTA+Dz0EGLhrX5HjkgPSsrtDfJtOi9Nc01AJ3DkJGangPInWgPkK+H6keDEwCtyh+3ozxAmt5mf2e2yt00m+oS0LVfnJzlXTYbyhKQllvY3w4kpXa2/EpAa7lFxXaXXwkIl1dA+fgfzUEUdfj+/4A3ooFEGV62zuoAAAAASUVORK5CYII="
-              />
-              <span className={"nav_link"} onClick={handlerActions}>
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAO9JREFUSEu9ld0NwjAMhK+wCGwC0yDEPog3RoFRWASBDiWouLbPQpS+WE0Ufz7/JANm/oaZ/ePvgAuATUHVDcAWAG36WQUPdWC0X4JEgCx1KwBUSishFcASwN0oK0MU4ARgB4B2/w0kAyxM5F7apBKl4Ngipz0EDZBCFKDaVCHkVwAGYiFrLkYAbsohcop+boN6bYM4AfRJlv2dOOfZV/SeAtkVTlF4pkf+4dwDeLnM7pzUeQSoQqTzDKAgJecKEEG4Hubc1qjy4NjCs5B8MyYF9aayArBK+F9yXknROKied9p3n6u7pKpA+Qn3Zwc8AW5bTxlAMFd1AAAAAElFTkSuQmCC" />
+              <span
+                tabindex="0"
+                className={styles.nav_link}
+                onClick={() => dispatch(action.filterByOffers())}
+              >
                 Ofertas
               </span>
             </div>
           </li>
           <li className={`${styles.list_item} ${styles.list_item_click}`}>
-            <div
-              className={`${styles.list_button} ${isOpen ? styles.arrow : ""}`}
-              onClick={handleButtonClick}
-            >
-              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAXRJREFUSEvFlYtNBDEMROc6gUqASoBKgErgKgEqASoBPZSJZrPezyGdiHTKKmd7bM84OejM63Dm+NoDcC2J31XbPyW9SfpqO9+Law3gQtJzC7oWA8AbSeyztQTwKOmhWeN4jGwBpiL227bbBr/JqgAy+JOkmVNEAOQukpnZjwA4fLQAlL3a3wCiotfWpvv0GwEwwvhFEoanLFdOuy7tmACUCqkTgxMQUhS9+gRwBtlHzqimVEgj2BWTyyxGApA9VdAagmbJlQwzY/uYC7jDZzJokIsT/SNjvuGEfdR6Bs+WWiT9LCsYAUigAuHcA1jx9d14+42dAFbQKM8RhKC0ogpuoXQVbpFsESUIZ0tKWyU5h6XreJhaqmRV/3PuLpj0SYuSuKVBM+HVeFiFXUEjBybVV0XPYsewuXpMJxxWl52JwnjrssvhKu0rgPGG9APzHpeYr2xf14vJ/NuDk/IkW35+Mi1TV/TnJ3MHt9smex797SgrFj8cvm0ZvRlr2QAAAABJRU5ErkJggg==" />
-              <span className={styles.nav_link}>Categorias</span>
-              <img
-                className={styles.list_arrow}
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAJJJREFUSEvt1MEJgDAQRNFvJ9qJdmIn2ol2YiuWIgMRxEOyExAUzMVLmGdmow0Pr+bhfH6g2PCrKpqBFdiLr33ZED2BwqcUPjhIFGiBDdBTJwgjUUCHrkIcoApxARupBRagT/PocrfKBTSHcLhgB7DDHaAq3AHGVI2+gWzn93k4FQnRr8JaDmAFn5t/oFjb9ys6AAkuHBlC5x93AAAAAElFTkSuQmCC"
-              />
+            <div className={`${styles.list_button} `}>
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAANBJREFUSEvtlckNAjEQBGszgUwgE4gEiAQRCWQCmYBaspHv2QOLz/pjyWNP9bSvgc5t6JyfsYAdcALUv4AHcHN9U+MYwAG4VrJcgHOLYAGk+O4S+GQbQFBVpLZvVWIBpFzJSkp9ZbJLkGKzAE9AirfO+zCJxhXXnig+C/B2q2pCrHh2iuS3fF/SoopSZV7REoDWfvPWAH7csiCNZ/P/Dphq1eQKVkB2D6xTY1m27oHlEKZFv3iLouc7vcnh12jKLUzQQ3cMPyDrP5gDidZ0B3wAmnU0GbcMQx8AAAAASUVORK5CYII=" />
+              <span className={styles.nav_link} onClick={handleClick}>
+                Categorias
+              </span>
             </div>
-            <ul className={styles.list_show}>
-              <li className={styles.list_1} onClick={handlerActions}>
-                Indumentaria
-              </li>
-              <li className={styles.list_2} onClick={handlerActions}>
-                Electrodomesticos
-              </li>
-              <li className={styles.list_3} onClick={handlerActions}>
-                Informatica
-              </li>
-              <li className={styles.list_4} onClick={handlerActions}>
-                Cosmética
-              </li>
-              <li className={styles.list_5} onClick={handlerActions}>
-                Alimentos
-              </li>
-              <li className={styles.list_6} onClick={handlerActions}>
-                Juguetes
-              </li>
-              <li className={styles.list_7} onClick={handlerActions}>
-                Muebles
-              </li>
-              <li className={styles.list_8} onClick={handlerActions}>
-                Jardinería
-              </li>
-              <li className={styles.list_9} onClick={handlerActions}>
-                Deportes
-              </li>
-              <li className={styles.list_10} onClick={handlerActions}>
-                Joyería
-              </li>
-              <li className={styles.list_11} onClick={handlerActions}>
-                Herramientas
-              </li>
-            </ul>
+            {showCategories && (
+              <ul className={styles.list_show}>
+                <li
+                  tabindex="0"
+                  className={styles.list_1}
+                  onClick={() =>
+                    dispatch(action.getProductByCategory("Indumentaria"))
+                  }
+                >
+                  Indumentaria
+                </li>
+                <li
+                  tabindex="0"
+                  className={styles.list_2}
+                  onClick={() =>
+                    dispatch(action.getProductByCategory("Electrodomesticos"))
+                  }
+                >
+                  Electrodomesticos
+                </li>
+                <li
+                  tabindex="0"
+                  className={styles.list_3}
+                  onClick={() =>
+                    dispatch(action.getProductByCategory("Informatica"))
+                  }
+                >
+                  Informatica
+                </li>
+                <li
+                  tabindex="0"
+                  className={styles.list_4}
+                  onClick={() =>
+                    dispatch(action.getProductByCategory("Cosmética"))
+                  }
+                >
+                  Cosmética
+                </li>
+                <li
+                  tabindex="0"
+                  className={styles.list_5}
+                  onClick={() =>
+                    dispatch(action.getProductByCategory("Alimentos"))
+                  }
+                >
+                  Alimentos
+                </li>
+                <li
+                  tabindex="0"
+                  className={styles.list_6}
+                  onClick={() =>
+                    dispatch(action.getProductByCategory("Juguetes"))
+                  }
+                >
+                  Juguetes
+                </li>
+                <li
+                  tabindex="0"
+                  className={styles.list_7}
+                  onClick={() =>
+                    dispatch(action.getProductByCategory("Muebles"))
+                  }
+                >
+                  Muebles
+                </li>
+                <li
+                  tabindex="0"
+                  className={styles.list_8}
+                  onClick={() =>
+                    dispatch(action.getProductByCategory("Jardinería"))
+                  }
+                >
+                  Jardinería
+                </li>
+                <li
+                  tabindex="0"
+                  className={styles.list_9}
+                  onClick={() =>
+                    dispatch(action.getProductByCategory("Deportes"))
+                  }
+                >
+                  Deportes
+                </li>
+                <li
+                  tabindex="0"
+                  className={styles.list_10}
+                  onClick={() =>
+                    dispatch(action.getProductByCategory("Joyería"))
+                  }
+                >
+                  Joyería
+                </li>
+                <li
+                  tabindex="0"
+                  className={styles.list_11}
+                  onClick={() =>
+                    dispatch(action.getProductByCategory("Herramientas"))
+                  }
+                >
+                  Herramientas
+                </li>
+              </ul>
+            )}
           </li>
           <li className={`${styles.list_item} ${styles.list_item_click}`}>
-            <div
-              className={`${styles.list_button} ${isOpen ? styles.arrow : ""}`}
-              onClick={handleButtonClick}
-            >
-              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAXRJREFUSEvFlYtNBDEMROc6gUqASoBKgErgKgEqASoBPZSJZrPezyGdiHTKKmd7bM84OejM63Dm+NoDcC2J31XbPyW9SfpqO9+Law3gQtJzC7oWA8AbSeyztQTwKOmhWeN4jGwBpiL227bbBr/JqgAy+JOkmVNEAOQukpnZjwA4fLQAlL3a3wCiotfWpvv0GwEwwvhFEoanLFdOuy7tmACUCqkTgxMQUhS9+gRwBtlHzqimVEgj2BWTyyxGApA9VdAagmbJlQwzY/uYC7jDZzJokIsT/SNjvuGEfdR6Bs+WWiT9LCsYAUigAuHcA1jx9d14+42dAFbQKM8RhKC0ogpuoXQVbpFsESUIZ0tKWyU5h6XreJhaqmRV/3PuLpj0SYuSuKVBM+HVeFiFXUEjBybVV0XPYsewuXpMJxxWl52JwnjrssvhKu0rgPGG9APzHpeYr2xf14vJ/NuDk/IkW35+Mi1TV/TnJ3MHt9smex797SgrFj8cvm0ZvRlr2QAAAABJRU5ErkJggg==" />
-              <span className={styles.nav_link}>Ordenar</span>
-              <img
-                className={styles.list_arrow}
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAJJJREFUSEvt1MEJgDAQRNFvJ9qJdmIn2ol2YiuWIgMRxEOyExAUzMVLmGdmow0Pr+bhfH6g2PCrKpqBFdiLr33ZED2BwqcUPjhIFGiBDdBTJwgjUUCHrkIcoApxARupBRagT/PocrfKBTSHcLhgB7DDHaAq3AHGVI2+gWzn93k4FQnRr8JaDmAFn5t/oFjb9ys6AAkuHBlC5x93AAAAAElFTkSuQmCC"
-              />
+            <div className={`${styles.list_button} `}>
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAQhJREFUSEvVlA0OAUEMhd/ehJtwEpwEJ8FJuAk3IZ9MN2MzM621JJqIv51+r33tdPpydF/OryhgJmkraZEE3SRtJPHejAiA5NdKlrkHiQAOktaSLpL2CWTV8H3XKiECuKcEuVpadU7q+b0aEUDpsLUNDyYHoN5adExmT1YBbcknaTmFybk68wPlp2T8x2NqCfJxdcfTDkVNHu4C5rrtARIB2EjyPLsAjBfhVuIBhslRTdjy8ZkrA0+K0QKwvSQiSuPIBjOuRHWja4CoQhdSAuSzTkvoeyuArJIvVEK1/S07BLyb3MB4RdWYj6D+Ks8BeVsc0e7fQJ4D8VOAK2vMA94ejMn5cub/AQ9dbTkZoV0kIAAAAABJRU5ErkJggg==" alt="icono"/>
+              <span className={styles.nav_link} onClick={handleClick2}>
+                Ordenar
+              </span>
             </div>
-            <ul className={styles.list_show} onClick={handlerActions}>
-              <li className={styles.list_12} onClick={handlerActions}>
-                Por nombre a-z
-              </li>
-              <li className={styles.list_13} onClick={handlerActions}>
-                Por nombre z-a
-              </li>
-              <li className={styles.list_14} onClick={handlerActions}>
+            {showOrdenar && (
+              <ul className={styles.list_show}>
+                <li
+                  tabindex="0"
+                  className={styles.list_12}
+                  onClick={() => dispatch(action.orderedByNameASC())}
+                >
+                  Por nombre a-z
+                </li>
+                <li
+                  tabindex="0"
+                  className={styles.list_13}
+                  onClick={() => dispatch(action.orderedByNameDESC())}
+                >
+                  Por nombre z-a
+                </li>
+              </ul>
+            )}
+          </li>
+          <li className={styles.list_item}>
+            <div className={styles.list_button}>
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAWBJREFUSEu1lY1NwzAQhV8noWwCk1AmASaBTgKbAJOAvsgvul58iUuppaqtcrl378f2Tldeuyv31wjAnaRXSUdJb22gg6QHSY+SPtaGHAF4lwQI60vSPjTk/+25ADRgwpvWzM2rPmbF85c2xFzbY4AcAPxlAfAcXzwXwPU/BTps8GWVQdTchRjJdDYUhk/JD2p5fl8BOC3RROt6Qrs1oO6zwwTjAeH7JKYVbVJCsb3ht+PZY+u0TemKHlTmZoAR82cvIkBFOSeDOj5Iig+95aEWO7knE5KwizEw71rMhnlcpQej+Z/Mazu4Yt2ViETkBLkRTUkSkpiRk1WxXphMc1KRQRabJ+hh0CzRfAjmnUxzpMrnDyD2gWZV3epG8xRrXvzLUdGjPZJ9aobOonhc89LWyYosGP/dAJyyaaitCydrnS+cheaZ6haADSVdmIx8ZkhkOdQuvjJH9e/WjTC4COAXAcVVGWZcFaYAAAAASUVORK5CYII=" alt="icono"/>
+              <span
+                tabindex="0"
+                className={styles.nav_link}
+                onClick={handleClick3}
+              >
+                Precio
+              </span>
+            </div>
+            {showPrecio && (
+            <ul className={styles.list_show}>
+              <li
+                tabindex="0"
+                className={styles.list_14}
+                onClick={() => dispatch(action.orderedByHighestPrice())}
+              >
                 Mayor precio
               </li>
-              <li className={styles.list_15} onClick={handlerActions}>
+              <li
+                tabindex="0"
+                className={styles.list_15}
+                onClick={() => dispatch(action.orderedByLowestPrice())}
+              >
                 Menor precio
               </li>
-              <li className={styles.list_16} onClick={handlerActions}>
+            </ul>
+            )}
+          </li>
+          <li className={styles.list_item}>
+            <div className={styles.list_button}>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAKZJREFUSEvtldENgzAQQx+bwCZlE5iso9BNyiYgIxVFSaqYVpFA4n7jOye2T2moXE3l+dwERYVDiSbgUezwADPQCRoSLF6vjdpmuwQf3JFLnIvA1iUAJi/QWQs8/zD7BYyATN4qt2gieUdXdj3oAZHs9W2TYzNdAkVzv33uBVUlOhJBx/RzxdT1IPHX3WRHkhiTSKT8D79MyvQoqors/eGUBb3+n7wCgGQcGaIC4qAAAAAASUVORK5CYII=" alt="icono"/>
+              <span
+                tabindex="0"
+                className={styles.nav_link}
+                onClick={handleClick4}
+              >
+                Condición
+              </span>
+            </div>
+            {showCondicion && (
+            <ul className={styles.list_show}>
+              <li
+                tabindex="0"
+                className={styles.list_16}
+                onClick={() => dispatch(action.filterByNewProducts())}
+              >
                 Nuevos
               </li>
-              <li className={styles.list_17} onClick={handlerActions}>
+              <li
+                tabindex="0"
+                className={styles.list_17}
+                onClick={() => dispatch(action.filterByUsedProducts())}
+              >
                 Usados
               </li>
-              <li className={styles.list_17} onClick={handlerActions}>
+              <li
+                tabindex="0"
+                className={styles.list_18}
+                onClick={() => dispatch(action.filterByRefurbishedProducts())}
+              >
                 Reacondicionado
               </li>
-              <li className={styles.list_18} onClick={handlerActions}>
-                Recientes
-              </li>
             </ul>
+            )}
+          </li>
+          <li className={styles.list_item}>
+            <div className={styles.list_button}>
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAANhJREFUSEvtldENgzAMRI9N2k3KJmWSqpO0m5RNyiZUR+MoorbjCPFRCT7D5Z4526LDzk+3sz8OQDXhMqIXgEv1RkwwAThTWgLm2N2wavHeAngCuDq4TYAewAjg4UDCAJox03eqlsY84+P17QfAC6dUVdnsIQFolptnmBMu+qUCbdEIkWrXEUs0LIBA630+tzZZmygx9wrgaPIrTYAWEcVa7uveiM6MyNoDK/eyN9q0hqeI804zK3drFcIAGtwB3MI7/BU2ARq9dYC3la2APBTHD6ca3f9H9AET9TAZjvnCQgAAAABJRU5ErkJggg==" />
+              <span
+                tabindex="0"
+                className={styles.nav_link}
+                onClick={() => dispatch(action.orderedByRecientes())}
+              >
+                Recientes
+              </span>
+            </div>
           </li>
         </ul>
       </nav>

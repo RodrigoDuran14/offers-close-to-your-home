@@ -1,5 +1,5 @@
 const { Usuario, Tipo_usuario, Ciudad } = require("../../db");
-const {Op, Sequelize } = require("sequelize");
+const { Op, Sequelize } = require("sequelize");
 
 const getAllUsers = async () => {
   try {
@@ -16,13 +16,18 @@ const getAllUsers = async () => {
         "id_ciudad",
         "estado",
         "email",
-        "contraseña",
+        "password",
+        "imagen"
       ],
       include: [
-        {model: Tipo_usuario,
-        attributes: ["nombre_tipo_usuario"]},
-        {model: Ciudad,
-          attributes: ["nombre_ciudad"]},
+        {
+          model: Tipo_usuario,
+          attributes: ["nombre_tipo_usuario"]
+        },
+        {
+          model: Ciudad,
+          attributes: ["nombre_ciudad"]
+        },
       ]
     });
     const results = [...dataUser];
@@ -47,7 +52,8 @@ const getUserById = async idUser => {
         "id_ciudad",
         "estado",
         "email",
-        "contraseña",
+        "password",
+        "imagen"
       ],
     });
     return user;
@@ -71,7 +77,8 @@ const getUserByName = async name => {
         "id_ciudad",
         "estado",
         "email",
-        "contraseña",
+        "password",
+        "imagen"
       ],
       where: {
         [Op.or]: [
@@ -80,16 +87,8 @@ const getUserByName = async name => {
           { primer_apellido: name },
           { segundo_apellido: name },
         ],
-      },      
+      },
     });
-  //   where: {
-  //     [Op.or]: [
-  //       Sequelize.literal(
-  //         `primer_nombre = '${name}' OR segundo_nombre = '${name}' OR primer_apellido = '${name}' OR segundo_apellido = '${name}'`
-  //       ),
-  //     ],
-  //   },
-  // });
     return users;
   } catch (error) {
     console.error(error);
@@ -98,8 +97,4 @@ const getUserByName = async name => {
 
 
 
-
-
-
-
-module.exports = { getAllUsers, getUserById, getUserByName };
+module.exports = { getAllUsers, getUserById, getUserByName};

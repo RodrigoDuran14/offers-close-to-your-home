@@ -15,6 +15,7 @@ const postCommerceHandler = async (req, res) => {
     password,
     email,
     imagen,
+    admin
   } = req.body;
 
   try {
@@ -27,7 +28,8 @@ const postCommerceHandler = async (req, res) => {
       cargo,
       password,
       email,
-      imagen)
+      imagen
+      )
     ) {
       const [resultSearchName, resultSearchEmail] = await Promise.all([
         searchNameCommerce(nombre_comercio),
@@ -45,7 +47,8 @@ const postCommerceHandler = async (req, res) => {
           cargo,
           password,
           email,
-          imagen
+          imagen,
+          admin
         );
         res.status(200).json(newCommerce);
       } else if (resultSearchEmail !== null) {

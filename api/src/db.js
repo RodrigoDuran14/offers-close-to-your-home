@@ -49,42 +49,55 @@ const {
   Categoria_comercio,
   Categoria_producto,
   Pagos,
-  
+
 } = sequelize.models;
 
 // Aca vendrian las relaciones
 
-Tipo_usuario.hasMany(Usuario, {foreignKey: 'id_tipo_usuario'});
-Usuario.belongsTo(Tipo_usuario, {foreignKey: 'id_tipo_usuario',});
+Usuario.belongsTo(Tipo_usuario, { foreignKey: 'id_tipo_usuario', });
+Tipo_usuario.hasMany(Usuario, { foreignKey: 'id_tipo_usuario' });
 
+Producto.hasMany(Motivo_calificacion, { foreignKey: "id_producto" });
+Motivo_calificacion.belongsTo(Producto, { foreignKey: "id_producto" });
 
-Producto.hasMany(Motivo_calificacion, {foreignKey:"id_producto"});
-Motivo_calificacion.belongsTo(Producto ,{foreignKey:"id_producto"});
+Ciudad.hasMany(Usuario, { foreignKey: "id_ciudad" });
+Usuario.belongsTo(Ciudad, { foreignKey: "id_ciudad" });
 
-Ciudad.hasMany(Usuario,{foreignKey:"id_ciudad"});
-Usuario.belongsTo(Ciudad,{foreignKey:"id_ciudad"});
+Ciudad.hasMany(Comercio, { foreignKey: "id_ciudad" });
+Comercio.belongsTo(Ciudad, { foreignKey: "id_ciudad" })
 
-Ciudad.hasMany(Comercio, {foreignKey: "id_ciudad"});
-Comercio.belongsTo(Ciudad, {foreignKey: "id_ciudad"})
+Comercio.hasMany(Producto, { foreignKey: "id_comercio" })
+Producto.belongsTo(Comercio, { foreignKey: "id_comercio" })
 
-Usuario.hasMany(Venta, {foreignKey:"id_usuario"});
-Venta.belongsTo(Usuario , {foreignKey:"id_usuario"})
-
-Categoria_comercio.hasMany(Comercio, {foreignKey:"id_categoria_comercio"});
-Comercio.belongsTo(Categoria_comercio, {foreignKey:"id_categoria_comercio"})
-
-
-Producto.belongsToMany(Venta, { through: Detalle_venta, foreignKey: "id_producto" });
-Venta.belongsToMany(Producto, { through: Detalle_venta, foreignKey: "id_venta" });
-
-Comercio.hasMany(Producto, {foreignKey:"id_comercio"})
-Producto.belongsTo(Comercio, {foreignKey:"id_comercio"})
+Categoria_comercio.hasMany(Comercio, { foreignKey: "id_categoria_comercio" });
+Comercio.belongsTo(Categoria_comercio, { foreignKey: "id_categoria_comercio" })
 
 Categoria_producto.hasMany(Producto, { foreignKey: 'id_categoria_producto' });
-Producto.belongsTo(Categoria_producto, {foreignKey:'id_categoria_producto'})
+Producto.belongsTo(Categoria_producto, { foreignKey: 'id_categoria_producto' })
 
-Detalle_venta.hasOne(Pagos, {foreignKey: "id_detalle_venta"});
-Pagos.belongsTo(Detalle_venta, {foreignKey: "id_detalle_venta"});
+
+/*----------------------------------------------------------------------*/
+Producto.belongsToMany(Venta, { through: "Detalle_venta" });
+Venta.belongsToMany(Producto, { through: "Detalle_venta" });
+
+Usuario.hasMany(Venta, { foreignKey: "id_usuario" });
+Venta.belongsTo(Usuario, { foreignKey: "id_usuario" });
+
+Venta.hasMany(Detalle_venta, { foreignKey: "id_venta" });
+Detalle_venta.belongsTo(Venta, { foreignKey: "id_venta" })
+
+Producto.hasMany(Detalle_venta, { foreignKey: "id_producto" });
+Detalle_venta.belongsTo(Producto, { foreignKey: "id_producto" })
+
+Comercio.hasMany(Detalle_venta, { foreignKey: "id_comercio" });
+Detalle_venta.belongsTo(Comercio, { foreignKey: "id_comercio" })
+
+Pagos.hasMany(Detalle_venta, { foreignKey: "id_pago" });
+Detalle_venta.belongsTo(Pagos, { foreignKey: "id_pago" })
+
+Comercio.hasMany(Pagos, { foreignKey: "id_comercio" });
+Pagos.belongsTo(Comercio, { foreignKey: "id_comercio" });
+
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize, // para importart la conexión { conn } = require('./db.js');
