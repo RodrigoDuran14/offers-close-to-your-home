@@ -44,7 +44,7 @@ function Comercios() {
             <th>Email</th>
             <th>Cargo</th>
             <th>Ciudad</th>
-            <th>Editar o eliminar</th>
+            <th>Eliminar</th>
           </tr>
         </thead>
         <tbody>
@@ -58,18 +58,12 @@ function Comercios() {
                   <td>{p.cargo}</td>
                   <td>{p.Ciudad.nombre_ciudad}</td>
                   <td>
-                    <FiEdit
-                      size={22}
-                      color="var(--green-color)"
-                      className={s.edit}
-                      style={{ margin: "5px 0px" }}
-                    />
                     <button
                       onClick={() => {
                         buscarId(p.id_comercio);
                       }}
                     >
-                      eliminar
+                      Eliminar
                     </button>
                   </td>
                 </tr>

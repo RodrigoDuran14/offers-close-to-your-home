@@ -1,9 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 import { getAllUsers } from "../../../redux/actions";
 import { useEffect } from "react";
-import { IoTrashBinOutline } from "react-icons/io5";
-import { FiEdit } from "react-icons/fi";
 import s from "./Usuarios.module.css"
+import axios from "axios"
 
 
 
@@ -14,6 +13,23 @@ function Usuarios() {
     dispatch(getAllUsers())
   }, [])
 
+  function buscarId(id_usuario) {
+    const id = allUsers.find((c) => c.id_usuario === id_usuario);
+    handleBorrar(id.id_usuario);
+    console.log("asd", id.id_usuario);
+  }
+
+  const handleBorrar = async (id_usuario) => {
+    try {
+      let a = await axios.put("http://localhost:3001/usuario/delete", {
+        id_usuario: id_usuario,
+        estado: false,
+      });
+      console.log(a);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className={s.container}>
@@ -25,11 +41,12 @@ function Usuarios() {
             <th>Apellido</th>
             <th>Email</th>
             <th>ciudad</th>
-            <th>Editar o eliminar</th>
+            <th>Eliminar</th>
           </tr>
         </thead>
         <tbody>
           {allUsers?.map((p) => {
+            if (p.estado)
             return (
               <tr key={p.id_usuario}>
                 <td>{p.primer_nombre}</td>
@@ -37,7 +54,13 @@ function Usuarios() {
                 <td>{p.email}</td>
                 <td>{p.Ciudad.nombre_ciudad}</td>
                 <td>
-                  <FiEdit size={22} color='var(--green-color)' className={s.edit} style={{ margin: '5px 0px' }}/>
+                <button
+                      onClick={() => {
+                        buscarId(p.id_usuario);
+                      }}
+                    >
+                      Eliminar
+                    </button>
                 </td>
               </tr>
             );
