@@ -101,11 +101,11 @@ const NavBar = () => {
             <h4>Iniciar sesión</h4>
           </Link>
 
-        ) }
+        )}
 
-            {estaLogueado  === "database" && (
-          <div style={{display: 'flex'}}>              
-                <img onClick={handleLogInClick} className={s.logIn} src={profile} />
+        {estaLogueado === "database" && (
+          <div style={{ display: 'flex' }}>
+            <img onClick={handleLogInClick} className={s.logIn} src={profile} />
 
             {showProfileMenu && (
               <div className={s.menuDesplegable}>
@@ -120,14 +120,14 @@ const NavBar = () => {
                   <h4>Cerrar sesión</h4>
                 </Link>
               </div>
-                )}
-          </div>
             )}
-        
+          </div>
+        )}
 
-        {estaLogueado  === "google" && (
-          <div style={{display: 'flex'}}>              
-                <img onClick={handleLogInClick} className={s.logIn} src={logIn} />
+
+        {estaLogueado === "google" && (
+          <div style={{ display: 'flex' }}>
+            <img onClick={handleLogInClick} className={s.logIn} src={logIn} />
 
             {showProfileMenu && (
               <div className={s.menuDesplegable}>
@@ -135,9 +135,9 @@ const NavBar = () => {
                   <h4>Cerrar sesión</h4>
                 </Link>
               </div>
-                )}
-          </div>
             )}
+          </div>
+        )}
 
 
 

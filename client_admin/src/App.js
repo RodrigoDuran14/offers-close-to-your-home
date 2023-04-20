@@ -22,7 +22,8 @@ function App() {
       <HashRouter>
         {location?.pathname == "/login" ? null : <NavBar />}
         <Switch>
-          <Route exact path="/" component={Home} />;
+          <Route exact path="/" component={Login} />;
+          <Route exact path="/home" component={Home} />;
           <Route exact path="/misventas" component={MisVentas} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/registrar-comercio" component={Register} />

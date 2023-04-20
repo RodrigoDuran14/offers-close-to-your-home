@@ -1,10 +1,9 @@
 import React from 'react'
-import styles from './Venta.module.css'
 import { Link } from 'react-router-dom'
+import styles from './Venta.module.css'
 
 
 const Venta = () => {
-
   return (
     /*
     <Link to={`/detail/${id_producto}`} style={{ textDecoration: 'none' }}>
@@ -21,13 +20,13 @@ const Venta = () => {
       <div className={styles.titulo}>
         <h3> Remera Lisa - Hombre </h3>
       </div>
+      <hr style={{width: '70%', margin: '10px'}}/>
       <div>
-        <img 
-        className={styles.img}
-        src='https://d3ugyf2ht6aenh.cloudfront.net/stores/709/396/products/blanca-47bef727a421a95b0d16044339586089-640-0.jpg' />
+        <img
+          className={styles.img}
+          src='https://d3ugyf2ht6aenh.cloudfront.net/stores/709/396/products/blanca-47bef727a421a95b0d16044339586089-640-0.jpg' />
       </div>
       <div className={styles.contenedorEstado}>
-        <h3>Estado: </h3>
       </div>
     </div>
   )

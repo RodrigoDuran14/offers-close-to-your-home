@@ -1,6 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Link } from "react-router-dom"
 import { useHistory } from 'react-router-dom';
@@ -8,12 +8,14 @@ import validation from './validations'
 import swal from 'sweetalert'
 import axios from 'axios'
 import styles from "../formLogin/FormLogin.module.css"
-import { commerceLoggedIn } from "../../../redux/actions";
+import { commerceLoggedIn, getUsuarioByEmail, getCommerceByID } from "../../../redux/actions";
 
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
+import jwt_decode from "jwt-decode";
 
 export default function FormLogin() {
-
+  const usuario = useSelector(state => state.usuario);
+  const comercios = useSelector(state =>state.comercios);
 
     const estado = true
   
@@ -50,36 +52,94 @@ export default function FormLogin() {
             return Promise.resolve(false);
           }
         }
-        const handleLogin = async (values) => {
-            try {
+
+        const handleLoginUser = async (values) => {
+          try {
+            const user = await axios.post(`${BACK_HOST}/usuario/login`, values);
+            console.log("USER:  ",user)
+            const session = user.data.session;
+            const token = user.data.token;
+            console.log("session:  ",session)
+            console.log("token:  ",token)
+        
+            // Almacenar el token y la sesión en cookies con opciones de seguridad
+            Cookies.set('user_token', token, { secure: true, sameSite: 'strict' });
+            Cookies.set('user_session', JSON.stringify(session), { secure: true, sameSite: 'strict' });
+        
+            const isUserAuthenticated = await login(true);
+            if (isUserAuthenticated) {
+              localStorage.setItem("estaLogueado", "database")
+              navigateTo('/admin');
+            } else {
+              console.log('Login failed');
+            }
+          } catch (error) {
+            const err = error.response.data;
+            swal({
+              title: 'Bienvenido',
+              text: 'Ya puedes navegar con tu cuenta!',
+              icon: 'success',
+              timer: '2000'
+            });
+            console.log(err)
+          }
+        };
+        const handleLoginComercio = async (values) => {
+          try {                                    
+              console.log(values);
               const commerce = await axios.post(`${BACK_HOST}/commerce/loginCommerce`, values);
               console.log("COMMERCE:  ",commerce)
               const session = commerce.data.session;
               const token = commerce.data.token;
               console.log("session:  ",session)
               console.log("token:  ",token)
-          
+              
               // Almacenar el token y la sesión en cookies con opciones de seguridad
               Cookies.set('commerce_token', token, { secure: true, sameSite: 'strict' });
               Cookies.set('commerce_session', JSON.stringify(session), { secure: true, sameSite: 'strict' });
-          
+              
               const isUserAuthenticated = await login(true);
               if (isUserAuthenticated) {
                 navigateTo('/');
               } else {
                 console.log('Login failed');
               }
-            } catch (error) {
-              const err = error.response.data;
-              swal({
-                text: 'Invalid email or password',
-                icon: 'error',
-                timer: '2000'
-              });
-            }
-          };
+            
+          } catch (error) {
+            const err = error.response.data;
+            swal({
+              title: 'Bienvenido',
+              text: 'Ya puedes navegar con tu cuenta!',
+              icon: 'success',
+              timer: '2000'
+            });
+          }
+        };
+
+        // const handleLogin = async (values) => {
+                        
+        //       const email = values.email;
+        //       console.log(email);
+        //       dispatch(getCommerceByID(email))
+        //       dispatch (getUsuarioByEmail(email))           
+
+        //       if (usuario) {
+        //         handleLoginUser(values)
+        //       } else {                             
+        //         if (comercios) handleLoginComercio(values)
+        //       }
+        //   };
+
         
 
+        const handleLogin = async (values) => {
+          
+          await handleLoginUser(values)        
+          await handleLoginComercio(values)
+        
+
+        };       
+        
         return (
             <div className={styles.container}
             // style={{ width: '100%', maxWidth: '820px' }}
@@ -89,6 +149,7 @@ export default function FormLogin() {
                         email: '',
                         password: ''
                     }}
+                    
                     onSubmit={handleLogin}
                     validate={validation}   
                     validateOnBlur={false}
@@ -120,6 +181,7 @@ export default function FormLogin() {
     
                     </Form>
                 </Formik>
+                
             </div>
         )
     }
