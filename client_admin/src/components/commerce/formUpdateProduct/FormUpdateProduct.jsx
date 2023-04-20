@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Image, CloudinaryContext } from "cloudinary-react"; // para guardar las imágenes externamente 
 import Cookies from "js-cookie";
 import { useParams } from "react-router";
-import validations from "./validation";
+import validations from "../formCreateProduct/validations";
 import style from "./FormUpdateProduct.module.css";
 
 
