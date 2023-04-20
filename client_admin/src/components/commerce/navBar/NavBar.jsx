@@ -1,9 +1,8 @@
-import React, {useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import SearchBar from "../searchBar/SearchBar";
 import DrawerMenu from "../drawerMenu/DrawerMenu";
-import s from "./NavBar.module.css";
 
 import Cookies from "js-cookie";
 import jwt_decode from "jwt-decode";
@@ -14,19 +13,20 @@ import { getCommerceByID } from "../../../redux/actions";
 // imagenes
 import Logo from "../../../assets/images/SoloTextoBlanco.png";
 import Icono from "../../../assets/images/SoloIconoNormal.png";
-import LogIn from "../../../assets/images/logIn.webp";
+import Profile from "../../../assets/images/profile.png";
 
+import s from "./NavBar.module.css";
 const NavBar = () => {
-    
+
   const logoTexto = Logo;
   const logoIcono = Icono;
-  const logIn = LogIn;
+  const profile = Profile;
 
 
   /* ------------- MENU HAMBURGUESA ----    --------- */
-  
+
   const [showProfileMenu, setShowProfileMenu] = useState(false);
-  
+
   const handleLogInClick = () => {
     setShowProfileMenu(!showProfileMenu);
   };
@@ -35,13 +35,13 @@ const NavBar = () => {
   /* ------------- LOGIN MENU ------------- */
   const estaLogueado = useSelector(state => state.logIn);
   const { comercios } = useSelector((state) => state);
-  
+
   const dispatch = useDispatch();
-  
+
   const email = useMemo(() => {
     const numToken = Cookies.get("commerce_token");
     let decodedToken = null;
-  
+
     try {
       decodedToken = jwt_decode(numToken);
     } catch (error) {
@@ -49,30 +49,27 @@ const NavBar = () => {
       console.error(error);
       decodedToken = null;
     }
-  
+
     return decodedToken ? decodedToken.email : null;
   }, []);
-  
+
   useEffect(() => {
     if (email) {
       dispatch(getCommerceByID(email)); // Actualizar el estado con la respuesta de la acción asincrónica
     }
   }, [dispatch, email]);
-  
+
   const userLogin = useMemo(() => comercios.filter((e) => e.email === email), [comercios, email]);
   const imgProfile = userLogin[0]?.imagen;
-  
+
 
   /* ------------- LOGOUT ------------- */
   const logOut = false
 
   const handleLogOut = () => {
-     Cookies.set("commerce_session",[])
+    Cookies.set("commerce_session", [])
     dispatch(commerceLoggedIn(logOut))
   };
-  
-  
-
 
   return (
     <div className={s.container}>
@@ -89,17 +86,16 @@ const NavBar = () => {
 
       <div className={s.nav_text}>
         <Link
-          to="/"
+          to="/home"
           className={s.link}
-        //  style={{ margin: '0px 10px' }}
+
         >
           <h4>Inicio</h4>
         </Link>
 
         <Link
-          to="/"
+          to="/home"
           className={s.link}
-        // style={{ margin: '0px 10px' }}
         >
           <h4>Quiero Comprar</h4>
         </Link>
@@ -107,7 +103,6 @@ const NavBar = () => {
         <Link
           to="/about"
           className={s.link}
-        // style={{ margin: '0px 10px' }}
         >
           <h4>¿Quienes somos?</h4>
         </Link>
@@ -116,33 +111,34 @@ const NavBar = () => {
       <div className={s.box1}>
         <SearchBar />
       </div>
-      <div>
-  {!estaLogueado ? (
-    <Link to="/login" className={s.link}>
-      <h4>Iniciar sesión</h4>
-    </Link>
-  ) : (
-    <div>
-        <img  onClick={handleLogInClick} className={s.logIn} src={imgProfile} />
-      {showProfileMenu  && (
-        <div className={s.menuDesplegable}>
-          <Link to="/account" className={s.link}>
-            <h4>Ver perfil</h4>
-          </Link>       
-          <Link to="/account" className={s.link}>
-            <h4>Historial de ventas</h4>
+
+      <div className={s.sesion}>
+        {!estaLogueado ? (
+          <Link to="/login" className={s.link}>
+            <h4>Iniciar sesión</h4>
           </Link>
-          <Link to="/producto" className={s.link}>
-            <h4>Crear Producto</h4>
-          </Link>
-          <Link to="/" className={s.link} onClick={handleLogOut}>
-            <h4>Cerrar sesión</h4>
-          </Link>
-        </div>
-      )}
-    </div>
-  )}
-</div>
+        ) : (
+          <div>
+            <img onClick={handleLogInClick} className={s.logIn} src={profile} />
+            {showProfileMenu && (
+              <div className={s.menuDesplegable}>
+                <Link to="/account" className={s.link_menu}>
+                  <h4>Ver perfil</h4>
+                </Link>
+                <Link to="/account" className={s.link_menu}>
+                  <h4>Historial de ventas</h4>
+                </Link>
+                <Link to="/producto" className={s.link_menu}>
+                  <h4>Crear Producto</h4>
+                </Link>
+                <Link to="/" className={s.link_menu} onClick={handleLogOut}>
+                  <h4>Cerrar sesión</h4>
+                </Link>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

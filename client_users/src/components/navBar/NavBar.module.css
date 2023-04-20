@@ -9,7 +9,7 @@
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 300;
 }
 
 .sesion {
@@ -85,7 +85,7 @@
 .menuDesplegable {
     position: absolute;
     top: 100%;
-    right: 65px;
+    right: 45px;
     background-color: rgba(255, 255, 255, 0.589);
     backdrop-filter: blur(10px);
     padding: 1rem;

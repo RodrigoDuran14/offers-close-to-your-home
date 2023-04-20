@@ -20,24 +20,24 @@ const Products = () => {
     dispatch(getAllProducts());
   }, [dispatch]);
 
- 
-    let values = JSON.parse(session);
+
+  let values = JSON.parse(session);
 
   let comercio = values.dataValues;
   console.log(comercio);
-  
-  
+
+
   const productsCommerce = products.filter(
     (p) => p.Comercio.id_comercio === comercio.id_comercio
   );
-  
+
   //   console.log(productsCommerce)
   //   console.log(products)
   //   // console.log(products.Comercio.id_comercio)
   //   console.log(products?.Comercio?.id_comercio);
 
   // console.log(products[0].Comercio.id_comercio)
-  
+
 
   return (
     <>
@@ -47,33 +47,28 @@ const Products = () => {
             <th>Nombre</th>
             <th>Descripción</th>
             <th>Stock</th>
-            <th>Editar</th>
-            <th>Eliminar</th>
+            <th>Editar o eliminar</th>
           </tr>
         </thead>
         <tbody>
-          {session?productsCommerce.map((p) => {
-             
+          {session ? productsCommerce.map((p) => {
+
             return (
-              <tr key={p.id_producto}>
-                <td>{p.nombre}</td>
-                <td>{p.descripcion_producto}</td>
-                <td>{p.existencia}</td>
-                <td>
-                  <Link to={`/product/${p.id_producto}`}>
-                    <FiEdit />
-                  </Link>
-                </td>
-                <td>
-                  <button
-                    
-                  >
-                    <IoTrashBinOutline />
-                  </button>
-                </td>
-              </tr>
+              <>
+                <tr key={p.id_producto}>
+                  <td>{p.nombre}</td>
+                  <td>{p.descripcion_producto}</td>
+                  <td>{p.existencia}</td>
+                  <td>
+                    <Link to={`/product/${p.id_producto}`}>
+                      <FiEdit size={22} color='var(--green-color)' className={styles.edit} style={{ margin: '5px 0px' }} />
+                    </Link>
+                  </td>
+                </tr>
+                <hr style={{ width: '250%' }} />
+              </>
             );
-          }):<tr>no hay pa </tr>}
+          }) : <tr> No hay nada pa </tr>}
         </tbody>
       </table>
     </>
