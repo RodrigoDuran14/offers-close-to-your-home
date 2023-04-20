@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import SearchBar from "../searchBar/SearchBar";
 import DrawerMenu from "../drawerMenu/DrawerMenu";
 import { AiOutlineShoppingCart } from "react-icons/ai";
@@ -13,6 +13,7 @@ import Logo from "../../assets/images/SoloTextoBlanco.png";
 import Icono from "../../assets/images/SoloIconoNormal.png";
 import logIn from "../../assets/images/logIn.webp";
 import Profile from '../../assets/images/profile.png'
+import { useEffect } from "react";
 
 const NavBar = () => {
   const logoTexto = Logo;
@@ -26,6 +27,12 @@ const NavBar = () => {
   const handleLogInClick = () => {
     setShowProfileMenu(!showProfileMenu);
   };
+
+  const location = useLocation()
+
+  useEffect(() => {
+    setShowProfileMenu(false)
+  },[location.pathname])
 
   /* ------------- LOGIN MENU ------------- */
 

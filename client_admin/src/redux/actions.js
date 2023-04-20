@@ -217,3 +217,16 @@ export const getAllProducts = () => {
       }
     };
   };
+
+
+  export function getUsuarioByEmail(email) {
+    return async (dispatch) => {
+      
+        const response = await axios.get(`${URL}/email?email=${email}`);
+        dispatch({
+          type: action.GET_USER_BY_EMAIL,
+          payload: response.data,
+        });
+     
+    };
+  }

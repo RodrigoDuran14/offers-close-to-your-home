@@ -29,11 +29,10 @@ function App() {
           <Route exact path="/producto" component={CreateProduct} />
           <Route exact path="/account" component={Account} />
           <Route exact path="/update" component={FormUpdate} />
-          <Route exact path="/product/:id_producto" component={FormUpdateProduct}/>
+          <Route exact path="/product/:id_producto" component={FormUpdateProduct} />
           <Route exact path="/admin" component={HomeAdmin} />
           <Route exact path="/admin/comercios" component={Comercios} />
           <Route exact path="/admin/usuarios" component={Usuarios} />
-          <Route exact path="/about" component={About} />
         </Switch>
       </HashRouter>
     </div>
