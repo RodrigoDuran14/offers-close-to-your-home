@@ -42,7 +42,7 @@ export default function FormLogin() {
 
     const iconGoogle = Google;
 
-    const BACK_HOST = 'http://localhost:3001'
+    const BACK_HOST = 'https://justoffers-back.up.railway.app'
     const history = useHistory()
     const navigateTo = (url) => {
         history.push(url)

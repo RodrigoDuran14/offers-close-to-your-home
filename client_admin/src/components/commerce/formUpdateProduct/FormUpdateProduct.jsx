@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Image, CloudinaryContext } from "cloudinary-react"; // para guardar las imágenes externamente 
 import Cookies from "js-cookie";
 import { useParams } from "react-router";
-
+import validations from "../formCreateProduct/validations";
 import style from "./FormUpdateProduct.module.css";
 
 
@@ -42,7 +42,7 @@ export default function FormUpdateProduct() {
 
     // Obtiene los valores del formulario
     const { nombre,
-      cantidad,
+      // cantidad,
       descripcion_producto,
       existencia,
       fecha_final,
@@ -58,7 +58,19 @@ export default function FormUpdateProduct() {
     // valor_normal = parseFloat(valor_normal);
     // valor_con_descuento = parseFloat(valor_con_descuento);
     // Realiza las validaciones
-
+    const errors = validations({ 
+      nombre,
+      // cantidad,
+      descripcion_producto,
+      existencia,
+      fecha_final,
+      fecha_inicial,
+      imagen,
+      id_categoria_producto,
+      valor_normal,
+      valor_con_descuento,
+      condicion,
+  });
     // Si hay errores, los muestra y no continúa con la solicitud
     if (Object.keys(errors).length > 0) {
       setErrors(errors);
@@ -89,6 +101,7 @@ export default function FormUpdateProduct() {
   };
 
   const [shouldRedirect, setShouldRedirect] = useState(false);
+  
   // const handleInputChange = event => {
   //   const property = event.target.name;
   //   const value = event.target.value;
@@ -149,7 +162,7 @@ export default function FormUpdateProduct() {
     fecha_inicial: "",
     fecha_final: "",
     descripcion_producto: "",
-    cantidad: "",
+    // cantidad: "",
     existencia: "",
     valor_normal: "",
     valor_con_descuento: "",
@@ -162,7 +175,7 @@ export default function FormUpdateProduct() {
   });
   const handleBorrar = async (id_producto) => {
     try {
-      await axios.put(`http://localhost:3001/products/delete/${id_producto}`);
+      await axios.put(`https://justoffers-back.up.railway.app/products/delete/${id_producto}`);
     } catch (error) {
       console.log(error);
     }
@@ -172,7 +185,7 @@ export default function FormUpdateProduct() {
   return (
     <>
       {shouldRedirect ? (
-        <Redirect to="/" />
+        <Redirect to="/home" />
       ) : (
 
         /* ----------------------- CONTENEDOR GENERAL -----------------------*/
@@ -267,6 +280,7 @@ export default function FormUpdateProduct() {
                     value={form.existencia}
                     onChange={handleInputChange}
                     className='form-input'
+                    min="0"
                   />
                   {errors.telefono && (
                     <div className={style.errors}>{errors.existencia}</div>
@@ -284,6 +298,7 @@ export default function FormUpdateProduct() {
                     value={form.valor_normal}
                     onChange={handleInputChange}
                     className='form-input'
+                    min="0"
                   />
                   {errors.valor_normal && (
                     <div className={style.errors}>{errors.valor_normal}</div>
@@ -304,6 +319,7 @@ export default function FormUpdateProduct() {
                     value={form.valor_con_descuento}
                     onChange={handleInputChange}
                     className='form-input'
+                    min="0"
                   />
                   {errors.valor_con_descuento && (
                     <div className={style.errors}>{errors.valor_con_descuento}</div>

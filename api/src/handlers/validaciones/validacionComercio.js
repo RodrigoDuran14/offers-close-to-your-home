@@ -19,8 +19,7 @@ const validacionPostComercio = (data) => {
     !nombre_contacto ||
     !cargo ||
     !password ||
-    !email ||
-    !imagen
+    !email 
   ) {
     throw new Error("Todos los campos son obligatorios");
   }

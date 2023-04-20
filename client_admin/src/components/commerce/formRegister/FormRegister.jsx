@@ -66,7 +66,7 @@ export default function FormRegister() {
         setForm({ ...form, password: hashedPassword });
   
         await axios
-          .post("http://localhost:3001/commerce", form)
+          .post("https://justoffers-back.up.railway.app/commerce", form)
           .then(res => swal({
             title: 'Registro exitoso',
             text: 'Ya puedes navegar con tu cuenta!',

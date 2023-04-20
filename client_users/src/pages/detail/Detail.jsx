@@ -19,7 +19,7 @@ const Detail = () => {
   const dispatch = useDispatch();
   const estaLogueado = localStorage.getItem("estaLogueado");
 
-  const URL = 'http://localhost:3001'
+  const URL = 'https://justoffers-back.up.railway.app'
 
   useEffect(() => {
     dispatch(getProductById(id))

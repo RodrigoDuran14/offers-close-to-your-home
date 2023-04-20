@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as action from "./actions-type";
-const URL = "http://localhost:3001";
+const URL = "https://justoffers-back.up.railway.app";
 
 export function createProduct(product) {
   return async (dispatch) => {
