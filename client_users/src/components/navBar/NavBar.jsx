@@ -82,7 +82,7 @@ const NavBar = () => {
         </Link>
 
         <Link
-          to="/"
+          to="https://just-offers-commerce.up.railway.app/"
           className={s.link}
         // style={{ margin: '0px 10px' }}
         >

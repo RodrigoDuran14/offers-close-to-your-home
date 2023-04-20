@@ -22,7 +22,7 @@ const NavBar = () => {
   const profile = Profile;
   const location = useLocation();
 
-  const URLUSERS = "";
+  const URLUSERS = "https://justoffers.up.railway.app/";
 
   /* ------------- MENU HAMBURGUESA ----    --------- */
 
