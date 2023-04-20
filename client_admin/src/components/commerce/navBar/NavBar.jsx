@@ -17,11 +17,9 @@ import Profile from "../../../assets/images/profile.png";
 
 import s from "./NavBar.module.css";
 const NavBar = () => {
-
   const logoTexto = Logo;
   const logoIcono = Icono;
   const profile = Profile;
-
 
   /* ------------- MENU HAMBURGUESA ----    --------- */
 
@@ -31,9 +29,8 @@ const NavBar = () => {
     setShowProfileMenu(!showProfileMenu);
   };
 
-
   /* ------------- LOGIN MENU ------------- */
-  const estaLogueado = useSelector(state => state.logIn);
+  const estaLogueado = useSelector((state) => state.logIn);
   const { comercios } = useSelector((state) => state);
 
   const dispatch = useDispatch();
@@ -59,16 +56,18 @@ const NavBar = () => {
     }
   }, [dispatch, email]);
 
-  const userLogin = useMemo(() => comercios.filter((e) => e.email === email), [comercios, email]);
+  const userLogin = useMemo(
+    () => comercios.length !== 0 && comercios.filter((e) => e.email === email),
+    [comercios, email]
+  );
   const imgProfile = userLogin[0]?.imagen;
 
-
   /* ------------- LOGOUT ------------- */
-  const logOut = false
+  const logOut = false;
 
   const handleLogOut = () => {
-    Cookies.set("commerce_session", [])
-    dispatch(commerceLoggedIn(logOut))
+    Cookies.set("commerce_session", []);
+    dispatch(commerceLoggedIn(logOut));
   };
 
   return (
@@ -78,32 +77,22 @@ const NavBar = () => {
       </div>
 
       <div className={s.options}>
-        <Link to={'/'}>
+        <Link to={"/"}>
           <img className={s.texto} src={logoTexto} />
           <img className={s.icono} src={logoIcono} />
         </Link>
       </div>
 
       <div className={s.nav_text}>
-        <Link
-          to="/home"
-          className={s.link}
-
-        >
+        <Link to="/home" className={s.link}>
           <h4>Inicio</h4>
         </Link>
 
-        <Link
-          to="/home"
-          className={s.link}
-        >
+        <Link to="/home" className={s.link}>
           <h4>Quiero Comprar</h4>
         </Link>
 
-        <Link
-          to="/about"
-          className={s.link}
-        >
+        <Link to="/about" className={s.link}>
           <h4>¿Quienes somos?</h4>
         </Link>
       </div>
@@ -142,6 +131,5 @@ const NavBar = () => {
     </div>
   );
 };
-
 
 export default NavBar;
