@@ -2,12 +2,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 600px;
 }
 
 .contenedorForm{
   display: flex;
   flex-direction: column;
-  width: 600px;
+  width:100%;
   background-color: rgb(249, 245, 245);
   border: 3px black solid;
   border-radius: 10px;

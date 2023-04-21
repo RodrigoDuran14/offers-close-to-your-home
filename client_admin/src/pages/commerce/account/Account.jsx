@@ -26,7 +26,7 @@ const Account = () => {
         {userCommerce && (
           <div className={s.text}>
             <div className={s.row}>
-              <div className={s.column}>
+              <div className={s.column1}>
                 <label>Nombre del comercio</label>
                 <label>Dirección:</label>
                 <label>Teléfono:</label>

@@ -15,8 +15,6 @@ function Home() {
       {session ?
         <div className={style.container}>
           <div className={style.ventas}>
-            <Ventas />
-            <hr style={{width: '95%', margin: '25px'}}/>
             <Products />
           </div>
         </div> : <p> No hay nada pa </p>

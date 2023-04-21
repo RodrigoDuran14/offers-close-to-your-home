@@ -9,7 +9,7 @@ const henry = Henry
         <div style={{minHeight: "100%", position: "relative", height:"100%"}}>
             <div className={styles.container}>
                 <div>
-                    <img className={styles.logo} src={logo} />
+                    <img className={styles.logo} src="https://res.cloudinary.com/dfmkjxjsf/image/upload/v1681994536/LogoCompletoBlanco_cxbcjm.png" />
                 </div>
                 <div className={styles.nombres}>
                 <a
@@ -42,7 +42,7 @@ const henry = Henry
                     </a>
                     <a
                     className= {styles.links}
-                    href="https://www.linkedin.com/in/lautacorva/"
+                    href="https://www.linkedin.com/in/corvalautaro/"
                     target="_blank"
                     rel="noreferrer">
                         Lautaro Corva
@@ -70,7 +70,7 @@ const henry = Henry
                     </a>
                 </div>
                 <div >
-                    <img className={styles.henry} src={henry} />
+                    <img className={styles.henry} src="https://res.cloudinary.com/dfmkjxjsf/image/upload/v1681994535/HenryLogo_oevjn5.png" />
                 </div>
             </div>
         </div>

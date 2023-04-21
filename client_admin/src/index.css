@@ -33,6 +33,13 @@ code {
   align-items: center;
   width: 100%;
   box-shadow: 0px 0px 10px rgba(116, 116, 116, 0.548);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.925),
+    rgba(255, 255, 255, 0.925)
+  ), url('./assets/images/egro.png');
 }
 
 .form-input {

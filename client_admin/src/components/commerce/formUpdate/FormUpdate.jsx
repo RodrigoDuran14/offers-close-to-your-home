@@ -14,11 +14,11 @@ export default function FormUpdate() {
   const { ciudades, categorys } = useSelector(state => state);
   const dispatch = useDispatch();
 
-  const session = Cookies.get("commerce_session");
+  const session = Cookies.get("commerce_session");// trae los datos de las cookies
 console.log(session)
-let values = JSON.parse(session)
+let values = JSON.parse(session)//convierte a json los datos
 
-let comercio = values.dataValues
+let comercio = values.dataValues// estan todos los datos del comercio o usuario como un objeto
 console.log(comercio)
 
   useEffect(() => {
