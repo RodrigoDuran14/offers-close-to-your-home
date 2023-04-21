@@ -68,8 +68,8 @@ const NavBar = () => {
 
       <div className={s.options}>
         <Link to={"/"}>
-          <img className={s.texto} src={logoTexto} />
-          <img className={s.icono} src={logoIcono} />
+          <img className={s.texto} src="https://res.cloudinary.com/dfmkjxjsf/image/upload/v1681994537/SoloTextoBlanco_iraxjq.png" />
+          <img className={s.icono} src="https://res.cloudinary.com/dfmkjxjsf/image/upload/v1681994537/SoloIconoNormal_bjxj2j.png"/>
         </Link>
       </div>
 
@@ -112,7 +112,7 @@ const NavBar = () => {
 
         {estaLogueado === "database" && (
           <div style={{ display: 'flex' }}>
-            <img onClick={handleLogInClick} className={s.logIn} src={profile} />
+            <img onClick={handleLogInClick} className={s.logIn} src="https://res.cloudinary.com/dfmkjxjsf/image/upload/v1681994536/profile_j9qoip.png" />
 
             {showProfileMenu && (
               <div className={s.menuDesplegable}>
@@ -134,7 +134,7 @@ const NavBar = () => {
 
         {estaLogueado === "google" && (
           <div style={{ display: 'flex' }}>
-            <img onClick={handleLogInClick} className={s.logIn} src={logIn} />
+            <img onClick={handleLogInClick} className={s.logIn} src="https://res.cloudinary.com/dfmkjxjsf/image/upload/v1681994536/profile_j9qoip.png" />
 
             {showProfileMenu && (
               <div className={s.menuDesplegable}>

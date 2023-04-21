@@ -12,7 +12,7 @@ import { getCommerceByID } from "../../../redux/actions";
 
 // imagenes
 import Logo from "../../../assets/images/SoloTextoBlanco.png";
-import Icono from "../../../assets/images/SoloIconoNormal.png";
+import Icono from "../../../assets/images/ormal.png";
 import Profile from "../../../assets/images/profile.png";
 
 import s from "./NavBar.module.css";
