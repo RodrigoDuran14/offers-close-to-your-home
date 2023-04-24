@@ -1,25 +1,25 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-  sequelize.define('Categoria_producto', {
-    id_categoria_producto: {
+  sequelize.define('Category_product', {
+    category_id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
-    nombre_categoria_producto: {
+    name: {
       type: DataTypes.STRING(30),
       allowNull: false,
       unique: true,
     },
-    imagen_categoria_producto: {
+    image: {
       type: DataTypes.STRING(),
       allowNull: false,
       unique: true,
     },
     
   }, {
-    tableName: 'Categoria_producto',
+    tableName: 'Category_product',
     timestamps: false,
   });
 }  

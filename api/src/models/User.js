@@ -2,41 +2,30 @@ const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define(
-    "Usuario",
+    "User",
     {
-      id_usuario: {
+      user_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
       },
-      primer_nombre: {
+      name: {
         type: DataTypes.STRING(50),
         allowNull: false,
       },
-      segundo_nombre: {
-        type: DataTypes.STRING(50),
-        allowNull: true,
-      },
-      primer_apellido: {
-        type: DataTypes.STRING(50),
-        allowNull: false,
-      },
-      segundo_apellido: {
-        type: DataTypes.STRING(50),
-        allowNull: true,
-      },
-      direccion: {
+      address: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      telefono: {
+      phone: {
         type: DataTypes.STRING,
         allowNull: false,
       },
 
-      estado: {
-        type: DataTypes.BOOLEAN,
+      city: {
+        type: DataTypes.STRING,
+        allowNull: false,
       },
       email: {
         type: DataTypes.STRING,
@@ -50,11 +39,11 @@ module.exports = (sequelize) => {
       imagen: {
         type: DataTypes.STRING,
         allowNull: true,
-        defaultValue: "https://cdn-icons-png.flaticon.com/512/711/711769.png",
+        default: "https://cdn-icons-png.flaticon.com/512/711/711769.png",
       },
     },
     {
-      tableName: "Usuario",
+      tableName: "User",
       timestamps: false,
     }
   );
