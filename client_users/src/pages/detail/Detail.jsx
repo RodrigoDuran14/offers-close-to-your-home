@@ -111,7 +111,7 @@ const Detail = () => {
 
   async function handleSubmit() {
     const data = {
-      id: id,
+      id_producto:id,
       descripcion_motivo,
       valor_calificacion
     }

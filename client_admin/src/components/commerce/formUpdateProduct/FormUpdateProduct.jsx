@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { Image, CloudinaryContext } from "cloudinary-react"; // para guardar las imágenes externamente 
 import Cookies from "js-cookie";
 import { useParams } from "react-router";
-import validations from "../formCreateProduct/validations";
 import style from "./FormUpdateProduct.module.css";
 
 
@@ -58,19 +57,7 @@ export default function FormUpdateProduct() {
     // valor_normal = parseFloat(valor_normal);
     // valor_con_descuento = parseFloat(valor_con_descuento);
     // Realiza las validaciones
-    const errors = validations({ 
-      nombre,
-      // cantidad,
-      descripcion_producto,
-      existencia,
-      fecha_final,
-      fecha_inicial,
-      imagen,
-      id_categoria_producto,
-      valor_normal,
-      valor_con_descuento,
-      condicion,
-  });
+    
     // Si hay errores, los muestra y no continúa con la solicitud
     if (Object.keys(errors).length > 0) {
       setErrors(errors);
@@ -395,8 +382,8 @@ export default function FormUpdateProduct() {
                   )}
                 </div>
 
-                <button onClick={() => { handleBorrar(id_producto) }} className={style.eliminar}>Eliminar</button>
 
+                <button onClick={() => { handleBorrar(id_producto) }} className={style.eliminar}>Eliminar</button>
                 <button type="submit">Confirmar cambios</button>
               </form>
             </CloudinaryContext>
