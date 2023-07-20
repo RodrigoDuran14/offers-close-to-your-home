@@ -29,11 +29,25 @@ export default function FormUpdateProduct() {
         // Aquí puedes manejar el error en caso de que getProductById falle
         console.error(error);
       });
+    
+    setForm({
+      nombre: productoEditable.nombre,
+      descripcion_producto: productoEditable.descripcion_producto,
+      existencia: productoEditable.existencia,
+      fecha_final: productoEditable.fecha_final,
+      fecha_inicial: productoEditable.fecha_inicial,
+      imagen: productoEditable.imagen,
+      id_categoria_producto: productoEditable.id_categoria_producto,
+      valor_normal: productoEditable.valor_normal,
+      valor_con_descuento: productoEditable.valor_con_descuento,
+      condicion: productoEditable.condicion,
+    })
 
   }, [dispatch, id_producto]);
 
   const productoEditable = useSelector(state => state.product)
 
+  console.log("productoeditable:  ",productoEditable)
   const [errors, setErrors] = useState({});
 
   const handleSubmit = async event => {

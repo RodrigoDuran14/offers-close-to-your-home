@@ -31,7 +31,7 @@ export default function FormCreateProduct() {
     // Obtiene los valores del formulario
     let {
       nombre,
-      cantidad,
+      //cantidad,
       descripcion_producto,
       existencia,
       fecha_final,
@@ -44,7 +44,7 @@ export default function FormCreateProduct() {
     } = form;
 
 
-    cantidad = parseInt(cantidad);
+    //cantidad = parseInt(cantidad);
     existencia = parseInt(existencia);
     valor_normal = parseFloat(valor_normal);
     valor_con_descuento = parseFloat(valor_con_descuento);
@@ -74,7 +74,7 @@ export default function FormCreateProduct() {
         // Convierte los valores necesarios a números antes de enviar el formulario
         const formData = {
           ...form,
-          cantidad: parseInt(form.cantidad),
+          //cantidad: parseInt(form.cantidad),
           existencia: parseInt(form.existencia),
           valor_normal: parseFloat(form.valor_normal),
           valor_con_descuento: parseFloat(form.valor_con_descuento),
@@ -175,7 +175,7 @@ export default function FormCreateProduct() {
     fecha_inicial: "",
     fecha_final: "",
     descripcion_producto: "",
-    // cantidad: "",
+    cantidad: 1,
     existencia: "",
     valor_normal: "",
     valor_con_descuento: "",

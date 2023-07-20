@@ -177,7 +177,7 @@ console.log(comercio)
     <>
      <div className={style.link}>
       {shouldRedirect ? (
-        <Redirect to="/login" />
+        <Redirect to="/home" />
       ) : (
         /* ----------------------- CONTENEDOR GENERAL -----------------------*/
         <div className={style.contenedor}>
