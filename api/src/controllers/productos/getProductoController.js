@@ -126,8 +126,8 @@ const getAllCategorias = async () => {
     },
     {
       nombre_categoria_producto: "Juguetes",
-      imagen_categoria_producto:
-        "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/71saY5E2z5L._AC_SX679_.jpg",
+      imagen_categoria_producto: "https://st.depositphotos.com/1000207/1831/i/950/depositphotos_18316925-stock-photo-toys-alphabet-cube-beach-ball.jpg"
+
     },
     {
       nombre_categoria_producto: "Muebles",
@@ -142,7 +142,7 @@ const getAllCategorias = async () => {
     {
       nombre_categoria_producto: "Deportes",
       imagen_categoria_producto:
-        "https://proyectocoqui.org/wp-content/uploads/2022/10/En-que-hay-que-fijarse-al-comprar-ropa-de-deporte.jpg",
+        "https://previews.123rf.com/images/lightfieldstudios/lightfieldstudios1706/lightfieldstudios170604108/79901104-ni%C3%B1os-adorables-en-ropa-deportiva-sonriendo-y-posando-en-el-gimnasio.jpg",
     },
     {
       nombre_categoria_producto: "Joyería",

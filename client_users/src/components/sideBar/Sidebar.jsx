@@ -73,19 +73,19 @@ function Sidebar() {
                   tabindex="0"
                   className={styles.list_2}
                   onClick={() =>
-                    dispatch(action.getProductByCategory("Electrodomesticos"))
+                    dispatch(action.getProductByCategory("Electrodomésticos"))
                   }
                 >
-                  Electrodomesticos
+                  Electrodomésticos
                 </li>
                 <li
                   tabindex="0"
                   className={styles.list_3}
                   onClick={() =>
-                    dispatch(action.getProductByCategory("Informatica"))
+                    dispatch(action.getProductByCategory("Informática"))
                   }
                 >
-                  Informatica
+                  Informática
                 </li>
                 <li
                   tabindex="0"

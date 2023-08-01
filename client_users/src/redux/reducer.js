@@ -178,19 +178,19 @@ function rootReducer(state = initialState, action) {
         ...state,
         productsFitered: [...state.productsFitered].sort((a, b) => {
           if (a.createdAt > b.createdAt) {
-            return 1;
+            return -1;
           }
           if (b.createdAt > a.createdAt) {
-            return -1;
+            return 1;
           }
           return 0;
         }),
-        Copyproducts: [...state.productsFitered].sort((a, b) => {
+        copyproducts: [...state.productsFitered].sort((a, b) => {
           if (a.createdAt > b.createdAt) {
-            return 1;
+            return -1;
           }
           if (b.createdAt > a.createdAt) {
-            return -1;
+            return 1;
           }
           return 0;
         }),
