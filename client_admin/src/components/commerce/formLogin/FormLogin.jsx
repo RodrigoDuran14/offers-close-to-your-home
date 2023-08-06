@@ -51,37 +51,37 @@ export default function FormLogin() {
     }
   }
 
-  const handleLoginUser = async (values) => {
-    try {
-      const user = await axios.post(`${BACK_HOST}/usuario/login`, values);
-      console.log("USER:  ", user)
-      const session = user.data.session;
-      const token = user.data.token;
-      console.log("session:  ", session)
-      console.log("token:  ", token)
-
-      // Almacenar el token y la sesión en cookies con opciones de seguridad
-      Cookies.set('user_token', token, { secure: true, sameSite: 'strict' });
-      Cookies.set('user_session', JSON.stringify(session), { secure: true, sameSite: 'strict' });
-
-      const isUserAuthenticated = await login(true);
-      if (isUserAuthenticated) {
-        localStorage.setItem("estaLogueado", "database")
-        navigateTo('/admin');
-      } else {
-        console.log('Login failed');
-      }
-    } catch (error) {
-      const err = error.response.data;
-      swal({
-        title: 'Bienvenido',
-        text: 'Ya puedes navegar con tu cuenta!',
-        icon: 'success',
-        timer: '2000'
-      });
-      console.log(err)
-    }
-  };
+ // const handleLoginUser = async (values) => {
+ //   try {
+ //     const user = await axios.post(`${BACK_HOST}/usuario/login`, values);
+ //     console.log("USER:  ", user)
+ //     const session = user.data.session;
+ //     const token = user.data.token;
+ //     console.log("session:  ", session)
+ //     console.log("token:  ", token)
+//
+ //     // Almacenar el token y la sesión en cookies con opciones de seguridad
+ //     Cookies.set('user_token', token, { secure: true, sameSite: 'strict' });
+ //     Cookies.set('user_session', JSON.stringify(session), { secure: true, sameSite: 'strict' });
+//
+ //     const isUserAuthenticated = await login(true);
+ //     if (isUserAuthenticated) {
+ //       localStorage.setItem("estaLogueado", "database")
+ //       navigateTo('/admin');
+ //     } else {
+ //       console.log('Login failed');
+ //     }
+ //   } catch (error) {
+ //     const err = error.response.data;
+ //     swal({
+ //       title: 'Bienvenido',
+ //       text: 'Ya puedes navegar con tu cuenta!',
+ //       icon: 'success',
+ //       timer: '2000'
+ //     });
+ //     console.log(err)
+ //   }
+ // };
   const handleLoginComercio = async (values) => {
     try {
       console.log(values);
@@ -130,7 +130,7 @@ export default function FormLogin() {
 
   const handleLogin = async (values) => {
 
-    await handleLoginUser(values)
+    //await handleLoginUser(values)
     await handleLoginComercio(values)
 
 

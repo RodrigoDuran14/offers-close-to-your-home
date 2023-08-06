@@ -280,7 +280,7 @@ function rootReducer(state = initialState, action) {
     case COUNT_DELETE:
       return {
         ...state,
-        countCarrito: state.countCarrito - action.payload,
+        countCarrito: state.countCarrito > 0 ? state.countCarrito - action.payload : 0,
       };
 
     case CLEAN_PRODUCT:

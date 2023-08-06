@@ -12,21 +12,23 @@ export default function CartCard(product) {
   function handleEliminarProducto() {
     dispatch(eliminarDelCarrito(product));
     dispatch(deleteCount(product.cantidad))
-    console.log(product.cantidad);
+    console.log("handelEliminar: product.cantidad   ",product.cantidad);
+    console.log("handelEliminar: product.existencia   ",product.existencia);
+
   }
 
   const [quantity, setQuantity] = useState(product.cantidad);
 
   const handleDecrease = () => {
-    if (quantity !== 1) {
-      setQuantity(quantity - 1);
-      dispatch(restarCantidad(product));
-      dispatch(restarCount())
-    }
+      if (quantity !== 1) {
+        setQuantity(quantity - 1);
+        dispatch(restarCantidad(product));
+        dispatch(restarCount())
+      }
   };
 
   const handleIncrease = () => {
-    if (quantity !== 10) {
+    if (quantity < product.existencia) {
       setQuantity(quantity + 1);
       dispatch(sumarCantidad(product))
       dispatch(sumarCount())

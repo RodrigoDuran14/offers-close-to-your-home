@@ -28,8 +28,6 @@ export default function ShoppingCart() {
     return () => {
       dispatch(cleanMercadoPago());
       if(setShouldRedirect){
-        window.localStorage.setItem("carrito", JSON.stringify([]));
-        window.localStorage.setItem("count", JSON.stringify(0));
       }
       setShouldRedirect(false);
     }
@@ -93,6 +91,8 @@ export default function ShoppingCart() {
     .then(response => {
       console.log(response.data);
       setShouldRedirect(true)
+      window.localStorage.setItem("carrito", JSON.stringify([]));
+      window.localStorage.setItem("count", JSON.stringify(0));
       window.location.reload()
     })
     .catch(error => {
@@ -126,6 +126,7 @@ export default function ShoppingCart() {
                   valor_con_descuento={producto.valor_con_descuento}
                   cantidad={producto.cantidad}
                   total={total}
+                  existencia={producto.existencia}
                 />
               ))}
               <div className={styles.containerTotal}>

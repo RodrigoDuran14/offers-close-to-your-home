@@ -57,10 +57,10 @@ const Detail = () => {
       }
    }else{
     swal({
-      title: `Debe de iniciar sesion para comprar`,
+      title: `Debe de iniciar sesion para agregar al carrito`,
       icon: "info",
       timer: "3000"
-    })
+    }) 
    }
   }  
   
