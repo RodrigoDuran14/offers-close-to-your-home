@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Kelly+Slab&display=swap');
+
+.container {
+    height: 90vh;
+    width: 80%;
+    padding: 40px 220px;
+    padding-right: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titulo {
+    width: 100%;
+    margin-top: 80px;
+    margin-bottom: 40px;
+    font-size: 30px;
+    text-align: right;
+}
+
+.logo {
+    position: absolute;
+    filter: opacity(10%);
+    left: 20px;
+    top: 80px;
+    height: 50px;
+    width: 50px;
+    z-index: -5;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url('../../../assets/images/SoloIconoNegro.png');
+    
+}
+
+.img {
+    height: 290px;
+    width: 1200px;
+  }
